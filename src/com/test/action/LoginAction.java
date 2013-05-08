@@ -27,7 +27,7 @@ public class LoginAction extends ActionSupport{
 	
 	public String execute() throws Exception
 	{
-		if("panyan".equals(username)&&"1111".equals(password))
+		if("panyan".equals(username)&&"1112".equals(password))
 			return SUCCESS;
 		return ERROR;
 	}

@@ -18,9 +18,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<script src='/OnlineTutoringSystem/dwr/engine.js'></script>
+	<script src='/OnlineTutoringSystem/dwr/interface/testdwr.js'></script>
+	<script src='jquery.js'></script>
+	<script type="text/javascript" src="ajax-pushlet-client.js"></script>
+	<script type="text/javascript">
+		function test(){
+			var user = $('#user').val();
+			testdwr.sayHello(user,callback);
+			//alert(user);
+		}
+		function callback(msg)
+		{
+			alert(msg);
+		}
+	</script>
+	
+	<script type="text/javascript">
+		PL._init();
+		PL.joinListen("/test2/he");
+		function onData(event)
+		{
+			alert(event.get("he"));
+		}
+		
+		function cancelListen()
+		{
+			PL.leave();
+		}
+		
+	</script>
+	
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <input id="user" type="text"/>
+    <input type='button' value="test" onclick='test();'/>
   </body>
 </html>

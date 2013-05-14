@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   width="599" height="444" minWidth="955" minHeight="600"
+			   creationComplete="main()">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script source="Main.as">
+	</fx:Script>
+	<s:VideoDisplay source="{View.video_remote}" x="401" y="10" width="188" height="114.39081" id="videoDisplay_remote"/>
+	<s:VideoDisplay source="{View.video_local}" x="10" y="331" width="161" height="103" id="videoDisplay_local"/>
+	<s:Button x="521" y="414" width="68" height="21" label="发送" id="button_send" click="button_send_clickHandler(event)"/>
+	<s:Button id="button_offline" visible="{View.button_offline_visible}" x="437" y="413" label="断开连接" click="button_offline_clickHandler(event)"/>
+	<s:TextArea x="179" y="331" width="410" height="77" text="{View.input.text}" id="textArea_input" />
+	<s:Button name="button_reconnect" x="179" y="416" label="重连" visible="{View.button_reconnect_visible}" id="button_reconnect" click="button_reconnect_clickHandler(event)"/>
+	<s:TextArea id="textArea_output" x="401" y="132" width="188" height="191" editable="false"
+				enabled="true" text="{View.output}"/>
+</s:Application>

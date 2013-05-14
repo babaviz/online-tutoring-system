@@ -1,6 +1,8 @@
 package com.tutoring.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Timetable entity. @author MyEclipse Persistence Tools
@@ -11,9 +13,10 @@ public class Timetable implements java.io.Serializable {
 	// Fields
 
 	private Long id;
-	private Long arrangementId;
+	private Arrangement arrangement;
 	private Date startTime;
 	private Date endTime;
+	private Set studentTimetables = new HashSet(0);
 
 	// Constructors
 
@@ -22,15 +25,17 @@ public class Timetable implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Timetable(Long arrangementId) {
-		this.arrangementId = arrangementId;
+	public Timetable(Arrangement arrangement) {
+		this.arrangement = arrangement;
 	}
 
 	/** full constructor */
-	public Timetable(Long arrangementId, Date startTime, Date endTime) {
-		this.arrangementId = arrangementId;
+	public Timetable(Arrangement arrangement, Date startTime, Date endTime,
+			Set studentTimetables) {
+		this.arrangement = arrangement;
 		this.startTime = startTime;
 		this.endTime = endTime;
+		this.studentTimetables = studentTimetables;
 	}
 
 	// Property accessors
@@ -43,12 +48,12 @@ public class Timetable implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Long getArrangementId() {
-		return this.arrangementId;
+	public Arrangement getArrangement() {
+		return this.arrangement;
 	}
 
-	public void setArrangementId(Long arrangementId) {
-		this.arrangementId = arrangementId;
+	public void setArrangement(Arrangement arrangement) {
+		this.arrangement = arrangement;
 	}
 
 	public Date getStartTime() {
@@ -65,6 +70,14 @@ public class Timetable implements java.io.Serializable {
 
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
+	}
+
+	public Set getStudentTimetables() {
+		return this.studentTimetables;
+	}
+
+	public void setStudentTimetables(Set studentTimetables) {
+		this.studentTimetables = studentTimetables;
 	}
 
 }

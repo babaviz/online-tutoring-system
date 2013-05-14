@@ -13,11 +13,23 @@
         <many-to-one name="subject" class="com.tutoring.entity.Subject" fetch="select">
             <column name="SUBJECT_ID" />
         </many-to-one>
+        <set name="specialties" inverse="true">
+            <key>
+                <column name="SUBJECT_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Specialty" />
+        </set>
         <set name="subjects" inverse="true">
             <key>
                 <column name="SUBJECT_ID" />
             </key>
             <one-to-many class="com.tutoring.entity.Subject" />
+        </set>
+        <set name="courses" inverse="true">
+            <key>
+                <column name="SUBJECT_ID" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Course" />
         </set>
     </class>
 </hibernate-mapping>

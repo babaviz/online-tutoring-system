@@ -8,13 +8,13 @@
     <class name="com.tutoring.entity.User" table="user" catalog="onlinetutoring">
         <id name="username" type="java.lang.String">
             <column name="username" length="20" />
-            <generator class="native"></generator>
+            <generator class="assigned" />
         </id>
         <property name="password" type="java.lang.String">
             <column name="password" length="20" not-null="true" />
         </property>
         <property name="loginid" type="java.lang.String">
-            <column name="loginid" length="20" />
+            <column name="loginid" length="15" />
         </property>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,8 @@
 package com.tutoring.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Student entity. @author MyEclipse Persistence Tools
  */
@@ -8,10 +11,11 @@ public class Student implements java.io.Serializable {
 
 	// Fields
 
-	private Long id;
-	private Long personId;
+	private String personUsername;
+	private Person person;
 	private Long balance;
 	private Integer grade;
+	private Set studentTimetables = new HashSet(0);
 
 	// Constructors
 
@@ -20,33 +24,35 @@ public class Student implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Student(Long personId) {
-		this.personId = personId;
+	public Student(Person person) {
+		this.person = person;
 	}
 
 	/** full constructor */
-	public Student(Long personId, Long balance, Integer grade) {
-		this.personId = personId;
+	public Student(Person person, Long balance, Integer grade,
+			Set studentTimetables) {
+		this.person = person;
 		this.balance = balance;
 		this.grade = grade;
+		this.studentTimetables = studentTimetables;
 	}
 
 	// Property accessors
 
-	public Long getId() {
-		return this.id;
+	public String getPersonUsername() {
+		return this.personUsername;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setPersonUsername(String personUsername) {
+		this.personUsername = personUsername;
 	}
 
-	public Long getPersonId() {
-		return this.personId;
+	public Person getPerson() {
+		return this.person;
 	}
 
-	public void setPersonId(Long personId) {
-		this.personId = personId;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 	public Long getBalance() {
@@ -63,6 +69,14 @@ public class Student implements java.io.Serializable {
 
 	public void setGrade(Integer grade) {
 		this.grade = grade;
+	}
+
+	public Set getStudentTimetables() {
+		return this.studentTimetables;
+	}
+
+	public void setStudentTimetables(Set studentTimetables) {
+		this.studentTimetables = studentTimetables;
 	}
 
 }

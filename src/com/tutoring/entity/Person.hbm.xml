@@ -6,21 +6,18 @@
 -->
 <hibernate-mapping>
     <class name="com.tutoring.entity.Person" table="person" catalog="onlinetutoring">
-        <id name="id" type="java.lang.Long">
-            <column name="ID" />
-            <generator class="native"></generator>
+        <id name="username" type="java.lang.String">
+            <column name="USERNAME" length="20" />
+            <generator class="assigned"></generator>
         </id>
         <property name="firstName" type="java.lang.String">
-            <column name="FIRST_NAME" length="30" not-null="true" />
+            <column name="FIRST_NAME" length="30" />
         </property>
         <property name="lastName" type="java.lang.String">
-            <column name="LAST_NAME" length="30" not-null="true" />
+            <column name="LAST_NAME" length="30" />
         </property>
         <property name="email" type="java.lang.String">
             <column name="EMAIL" length="60" not-null="true" />
-        </property>
-        <property name="password" type="java.lang.String">
-            <column name="PASSWORD" length="30" not-null="true" />
         </property>
         <property name="phone" type="java.lang.String">
             <column name="PHONE" length="11" />
@@ -40,5 +37,11 @@
         <property name="avator" type="java.lang.String">
             <column name="AVATOR" length="1000" />
         </property>
+        <set name="students" inverse="true">
+            <key>
+                <column name="PERSON_USERNAME" length="20" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Student" />
+        </set>
     </class>
 </hibernate-mapping>

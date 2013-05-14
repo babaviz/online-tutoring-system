@@ -31,6 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	font-size:xx-large;
 	}
 </style>
+
 </head>
 
 <body class="back_1">
@@ -114,26 +115,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div style="width:600px; height:345px;float:left; background:#06F;display:none;" id="register">
   <div class="container" style="margin-top:50px;">
   <div class="row">
-      <form class="form-horizontal">
+      <form class="form-horizontal" action="RegisterAction" method="post">
   <fieldset class="control-group">
     <div class="control-group">
       <label class="control-label" for="input01">用户名</label>
       <div class="controls">
-        <input type="text" class="input-large" placeholder="XXX" id="input01">
+        <input type="text" class="input-large" placeholder="XXX" id="input01" name="username">
         <span class="help-inline">用户名已被注册！</span>
       </div>
     </div>
     <div class="control-group error">
       <label class="control-label" for="input01">邮箱</label>
       <div class="controls">
-        <input type="text" class="input-large" placeholder="X" id="input01">
+        <input type="text" class="input-large" placeholder="X" id="input01" name="email">
         <span class="help-inline">格式错误！</span>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label" for="input01">密码</label>
       <div class="controls">
-        <input type="password" class="input-large" id="input01">
+        <input type="password" class="input-large" id="input01" name="password">
         <span class="help-inline">密码强度不够！</span>
       </div>
     </div>
@@ -147,11 +148,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
    <div class="controls">
               <label class="radio">
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                <input type="radio" name="type" id="optionsRadios1" value="student" checked="">
 		学生注册
               </label>
               <label class="radio">
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                <input type="radio" name="type" id="optionsRadios2" value="tutor">
 		老师注册
               </label>
             </div>
@@ -217,14 +218,33 @@ function toregister()
 {
 	$("#login").css("display","none");
 	$("#intro").css("display","none");
-	$("#register").css("display","block")
+	$("#register").css("display","block");
 }
 function tointro()
 {
 	$("#login").css("display","none");
 	$("#register").css("display","none");
-	$("#intro").css("display","block")
+	$("#intro").css("display","block");
 }
 </script>
+
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script>
+<script src='/OnlineTutoringSystem/dwr/interface/loginaction.js'></script>
+<script type="text/javascript">
+	function loginBySession()
+	{
+		loginaction.CanLoginDirectly(callback);
+	}
+	function callback(msg)
+	{
+		//alert(msg);
+		if(msg=="ok")
+		{
+			window.location.href="AllTopics.jsp";
+		}
+	}
+	window.onload=loginBySession;
+</script>
+
 </body>
 </html>

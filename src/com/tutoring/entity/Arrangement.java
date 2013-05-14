@@ -1,5 +1,8 @@
 package com.tutoring.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Arrangement entity. @author MyEclipse Persistence Tools
  */
@@ -9,9 +12,10 @@ public class Arrangement implements java.io.Serializable {
 	// Fields
 
 	private Long id;
-	private Long tutorId;
-	private Long courseId;
+	private Course course;
+	private String tutorUsername;
 	private Integer score;
+	private Set timetables = new HashSet(0);
 
 	// Constructors
 
@@ -20,16 +24,18 @@ public class Arrangement implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Arrangement(Long tutorId, Long courseId) {
-		this.tutorId = tutorId;
-		this.courseId = courseId;
+	public Arrangement(Course course, String tutorUsername) {
+		this.course = course;
+		this.tutorUsername = tutorUsername;
 	}
 
 	/** full constructor */
-	public Arrangement(Long tutorId, Long courseId, Integer score) {
-		this.tutorId = tutorId;
-		this.courseId = courseId;
+	public Arrangement(Course course, String tutorUsername, Integer score,
+			Set timetables) {
+		this.course = course;
+		this.tutorUsername = tutorUsername;
 		this.score = score;
+		this.timetables = timetables;
 	}
 
 	// Property accessors
@@ -42,20 +48,20 @@ public class Arrangement implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Long getTutorId() {
-		return this.tutorId;
+	public Course getCourse() {
+		return this.course;
 	}
 
-	public void setTutorId(Long tutorId) {
-		this.tutorId = tutorId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
-	public Long getCourseId() {
-		return this.courseId;
+	public String getTutorUsername() {
+		return this.tutorUsername;
 	}
 
-	public void setCourseId(Long courseId) {
-		this.courseId = courseId;
+	public void setTutorUsername(String tutorUsername) {
+		this.tutorUsername = tutorUsername;
 	}
 
 	public Integer getScore() {
@@ -64,6 +70,14 @@ public class Arrangement implements java.io.Serializable {
 
 	public void setScore(Integer score) {
 		this.score = score;
+	}
+
+	public Set getTimetables() {
+		return this.timetables;
+	}
+
+	public void setTimetables(Set timetables) {
+		this.timetables = timetables;
 	}
 
 }

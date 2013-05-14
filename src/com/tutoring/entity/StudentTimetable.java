@@ -9,8 +9,8 @@ public class StudentTimetable implements java.io.Serializable {
 	// Fields
 
 	private Long id;
-	private Long studentId;
-	private Long timetableId;
+	private Student student;
+	private Timetable timetable;
 	private Integer score;
 	private String remark;
 
@@ -21,16 +21,16 @@ public class StudentTimetable implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public StudentTimetable(Long studentId, Long timetableId) {
-		this.studentId = studentId;
-		this.timetableId = timetableId;
+	public StudentTimetable(Student student, Timetable timetable) {
+		this.student = student;
+		this.timetable = timetable;
 	}
 
 	/** full constructor */
-	public StudentTimetable(Long studentId, Long timetableId, Integer score,
-			String remark) {
-		this.studentId = studentId;
-		this.timetableId = timetableId;
+	public StudentTimetable(Student student, Timetable timetable,
+			Integer score, String remark) {
+		this.student = student;
+		this.timetable = timetable;
 		this.score = score;
 		this.remark = remark;
 	}
@@ -45,20 +45,20 @@ public class StudentTimetable implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Long getStudentId() {
-		return this.studentId;
+	public Student getStudent() {
+		return this.student;
 	}
 
-	public void setStudentId(Long studentId) {
-		this.studentId = studentId;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
-	public Long getTimetableId() {
-		return this.timetableId;
+	public Timetable getTimetable() {
+		return this.timetable;
 	}
 
-	public void setTimetableId(Long timetableId) {
-		this.timetableId = timetableId;
+	public void setTimetable(Timetable timetable) {
+		this.timetable = timetable;
 	}
 
 	public Integer getScore() {

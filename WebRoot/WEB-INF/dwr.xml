@@ -7,5 +7,8 @@
     <create creator="new" javascript="testdwr">
       <param name="class" value="com.test.dwr.TestDwr"/>
     </create>
+    <create creator="spring" javascript="loginaction">
+      <param name="beanName" value="loginAction"/>
+    </create>
   </allow>
 </dwr>

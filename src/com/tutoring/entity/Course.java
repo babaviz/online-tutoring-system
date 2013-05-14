@@ -1,5 +1,8 @@
 package com.tutoring.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Course entity. @author MyEclipse Persistence Tools
  */
@@ -9,9 +12,10 @@ public class Course implements java.io.Serializable {
 	// Fields
 
 	private Long id;
-	private Long subjectId;
+	private Subject subject;
 	private String name;
 	private Integer price;
+	private Set arrangements = new HashSet(0);
 
 	// Constructors
 
@@ -25,10 +29,11 @@ public class Course implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Course(Long subjectId, String name, Integer price) {
-		this.subjectId = subjectId;
+	public Course(Subject subject, String name, Integer price, Set arrangements) {
+		this.subject = subject;
 		this.name = name;
 		this.price = price;
+		this.arrangements = arrangements;
 	}
 
 	// Property accessors
@@ -41,12 +46,12 @@ public class Course implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Long getSubjectId() {
-		return this.subjectId;
+	public Subject getSubject() {
+		return this.subject;
 	}
 
-	public void setSubjectId(Long subjectId) {
-		this.subjectId = subjectId;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 
 	public String getName() {
@@ -63,6 +68,14 @@ public class Course implements java.io.Serializable {
 
 	public void setPrice(Integer price) {
 		this.price = price;
+	}
+
+	public Set getArrangements() {
+		return this.arrangements;
+	}
+
+	public void setArrangements(Set arrangements) {
+		this.arrangements = arrangements;
 	}
 
 }

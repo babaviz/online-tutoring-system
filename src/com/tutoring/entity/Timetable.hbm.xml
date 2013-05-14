@@ -10,14 +10,20 @@
             <column name="ID" />
             <generator class="native"></generator>
         </id>
-        <property name="arrangementId" type="java.lang.Long">
+        <many-to-one name="arrangement" class="com.tutoring.entity.Arrangement" fetch="select">
             <column name="ARRANGEMENT_ID" not-null="true" />
-        </property>
+        </many-to-one>
         <property name="startTime" type="java.util.Date">
             <column name="START_TIME" length="10" />
         </property>
         <property name="endTime" type="java.util.Date">
             <column name="END_TIME" length="10" />
         </property>
+        <set name="studentTimetables" inverse="true">
+            <key>
+                <column name="TIMETABLE_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.StudentTimetable" />
+        </set>
     </class>
 </hibernate-mapping>

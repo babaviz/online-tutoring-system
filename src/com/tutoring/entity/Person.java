@@ -1,6 +1,8 @@
 package com.tutoring.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Person entity. @author MyEclipse Persistence Tools
@@ -10,17 +12,17 @@ public class Person implements java.io.Serializable {
 
 	// Fields
 
-	private Long id;
+	private String username;
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String password;
 	private String phone;
 	private Date birthday;
 	private String cardNumber;
 	private String type;
 	private Integer score;
 	private String avator;
+	private Set students = new HashSet(0);
 
 	// Constructors
 
@@ -29,38 +31,34 @@ public class Person implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Person(String firstName, String lastName, String email,
-			String password) {
-		this.firstName = firstName;
-		this.lastName = lastName;
+	public Person(String email) {
 		this.email = email;
-		this.password = password;
 	}
 
 	/** full constructor */
 	public Person(String firstName, String lastName, String email,
-			String password, String phone, Date birthday, String cardNumber,
-			String type, Integer score, String avator) {
+			String phone, Date birthday, String cardNumber, String type,
+			Integer score, String avator, Set students) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.password = password;
 		this.phone = phone;
 		this.birthday = birthday;
 		this.cardNumber = cardNumber;
 		this.type = type;
 		this.score = score;
 		this.avator = avator;
+		this.students = students;
 	}
 
 	// Property accessors
 
-	public Long getId() {
-		return this.id;
+	public String getUsername() {
+		return this.username;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getFirstName() {
@@ -85,14 +83,6 @@ public class Person implements java.io.Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return this.password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getPhone() {
@@ -141,6 +131,14 @@ public class Person implements java.io.Serializable {
 
 	public void setAvator(String avator) {
 		this.avator = avator;
+	}
+
+	public Set getStudents() {
+		return this.students;
+	}
+
+	public void setStudents(Set students) {
+		this.students = students;
 	}
 
 }

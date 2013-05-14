@@ -10,12 +10,12 @@
             <column name="ID" />
             <generator class="native"></generator>
         </id>
-        <property name="studentId" type="java.lang.Long">
-            <column name="STUDENT_ID" not-null="true" />
-        </property>
-        <property name="timetableId" type="java.lang.Long">
+        <many-to-one name="student" class="com.tutoring.entity.Student" fetch="select">
+            <column name="STUDENT_USERNAME" length="20" not-null="true" />
+        </many-to-one>
+        <many-to-one name="timetable" class="com.tutoring.entity.Timetable" fetch="select">
             <column name="TIMETABLE_ID" not-null="true" />
-        </property>
+        </many-to-one>
         <property name="score" type="java.lang.Integer">
             <column name="SCORE" />
         </property>

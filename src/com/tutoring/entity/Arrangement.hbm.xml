@@ -10,14 +10,20 @@
             <column name="ID" />
             <generator class="native"></generator>
         </id>
-        <property name="tutorId" type="java.lang.Long">
-            <column name="TUTOR_ID" not-null="true" />
-        </property>
-        <property name="courseId" type="java.lang.Long">
+        <many-to-one name="course" class="com.tutoring.entity.Course" fetch="select">
             <column name="COURSE_ID" not-null="true" />
+        </many-to-one>
+        <property name="tutorUsername" type="java.lang.String">
+            <column name="TUTOR_USERNAME" length="20" not-null="true" />
         </property>
         <property name="score" type="java.lang.Integer">
             <column name="SCORE" />
         </property>
+        <set name="timetables" inverse="true">
+            <key>
+                <column name="ARRANGEMENT_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Timetable" />
+        </set>
     </class>
 </hibernate-mapping>

@@ -7,12 +7,12 @@
 <hibernate-mapping>
     <class name="com.tutoring.entity.Specialty" table="specialty" catalog="onlinetutoring">
         <composite-id name="id" class="com.tutoring.entity.SpecialtyId">
-            <key-property name="tutorId" type="java.lang.Long">
-                <column name="TUTOR_ID" />
+            <key-property name="tutorUsername" type="java.lang.String">
+                <column name="TUTOR_USERNAME" length="20" />
             </key-property>
-            <key-property name="subjectId" type="java.lang.Long">
+            <key-many-to-one name="subject" class="com.tutoring.entity.Subject">
                 <column name="SUBJECT_ID" />
-            </key-property>
+            </key-many-to-one>
         </composite-id>
     </class>
 </hibernate-mapping>

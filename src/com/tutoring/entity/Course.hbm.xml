@@ -10,14 +10,20 @@
             <column name="ID" />
             <generator class="native"></generator>
         </id>
-        <property name="subjectId" type="java.lang.Long">
+        <many-to-one name="subject" class="com.tutoring.entity.Subject" fetch="select">
             <column name="SUBJECT_ID" />
-        </property>
+        </many-to-one>
         <property name="name" type="java.lang.String">
             <column name="NAME" length="30" not-null="true" />
         </property>
         <property name="price" type="java.lang.Integer">
             <column name="PRICE" />
         </property>
+        <set name="arrangements" inverse="true">
+            <key>
+                <column name="COURSE_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Arrangement" />
+        </set>
     </class>
 </hibernate-mapping>

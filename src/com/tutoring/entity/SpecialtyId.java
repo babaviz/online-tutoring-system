@@ -8,8 +8,8 @@ public class SpecialtyId implements java.io.Serializable {
 
 	// Fields
 
-	private Long tutorId;
-	private Long subjectId;
+	private String tutorUsername;
+	private Subject subject;
 
 	// Constructors
 
@@ -18,27 +18,27 @@ public class SpecialtyId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public SpecialtyId(Long tutorId, Long subjectId) {
-		this.tutorId = tutorId;
-		this.subjectId = subjectId;
+	public SpecialtyId(String tutorUsername, Subject subject) {
+		this.tutorUsername = tutorUsername;
+		this.subject = subject;
 	}
 
 	// Property accessors
 
-	public Long getTutorId() {
-		return this.tutorId;
+	public String getTutorUsername() {
+		return this.tutorUsername;
 	}
 
-	public void setTutorId(Long tutorId) {
-		this.tutorId = tutorId;
+	public void setTutorUsername(String tutorUsername) {
+		this.tutorUsername = tutorUsername;
 	}
 
-	public Long getSubjectId() {
-		return this.subjectId;
+	public Subject getSubject() {
+		return this.subject;
 	}
 
-	public void setSubjectId(Long subjectId) {
-		this.subjectId = subjectId;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 
 	public boolean equals(Object other) {
@@ -50,22 +50,24 @@ public class SpecialtyId implements java.io.Serializable {
 			return false;
 		SpecialtyId castOther = (SpecialtyId) other;
 
-		return ((this.getTutorId() == castOther.getTutorId()) || (this
-				.getTutorId() != null && castOther.getTutorId() != null && this
-				.getTutorId().equals(castOther.getTutorId())))
-				&& ((this.getSubjectId() == castOther.getSubjectId()) || (this
-						.getSubjectId() != null
-						&& castOther.getSubjectId() != null && this
-						.getSubjectId().equals(castOther.getSubjectId())));
+		return ((this.getTutorUsername() == castOther.getTutorUsername()) || (this
+				.getTutorUsername() != null
+				&& castOther.getTutorUsername() != null && this
+				.getTutorUsername().equals(castOther.getTutorUsername())))
+				&& ((this.getSubject() == castOther.getSubject()) || (this
+						.getSubject() != null && castOther.getSubject() != null && this
+						.getSubject().equals(castOther.getSubject())));
 	}
 
 	public int hashCode() {
 		int result = 17;
 
+		result = 37
+				* result
+				+ (getTutorUsername() == null ? 0 : this.getTutorUsername()
+						.hashCode());
 		result = 37 * result
-				+ (getTutorId() == null ? 0 : this.getTutorId().hashCode());
-		result = 37 * result
-				+ (getSubjectId() == null ? 0 : this.getSubjectId().hashCode());
+				+ (getSubject() == null ? 0 : this.getSubject().hashCode());
 		return result;
 	}
 

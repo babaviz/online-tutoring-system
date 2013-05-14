@@ -8,8 +8,7 @@ public class Tutor implements java.io.Serializable {
 
 	// Fields
 
-	private Long id;
-	private Long personId;
+	private String personUsername;
 	private Long salary;
 	private String description;
 
@@ -19,34 +18,20 @@ public class Tutor implements java.io.Serializable {
 	public Tutor() {
 	}
 
-	/** minimal constructor */
-	public Tutor(Long personId) {
-		this.personId = personId;
-	}
-
 	/** full constructor */
-	public Tutor(Long personId, Long salary, String description) {
-		this.personId = personId;
+	public Tutor(Long salary, String description) {
 		this.salary = salary;
 		this.description = description;
 	}
 
 	// Property accessors
 
-	public Long getId() {
-		return this.id;
+	public String getPersonUsername() {
+		return this.personUsername;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getPersonId() {
-		return this.personId;
-	}
-
-	public void setPersonId(Long personId) {
-		this.personId = personId;
+	public void setPersonUsername(String personUsername) {
+		this.personUsername = personUsername;
 	}
 
 	public Long getSalary() {

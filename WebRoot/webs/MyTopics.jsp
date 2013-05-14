@@ -1,3 +1,8 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -40,8 +45,8 @@
     <div class="span3 bs-docs-sidenav dropdown">
       <!--Sidebar content-->
       <ul class="affix bs-docs-sidenav nav nav-list" role="menu" aria-labelledby="dLabel">
-      	<li class="active"><a href="#">帖子全览</a></li>
-        <li><a href="#">我的帖子</a></li>
+      	<li><a href="#">帖子全览</a></li>
+        <li class="active"><a href="#">我的帖子</a></li>
 	    <li><a href="#">发表帖子</a></li>
         <li class="dropdown-submenu"><a href="#">分类</a>
         	<ul class="dropdown-menu">
@@ -77,7 +82,8 @@
      </div>
      
      <p class="text-error text-right">
-     <em>评论(8)</em>
+     <em><a href="#">删除</a></em>
+     <em><a href="#">评论(8)</a></em>
      </p>
      
       </div>
@@ -109,7 +115,8 @@
      </div>
      
      <p class="text-error text-right">
-     <em>评论(8)</em>
+     <em><a href="#">删除</a></em>
+     <em><a href="#">评论(8)</a></em>
      </p>
      
       </div>
@@ -139,7 +146,8 @@
      </div>
      
      <p class="text-error text-right">
-     <em>评论(8)</em>
+     <em><a href="#">删除</a></em>
+     <em><a href="#">评论(8)</a></em>
      </p>
      
       </div>
@@ -169,7 +177,8 @@
      </div>
      
      <p class="text-error text-right">
-     <em>评论(8)</em>
+     <em><a href="#">删除</a></em>
+     <em><a href="#">评论(8)</a></em>
      </p>
      
       </div>
@@ -199,7 +208,8 @@
      </div>
      
      <p class="text-error text-right">
-     <em>评论(8)</em>
+     <em><a href="#">删除</a></em>
+     <em><a href="#">评论(8)</a></em>
      </p>
      
       </div>
@@ -229,7 +239,8 @@
      </div>
      
      <p class="text-error text-right">
-     <em>评论(8)</em>
+     <em><a href="#">删除</a></em>
+     <em><a href="#">评论(8)</a></em>
      </p>
      
       </div>
@@ -259,7 +270,8 @@
      </div>
      
      <p class="text-error text-right">
-     <em>评论(8)</em>
+     <em><a href="#">删除</a></em>
+     <em><a href="#">评论(8)</a></em>
      </p>
      
       </div>
@@ -289,7 +301,8 @@
      </div>
      
      <p class="text-error text-right">
-     <em>评论(8)</em>
+     <em><a href="#">删除</a></em>
+     <em><a href="#">评论(8)</a></em>
      </p>
      
       </div>
@@ -319,7 +332,8 @@
      </div>
      
      <p class="text-error text-right">
-     <em>评论(8)</em>
+     <em><a href="#">删除</a></em>
+     <em><a href="#">评论(8)</a></em>
      </p>
      
       </div>
@@ -335,12 +349,12 @@
 </div>
 
 
+  
   <div class="footer" style="margin-top:400px;">
   	<div class="container">
     	<p>copyright © 2013</p>
     </div>
   </div>
-
 
 
 

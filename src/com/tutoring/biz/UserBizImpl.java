@@ -72,5 +72,16 @@ public class UserBizImpl implements UserBiz{
 			return;
 		
 	}
+
+	@Override
+	public boolean isUserExist(String username) {
+		// TODO Auto-generated method stub
+		if(userDAO.getUserByUsername(username).size()>0)
+			return true;
+		else
+			return false;
+	}
+	
+	
 	
 }

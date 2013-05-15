@@ -33,6 +33,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script>
 <script src='/OnlineTutoringSystem/dwr/interface/loginaction.js'></script>
+<script src='/OnlineTutoringSystem/dwr/interface/registeraction.js'></script>
+<script src='js/register.js' charset="gbk"></script>
 <script type="text/javascript">
 	function loginBySession()
 	{
@@ -101,22 +103,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="control-group">
       <label class="control-label" for="input01">用户名</label>
       <div class="controls">
-        <input type="text" class="input-large" placeholder="XXX" id="input01"  name="username">
-        <span class="help-inline">用户名未注册！</span>
+        <input type="text" class="input-large" placeholder="用户名" id="log_username"  name="username">
+        <span class="help-inline"></span>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label" for="input01">密码</label>
       <div class="controls">
-        <input type="password" class="input-large"  id="input01"  name="password">
-        <span class="help-inline">密码强度不够！</span>
+        <input type="password" class="input-large"  id="log_passwd"  name="password">
+        <span class="help-inline"></span>
       </div>
     </div>
      
      <div class="control-group">
       <div class="controls">
         <button type="submit" class="btn btn-primary">提交</button>
-         <button class="btn" style="margin-left:100px">取消</button>
       </div>
     </div>
   </fieldset>
@@ -134,32 +135,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="row">
       <form class="form-horizontal" action="RegisterAction" method="post">
   <fieldset class="control-group">
-    <div class="control-group">
+    <div class="control-group" id="_username">
       <label class="control-label" for="input01">用户名</label>
       <div class="controls">
-        <input type="text" class="input-large" placeholder="XXX" id="input01" name="username">
-        <span class="help-inline">用户名已被注册！</span>
+        <input type="text" class="input-large" placeholder="由数字和英文字母组成" id="username" name="username" onblur="checkUserName()">
+        <span class="help-inline" id="username_info"></span>
       </div>
     </div>
-    <div class="control-group error">
+    <div class="control-group" id="_email">
       <label class="control-label" for="input01">邮箱</label>
       <div class="controls">
-        <input type="text" class="input-large" placeholder="X" id="input01" name="email">
-        <span class="help-inline">格式错误！</span>
+        <input type="text" class="input-large" placeholder="example@gmail.com" id="email" name="email" onblur="emailCheck()">
+        <span class="help-inline" id="email_info"></span>
       </div>
     </div>
-    <div class="control-group">
+    <div class="control-group" id="_password">
       <label class="control-label" for="input01">密码</label>
       <div class="controls">
-        <input type="password" class="input-large" id="input01" name="password">
-        <span class="help-inline">密码强度不够！</span>
+        <input type="password" class="input-large" id="password" name="password" onblur="passwordCheck()">
+        <span class="help-inline" id="password_info"></span>
       </div>
     </div>
-     <div class="control-group">
+     <div class="control-group" id="_secondpassword">
       <label class="control-label" for="input01">再次输入密码</label>
       <div class="controls">
-        <input type="password" class="input-large" id="input01">
-        <span class="help-inline">两次密码输入不同！</span>
+        <input type="password" class="input-large" id="secondpassword" onblur="passwordIsSame()">
+        <span class="help-inline" id="secondpassword_info"></span>
       </div>
     </div>
     
@@ -177,7 +178,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div class="control-group">
       <div class="controls">
         <button type="submit" class="btn btn-primary">注册</button>
-         <button class="btn" style="margin-left:100px">取消</button>
       </div>
     </div>
     

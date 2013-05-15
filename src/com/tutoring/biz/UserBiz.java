@@ -5,4 +5,5 @@ public interface UserBiz {
 	public boolean CanLoginBySession();
 	public boolean CanLoginByCookie();
 	public void register(String username, String password,String email,String type);
+	public boolean isUserExist(String username);
 }

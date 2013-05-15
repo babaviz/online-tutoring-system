@@ -21,5 +21,12 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		
 		this.getHibernateTemplate().save(user);
 	}
+
+	@Override
+	public List<?> getUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		List<User> list = this.getHibernateTemplate().find("from User where username = '"+username+"'");
+		return list;
+	}
 	
 }

@@ -70,6 +70,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <a class="btn btn-link btn-small" style="margin-left:0" href="javascript:pictureReveal();">图片</a>
      <a class="btn btn-link btn-small" style="margin-left:0" href="javascript:addFile();">上传文件</a>
      
+     
+     <div id="picture" class="model hide well" style="display:none;width:250px;left:30%;padding:0;">
+     	<div class="modal-header">
+            <button class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h5 id="pictureLabel">图片上传</h5>
+         </div>
+         
+         <div class="modal-body" style="height:50px">
+         
+         
+         	<a class="btn" href="javascript:showDlg();">本地上传</a>
+         	
+         	<iframe name='hidden_frame' id="hidden_frame" style='display:none'></iframe>
+			<input id="fileopen" type="file" name="picture" style="height:0;width:0;display:block" onchange=""/>
+         
+         </div>
+         
+     </div>
+     
      <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;width:250px;left:60%;">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -89,7 +108,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <button class="btn btn-primary">确定</button>
          </div>
      </div>
-     <button type="submit" class="btn" style="margin-left:82%">提交话题</button>
+     
+     <button type="submit" class="btn" style="">提交话题</button>
      
      </form>
      </div>
@@ -113,6 +133,16 @@ function test()
 {
 	
 	$('#myModal').modal('show');
+}
+
+function pictureReveal()
+{
+	$("#picture").css("display","block");
+}
+
+function showDlg()
+{
+	$("#fileopen").click();
 }
 </script>
 

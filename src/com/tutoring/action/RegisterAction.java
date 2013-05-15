@@ -48,4 +48,17 @@ public class RegisterAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	
+	public String checkUserName(String username)
+	{
+		//System.out.println(username);
+		if(userBiz.isUserExist(username))
+		{
+			//System.out.println("exist");
+			return "exist";
+		}
+		return "ok";
+	}
+	
+	
 }

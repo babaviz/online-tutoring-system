@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>无标题文档</title>
 <style type="text/css">
 .back_1 {
-	background: url(bootstrap/img/back_1.jpg) repeat-x top;
+	background:url(images/mainbackground.jpg) no-repeat;
 }
 .clear{clear:both}
 #outerframe {
@@ -31,10 +31,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	font-size:xx-large;
 	}
 </style>
-
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script>
+<script src='/OnlineTutoringSystem/dwr/interface/loginaction.js'></script>
+<script type="text/javascript">
+	function loginBySession()
+	{
+		loginaction.CanLoginDirectly(callback);
+	}
+	function callback(msg)
+	{
+		//alert(msg);
+		if(msg=="ok")
+		{
+			window.location.href="AllTopics.jsp";
+		}
+	}
+	loginBySession();
+</script>
 </head>
 
 <body class="back_1">
+
 <div style="margin-top:100px">
   <div class="container">
     <div id="outerframe">
@@ -112,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 	<!--注册-->
-    <div style="width:600px; height:345px;float:left; background:#06F;display:none;" id="register">
+    <div style="width:600px; height:345px;float:left; background:url(images/half_translucent.png) repeat;display:none;" id="register">
   <div class="container" style="margin-top:50px;">
   <div class="row">
       <form class="form-horizontal" action="RegisterAction" method="post">
@@ -228,23 +245,8 @@ function tointro()
 }
 </script>
 
-<script src='/OnlineTutoringSystem/dwr/engine.js'></script>
-<script src='/OnlineTutoringSystem/dwr/interface/loginaction.js'></script>
-<script type="text/javascript">
-	function loginBySession()
-	{
-		loginaction.CanLoginDirectly(callback);
-	}
-	function callback(msg)
-	{
-		//alert(msg);
-		if(msg=="ok")
-		{
-			window.location.href="AllTopics.jsp";
-		}
-	}
-	window.onload=loginBySession;
-</script>
+
+
 
 </body>
 </html>

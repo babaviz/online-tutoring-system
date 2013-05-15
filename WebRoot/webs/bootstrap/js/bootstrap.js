@@ -2259,6 +2259,7 @@
   * ============== */
 
   $(window).on('load', function () {
+	  	  customizedFunc();
     $('[data-spy="affix"]').each(function () {
       var $spy = $(this)
         , data = $spy.data()

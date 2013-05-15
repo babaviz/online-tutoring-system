@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-<link href="topic.css" rel="stylesheet" type="text/css"/>
+<link href="css/topic.css" rel="stylesheet" type="text/css"/>
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
 
 <title>无标题文档</title>
@@ -26,10 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <ul class="nav">
       <li><a href="#">首页</a></li>
       <li><a href="#">课程管理</a></li>
-      <li><a href="#">找老师</a></li>
-      <li class="active"><a href="#">BBS</a></li>
-      <li><a href="#">聊天</a></li>
-      <li><a href="#">上课</a></li>
+      <li><a href="search.jsp">找老师</a></li>
+      <li class="active"><a href="AllTopics.jsp">BBS</a></li>
+      <li><a href="chatting.jsp">聊天</a></li>
+      <li><a href="flash/OnlineTutorPlayer.html">上课</a></li>
     </ul>
     </div>
   </div>
@@ -45,9 +45,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="span3 bs-docs-sidenav dropdown">
       <!--Sidebar content-->
       <ul class="affix bs-docs-sidenav nav nav-list" role="menu" aria-labelledby="dLabel">
-      	<li><a href="#">帖子全览</a></li>
-        <li><a href="#">我的帖子</a></li>
-	    <li class="active"><a href="#">发表帖子</a></li>
+      	<li><a href="AllTopics.jsp">帖子全览</a></li>
+        <li><a href="MyTopics.jsp">我的帖子</a></li>
+	    <li class="active"><a href="LaunchTopic.jsp">发表帖子</a></li>
         <li class="dropdown-submenu"><a href="#">分类</a>
         	<ul class="dropdown-menu">
             <li><a href="#">数学</a></li>

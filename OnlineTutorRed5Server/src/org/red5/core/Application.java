@@ -7,7 +7,10 @@ import org.red5.server.api.IConnection;
 import org.red5.server.api.scope.IScope;
 import org.red5.server.api.service.IServiceCapableConnection;
 
-import com.tongji.onlinetutor.server.User;
+import com.tongji.onlinetutor.server.*;
+import com.tongji.onlinetutor.server.utils.MinMemory;
+import com.tongji.onlinetutor.server.utils.TokenGenerator;
+import com.tongji.onlinetutor.server.utils.TokenGeneratorManager;
 
 
 public class Application extends ApplicationAdapter{
@@ -15,7 +18,10 @@ public class Application extends ApplicationAdapter{
 	
 	public Application() {
 		System.out.println("OnlineTutorRed5Server start.");
-		tempcontainer = new ArrayList<User>();
+		tempcontainer = new ArrayList<User>(); 
+		TokenGeneratorManager tgm = new TokenGeneratorManager();
+		tgm.setStrategy(new MinMemory());
+		tgm.Generate();  
 	}
 	@Override
 	public synchronized boolean connect(IConnection conn, IScope scope, Object[] params) {
@@ -25,7 +31,7 @@ public class Application extends ApplicationAdapter{
 		if(!super.connect(conn, scope, params)){
 			System.out.println("Unable to connect "+username);
 			return false;
-		}
+		} 
 		tempcontainer.add(new User(username,conn,scope));
 		
 		//TODO i dont know what to say... anyway, a lot of things to do
@@ -55,9 +61,13 @@ public class Application extends ApplicationAdapter{
 		
 	}
 	
-	public void sendMessage(String msg){
+	public void sendMessage(String msg, String sender){
 		for(User user : tempcontainer){
-			callClient(user.conn(), "receiveMessage", new Object[]{"["+user.name()+"]\n"+msg});
+			callClient(user.conn(), "receiveMessage", new Object[]{"["+sender+"]\n"+msg});
 		}
+	}
+	
+	public void onUserDisconnected(){
+		
 	}
 }

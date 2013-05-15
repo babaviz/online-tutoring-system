@@ -25,14 +25,14 @@ public function main():void{
 	View.input = textArea_input;
 	connect = new Connect();
 	connect.init();
-	textArea_input.addEventListener(KeyboardEvent.KEY_UP,onEnterUpHandler);
+	textArea_input.addEventListener(KeyboardEvent.KEY_DOWN,onEnterUpHandler);
 }
 public function onBWDone():void{
 	connect.onBWDone();
 }
 protected function onEnterUpHandler(event:KeyboardEvent):void{
 	if(event.keyCode == 13){
-		if(View.input.text.length == 1){
+		if(View.input.text.length == 0){
 			View.input.text = "";
 			return;			
 		}
@@ -41,7 +41,10 @@ protected function onEnterUpHandler(event:KeyboardEvent):void{
 }
 protected function button_send_clickHandler(event:MouseEvent):void
 {
-	if(View.input.text.length == 0){
+//	if(!connect.isConnected()){
+//		return;
+//	}
+	if(View.input.text.length == 1){
 		View.input.text = "";
 		return;
 	}
@@ -50,7 +53,8 @@ protected function button_send_clickHandler(event:MouseEvent):void
 
 protected function button_reconnect_clickHandler(event:MouseEvent):void
 {
-	connect.reconnect();
+//	if(connect.isConnected())
+		connect.reconnect();
 }
 
 protected function button_offline_clickHandler(event:MouseEvent):void

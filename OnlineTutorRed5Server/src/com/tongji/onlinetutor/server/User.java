@@ -4,7 +4,7 @@ import org.red5.server.api.IConnection;
 import org.red5.server.api.scope.IScope;
 
 
-public class User {
+public class User{
 	private String name_;
 	private IConnection conn_;
 	private IScope scope_;

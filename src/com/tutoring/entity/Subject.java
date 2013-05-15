@@ -23,8 +23,15 @@ public class Subject implements java.io.Serializable {
 	public Subject() {
 	}
 
+	/** minimal constructor */
+	public Subject(Long id) {
+		this.id = id;
+	}
+
 	/** full constructor */
-	public Subject(Subject subject, Set specialties, Set subjects, Set courses) {
+	public Subject(Long id, Subject subject, Set specialties, Set subjects,
+			Set courses) {
+		this.id = id;
 		this.subject = subject;
 		this.specialties = specialties;
 		this.subjects = subjects;

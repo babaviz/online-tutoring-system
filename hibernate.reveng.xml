@@ -5,48 +5,73 @@
 
 	<table name="arrangement" catalog="onlinetutoring">
 		<primary-key>
-			<generator class="native"></generator>
+			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
 	<table name="course" catalog="onlinetutoring">
 		<primary-key>
-			<generator class="native"></generator>
+			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
 	<table name="person" catalog="onlinetutoring">
 		<primary-key>
-			<generator class="native"></generator>
+			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
 	<table name="specialty" catalog="onlinetutoring">
 		<primary-key>
-			<generator class="native"></generator>
+			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
 	<table name="student_timetable" catalog="onlinetutoring">
 		<primary-key>
-			<generator class="native"></generator>
+			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
 	<table name="student" catalog="onlinetutoring">
 		<primary-key>
-			<generator class="native"></generator>
+			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
 	<table name="subject" catalog="onlinetutoring">
 		<primary-key>
-			<generator class="native"></generator>
+			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
 	<table name="timetable" catalog="onlinetutoring">
 		<primary-key>
-			<generator class="native"></generator>
+			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
-	
-<table name="tutor" catalog="onlinetutoring">
+
+	<table name="tutor" catalog="onlinetutoring">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="friend" catalog="onlinetutoring">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="master" catalog="onlinetutoring">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="notification" catalog="onlinetutoring">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="posting" catalog="onlinetutoring">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+<table name="user" catalog="onlinetutoring">
 	<primary-key>
-		<generator class="native"></generator>
+		<generator class="assigned"></generator>
 	</primary-key>
 </table>
 </hibernate-reverse-engineering>

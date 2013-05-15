@@ -13,7 +13,7 @@ public class Arrangement implements java.io.Serializable {
 
 	private Long id;
 	private Course course;
-	private String tutorUsername;
+	private Tutor tutor;
 	private Integer score;
 	private Set timetables = new HashSet(0);
 
@@ -24,16 +24,18 @@ public class Arrangement implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Arrangement(Course course, String tutorUsername) {
+	public Arrangement(Long id, Course course, Tutor tutor) {
+		this.id = id;
 		this.course = course;
-		this.tutorUsername = tutorUsername;
+		this.tutor = tutor;
 	}
 
 	/** full constructor */
-	public Arrangement(Course course, String tutorUsername, Integer score,
+	public Arrangement(Long id, Course course, Tutor tutor, Integer score,
 			Set timetables) {
+		this.id = id;
 		this.course = course;
-		this.tutorUsername = tutorUsername;
+		this.tutor = tutor;
 		this.score = score;
 		this.timetables = timetables;
 	}
@@ -56,12 +58,12 @@ public class Arrangement implements java.io.Serializable {
 		this.course = course;
 	}
 
-	public String getTutorUsername() {
-		return this.tutorUsername;
+	public Tutor getTutor() {
+		return this.tutor;
 	}
 
-	public void setTutorUsername(String tutorUsername) {
-		this.tutorUsername = tutorUsername;
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
 	}
 
 	public Integer getScore() {

@@ -19,12 +19,14 @@ public class User implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public User(String password) {
+	public User(String username, String password) {
+		this.username = username;
 		this.password = password;
 	}
 
 	/** full constructor */
-	public User(String password, String loginid) {
+	public User(String username, String password, String loginid) {
+		this.username = username;
 		this.password = password;
 		this.loginid = loginid;
 	}

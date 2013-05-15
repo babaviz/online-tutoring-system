@@ -37,11 +37,53 @@
         <property name="avator" type="java.lang.String">
             <column name="AVATOR" length="1000" />
         </property>
+        <set name="notificationsForSenderUsername" inverse="true">
+            <key>
+                <column name="SENDER_USERNAME" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Notification" />
+        </set>
+        <set name="friendsForSecondaryUsername" inverse="true">
+            <key>
+                <column name="SECONDARY_USERNAME" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Friend" />
+        </set>
+        <set name="postings" inverse="true">
+            <key>
+                <column name="POSTED_BY_USERNAME" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Posting" />
+        </set>
         <set name="students" inverse="true">
             <key>
                 <column name="PERSON_USERNAME" length="20" not-null="true" unique="true" />
             </key>
             <one-to-many class="com.tutoring.entity.Student" />
+        </set>
+        <set name="masters" inverse="true">
+            <key>
+                <column name="POSTED_BY_USERNAME" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Master" />
+        </set>
+        <set name="tutors" inverse="true">
+            <key>
+                <column name="PERSON_USERNAME" length="20" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Tutor" />
+        </set>
+        <set name="friendsForPrimaryUsername" inverse="true">
+            <key>
+                <column name="PRIMARY_USERNAME" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Friend" />
+        </set>
+        <set name="notificationsForRecipientUsername" inverse="true">
+            <key>
+                <column name="RECIPIENT_USERNAME" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Notification" />
         </set>
     </class>
 </hibernate-mapping>

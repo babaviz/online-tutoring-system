@@ -24,12 +24,15 @@ public class Course implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Course(String name) {
+	public Course(Long id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 
 	/** full constructor */
-	public Course(Subject subject, String name, Integer price, Set arrangements) {
+	public Course(Long id, Subject subject, String name, Integer price,
+			Set arrangements) {
+		this.id = id;
 		this.subject = subject;
 		this.name = name;
 		this.price = price;

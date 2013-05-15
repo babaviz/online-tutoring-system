@@ -24,13 +24,15 @@ public class Student implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Student(Person person) {
+	public Student(String personUsername, Person person) {
+		this.personUsername = personUsername;
 		this.person = person;
 	}
 
 	/** full constructor */
-	public Student(Person person, Long balance, Integer grade,
-			Set studentTimetables) {
+	public Student(String personUsername, Person person, Long balance,
+			Integer grade, Set studentTimetables) {
+		this.personUsername = personUsername;
 		this.person = person;
 		this.balance = balance;
 		this.grade = grade;

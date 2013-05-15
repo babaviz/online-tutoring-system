@@ -10,11 +10,26 @@
             <column name="PERSON_USERNAME" length="20" />
             <generator class="assigned"></generator>
         </id>
+        <many-to-one name="person" class="com.tutoring.entity.Person" update="false" insert="false" fetch="select">
+            <column name="PERSON_USERNAME" length="20" not-null="true" unique="true" />
+        </many-to-one>
         <property name="salary" type="java.lang.Long">
             <column name="SALARY" />
         </property>
         <property name="description" type="java.lang.String">
             <column name="DESCRIPTION" length="1000" />
         </property>
+        <set name="specialties" inverse="true">
+            <key>
+                <column name="TUTOR_USERNAME" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Specialty" />
+        </set>
+        <set name="arrangements" inverse="true">
+            <key>
+                <column name="TUTOR_USERNAME" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Arrangement" />
+        </set>
     </class>
 </hibernate-mapping>

@@ -8,7 +8,7 @@
     <class name="com.tutoring.entity.User" table="user" catalog="onlinetutoring">
         <id name="username" type="java.lang.String">
             <column name="username" length="20" />
-            <generator class="assigned" />
+            <generator class="assigned"></generator>
         </id>
         <property name="password" type="java.lang.String">
             <column name="password" length="20" not-null="true" />

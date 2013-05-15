@@ -25,13 +25,15 @@ public class Timetable implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Timetable(Arrangement arrangement) {
+	public Timetable(Long id, Arrangement arrangement) {
+		this.id = id;
 		this.arrangement = arrangement;
 	}
 
 	/** full constructor */
-	public Timetable(Arrangement arrangement, Date startTime, Date endTime,
-			Set studentTimetables) {
+	public Timetable(Long id, Arrangement arrangement, Date startTime,
+			Date endTime, Set studentTimetables) {
+		this.id = id;
 		this.arrangement = arrangement;
 		this.startTime = startTime;
 		this.endTime = endTime;

@@ -21,14 +21,16 @@ public class StudentTimetable implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public StudentTimetable(Student student, Timetable timetable) {
+	public StudentTimetable(Long id, Student student, Timetable timetable) {
+		this.id = id;
 		this.student = student;
 		this.timetable = timetable;
 	}
 
 	/** full constructor */
-	public StudentTimetable(Student student, Timetable timetable,
+	public StudentTimetable(Long id, Student student, Timetable timetable,
 			Integer score, String remark) {
+		this.id = id;
 		this.student = student;
 		this.timetable = timetable;
 		this.score = score;

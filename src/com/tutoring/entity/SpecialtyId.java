@@ -8,7 +8,7 @@ public class SpecialtyId implements java.io.Serializable {
 
 	// Fields
 
-	private String tutorUsername;
+	private Tutor tutor;
 	private Subject subject;
 
 	// Constructors
@@ -18,19 +18,19 @@ public class SpecialtyId implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public SpecialtyId(String tutorUsername, Subject subject) {
-		this.tutorUsername = tutorUsername;
+	public SpecialtyId(Tutor tutor, Subject subject) {
+		this.tutor = tutor;
 		this.subject = subject;
 	}
 
 	// Property accessors
 
-	public String getTutorUsername() {
-		return this.tutorUsername;
+	public Tutor getTutor() {
+		return this.tutor;
 	}
 
-	public void setTutorUsername(String tutorUsername) {
-		this.tutorUsername = tutorUsername;
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
 	}
 
 	public Subject getSubject() {
@@ -50,10 +50,9 @@ public class SpecialtyId implements java.io.Serializable {
 			return false;
 		SpecialtyId castOther = (SpecialtyId) other;
 
-		return ((this.getTutorUsername() == castOther.getTutorUsername()) || (this
-				.getTutorUsername() != null
-				&& castOther.getTutorUsername() != null && this
-				.getTutorUsername().equals(castOther.getTutorUsername())))
+		return ((this.getTutor() == castOther.getTutor()) || (this.getTutor() != null
+				&& castOther.getTutor() != null && this.getTutor().equals(
+				castOther.getTutor())))
 				&& ((this.getSubject() == castOther.getSubject()) || (this
 						.getSubject() != null && castOther.getSubject() != null && this
 						.getSubject().equals(castOther.getSubject())));
@@ -62,10 +61,8 @@ public class SpecialtyId implements java.io.Serializable {
 	public int hashCode() {
 		int result = 17;
 
-		result = 37
-				* result
-				+ (getTutorUsername() == null ? 0 : this.getTutorUsername()
-						.hashCode());
+		result = 37 * result
+				+ (getTutor() == null ? 0 : this.getTutor().hashCode());
 		result = 37 * result
 				+ (getSubject() == null ? 0 : this.getSubject().hashCode());
 		return result;

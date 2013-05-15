@@ -67,6 +67,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <textarea rows="6" style="width:100%"></textarea>
      
      <a class="btn btn-link btn-small" style="margin-left:0" data-toggle="modal" href="javascript:test();">分类</a>
+     <a class="btn btn-link btn-small" style="margin-left:0" href="javascript:pictureReveal();">图片</a>
+     <a class="btn btn-link btn-small" style="margin-left:0" href="javascript:addFile();">上传文件</a>
      
      <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;width:250px;left:60%;">
          <div class="modal-header">

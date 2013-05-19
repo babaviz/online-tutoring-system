@@ -6,12 +6,11 @@ import com.opensymphony.xwork2.ActionContext;
 import com.tutoring.dao.StudentDAO;
 import com.tutoring.dao.TutorDAO;
 import com.tutoring.dao.UserDAO;
-import com.tutoring.dao.PersonDAO;
+
 
 public class UserBizImpl implements UserBiz{
 
 	UserDAO userDAO;
-	PersonDAO personDAO;
 	StudentDAO studentDAO;
 	public void setTutorDAO(TutorDAO tutorDAO) {
 		this.tutorDAO = tutorDAO;
@@ -24,10 +23,10 @@ public class UserBizImpl implements UserBiz{
 	TutorDAO tutorDAO;
 	
 	@Override
-	public boolean login(String username, String password) {
+	public boolean login(String email, String password) {
 		// TODO Auto-generated method stub
 		
-		if(password.equals(userDAO.getPasswordByUsername(username))){
+		if(password.equals(userDAO.getPasswordByEmail(email))){
 			return true;
 		}
 		return false;
@@ -37,16 +36,13 @@ public class UserBizImpl implements UserBiz{
 		this.userDAO = userDAO;
 	}
 	
-	public void setPersonDAO(PersonDAO personDAO){
-		this.personDAO = personDAO;
-	}
 	
 	public boolean CanLoginBySession()
 	{
 		ActionContext ac = ActionContext.getContext();
 		Map<String, Object> session = ac.getSession();
 		
-		if(session.get("username")!=null)
+		if(session.get("email")!=null)
 			return true;
 		return false;
 	}
@@ -56,30 +52,25 @@ public class UserBizImpl implements UserBiz{
 		return false;
 	}
 	
-	public void register(String username, String password,String email,String type)
+	public void register(String password,String email,String type)
 	{
-		userDAO.addUser(username, password);
-		personDAO.addPerson(username, email);
-		if(type.equals("student"))
-		{
-			studentDAO.addStudent(username);
-		}
-		else if(type.equals("tutor"))
-		{
-			tutorDAO.addTutor(username);
-		}
-		else
-			return;
+		userDAO.addPerson(email, password);
 		
 	}
 
 	@Override
-	public boolean isUserExist(String username) {
+	public boolean isUserExist(String email) {
 		// TODO Auto-generated method stub
-		if(userDAO.getUserByUsername(username).size()>0)
+		if(userDAO.getPersonByEmail(email)!=null)
 			return true;
 		else
 			return false;
+	}
+
+	@Override
+	public void deleteUser(String email) {
+		// TODO Auto-generated method stub
+		userDAO.deletePerson(email);
 	}
 	
 	

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -24,16 +24,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     This is my ERROR page. <br>
-    <input id="lefile" type="file" style="display:none">
-<div class="input-append">
-   <input id="photoCover" class="input-large" type="text">
-   <a class="btn" onclick="$('input[id=lefile]').click();">Browse</a>
-</div>
-  <script language="javascript" type="text/javascript" src="webs/bootstrap/js/jquery.js"></script>
-<script type="text/javascript">
-$('input[id=lefile]').change(function() {
-   $('#photoCover').val($(this).val());
-});
-</script>
+	<%=new Date() %>
+	<form action="login">
+		<input type="submit"/>
+	</form>
+	${type}
   </body>
 </html>

@@ -17,6 +17,7 @@ public class Timetable implements java.io.Serializable {
 	private Date startTime;
 	private Date endTime;
 	private Set studentTimetables = new HashSet(0);
+	private Set applications = new HashSet(0);
 
 	// Constructors
 
@@ -32,12 +33,13 @@ public class Timetable implements java.io.Serializable {
 
 	/** full constructor */
 	public Timetable(Long id, Arrangement arrangement, Date startTime,
-			Date endTime, Set studentTimetables) {
+			Date endTime, Set studentTimetables, Set applications) {
 		this.id = id;
 		this.arrangement = arrangement;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.studentTimetables = studentTimetables;
+		this.applications = applications;
 	}
 
 	// Property accessors
@@ -80,6 +82,14 @@ public class Timetable implements java.io.Serializable {
 
 	public void setStudentTimetables(Set studentTimetables) {
 		this.studentTimetables = studentTimetables;
+	}
+
+	public Set getApplications() {
+		return this.applications;
+	}
+
+	public void setApplications(Set applications) {
+		this.applications = applications;
 	}
 
 }

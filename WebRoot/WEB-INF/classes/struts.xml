@@ -5,9 +5,9 @@
 
 <struts>
     <package name = "default" extends="struts-default">
-    	<action name = "login" class="com.test.action.LoginAction">
+    	<action name = "login" class="loginAction2">
     		<result name = "success">/welcome.jsp</result>
-    		<result name="error">/error.jsp</result>
+    		<result name="error">/test.jsp</result>
     	</action>
     	<action name="LoginAction" class="loginAction">
     		<result name="success">/welcome.jsp</result>
@@ -16,6 +16,12 @@
     	<action name="RegisterAction" class="registerAction">
     		<result name="success">/webs/Login.jsp</result>
     		<result name="error">/test.jsp</result>
+    	</action>
+    	<action name="LaunchTopicAction" class="launchTopicAction">
+    		<result name="success">/test.jsp</result>
+    		<result name="invalid.token">/test.jsp</result>
+    		<interceptor-ref name="defaultStack" />
+            <interceptor-ref name="token" />
     	</action>
     </package>
 

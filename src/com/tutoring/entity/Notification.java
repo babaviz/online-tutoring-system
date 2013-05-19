@@ -11,10 +11,10 @@ public class Notification implements java.io.Serializable {
 	// Fields
 
 	private Long id;
-	private Person personBySenderUsername;
-	private Person personByRecipientUsername;
+	private Person person;
+	private Long notificationId;
 	private Timestamp time;
-	private String content;
+	private Integer type;
 
 	// Constructors
 
@@ -23,22 +23,22 @@ public class Notification implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Notification(Long id, Person personBySenderUsername,
-			Person personByRecipientUsername, String content) {
+	public Notification(Long id, Person person, Long notificationId,
+			Integer type) {
 		this.id = id;
-		this.personBySenderUsername = personBySenderUsername;
-		this.personByRecipientUsername = personByRecipientUsername;
-		this.content = content;
+		this.person = person;
+		this.notificationId = notificationId;
+		this.type = type;
 	}
 
 	/** full constructor */
-	public Notification(Long id, Person personBySenderUsername,
-			Person personByRecipientUsername, Timestamp time, String content) {
+	public Notification(Long id, Person person, Long notificationId,
+			Timestamp time, Integer type) {
 		this.id = id;
-		this.personBySenderUsername = personBySenderUsername;
-		this.personByRecipientUsername = personByRecipientUsername;
+		this.person = person;
+		this.notificationId = notificationId;
 		this.time = time;
-		this.content = content;
+		this.type = type;
 	}
 
 	// Property accessors
@@ -51,20 +51,20 @@ public class Notification implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Person getPersonBySenderUsername() {
-		return this.personBySenderUsername;
+	public Person getPerson() {
+		return this.person;
 	}
 
-	public void setPersonBySenderUsername(Person personBySenderUsername) {
-		this.personBySenderUsername = personBySenderUsername;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
-	public Person getPersonByRecipientUsername() {
-		return this.personByRecipientUsername;
+	public Long getNotificationId() {
+		return this.notificationId;
 	}
 
-	public void setPersonByRecipientUsername(Person personByRecipientUsername) {
-		this.personByRecipientUsername = personByRecipientUsername;
+	public void setNotificationId(Long notificationId) {
+		this.notificationId = notificationId;
 	}
 
 	public Timestamp getTime() {
@@ -75,12 +75,12 @@ public class Notification implements java.io.Serializable {
 		this.time = time;
 	}
 
-	public String getContent() {
-		return this.content;
+	public Integer getType() {
+		return this.type;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setType(Integer type) {
+		this.type = type;
 	}
 
 }

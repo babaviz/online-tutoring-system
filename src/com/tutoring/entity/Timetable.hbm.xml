@@ -8,7 +8,7 @@
     <class name="com.tutoring.entity.Timetable" table="timetable" catalog="onlinetutoring">
         <id name="id" type="java.lang.Long">
             <column name="ID" />
-            <generator class="assigned"></generator>
+            <generator class="native"></generator>
         </id>
         <many-to-one name="arrangement" class="com.tutoring.entity.Arrangement" fetch="select">
             <column name="ARRANGEMENT_ID" not-null="true" />
@@ -24,6 +24,12 @@
                 <column name="TIMETABLE_ID" not-null="true" />
             </key>
             <one-to-many class="com.tutoring.entity.StudentTimetable" />
+        </set>
+        <set name="applications" inverse="true">
+            <key>
+                <column name="TIMETABLE_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Application" />
         </set>
     </class>
 </hibernate-mapping>

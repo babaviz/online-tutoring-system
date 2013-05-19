@@ -6,18 +6,21 @@
 -->
 <hibernate-mapping>
     <class name="com.tutoring.entity.Person" table="person" catalog="onlinetutoring">
-        <id name="username" type="java.lang.String">
-            <column name="USERNAME" length="20" />
-            <generator class="assigned"></generator>
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="increment"></generator>
         </id>
         <property name="firstName" type="java.lang.String">
-            <column name="FIRST_NAME" length="30" />
+            <column name="FIRST_NAME" length="30" not-null="true" />
         </property>
         <property name="lastName" type="java.lang.String">
-            <column name="LAST_NAME" length="30" />
+            <column name="LAST_NAME" length="30" not-null="true" />
         </property>
         <property name="email" type="java.lang.String">
             <column name="EMAIL" length="60" not-null="true" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" length="30" not-null="true" />
         </property>
         <property name="phone" type="java.lang.String">
             <column name="PHONE" length="11" />
@@ -37,53 +40,59 @@
         <property name="avator" type="java.lang.String">
             <column name="AVATOR" length="1000" />
         </property>
-        <set name="notificationsForSenderUsername" inverse="true">
-            <key>
-                <column name="SENDER_USERNAME" length="20" not-null="true" />
-            </key>
-            <one-to-many class="com.tutoring.entity.Notification" />
-        </set>
-        <set name="friendsForSecondaryUsername" inverse="true">
-            <key>
-                <column name="SECONDARY_USERNAME" length="20" not-null="true" />
-            </key>
-            <one-to-many class="com.tutoring.entity.Friend" />
-        </set>
         <set name="postings" inverse="true">
             <key>
-                <column name="POSTED_BY_USERNAME" length="20" not-null="true" />
+                <column name="POSTED_BY_ID" not-null="true" />
             </key>
             <one-to-many class="com.tutoring.entity.Posting" />
         </set>
-        <set name="students" inverse="true">
+        <set name="messagesForRecipientId" inverse="true">
             <key>
-                <column name="PERSON_USERNAME" length="20" not-null="true" unique="true" />
+                <column name="RECIPIENT_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Message" />
+        </set>
+        <set name="students" inverse="true" cascade="all-delete-orphan">
+            <key>
+                <column name="PERSON_ID" not-null="true" />
             </key>
             <one-to-many class="com.tutoring.entity.Student" />
         </set>
         <set name="masters" inverse="true">
             <key>
-                <column name="POSTED_BY_USERNAME" length="20" not-null="true" />
+                <column name="POSTED_BY_ID" not-null="true" />
             </key>
             <one-to-many class="com.tutoring.entity.Master" />
         </set>
-        <set name="tutors" inverse="true">
+        <set name="friendsForSecondaryId" inverse="true">
             <key>
-                <column name="PERSON_USERNAME" length="20" not-null="true" unique="true" />
-            </key>
-            <one-to-many class="com.tutoring.entity.Tutor" />
-        </set>
-        <set name="friendsForPrimaryUsername" inverse="true">
-            <key>
-                <column name="PRIMARY_USERNAME" length="20" not-null="true" />
+                <column name="SECONDARY_ID" not-null="true" />
             </key>
             <one-to-many class="com.tutoring.entity.Friend" />
         </set>
-        <set name="notificationsForRecipientUsername" inverse="true">
+        <set name="tutors" inverse="true" cascade="all-delete-orphan">
             <key>
-                <column name="RECIPIENT_USERNAME" length="20" not-null="true" />
+                <column name="PERSON_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Tutor" />
+        </set>
+        <set name="messagesForSenderId" inverse="true">
+            <key>
+                <column name="SENDER_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Message" />
+        </set>
+        <set name="notifications" inverse="true">
+            <key>
+                <column name="PERSON_ID" not-null="true" />
             </key>
             <one-to-many class="com.tutoring.entity.Notification" />
+        </set>
+        <set name="friendsForPrimaryId" inverse="true">
+            <key>
+                <column name="PRIMARY_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Friend" />
         </set>
     </class>
 </hibernate-mapping>

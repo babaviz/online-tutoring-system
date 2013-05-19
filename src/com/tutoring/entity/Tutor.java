@@ -11,12 +11,12 @@ public class Tutor implements java.io.Serializable {
 
 	// Fields
 
-	private String personUsername;
+	private Long id;
 	private Person person;
 	private Long salary;
 	private String description;
-	private Set specialties = new HashSet(0);
 	private Set arrangements = new HashSet(0);
+	private Set specialties = new HashSet(0);
 
 	// Constructors
 
@@ -25,30 +25,30 @@ public class Tutor implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Tutor(String personUsername, Person person) {
-		this.personUsername = personUsername;
+	public Tutor(Long id, Person person) {
+		this.id = id;
 		this.person = person;
 	}
 
 	/** full constructor */
-	public Tutor(String personUsername, Person person, Long salary,
-			String description, Set specialties, Set arrangements) {
-		this.personUsername = personUsername;
+	public Tutor(Long id, Person person, Long salary, String description,
+			Set arrangements, Set specialties) {
+		this.id = id;
 		this.person = person;
 		this.salary = salary;
 		this.description = description;
-		this.specialties = specialties;
 		this.arrangements = arrangements;
+		this.specialties = specialties;
 	}
 
 	// Property accessors
 
-	public String getPersonUsername() {
-		return this.personUsername;
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setPersonUsername(String personUsername) {
-		this.personUsername = personUsername;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Person getPerson() {
@@ -75,20 +75,20 @@ public class Tutor implements java.io.Serializable {
 		this.description = description;
 	}
 
-	public Set getSpecialties() {
-		return this.specialties;
-	}
-
-	public void setSpecialties(Set specialties) {
-		this.specialties = specialties;
-	}
-
 	public Set getArrangements() {
 		return this.arrangements;
 	}
 
 	public void setArrangements(Set arrangements) {
 		this.arrangements = arrangements;
+	}
+
+	public Set getSpecialties() {
+		return this.specialties;
+	}
+
+	public void setSpecialties(Set specialties) {
+		this.specialties = specialties;
 	}
 
 }

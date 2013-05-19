@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -61,19 +62,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <div class="span9">
       <!--Body content-->
-      <form>
+      <s:form action="LaunchTopicAction" method="post" enctype="multipart/form-data">
       <legend>我要发起话题</legend>
       <input type="text" placeholder="标题"/>
      <textarea rows="6" style="width:100%"></textarea>
      
      <a class="btn btn-link btn-small" style="margin-left:0" data-toggle="modal" href="javascript:test();">分类</a>
      <a class="btn btn-link btn-small" style="margin-left:0" href="javascript:pictureReveal();">图片</a>
-     <a class="btn btn-link btn-small" style="margin-left:0" href="javascript:addFile();">上传文件</a>
+     <a class="btn btn-link btn-small" style="margin-left:0" href="javascript:fileReveal();">上传文件</a>
      
      
      <div id="picture" class="model hide well" style="display:none;width:250px;left:30%;padding:0;">
      	<div class="modal-header">
-            <button class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <button class="close" type="button" onclick="closePicture()">×</button>
             <h5 id="pictureLabel">图片上传</h5>
          </div>
          
@@ -83,7 +84,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          	<a class="btn" href="javascript:showDlg();">本地上传</a>
          	
          	<iframe name='hidden_frame' id="hidden_frame" style='display:none'></iframe>
-			<input id="fileopen" type="file" name="picture" style="height:0;width:0;display:block" onchange=""/>
+			<input id="pictureopen" type="file" name="picture" style="height:0;width:0;display:block" onchange=""/>
+         
+         </div>
+         
+     </div>
+     <div id="filedlg" class="model hide well" style="display:none;width:250px;left:30%;padding:0;">
+     	<div class="modal-header">
+            <button class="close" type="button" onclick="closeFile()">×</button>
+            <h5 id="pictureLabel">附件上传</h5>
+         </div>
+         
+         <div class="modal-body" style="height:50px">
+         
+         
+         	<a class="btn" href="javascript:showDlg2();">本地上传</a>
+         	
+         	<iframe name='hidden_frame' id="hidden_frame" style='display:none'></iframe>
+			<input id="fileopen" type="file" name="file" style="height:0;width:0;display:block" onchange=""/>
          
          </div>
          
@@ -91,11 +109,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
      <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;width:250px;left:60%;">
          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <button type="button" class="close"  onclick="closeTypeDlg()">×</button>
             <h3 id="myModalLabel">分类</h3>
          </div>
          <div class="modal-body">
-           	<select multiple="multiple">
+           	<select multiple="multiple" id="choosetype" name="type">
             	<option>数学</option>
                 <option>英语</option>
                 <option>语文</option>
@@ -104,14 +122,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </select>
          </div>
          <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-            <button class="btn btn-primary">确定</button>
+            
+            <button class="btn btn-primary"  onclick="defineType()"  type="button">确定</button>
          </div>
      </div>
+     <s:token/>
+     <button type="submit" class="btn">提交话题</button>
      
-     <button type="submit" class="btn" style="">提交话题</button>
-     
-     </form>
+     </s:form>
      </div>
     
   </div>
@@ -140,10 +158,42 @@ function pictureReveal()
 	$("#picture").css("display","block");
 }
 
+function fileReveal()
+{
+	$("#filedlg").css("display","block");
+}
+
 function showDlg()
+{
+	$("#pictureopen").click();
+}
+
+function showDlg2()
 {
 	$("#fileopen").click();
 }
+
+function closePicture()
+{
+	$("#picture").css("display","none");
+}
+
+function closeFile()
+{
+	$("#filedlg").css("display","none");
+}
+
+function closeTypeDlg()
+{
+	$("#myModal").modal('hide');
+}
+
+function defineType()
+{
+	//alert($("#choosetype option:selected").text());
+	$("#myModal").modal('hide');
+}
+
 </script>
 
 

@@ -1,6 +1,7 @@
 package com.test.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.tutoring.biz.UserBiz;
 
 public class LoginAction extends ActionSupport{
 
@@ -25,10 +26,14 @@ public class LoginAction extends ActionSupport{
 	}
 	
 	
+	UserBiz userBiz;
+	
+	public void setUserBiz(UserBiz userBiz) {
+		this.userBiz = userBiz;
+	}
 	public String execute() throws Exception
 	{
-		if("panyan".equals(username)&&"5432".equals(password))
-			return SUCCESS;
+		userBiz.deleteUser("e2@mail.com");
 		return ERROR;
 	}
 	

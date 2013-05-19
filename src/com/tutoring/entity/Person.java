@@ -12,24 +12,26 @@ public class Person implements java.io.Serializable {
 
 	// Fields
 
-	private String username;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String password;
 	private String phone;
 	private Date birthday;
 	private String cardNumber;
 	private String type;
 	private Integer score;
 	private String avator;
-	private Set notificationsForSenderUsername = new HashSet(0);
-	private Set friendsForSecondaryUsername = new HashSet(0);
 	private Set postings = new HashSet(0);
+	private Set messagesForRecipientId = new HashSet(0);
 	private Set students = new HashSet(0);
 	private Set masters = new HashSet(0);
+	private Set friendsForSecondaryId = new HashSet(0);
 	private Set tutors = new HashSet(0);
-	private Set friendsForPrimaryUsername = new HashSet(0);
-	private Set notificationsForRecipientUsername = new HashSet(0);
+	private Set messagesForSenderId = new HashSet(0);
+	private Set notifications = new HashSet(0);
+	private Set friendsForPrimaryId = new HashSet(0);
 
 	// Constructors
 
@@ -38,47 +40,52 @@ public class Person implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Person(String username, String email) {
-		this.username = username;
-		this.email = email;
-	}
-
-	/** full constructor */
-	public Person(String username, String firstName, String lastName,
-			String email, String phone, Date birthday, String cardNumber,
-			String type, Integer score, String avator,
-			Set notificationsForSenderUsername,
-			Set friendsForSecondaryUsername, Set postings, Set students,
-			Set masters, Set tutors, Set friendsForPrimaryUsername,
-			Set notificationsForRecipientUsername) {
-		this.username = username;
+	public Person(Long id, String firstName, String lastName, String email,
+			String password) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.password = password;
+	}
+
+	/** full constructor */
+	public Person(Long id, String firstName, String lastName, String email,
+			String password, String phone, Date birthday, String cardNumber,
+			String type, Integer score, String avator, Set postings,
+			Set messagesForRecipientId, Set students, Set masters,
+			Set friendsForSecondaryId, Set tutors, Set messagesForSenderId,
+			Set notifications, Set friendsForPrimaryId) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
 		this.phone = phone;
 		this.birthday = birthday;
 		this.cardNumber = cardNumber;
 		this.type = type;
 		this.score = score;
 		this.avator = avator;
-		this.notificationsForSenderUsername = notificationsForSenderUsername;
-		this.friendsForSecondaryUsername = friendsForSecondaryUsername;
 		this.postings = postings;
+		this.messagesForRecipientId = messagesForRecipientId;
 		this.students = students;
 		this.masters = masters;
+		this.friendsForSecondaryId = friendsForSecondaryId;
 		this.tutors = tutors;
-		this.friendsForPrimaryUsername = friendsForPrimaryUsername;
-		this.notificationsForRecipientUsername = notificationsForRecipientUsername;
+		this.messagesForSenderId = messagesForSenderId;
+		this.notifications = notifications;
+		this.friendsForPrimaryId = friendsForPrimaryId;
 	}
 
 	// Property accessors
 
-	public String getUsername() {
-		return this.username;
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -103,6 +110,14 @@ public class Person implements java.io.Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getPhone() {
@@ -153,29 +168,20 @@ public class Person implements java.io.Serializable {
 		this.avator = avator;
 	}
 
-	public Set getNotificationsForSenderUsername() {
-		return this.notificationsForSenderUsername;
-	}
-
-	public void setNotificationsForSenderUsername(
-			Set notificationsForSenderUsername) {
-		this.notificationsForSenderUsername = notificationsForSenderUsername;
-	}
-
-	public Set getFriendsForSecondaryUsername() {
-		return this.friendsForSecondaryUsername;
-	}
-
-	public void setFriendsForSecondaryUsername(Set friendsForSecondaryUsername) {
-		this.friendsForSecondaryUsername = friendsForSecondaryUsername;
-	}
-
 	public Set getPostings() {
 		return this.postings;
 	}
 
 	public void setPostings(Set postings) {
 		this.postings = postings;
+	}
+
+	public Set getMessagesForRecipientId() {
+		return this.messagesForRecipientId;
+	}
+
+	public void setMessagesForRecipientId(Set messagesForRecipientId) {
+		this.messagesForRecipientId = messagesForRecipientId;
 	}
 
 	public Set getStudents() {
@@ -194,6 +200,14 @@ public class Person implements java.io.Serializable {
 		this.masters = masters;
 	}
 
+	public Set getFriendsForSecondaryId() {
+		return this.friendsForSecondaryId;
+	}
+
+	public void setFriendsForSecondaryId(Set friendsForSecondaryId) {
+		this.friendsForSecondaryId = friendsForSecondaryId;
+	}
+
 	public Set getTutors() {
 		return this.tutors;
 	}
@@ -202,21 +216,28 @@ public class Person implements java.io.Serializable {
 		this.tutors = tutors;
 	}
 
-	public Set getFriendsForPrimaryUsername() {
-		return this.friendsForPrimaryUsername;
+	public Set getMessagesForSenderId() {
+		return this.messagesForSenderId;
 	}
 
-	public void setFriendsForPrimaryUsername(Set friendsForPrimaryUsername) {
-		this.friendsForPrimaryUsername = friendsForPrimaryUsername;
+	public void setMessagesForSenderId(Set messagesForSenderId) {
+		this.messagesForSenderId = messagesForSenderId;
 	}
 
-	public Set getNotificationsForRecipientUsername() {
-		return this.notificationsForRecipientUsername;
+	public Set getNotifications() {
+		return this.notifications;
 	}
 
-	public void setNotificationsForRecipientUsername(
-			Set notificationsForRecipientUsername) {
-		this.notificationsForRecipientUsername = notificationsForRecipientUsername;
+	public void setNotifications(Set notifications) {
+		this.notifications = notifications;
+	}
+
+	public Set getFriendsForPrimaryId() {
+		return this.friendsForPrimaryId;
+	}
+
+	public void setFriendsForPrimaryId(Set friendsForPrimaryId) {
+		this.friendsForPrimaryId = friendsForPrimaryId;
 	}
 
 }

@@ -1,9 +1,11 @@
 package com.tutoring.dao;
 
-import java.util.List;
+
+import com.tutoring.entity.Person;
 
 public interface UserDAO {
-	public String getPasswordByUsername(String username);
-	public void addUser(String username, String password);
-	public List<?> getUserByUsername(String username);
+	public String  getPasswordByEmail(String email);
+	public void addPerson(String email, String password);
+	public Person getPersonByEmail(String email);
+	public void deletePerson(String email);
 }

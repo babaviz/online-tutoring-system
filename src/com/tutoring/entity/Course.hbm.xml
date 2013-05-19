@@ -8,7 +8,7 @@
     <class name="com.tutoring.entity.Course" table="course" catalog="onlinetutoring">
         <id name="id" type="java.lang.Long">
             <column name="ID" />
-            <generator class="assigned"></generator>
+            <generator class="native"></generator>
         </id>
         <many-to-one name="subject" class="com.tutoring.entity.Subject" fetch="select">
             <column name="SUBJECT_ID" />

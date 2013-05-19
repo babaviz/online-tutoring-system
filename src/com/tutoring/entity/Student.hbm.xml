@@ -6,12 +6,12 @@
 -->
 <hibernate-mapping>
     <class name="com.tutoring.entity.Student" table="student" catalog="onlinetutoring">
-        <id name="personUsername" type="java.lang.String">
-            <column name="PERSON_USERNAME" length="20" />
-            <generator class="assigned"></generator>
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native"></generator>
         </id>
-        <many-to-one name="person" class="com.tutoring.entity.Person" update="false" insert="false" fetch="select">
-            <column name="PERSON_USERNAME" length="20" not-null="true" unique="true" />
+        <many-to-one name="person" class="com.tutoring.entity.Person" fetch="select" cascade="all">
+            <column name="PERSON_ID" not-null="true" />
         </many-to-one>
         <property name="balance" type="java.lang.Long">
             <column name="BALANCE" />
@@ -19,9 +19,15 @@
         <property name="grade" type="java.lang.Integer">
             <column name="GRADE" />
         </property>
+        <set name="applications" inverse="true">
+            <key>
+                <column name="STUDENT_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.tutoring.entity.Application" />
+        </set>
         <set name="studentTimetables" inverse="true">
             <key>
-                <column name="STUDENT_USERNAME" length="20" not-null="true" />
+                <column name="STUDENT_ID" not-null="true" />
             </key>
             <one-to-many class="com.tutoring.entity.StudentTimetable" />
         </set>

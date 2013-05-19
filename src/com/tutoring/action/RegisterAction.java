@@ -44,15 +44,15 @@ public class RegisterAction extends ActionSupport{
 	}
 	public String execute() throws Exception{
 		//System.out.println(type);
-		userBiz.register(username, password, email, type);
+		userBiz.register(password, email, type);
 		return SUCCESS;
 	}
 	
 	
-	public String checkUserName(String username)
+	public String checkUserName(String email)
 	{
 		//System.out.println(username);
-		if(userBiz.isUserExist(username))
+		if(userBiz.isUserExist(email))
 		{
 			//System.out.println("exist");
 			return "exist";

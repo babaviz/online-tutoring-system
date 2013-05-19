@@ -16,6 +16,7 @@ public class Posting implements java.io.Serializable {
 	private String title;
 	private String content;
 	private Timestamp time;
+	private String picture;
 
 	// Constructors
 
@@ -35,13 +36,14 @@ public class Posting implements java.io.Serializable {
 
 	/** full constructor */
 	public Posting(Long id, Master master, Person person, String title,
-			String content, Timestamp time) {
+			String content, Timestamp time, String picture) {
 		this.id = id;
 		this.master = master;
 		this.person = person;
 		this.title = title;
 		this.content = content;
 		this.time = time;
+		this.picture = picture;
 	}
 
 	// Property accessors
@@ -92,6 +94,14 @@ public class Posting implements java.io.Serializable {
 
 	public void setTime(Timestamp time) {
 		this.time = time;
+	}
+
+	public String getPicture() {
+		return this.picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 }

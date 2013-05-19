@@ -19,6 +19,8 @@ public class Master implements java.io.Serializable {
 	private Timestamp time;
 	private Integer view;
 	private Integer reply;
+	private String picture;
+	private String attachment;
 	private Set postings = new HashSet(0);
 
 	// Constructors
@@ -37,7 +39,8 @@ public class Master implements java.io.Serializable {
 
 	/** full constructor */
 	public Master(Long id, Person person, String title, String content,
-			Timestamp time, Integer view, Integer reply, Set postings) {
+			Timestamp time, Integer view, Integer reply, String picture,
+			String attachment, Set postings) {
 		this.id = id;
 		this.person = person;
 		this.title = title;
@@ -45,6 +48,8 @@ public class Master implements java.io.Serializable {
 		this.time = time;
 		this.view = view;
 		this.reply = reply;
+		this.picture = picture;
+		this.attachment = attachment;
 		this.postings = postings;
 	}
 
@@ -104,6 +109,22 @@ public class Master implements java.io.Serializable {
 
 	public void setReply(Integer reply) {
 		this.reply = reply;
+	}
+
+	public String getPicture() {
+		return this.picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getAttachment() {
+		return this.attachment;
+	}
+
+	public void setAttachment(String attachment) {
+		this.attachment = attachment;
 	}
 
 	public Set getPostings() {

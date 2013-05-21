@@ -247,11 +247,13 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`course` (
   `eval_by_stu_b` INT NOT NULL DEFAULT 0 ,
   `eval_by_stu_c` INT NOT NULL DEFAULT 0 ,
   `evaluation` VARCHAR(1000) NULL ,
+  `flash_sn` VARCHAR(10) NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `fk_cou_sub_id_idx` (`subject_id` ASC) ,
   INDEX `fk_cou_stu_per_id_idx` (`student_id` ASC) ,
   INDEX `fk_cou_tut_per_id_idx` (`tutor_id` ASC) ,
+  UNIQUE INDEX `flash_sn_UNIQUE` (`flash_sn` ASC) ,
   CONSTRAINT `fk_cou_stu_per_id`
     FOREIGN KEY (`student_id` )
     REFERENCES `onlinetutoring`.`student` (`id` )

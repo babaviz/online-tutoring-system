@@ -58,7 +58,7 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`question` (
   `view` INT NOT NULL DEFAULT 0 ,
   `pic_sn` VARCHAR(10) NULL ,
   `attachment_sn` VARCHAR(10) NULL ,
-  `subject_id` INT NULL ,
+  `subject_id` INT NOT NULL ,
   `reply` INT NOT NULL DEFAULT 0 ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `picSn_UNIQUE` (`pic_sn` ASC) ,
@@ -87,14 +87,15 @@ DROP TABLE IF EXISTS `onlinetutoring`.`answer` ;
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`answer` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `user_id` INT NOT NULL ,
-  `content` VARCHAR(1000) NULL ,
+  `content` VARCHAR(1000) NOT NULL ,
   `time` DATETIME NULL ,
-  `question_id` INT NULL ,
+  `question_id` INT NOT NULL ,
   `pic_sn` VARCHAR(10) NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `questionId_idx` (`question_id` ASC) ,
   INDEX `authorId_idx` (`user_id` ASC) ,
+  UNIQUE INDEX `question_id_UNIQUE` (`question_id` ASC) ,
   CONSTRAINT `fk_ans_per_id`
     FOREIGN KEY (`user_id` )
     REFERENCES `onlinetutoring`.`user` (`id` )

@@ -51,7 +51,7 @@ DROP TABLE IF EXISTS `onlinetutoring`.`question` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`question` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `person_id` INT NOT NULL ,
+  `user_id` INT NOT NULL ,
   `title` VARCHAR(30) NOT NULL ,
   `content` VARCHAR(1000) NOT NULL ,
   `time` DATETIME NULL ,
@@ -64,10 +64,10 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`question` (
   UNIQUE INDEX `picSn_UNIQUE` (`pic_sn` ASC) ,
   UNIQUE INDEX `attachmentSn_UNIQUE` (`attachment_sn` ASC) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
-  INDEX `authorId_idx` (`person_id` ASC) ,
+  INDEX `authorId_idx` (`user_id` ASC) ,
   INDEX `fk_que_sub_id_idx` (`subject_id` ASC) ,
   CONSTRAINT `fk_que_per_id`
-    FOREIGN KEY (`person_id` )
+    FOREIGN KEY (`user_id` )
     REFERENCES `onlinetutoring`.`user` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -86,7 +86,7 @@ DROP TABLE IF EXISTS `onlinetutoring`.`answer` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`answer` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `person_id` INT NOT NULL ,
+  `user_id` INT NOT NULL ,
   `content` VARCHAR(1000) NULL ,
   `time` DATETIME NULL ,
   `question_id` INT NULL ,
@@ -94,9 +94,9 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`answer` (
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `questionId_idx` (`question_id` ASC) ,
-  INDEX `authorId_idx` (`person_id` ASC) ,
+  INDEX `authorId_idx` (`user_id` ASC) ,
   CONSTRAINT `fk_ans_per_id`
-    FOREIGN KEY (`person_id` )
+    FOREIGN KEY (`user_id` )
     REFERENCES `onlinetutoring`.`user` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -116,14 +116,14 @@ DROP TABLE IF EXISTS `onlinetutoring`.`notification` ;
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`notification` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `notification_id` INT NOT NULL ,
-  `person_id` INT NOT NULL ,
+  `user_id` INT NOT NULL ,
   `type` INT NOT NULL ,
   `time` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
-  INDEX `_idx` (`person_id` ASC) ,
+  INDEX `_idx` (`user_id` ASC) ,
   CONSTRAINT `fk_not_per_id`
-    FOREIGN KEY (`person_id` )
+    FOREIGN KEY (`user_id` )
     REFERENCES `onlinetutoring`.`user` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -137,14 +137,14 @@ DROP TABLE IF EXISTS `onlinetutoring`.`tutor` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`tutor` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `person_id` INT NOT NULL ,
+  `user_id` INT NOT NULL ,
   `balance` INT NULL ,
   `description` VARCHAR(1000) NULL ,
   PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `personId_UNIQUE` (`person_id` ASC) ,
+  UNIQUE INDEX `personId_UNIQUE` (`user_id` ASC) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   CONSTRAINT `fk_tut_per_id`
-    FOREIGN KEY (`person_id` )
+    FOREIGN KEY (`user_id` )
     REFERENCES `onlinetutoring`.`user` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -158,13 +158,13 @@ DROP TABLE IF EXISTS `onlinetutoring`.`student` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`student` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `person_id` INT NOT NULL ,
+  `user_id` INT NOT NULL ,
   `grade` INT NULL ,
   PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `personId_UNIQUE` (`person_id` ASC) ,
+  UNIQUE INDEX `personId_UNIQUE` (`user_id` ASC) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   CONSTRAINT `fk_stu_per_id`
-    FOREIGN KEY (`person_id` )
+    FOREIGN KEY (`user_id` )
     REFERENCES `onlinetutoring`.`user` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

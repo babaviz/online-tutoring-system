@@ -15,8 +15,8 @@
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/onlinetutoring">
 		</property>
-		<property name="username" value="root"></property>
-		<property name="password" value="605009"></property>
+		<property name="username" value="tutoradmin"></property>
+		<property name="password" value="abcd112358"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -93,5 +93,7 @@
 	<bean id="launchTopicAction" class="com.tutoring.action.LaunchTopicAction" scope="prototype">
 		
 	</bean>
+	
+	<bean id="downloadAction" class="com.tutoring.action.DownloadAction"></bean>
 	
 </beans>

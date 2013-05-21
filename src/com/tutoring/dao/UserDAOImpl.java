@@ -1,6 +1,7 @@
 package com.tutoring.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
@@ -15,9 +16,14 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	@Override
 	public String getPasswordByEmail(String email) {
 		// TODO Auto-generated method stub
-		Person person = (Person) this.getHibernateTemplate().find("from Person where email='"+email+"'").get(0);
-		
-		return person.getPassword();
+		List<?> personList = this.getHibernateTemplate().find("from Person where email='"+email+"'");
+		if(personList.size()>0)
+		{
+			Person person = (Person) personList.get(0);
+			return person.getPassword();
+		}
+		else
+			return null;
 	}
 
 	public void addPerson(String email, String password)
@@ -34,8 +40,15 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	@Override
 	public Person getPersonByEmail(String email) {
 		// TODO Auto-generated method stub
-		Person person = (Person) this.getHibernateTemplate().find("from Person where email = '"+email+"'").get(0);
-		return person;
+		List<?> personList = this.getHibernateTemplate().find("from Person where email = '"+email+"'");
+		if(personList.size()>0)
+		{
+			Person person = (Person) personList.get(0);
+			return person;
+		}
+		else
+			return null;
+		
 	}
 
 	@Override

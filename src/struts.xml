@@ -5,6 +5,19 @@
 
 <struts>
     <package name = "default" extends="struts-default">
+	    <interceptors>  
+		    <interceptor name="SessionInterceptor" class="com.tutoring.interceptor.SessionInterceptor"></interceptor>  
+		    <interceptor-stack name="MyInterceptorStack">  
+		        <interceptor-ref name="SessionInterceptor"/>  
+		        <interceptor-ref name="defaultStack"/>  
+		    </interceptor-stack>  
+		</interceptors>  
+		<default-interceptor-ref name="MyInterceptorStack">
+		</default-interceptor-ref>
+		<global-results>  
+    		<result name="invalid.token">/tokenError.jsp</result>  
+    		<result name="login" type="redirect-action">/webs/Login.jsp</result>  
+		</global-results>
     	<action name = "login" class="loginAction2">
     		<result name = "success">/welcome.jsp</result>
     		<result name="error">/test.jsp</result>
@@ -19,10 +32,22 @@
     	</action>
     	<action name="LaunchTopicAction" class="launchTopicAction">
     		<result name="success">/test.jsp</result>
-    		<result name="invalid.token">/test.jsp</result>
-    		<interceptor-ref name="defaultStack" />
-            <interceptor-ref name="token" />
+    		
+    		<interceptor-ref name="MyInterceptorStack" />
+    		<interceptor-ref name="token" />
     	</action>
+    	<action name="DownloadAction" class="downloadAction">
+    		<result name="success" type="stream">
+    			<param name="contentType">text/plain</param>
+    			<param name="inputName">inputStream</param> 
+    			<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>   
+				<param name="bufferSize">4096</param> 
+    		</result>
+    		<result name="error">/fileError.jsp</result>
+    	</action>
+    	
+    	
     </package>
-
+    
+   
 </struts>

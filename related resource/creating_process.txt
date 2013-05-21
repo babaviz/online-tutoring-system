@@ -1,0 +1,11 @@
+先用root登录workbench，执行以下语句：
+
+create database onlinetutoring;
+
+create user 'tutoradmin' identified by 'abcd112358';
+
+grant all on onlinetutoring.* to tutoradmin@'%' identified by 'abcd112358';
+grant all on onlinetutoring.* to tutoradmin@'localhost' identified by 'abcd112358';
+
+
+然后导入creating_tables.sql创建表。

@@ -32,24 +32,18 @@
 		</property>
 		<property name="mappingResources">
 			<list>
-				<value>com/tutoring/entity/Specialty.hbm.xml</value>
-				<value>com/tutoring/entity/Student.hbm.xml</value>
-				<value>com/tutoring/entity/Person.hbm.xml</value>
-				<value>
-					com/tutoring/entity/StudentTimetable.hbm.xml
-				</value>
-				<value>com/tutoring/entity/Timetable.hbm.xml</value>
-				<value>com/tutoring/entity/Arrangement.hbm.xml</value>
-				<value>com/tutoring/entity/Subject.hbm.xml</value>
-				<value>com/tutoring/entity/Course.hbm.xml</value>
-				<value>com/tutoring/entity/Tutor.hbm.xml</value>
-				
-				<value>com/tutoring/entity/Posting.hbm.xml</value>
-				<value>com/tutoring/entity/Master.hbm.xml</value>
-				<value>com/tutoring/entity/Notification.hbm.xml</value>
-				<value>com/tutoring/entity/Friend.hbm.xml</value>
-				<value>com/tutoring/entity/Message.hbm.xml</value>
-				<value>com/tutoring/entity/Application.hbm.xml</value></list>
+			<value>com/tutoring/entity/Specialty.hbm.xml</value>
+			<value>com/tutoring/entity/Message.hbm.xml</value>
+			<value>com/tutoring/entity/Tutor.hbm.xml</value>
+			<value>com/tutoring/entity/Notification.hbm.xml</value>
+			<value>com/tutoring/entity/User.hbm.xml</value>
+			<value>com/tutoring/entity/Question.hbm.xml</value>
+			<value>com/tutoring/entity/Application.hbm.xml</value>
+			<value>com/tutoring/entity/Student.hbm.xml</value>
+			<value>com/tutoring/entity/Friend.hbm.xml</value>
+			<value>com/tutoring/entity/Subject.hbm.xml</value>
+			<value>com/tutoring/entity/Answer.hbm.xml</value>
+			<value>com/tutoring/entity/Course.hbm.xml</value></list>
 		</property>
 	</bean>
 	
@@ -65,19 +59,12 @@
 	</bean>
 	
 	
-	<bean id="StudentDAO" class="com.tutoring.dao.StudentDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
 	
-	<bean id="TutorDAO" class="com.tutoring.dao.TutorDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
 	
 	<bean id="UserBiz" class="com.tutoring.biz.UserBizImpl">
 		<property name="userDAO" ref="UserDAO"></property>
 		
-		<property name="studentDAO" ref="StudentDAO"></property>
-		<property name="tutorDAO" ref="TutorDAO"></property>
+	
 	</bean>
 
 	<bean id="loginAction" class="com.tutoring.action.LoginAction">

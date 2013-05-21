@@ -16,7 +16,7 @@
 		</default-interceptor-ref>
 		<global-results>  
     		<result name="invalid.token">/tokenError.jsp</result>  
-    		<result name="login" type="redirect-action">/webs/Login.jsp</result>  
+    		<result name="login" type="redirect">/webs/Login.jsp</result>  
 		</global-results>
     	<action name = "login" class="loginAction2">
     		<result name = "success">/welcome.jsp</result>

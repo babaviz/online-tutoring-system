@@ -9,26 +9,26 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.tutoring.entity.Person;
+import com.tutoring.entity.User;
 
 public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 
 	@Override
 	public String getPasswordByEmail(String email) {
 		// TODO Auto-generated method stub
-		List<?> personList = this.getHibernateTemplate().find("from Person where email='"+email+"'");
+		List<?> personList = this.getHibernateTemplate().find("from User where email='"+email+"'");
 		if(personList.size()>0)
 		{
-			Person person = (Person) personList.get(0);
+			User person = (User) personList.get(0);
 			return person.getPassword();
 		}
 		else
 			return null;
 	}
 
-	public void addPerson(String email, String password)
+	public void addUser(String email, String password)
 	{
-		Person person = new Person();
+		User person = new User();
 		person.setEmail(email);
 		person.setPassword(password);
 		person.setFirstName("fn");
@@ -38,12 +38,12 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	}
 
 	@Override
-	public Person getPersonByEmail(String email) {
+	public User getUserByEmail(String email) {
 		// TODO Auto-generated method stub
-		List<?> personList = this.getHibernateTemplate().find("from Person where email = '"+email+"'");
+		List<?> personList = this.getHibernateTemplate().find("from User where email = '"+email+"'");
 		if(personList.size()>0)
 		{
-			Person person = (Person) personList.get(0);
+			User person = (User) personList.get(0);
 			return person;
 		}
 		else
@@ -52,9 +52,9 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	}
 
 	@Override
-	public void deletePerson(String email) {
+	public void deleteUser(String email) {
 		// TODO Auto-generated method stub
-		final Person person = (Person) this.getHibernateTemplate().find("from Person where email='"+email+"'").get(0);
+		final User person = (User) this.getHibernateTemplate().find("from User where email='"+email+"'").get(0);
 		System.out.print(person.getEmail());
 		//this.getHibernateTemplate().delete(person);
 		this.getHibernateTemplate().executeFind(new HibernateCallback() {  

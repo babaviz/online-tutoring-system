@@ -12,7 +12,7 @@ USE `onlinetutoring` ;
 DROP TABLE IF EXISTS `onlinetutoring`.`Person` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Person` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `first_name` VARCHAR(30) NULL ,
   `last_name` VARCHAR(30) NULL ,
   `email` VARCHAR(60) NOT NULL ,
@@ -50,7 +50,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `onlinetutoring`.`Questions` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Questions` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `person_id` INT NOT NULL ,
   `title` VARCHAR(30) NOT NULL ,
   `content` VARCHAR(1000) NOT NULL ,
@@ -85,7 +85,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `onlinetutoring`.`Answers` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Answers` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `person_id` INT NOT NULL ,
   `content` VARCHAR(1000) NULL ,
   `time` DATETIME NULL ,
@@ -114,7 +114,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `onlinetutoring`.`Notification` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Notification` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `notification_id` INT NOT NULL ,
   `person_id` INT NOT NULL ,
   `type` INT NOT NULL ,
@@ -136,7 +136,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `onlinetutoring`.`Tutor` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Tutor` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `person_id` INT NOT NULL ,
   `balance` INT NULL ,
   `description` VARCHAR(1000) NULL ,
@@ -157,7 +157,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `onlinetutoring`.`Student` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Student` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `person_id` INT NOT NULL ,
   `grade` INT NULL ,
   PRIMARY KEY (`id`, `person_id`) ,
@@ -201,7 +201,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `onlinetutoring`.`message` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`message` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `sender_id` INT NOT NULL ,
   `receiver_id` INT NOT NULL ,
   `content` VARCHAR(200) NOT NULL ,
@@ -229,7 +229,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `onlinetutoring`.`Course` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Course` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `start_time` DATETIME NOT NULL ,
   `end_time` DATETIME NOT NULL ,
   `duration` INT NOT NULL ,
@@ -299,7 +299,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `onlinetutoring`.`specialty` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`specialty` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `tutor_id` INT NOT NULL ,
   `subject_id` INT NULL ,
   PRIMARY KEY (`id`) ,

@@ -301,8 +301,8 @@ DROP TABLE IF EXISTS `onlinetutoring`.`specialty` ;
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`specialty` (
   `tutor_id` INT NOT NULL ,
   `subject_id` INT NOT NULL ,
-  PRIMARY KEY (`tutor_id`, `subject_id`) ,
   INDEX `fk_spe_sub_id_idx` (`subject_id` ASC) ,
+  PRIMARY KEY (`tutor_id`, `subject_id`) ,
   CONSTRAINT `fk_spe_tut_id`
     FOREIGN KEY (`tutor_id` )
     REFERENCES `onlinetutoring`.`Tutor` (`id` )

@@ -7,11 +7,11 @@ CREATE SCHEMA IF NOT EXISTS `onlinetutoring` DEFAULT CHARACTER SET utf8 COLLATE 
 USE `onlinetutoring` ;
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`Person`
+-- Table `onlinetutoring`.`person`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`Person` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`person` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Person` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`person` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `first_name` VARCHAR(30) NULL ,
   `last_name` VARCHAR(30) NULL ,
@@ -32,11 +32,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`Subject`
+-- Table `onlinetutoring`.`subject`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`Subject` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`subject` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Subject` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`subject` (
   `id` INT NOT NULL ,
   `name` VARCHAR(20) NULL ,
   PRIMARY KEY (`id`) ,
@@ -45,11 +45,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`Questions`
+-- Table `onlinetutoring`.`questions`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`Questions` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`questions` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Questions` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`questions` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `person_id` INT NOT NULL ,
   `title` VARCHAR(30) NOT NULL ,
@@ -68,23 +68,23 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Questions` (
   INDEX `fk_que_sub_id_idx` (`subject_id` ASC) ,
   CONSTRAINT `fk_que_per_id`
     FOREIGN KEY (`person_id` )
-    REFERENCES `onlinetutoring`.`Person` (`id` )
+    REFERENCES `onlinetutoring`.`person` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_que_sub_id`
     FOREIGN KEY (`subject_id` )
-    REFERENCES `onlinetutoring`.`Subject` (`id` )
+    REFERENCES `onlinetutoring`.`subject` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`Answers`
+-- Table `onlinetutoring`.`answers`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`Answers` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`answers` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Answers` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`answers` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `person_id` INT NOT NULL ,
   `content` VARCHAR(1000) NULL ,
@@ -97,23 +97,23 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Answers` (
   INDEX `authorId_idx` (`person_id` ASC) ,
   CONSTRAINT `fk_ans_per_id`
     FOREIGN KEY (`person_id` )
-    REFERENCES `onlinetutoring`.`Person` (`id` )
+    REFERENCES `onlinetutoring`.`person` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_ans_que_id`
     FOREIGN KEY (`question_id` )
-    REFERENCES `onlinetutoring`.`Questions` (`id` )
+    REFERENCES `onlinetutoring`.`questions` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`Notification`
+-- Table `onlinetutoring`.`notification`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`Notification` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`notification` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Notification` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`notification` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `notification_id` INT NOT NULL ,
   `person_id` INT NOT NULL ,
@@ -124,59 +124,59 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Notification` (
   INDEX `_idx` (`person_id` ASC) ,
   CONSTRAINT `fk_not_per_id`
     FOREIGN KEY (`person_id` )
-    REFERENCES `onlinetutoring`.`Person` (`id` )
+    REFERENCES `onlinetutoring`.`person` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`Tutor`
+-- Table `onlinetutoring`.`tutor`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`Tutor` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`tutor` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Tutor` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`tutor` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `person_id` INT NOT NULL ,
   `balance` INT NULL ,
   `description` VARCHAR(1000) NULL ,
-  PRIMARY KEY (`id`, `person_id`) ,
+  PRIMARY KEY (`id`) ,
   UNIQUE INDEX `personId_UNIQUE` (`person_id` ASC) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   CONSTRAINT `fk_tut_per_id`
     FOREIGN KEY (`person_id` )
-    REFERENCES `onlinetutoring`.`Person` (`id` )
+    REFERENCES `onlinetutoring`.`person` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`Student`
+-- Table `onlinetutoring`.`student`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`Student` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`student` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Student` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`student` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `person_id` INT NOT NULL ,
   `grade` INT NULL ,
-  PRIMARY KEY (`id`, `person_id`) ,
+  PRIMARY KEY (`id`) ,
   UNIQUE INDEX `personId_UNIQUE` (`person_id` ASC) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   CONSTRAINT `fk_stu_per_id`
     FOREIGN KEY (`person_id` )
-    REFERENCES `onlinetutoring`.`Person` (`id` )
+    REFERENCES `onlinetutoring`.`person` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`Friend`
+-- Table `onlinetutoring`.`friend`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`Friend` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`friend` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Friend` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`friend` (
   `id_a` INT NOT NULL ,
   `id_b` INT NOT NULL ,
   PRIMARY KEY (`id_a`, `id_b`) ,
@@ -184,12 +184,12 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Friend` (
   INDEX `fk_fri_a_per_id_idx` (`id_a` ASC) ,
   CONSTRAINT `fk_fri_a_per_id`
     FOREIGN KEY (`id_a` )
-    REFERENCES `onlinetutoring`.`Person` (`id` )
+    REFERENCES `onlinetutoring`.`person` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_fri_b_per_id`
     FOREIGN KEY (`id_b` )
-    REFERENCES `onlinetutoring`.`Person` (`id` )
+    REFERENCES `onlinetutoring`.`person` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -212,23 +212,23 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`message` (
   INDEX `fromId_idx` (`sender_id` ASC) ,
   CONSTRAINT `fk_mes_sen_per_id`
     FOREIGN KEY (`sender_id` )
-    REFERENCES `onlinetutoring`.`Person` (`id` )
+    REFERENCES `onlinetutoring`.`person` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_mes_rec_per_id`
     FOREIGN KEY (`receiver_id` )
-    REFERENCES `onlinetutoring`.`Person` (`id` )
+    REFERENCES `onlinetutoring`.`person` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`Course`
+-- Table `onlinetutoring`.`course`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`Course` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`course` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Course` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`course` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `start_time` DATETIME NOT NULL ,
   `end_time` DATETIME NOT NULL ,
@@ -253,28 +253,28 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Course` (
   INDEX `fk_cou_tut_per_id_idx` (`tutor_id` ASC) ,
   CONSTRAINT `fk_cou_stu_per_id`
     FOREIGN KEY (`student_id` )
-    REFERENCES `onlinetutoring`.`Student` (`id` )
+    REFERENCES `onlinetutoring`.`student` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_cou_tut_per_id`
     FOREIGN KEY (`tutor_id` )
-    REFERENCES `onlinetutoring`.`Tutor` (`id` )
+    REFERENCES `onlinetutoring`.`tutor` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_cou_sub_id`
     FOREIGN KEY (`subject_id` )
-    REFERENCES `onlinetutoring`.`Subject` (`id` )
+    REFERENCES `onlinetutoring`.`subject` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`Application`
+-- Table `onlinetutoring`.`application`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`Application` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`application` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Application` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`application` (
   `course_id` INT NOT NULL ,
   `student_id` INT NOT NULL ,
   PRIMARY KEY (`course_id`, `student_id`) ,
@@ -282,12 +282,12 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Application` (
   INDEX `fk_app_stu_id_idx` (`student_id` ASC) ,
   CONSTRAINT `fk_app_cou_id`
     FOREIGN KEY (`course_id` )
-    REFERENCES `onlinetutoring`.`Course` (`id` )
+    REFERENCES `onlinetutoring`.`course` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_app_stu_id`
     FOREIGN KEY (`student_id` )
-    REFERENCES `onlinetutoring`.`Student` (`id` )
+    REFERENCES `onlinetutoring`.`student` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -305,12 +305,12 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`specialty` (
   PRIMARY KEY (`tutor_id`, `subject_id`) ,
   CONSTRAINT `fk_spe_tut_id`
     FOREIGN KEY (`tutor_id` )
-    REFERENCES `onlinetutoring`.`Tutor` (`id` )
+    REFERENCES `onlinetutoring`.`tutor` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_spe_sub_id`
     FOREIGN KEY (`subject_id` )
-    REFERENCES `onlinetutoring`.`Subject` (`id` )
+    REFERENCES `onlinetutoring`.`subject` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

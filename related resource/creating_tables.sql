@@ -2,6 +2,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+DROP SCHEMA IF EXISTS `onlinetutoring` ;
 CREATE SCHEMA IF NOT EXISTS `onlinetutoring` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `onlinetutoring` ;
 
@@ -115,14 +116,14 @@ DROP TABLE IF EXISTS `onlinetutoring`.`Notification` ;
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`Notification` (
   `id` INT NOT NULL ,
   `notification_id` INT NOT NULL ,
-  `receiver_id` INT NOT NULL ,
+  `person_id` INT NOT NULL ,
   `type` INT NOT NULL ,
   `time` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
-  INDEX `_idx` (`receiver_id` ASC) ,
+  INDEX `_idx` (`person_id` ASC) ,
   CONSTRAINT `fk_not_per_id`
-    FOREIGN KEY (`receiver_id` )
+    FOREIGN KEY (`person_id` )
     REFERENCES `onlinetutoring`.`Person` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -293,15 +294,15 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetutoring`.`specializedField`
+-- Table `onlinetutoring`.`specialty`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `onlinetutoring`.`specializedField` ;
+DROP TABLE IF EXISTS `onlinetutoring`.`specialty` ;
 
-CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`specializedField` (
+CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`specialty` (
   `id` INT NOT NULL ,
   `tutor_id` INT NOT NULL ,
   `subject_id` INT NULL ,
-  PRIMARY KEY (`id`, `tutor_id`) ,
+  PRIMARY KEY (`id`) ,
   UNIQUE INDEX `tutorId_UNIQUE` (`tutor_id` ASC) ,
   INDEX `fk_spe_sub_id_idx` (`subject_id` ASC) ,
   CONSTRAINT `fk_spe_tut_id`

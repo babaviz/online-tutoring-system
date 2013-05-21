@@ -299,11 +299,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `onlinetutoring`.`specialty` ;
 
 CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`specialty` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
   `tutor_id` INT NOT NULL ,
-  `subject_id` INT NULL ,
-  PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `tutorId_UNIQUE` (`tutor_id` ASC) ,
+  `subject_id` INT NOT NULL ,
+  PRIMARY KEY (`tutor_id`, `subject_id`) ,
   INDEX `fk_spe_sub_id_idx` (`subject_id` ASC) ,
   CONSTRAINT `fk_spe_tut_id`
     FOREIGN KEY (`tutor_id` )

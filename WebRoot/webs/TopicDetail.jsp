@@ -53,12 +53,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
                 <div class="span10 offset1">
                 <p class="text-info">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
+            	<img src="images/headimg/1.png" alt="" />
+            	
             	</div>
             </div>
+            
             <div class="row">
             	<div class="span11">
             		<p class="text-right">
-                    <em><a href="#" class="btn-link">收藏</a></em>&nbsp;
+                    <i class="icon-download-alt"></i><a href="DownloadAction?fileName=struts2.txt">20天学会c语言.pdf</a>&nbsp;
                     <em><strong>2013年5月11日</strong></em>&nbsp;
                     <em><strong>类别：c语言</strong></em>
                     </p>
@@ -70,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="page-header">
         	<h5>评论区</h5>
         </div>
-        <textarea rows="4" style="width:100%;" placeholder="说点什么......"></textarea>
+        <textarea rows="4" style="width:100%;" placeholder="说点什么......" id="replybox"></textarea>
         <p align="right"><button type="submit" class="btn">我要评论</button></p>
         
         <table class="table">
@@ -88,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <p align="right">
             <em>2013年5月12日</em>
-            <button class="btn btn-link">回复</button>
+            <button class="btn btn-link" onclick="focusReplyBox('李四')">回复</button>
             </p>
         </div>
         </td>
@@ -183,6 +186,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
 
 <script language="javascript" type="text/javascript" src="bootstrap/js/holder.js"></script>
-
+<script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+<script type="text/javascript">
+function focusReplyBox(person)
+{
+	$("#replybox").focus();
+	$("#replybox ").val("回复"+person+":");
+}
+</script>
 </body>
 </html>

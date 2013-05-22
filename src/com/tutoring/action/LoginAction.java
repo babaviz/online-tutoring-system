@@ -37,7 +37,7 @@ public class LoginAction extends ActionSupport{
 		if(userBiz.login(username, password)){
 			ActionContext ac = ActionContext.getContext();
 			Map<String, Object> session = ac.getSession();
-			session.put("username", username);
+			session.put("email", username);
 			//System.out.println(session.get("username"));
 			return SUCCESS;
 		}

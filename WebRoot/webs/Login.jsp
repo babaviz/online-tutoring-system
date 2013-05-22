@@ -133,15 +133,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div style="width:600px; height:345px;float:left; background:url(images/half_translucent.png) repeat;display:none;" id="register">
   <div class="container" style="margin-top:50px;">
   <div class="row">
-      <form class="form-horizontal" action="RegisterAction" method="post">
+      <form class="form-horizontal" action="RegisterAction" method="post" id="registerform">
   <fieldset class="control-group">
-    <div class="control-group" id="_username">
-      <label class="control-label" for="input01">用户名</label>
-      <div class="controls">
-        <input type="text" class="input-large" placeholder="由数字和英文字母组成" id="username" name="username" onblur="checkUserName()">
-        <span class="help-inline" id="username_info"></span>
-      </div>
-    </div>
+    
     <div class="control-group" id="_email">
       <label class="control-label" for="input01">邮箱</label>
       <div class="controls">
@@ -177,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
      <div class="control-group">
       <div class="controls">
-        <button type="submit" class="btn btn-primary">注册</button>
+        <button type="button" class="btn btn-primary" onclick="RegisterSubmit()">注册</button>
       </div>
     </div>
     

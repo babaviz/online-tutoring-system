@@ -49,7 +49,7 @@ public class RegisterAction extends ActionSupport{
 	}
 	
 	
-	public String checkUserName(String email)
+	public String checkEmail(String email)
 	{
 		//System.out.println(username);
 		if(userBiz.isUserExist(email))

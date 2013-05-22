@@ -3,24 +3,13 @@ package com.tutoring.biz;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.tutoring.dao.StudentDAO;
-import com.tutoring.dao.TutorDAO;
 import com.tutoring.dao.UserDAO;
 
 
 public class UserBizImpl implements UserBiz{
 
 	UserDAO userDAO;
-	StudentDAO studentDAO;
-	public void setTutorDAO(TutorDAO tutorDAO) {
-		this.tutorDAO = tutorDAO;
-	}
-
-	public void setStudentDAO(StudentDAO studentDAO) {
-		this.studentDAO = studentDAO;
-	}
-
-	TutorDAO tutorDAO;
+	
 	
 	@Override
 	public boolean login(String email, String password) {
@@ -54,14 +43,14 @@ public class UserBizImpl implements UserBiz{
 	
 	public void register(String password,String email,String type)
 	{
-		userDAO.addPerson(email, password);
+		userDAO.addUser(email, password);
 		
 	}
 
 	@Override
 	public boolean isUserExist(String email) {
 		// TODO Auto-generated method stub
-		if(userDAO.getPersonByEmail(email)!=null)
+		if(userDAO.getUserByEmail(email)!=null)
 			return true;
 		else
 			return false;
@@ -70,7 +59,7 @@ public class UserBizImpl implements UserBiz{
 	@Override
 	public void deleteUser(String email) {
 		// TODO Auto-generated method stub
-		userDAO.deletePerson(email);
+		userDAO.deleteUser(email);
 	}
 	
 	

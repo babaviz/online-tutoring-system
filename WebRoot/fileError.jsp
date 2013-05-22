@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'test.jsp' starting page</title>
+    <title>My JSP 'fileError.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -19,15 +19,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<link href="webs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
   </head>
   
   <body>
-    This is my ERROR page. <br>
-	<%=new Date() %>
-	<form action="DownloadAction" method="post">
-		<input type="submit"/>
-	</form>
-	${type}
+  	抱歉，文件 ${fileName}不存在 <br>
   </body>
 </html>

@@ -50,7 +50,14 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     
-       
+   <filter>
+   		<filter-name>URLFilter</filter-name>
+   		<filter-class>com.tutoring.interceptor.URLFilter</filter-class>
+   </filter>
+   <filter-mapping>
+   		<filter-name>URLFilter</filter-name>
+   		<url-pattern>*.jsp</url-pattern>
+   </filter-mapping>
     
     
   <welcome-file-list>

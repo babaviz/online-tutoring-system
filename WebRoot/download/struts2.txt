@@ -1,0 +1,4 @@
+request生命周期：
+提交表单开始，forward到的页面还在（url不变），redirect的结束（url改变）
+struts2 action不是单例
+struts2 spring中默认bean是单例的，所以action默认是单例的,applicationContext通过加入scope="prototype"改变单例

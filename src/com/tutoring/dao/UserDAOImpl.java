@@ -26,14 +26,14 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 			return null;
 	}
 
-	public void addUser(String email, String password)
+	public void addUser(String email, String password,String type)
 	{
 		User person = new User();
 		person.setEmail(email);
 		person.setPassword(password);
 		person.setFirstName("fn");
 		person.setLastName("ln");
-		
+		person.setType(type);
 		this.getHibernateTemplate().save(person);
 	}
 

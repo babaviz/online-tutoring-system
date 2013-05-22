@@ -5,7 +5,7 @@ import com.tutoring.entity.User;
 
 public interface UserDAO {
 	public String  getPasswordByEmail(String email);
-	public void addUser(String email, String password);
+	public void addUser(String email, String password,String type);
 	public User getUserByEmail(String email);
 	public void deleteUser(String email);
 }

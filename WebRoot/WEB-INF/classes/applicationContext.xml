@@ -83,4 +83,17 @@
 	
 	<bean id="downloadAction" class="com.tutoring.action.DownloadAction"></bean>
 	
+	<bean id="indexAction" class="com.tutoring.action.IndexAction"></bean>
+	
+	<bean id="allTopicsAction" class="com.tutoring.action.AllTopicsAction"></bean>
+	
+	<bean id="myTopicsAction" class="com.tutoring.action.MyTopicsAction"></bean>
+	
+	<bean id="makeTopicAction" class="com.tutoring.action.MakeTopicAction"></bean>
+	
+	<bean id="chattingAction" class="com.tutoring.action.ChattingAction"></bean>
+	
+	<bean id="topicDetailAction" class="com.tutoring.action.TopicDetailAction"></bean>
+	
+	<bean id="searchAction" class="com.tutoring.action.SearchAction"></bean>
 </beans>

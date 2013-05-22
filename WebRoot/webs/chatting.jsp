@@ -24,9 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <ul class="nav">
       <li><a href="#">首页</a></li>
       <li><a href="#">课程管理</a></li>
-      <li><a href="search.jsp">找老师</a></li>
-      <li><a href="AllTopics.jsp">BBS</a></li>
-      <li class="active"><a href="chatting.jsp">聊天</a></li>
+      <li><a href="Search">找老师</a></li>
+      <li><a href="AllTopics">BBS</a></li>
+      <li class="active"><a href="Chatting">聊天</a></li>
       <li><a href="flash/OnlineTutorPlayer.html">上课</a></li>
     </ul>
     </div>

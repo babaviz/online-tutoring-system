@@ -16,10 +16,11 @@
 		</default-interceptor-ref>
 		<global-results>  
     		<result name="invalid.token">/tokenError.jsp</result>  
-    		<result name="login" type="redirect">/webs/Login.jsp</result>  
+    		<result name="login" type="redirect">/webs/Login.htm</result>  
+    		<result name="sessionError" type="redirect">/webs/sessionError.htm</result> 
 		</global-results>
     	<action name = "login" class="loginAction2">
-    		<result name = "success">/welcome.jsp</result>
+    		<result name = "success">/webs/AllTopics.jsp</result>
     		<result name="error">/test.jsp</result>
     	</action>
     	<action name="LoginAction" class="loginAction">
@@ -27,7 +28,7 @@
     		<result name="error">/test.jsp</result>
     	</action>
     	<action name="RegisterAction" class="registerAction">
-    		<result name="success">/webs/Login.jsp</result>
+    		<result name="success">/webs/Login.htm</result>
     		<result name="error">/test.jsp</result>
     	</action>
     	<action name="LaunchTopicAction" class="launchTopicAction">
@@ -44,6 +45,33 @@
 				<param name="bufferSize">4096</param> 
     		</result>
     		<result name="error">/fileError.jsp</result>
+    	</action>
+    	<action name="Index" class="indexAction">
+    		
+    	</action>
+    	
+    	<action name="AllTopics" class="allTopicsAction">
+    		<result name="success">/webs/AllTopics.jsp</result>
+    	</action>
+    	
+    	<action name="MyTopics" class="myTopicsAction">
+    		<result name="success">/webs/MyTopics.jsp</result>
+    	</action>
+    	
+    	<action name="MakeTopic" class="makeTopicAction">
+    		<result name="success">/webs/LaunchTopic.jsp</result>
+    	</action>
+    	
+    	<action name="TopicDetail" class="topicDetailAction">
+    		<result name="success">/webs/TopicDetail.jsp</result>
+    	</action>
+    	
+    	<action name="Chatting" class="chattingAction">
+    		<result name="success">/webs/chatting.jsp</result>
+    	</action>
+    	
+    	<action name="Search" class="searchAction">
+    		<result name="success">/webs/search.jsp</result>
     	</action>
     	
     	

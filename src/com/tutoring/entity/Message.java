@@ -1,76 +1,134 @@
+/**
+ * 
+ */
 package com.tutoring.entity;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
+import javax.persistence.Id;
+
 
 /**
- * Message entity. @author MyEclipse Persistence Tools
+ * @author Ssn
+ *
  */
+public class Message  extends AbstractModel {
 
-public class Message implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	// Fields
-
-	private Integer id;
-	private User userByReceiverId;
-	private User userBySenderId;
+	@Id
+	private int id;
+	
+	private User sender;
+	
+	private User receiver;
+	
+	private Date time;
+	
 	private String content;
-	private Timestamp time;
 
-	// Constructors
-
-	/** default constructor */
+	/**
+	 * 
+	 */
 	public Message() {
 	}
 
-	/** full constructor */
-	public Message(User userByReceiverId, User userBySenderId, String content,
-			Timestamp time) {
-		this.userByReceiverId = userByReceiverId;
-		this.userBySenderId = userBySenderId;
+	/**
+	 * @param sender
+	 * @param receiver
+	 * @param content
+	 */
+	public Message(User sender, User receiver, String content) {
+		this.sender = sender;
+		this.receiver = receiver;
 		this.content = content;
+	}
+
+	/**
+	 * @param sender
+	 * @param receiver
+	 * @param time
+	 * @param content
+	 */
+	public Message(User sender, User receiver, Date time, String content) {
+		this.sender = sender;
+		this.receiver = receiver;
 		this.time = time;
+		this.content = content;
 	}
 
-	// Property accessors
-
-	public Integer getId() {
-		return this.id;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public User getUserByReceiverId() {
-		return this.userByReceiverId;
+	/**
+	 * @return the sender
+	 */
+	public User getSender() {
+		return sender;
 	}
 
-	public void setUserByReceiverId(User userByReceiverId) {
-		this.userByReceiverId = userByReceiverId;
+	/**
+	 * @param sender the sender to set
+	 */
+	public void setSender(User sender) {
+		this.sender = sender;
 	}
 
-	public User getUserBySenderId() {
-		return this.userBySenderId;
+	/**
+	 * @return the receiver
+	 */
+	public User getReceiver() {
+		return receiver;
 	}
 
-	public void setUserBySenderId(User userBySenderId) {
-		this.userBySenderId = userBySenderId;
+	/**
+	 * @param receiver the receiver to set
+	 */
+	public void setReceiver(User receiver) {
+		this.receiver = receiver;
 	}
 
+	/**
+	 * @return the time
+	 */
+	public Date getTime() {
+		return time;
+	}
+
+	/**
+	 * @param time the time to set
+	 */
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	/**
+	 * @return the content
+	 */
 	public String getContent() {
-		return this.content;
+		return content;
 	}
 
+	/**
+	 * @param content the content to set
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	public Timestamp getTime() {
-		return this.time;
-	}
-
-	public void setTime(Timestamp time) {
-		this.time = time;
-	}
-
+	
 }

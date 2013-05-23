@@ -25,13 +25,16 @@ public class URLFilter implements Filter{
 		// TODO Auto-generated method stub
 		HttpServletRequest httpServletRequest = (HttpServletRequest)request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+		
 		//System.out.println(httpServletRequest.getContextPath()+"/webs/Login.jsp");
 		if(isIncludePages(httpServletRequest.getRequestURI())){
 			System.out.println("include");
 			httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/webs/urlError.htm");
 		}
 		chain.doFilter(request, response);
+		return;
 	}
+	
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {

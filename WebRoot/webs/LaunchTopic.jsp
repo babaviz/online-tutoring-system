@@ -2,8 +2,9 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/webs/";
 %>
+<base href="<%=basePath%>">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -64,8 +65,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <!--Body content-->
       <s:form action="LaunchTopicAction" method="post" enctype="multipart/form-data">
       <legend>我要发起话题</legend>
-      <input type="text" placeholder="标题"/>
-     <textarea rows="6" style="width:100%"></textarea>
+      <input type="text" placeholder="标题" name="title"/>
+     <textarea rows="6" style="width:100%" name="content"></textarea>
      
      <a class="btn btn-link btn-small" style="margin-left:0" data-toggle="modal" href="javascript:test();">分类</a>
      <a class="btn btn-link btn-small" style="margin-left:0" href="javascript:pictureReveal();">图片</a>

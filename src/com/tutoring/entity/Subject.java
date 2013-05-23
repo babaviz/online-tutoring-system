@@ -1,76 +1,117 @@
+/**
+ * 
+ */
 package com.tutoring.entity;
 
-import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Id;
+
 /**
- * Subject entity. @author MyEclipse Persistence Tools
+ * @author Ssn
+ *
  */
+public class Subject  extends AbstractModel {
 
-public class Subject implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	// Fields
-
-	private Integer id;
+	@Id
+	private int id;
+	
 	private String name;
-	private Set courses = new HashSet(0);
-	private Set questions = new HashSet(0);
-	private Set specialties = new HashSet(0);
+	
+	private Set<Tutor> tutors;
+	
+	private Set<Course> courses;
+	
+	private Set<Question> questions;
 
-	// Constructors
-
-	/** default constructor */
+	/**
+	 * 
+	 */
 	public Subject() {
 	}
 
-	/** full constructor */
-	public Subject(String name, Set courses, Set questions, Set specialties) {
+	/**
+	 * @param name
+	 */
+	public Subject(String name) {
 		this.name = name;
-		this.courses = courses;
-		this.questions = questions;
-		this.specialties = specialties;
 	}
 
-	// Property accessors
-
-	public Integer getId() {
-		return this.id;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the name
+	 */
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
+	/**
+	 * @param name the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Set getCourses() {
-		return this.courses;
+	/**
+	 * @return the tutors
+	 */
+	public Set<Tutor> getTutors() {
+		return tutors;
 	}
 
-	public void setCourses(Set courses) {
+	/**
+	 * @param tutors the tutors to set
+	 */
+	public void setTutors(Set<Tutor> tutors) {
+		this.tutors = tutors;
+	}
+
+	/**
+	 * @return the courses
+	 */
+	public Set<Course> getCourses() {
+		return courses;
+	}
+
+	/**
+	 * @param courses the courses to set
+	 */
+	public void setCourses(Set<Course> courses) {
 		this.courses = courses;
 	}
 
-	public Set getQuestions() {
-		return this.questions;
+	/**
+	 * @return the questions
+	 */
+	public Set<Question> getQuestions() {
+		return questions;
 	}
 
-	public void setQuestions(Set questions) {
+	/**
+	 * @param questions the questions to set
+	 */
+	public void setQuestions(Set<Question> questions) {
 		this.questions = questions;
 	}
 
-	public Set getSpecialties() {
-		return this.specialties;
-	}
-
-	public void setSpecialties(Set specialties) {
-		this.specialties = specialties;
-	}
-
+	
+	
 }

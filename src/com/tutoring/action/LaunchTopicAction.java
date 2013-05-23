@@ -7,10 +7,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.tutoring.biz.TopicBiz;
 
 public class LaunchTopicAction extends ActionSupport{
 
@@ -27,6 +30,27 @@ public class LaunchTopicAction extends ActionSupport{
 	private String pictureContentType;
 	private String fileContentType;
 	private String type;
+	private String title;
+	
+	TopicBiz topicBiz;
+	
+	public void setTopicBiz(TopicBiz topicBiz) {
+		this.topicBiz = topicBiz;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	private String content;
 	
 	public String getType() {
 		return type;
@@ -73,6 +97,11 @@ public class LaunchTopicAction extends ActionSupport{
 	
 	public String execute() throws Exception{
 		//System.out.println(fileFileName+","+pictureFileName+","+type);
+		ActionContext ac = ActionContext.getContext();
+		Map<String, Object> session = ac.getSession();
+		
+		topicBiz.publishQuestion((String)session.get("email"), title, content, type);
+		
 		if(file!=null)
 		{
 			String storePath = ServletActionContext.getServletContext().getRealPath( "/download" )+"/"+fileFileName;
@@ -80,6 +109,7 @@ public class LaunchTopicAction extends ActionSupport{
 			copy(file,storeFile);
 			
 		}
+		
 		return SUCCESS;
 	}
 	

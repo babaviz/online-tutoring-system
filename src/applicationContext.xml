@@ -3,7 +3,7 @@
 	xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 	
 	
 	
@@ -32,15 +32,12 @@
 		</property>
 		<property name="mappingResources">
 			<list>
-			<value>com/tutoring/entity/Specialty.hbm.xml</value>
 			<value>com/tutoring/entity/Message.hbm.xml</value>
 			<value>com/tutoring/entity/Tutor.hbm.xml</value>
 			<value>com/tutoring/entity/Notification.hbm.xml</value>
 			<value>com/tutoring/entity/User.hbm.xml</value>
 			<value>com/tutoring/entity/Question.hbm.xml</value>
-			<value>com/tutoring/entity/Application.hbm.xml</value>
 			<value>com/tutoring/entity/Student.hbm.xml</value>
-			<value>com/tutoring/entity/Friend.hbm.xml</value>
 			<value>com/tutoring/entity/Subject.hbm.xml</value>
 			<value>com/tutoring/entity/Answer.hbm.xml</value>
 			<value>com/tutoring/entity/Course.hbm.xml</value></list>
@@ -59,12 +56,24 @@
 	</bean>
 	
 	
-	
-	
 	<bean id="UserBiz" class="com.tutoring.biz.UserBizImpl">
 		<property name="userDAO" ref="UserDAO"></property>
 		
 	
+	</bean>
+
+	<bean id="QuestionDAO" class="com.tutoring.dao.QuestionDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="SubjectDAO" class="com.tutoring.dao.SubjectDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="TopicBiz" class="com.tutoring.biz.TopicBizImpl">
+		<property name="questionDAO" ref="QuestionDAO"></property>
+		<property name="userDAO" ref="UserDAO"></property>
+		<property name="subjectDAO" ref="SubjectDAO"></property>
 	</bean>
 
 	<bean id="loginAction" class="com.tutoring.action.LoginAction">
@@ -78,14 +87,16 @@
 		<property name="userBiz" ref="UserBiz"></property>
 	</bean>
 	<bean id="launchTopicAction" class="com.tutoring.action.LaunchTopicAction" scope="prototype">
-		
+		<property name="topicBiz" ref="TopicBiz"></property>
 	</bean>
 	
 	<bean id="downloadAction" class="com.tutoring.action.DownloadAction"></bean>
 	
 	<bean id="indexAction" class="com.tutoring.action.IndexAction"></bean>
 	
-	<bean id="allTopicsAction" class="com.tutoring.action.AllTopicsAction"></bean>
+	<bean id="allTopicsAction" class="com.tutoring.action.AllTopicsAction">
+		<property name="topicBiz" ref="TopicBiz"></property>
+	</bean>
 	
 	<bean id="myTopicsAction" class="com.tutoring.action.MyTopicsAction"></bean>
 	
@@ -93,7 +104,9 @@
 	
 	<bean id="chattingAction" class="com.tutoring.action.ChattingAction"></bean>
 	
-	<bean id="topicDetailAction" class="com.tutoring.action.TopicDetailAction"></bean>
+	<bean id="topicDetailAction" class="com.tutoring.action.TopicDetailAction">
+		<property name="topicBiz" ref="TopicBiz"></property>
+	</bean>
 	
 	<bean id="searchAction" class="com.tutoring.action.SearchAction"></bean>
 </beans>

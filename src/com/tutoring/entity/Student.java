@@ -1,81 +1,125 @@
+/**
+ * 
+ */
 package com.tutoring.entity;
 
-import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Id;
+
 /**
- * Student entity. @author MyEclipse Persistence Tools
+ * @author Ssn
+ *
  */
+public class Student  extends AbstractModel {
 
-public class Student implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	// Fields
-
-	private Integer id;
+	@Id
+	private int id;
+	
 	private User user;
-	private Integer grade;
-	private Set applications = new HashSet(0);
-	private Set courses = new HashSet(0);
+	
+	private int grade;
 
-	// Constructors
+	private Set<Course> courses;
+	
+	private Set<Course> applications;
 
-	/** default constructor */
+	/**
+	 * 
+	 */
 	public Student() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * @param user
+	 */
 	public Student(User user) {
 		this.user = user;
 	}
 
-	/** full constructor */
-	public Student(User user, Integer grade, Set applications, Set courses) {
+	/**
+	 * @param user
+	 * @param grade
+	 */
+	public Student(User user, int grade) {
 		this.user = user;
 		this.grade = grade;
-		this.applications = applications;
-		this.courses = courses;
 	}
 
-	// Property accessors
-
-	public Integer getId() {
-		return this.id;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the user
+	 */
 	public User getUser() {
-		return this.user;
+		return user;
 	}
 
+	/**
+	 * @param user the user to set
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public Integer getGrade() {
-		return this.grade;
+	/**
+	 * @return the grade
+	 */
+	public int getGrade() {
+		return grade;
 	}
 
-	public void setGrade(Integer grade) {
+	/**
+	 * @param grade the grade to set
+	 */
+	public void setGrade(int grade) {
 		this.grade = grade;
 	}
 
-	public Set getApplications() {
-		return this.applications;
+	/**
+	 * @return the courses
+	 */
+	public Set<Course> getCourses() {
+		return courses;
 	}
 
-	public void setApplications(Set applications) {
-		this.applications = applications;
-	}
-
-	public Set getCourses() {
-		return this.courses;
-	}
-
-	public void setCourses(Set courses) {
+	/**
+	 * @param courses the courses to set
+	 */
+	public void setCourses(Set<Course> courses) {
 		this.courses = courses;
 	}
 
+	/**
+	 * @return the applications
+	 */
+	public Set<Course> getApplications() {
+		return applications;
+	}
+
+	/**
+	 * @param applications the applications to set
+	 */
+	public void setApplications(Set<Course> applications) {
+		this.applications = applications;
+	}
+
+	
 }

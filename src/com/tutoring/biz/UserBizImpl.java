@@ -43,11 +43,11 @@ public class UserBizImpl implements UserBiz{
 	
 	public void register(String password,String email,String type)
 	{
-		String t =null;
+		char t;
 		if(type.equals("student"))
-			t="1";
+			t='1';
 		else
-			t="2";
+			t='2';
 		userDAO.addUser(email, password,t);
 		
 	}

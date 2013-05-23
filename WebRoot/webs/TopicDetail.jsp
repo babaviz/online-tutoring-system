@@ -1,8 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"  %>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/webs/";
 %>
+<base href="<%=basePath%>">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -43,16 +45,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<img class="media-object" data-src="holder.js/64x64" />
                 </a>
                 <div class="media-body">
-                	<h4 class="media-heading">张三</h4>
+                	<h4 class="media-heading"><s:property value="user.firstName"/></h4>
                 </div>
                
             </div>
         </div>
         <div class="bs-docs-example">
-            <h3>话题：c语言printf用法？</h3>
+            <h3>话题：<s:property value="title"/></h3>
             <div class="row">
                 <div class="span10 offset1">
-                <p class="text-info">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
+                <p class="text-info"><s:property value="content"/></p>
             	<img src="images/headimg/1.png" alt="" />
             	
             	</div>
@@ -62,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<div class="span11">
             		<p class="text-right">
                     <i class="icon-download-alt"></i><a href="DownloadAction?fileName=struts2.txt">20天学会c语言.pdf</a>&nbsp;
-                    <em><strong>2013年5月11日</strong></em>&nbsp;
+                    <em><strong><s:property value="time"/></strong></em>&nbsp;
                     <em><strong>类别：c语言</strong></em>
                     </p>
                 </div>

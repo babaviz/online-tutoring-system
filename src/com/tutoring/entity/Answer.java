@@ -1,94 +1,154 @@
+/**
+ * 
+ */
 package com.tutoring.entity;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
+import javax.persistence.Id;
 
 /**
- * Answer entity. @author MyEclipse Persistence Tools
+ * @author Ssn
+ *
  */
+public class Answer  extends AbstractModel {
 
-public class Answer implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	// Fields
-
-	private Integer id;
+	@Id
+	private int id;
+	
 	private User user;
-	private Question question;
+	
 	private String content;
-	private Timestamp time;
-	private String picSn;
+	
+	private Date time;
+	
+	private String picture;
+	
+	private Question question;
 
-	// Constructors
-
-	/** default constructor */
+	/**
+	 * 
+	 */
 	public Answer() {
 	}
 
-	/** minimal constructor */
-	public Answer(User user, Question question, String content, Timestamp time) {
+	/**
+	 * @param user
+	 * @param content
+	 * @param question
+	 */
+	public Answer(User user, String content, Question question) {
 		this.user = user;
+		this.content = content;
 		this.question = question;
+	}
+
+	/**
+	 * @param user
+	 * @param content
+	 * @param time
+	 * @param picture
+	 * @param question
+	 */
+	public Answer(User user, String content, Date time, String picture,
+			Question question) {
+		this.user = user;
 		this.content = content;
 		this.time = time;
-	}
-
-	/** full constructor */
-	public Answer(User user, Question question, String content, Timestamp time,
-			String picSn) {
-		this.user = user;
+		this.picture = picture;
 		this.question = question;
-		this.content = content;
-		this.time = time;
-		this.picSn = picSn;
 	}
 
-	// Property accessors
-
-	public Integer getId() {
-		return this.id;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the user
+	 */
 	public User getUser() {
-		return this.user;
+		return user;
 	}
 
+	/**
+	 * @param user the user to set
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public Question getQuestion() {
-		return this.question;
-	}
-
-	public void setQuestion(Question question) {
-		this.question = question;
-	}
-
+	/**
+	 * @return the content
+	 */
 	public String getContent() {
-		return this.content;
+		return content;
 	}
 
+	/**
+	 * @param content the content to set
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	public Timestamp getTime() {
-		return this.time;
+	/**
+	 * @return the time
+	 */
+	public Date getTime() {
+		return time;
 	}
 
-	public void setTime(Timestamp time) {
+	/**
+	 * @param time the time to set
+	 */
+	public void setTime(Date time) {
 		this.time = time;
 	}
 
-	public String getPicSn() {
-		return this.picSn;
+	/**
+	 * @return the picture
+	 */
+	public String getPicture() {
+		return picture;
 	}
 
-	public void setPicSn(String picSn) {
-		this.picSn = picSn;
+	/**
+	 * @param picture the picture to set
+	 */
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
+	/**
+	 * @return the question
+	 */
+	public Question getQuestion() {
+		return question;
+	}
+
+	/**
+	 * @param question the question to set
+	 */
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+
+
+	
+	
 }

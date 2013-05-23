@@ -24,7 +24,9 @@
     		<result name="error">/test.jsp</result>
     	</action>
     	<action name="LoginAction" class="loginAction">
-    		<result name="success">/welcome.jsp</result>
+    		<result name="success" type="redirectAction">
+    			AllTopics
+    		</result>
     		<result name="error">/test.jsp</result>
     	</action>
     	<action name="RegisterAction" class="registerAction">

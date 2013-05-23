@@ -1,92 +1,145 @@
+/**
+ * 
+ */
 package com.tutoring.entity;
 
-import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Id;
+
+
 /**
- * Tutor entity. @author MyEclipse Persistence Tools
+ * @author Ssn
+ *
  */
+public class Tutor  extends AbstractModel {
 
-public class Tutor implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	// Fields
+	@Id
+	private int id;
 
-	private Integer id;
-	private User user;
-	private Integer balance;
+	private User user;	
+	
+	private int balance;
+	
 	private String description;
-	private Set specialties = new HashSet(0);
-	private Set courses = new HashSet(0);
+	
+	private Set<Subject> subjects;
+	
+	private Set<Course> courses;
 
-	// Constructors
-
-	/** default constructor */
+	/**
+	 * 
+	 */
 	public Tutor() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * @param user
+	 */
 	public Tutor(User user) {
 		this.user = user;
 	}
 
-	/** full constructor */
-	public Tutor(User user, Integer balance, String description,
-			Set specialties, Set courses) {
+	/**
+	 * @param user
+	 * @param balance
+	 * @param description
+	 */
+	public Tutor(User user, int balance, String description) {
 		this.user = user;
 		this.balance = balance;
 		this.description = description;
-		this.specialties = specialties;
-		this.courses = courses;
 	}
 
-	// Property accessors
-
-	public Integer getId() {
-		return this.id;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the user
+	 */
 	public User getUser() {
-		return this.user;
+		return user;
 	}
 
+	/**
+	 * @param user the user to set
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public Integer getBalance() {
-		return this.balance;
+	/**
+	 * @return the balance
+	 */
+	public int getBalance() {
+		return balance;
 	}
 
-	public void setBalance(Integer balance) {
+	/**
+	 * @param balance the balance to set
+	 */
+	public void setBalance(int balance) {
 		this.balance = balance;
 	}
 
+	/**
+	 * @return the description
+	 */
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
+	/**
+	 * @param description the description to set
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public Set getSpecialties() {
-		return this.specialties;
+	/**
+	 * @return the subjects
+	 */
+	public Set<Subject> getSubjects() {
+		return subjects;
 	}
 
-	public void setSpecialties(Set specialties) {
-		this.specialties = specialties;
+	/**
+	 * @param subjects the subjects to set
+	 */
+	public void setSubjects(Set<Subject> subjects) {
+		this.subjects = subjects;
 	}
 
-	public Set getCourses() {
-		return this.courses;
+	/**
+	 * @return the courses
+	 */
+	public Set<Course> getCourses() {
+		return courses;
 	}
 
-	public void setCourses(Set courses) {
+	/**
+	 * @param courses the courses to set
+	 */
+	public void setCourses(Set<Course> courses) {
 		this.courses = courses;
 	}
 
+
+	
 }

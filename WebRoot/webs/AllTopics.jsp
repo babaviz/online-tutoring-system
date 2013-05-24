@@ -1,8 +1,10 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"  %>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/webs/";
 %>
+<base href="<%=basePath%>">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -26,9 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <ul class="nav">
       <li><a href="#">首页</a></li>
       <li><a href="#">课程管理</a></li>
-      <li><a href="search.jsp">找老师</a></li>
-      <li class="active"><a href="AllTopics.jsp">BBS</a></li>
-      <li><a href="chatting.jsp">聊天</a></li>
+      <li><a href="Search">找老师</a></li>
+      <li class="active"><a href="AllTopics">BBS</a></li>
+      <li><a href="Chatting">聊天</a></li>
       <li><a href="flash/OnlineTutorPlayer.html">上课</a></li>
     </ul>
     </div>
@@ -45,9 +47,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="span3 bs-docs-sidenav dropdown">
       <!--Sidebar content-->
       <ul class="affix bs-docs-sidenav nav nav-list" role="menu" aria-labelledby="dLabel">
-      	<li class="active"><a href="#">帖子全览</a></li>
-        <li><a href="MyTopics.jsp">我的帖子</a></li>
-	    <li><a href="LaunchTopic.jsp">发表帖子</a></li>
+      	<li class="active"><a href="AllTopics">帖子全览</a></li>
+        <li><a href="MyTopics">我的帖子</a></li>
+	    <li><a href="MakeTopic">发表帖子</a></li>
         <li class="dropdown-submenu"><a href="#">分类</a>
         	<ul class="dropdown-menu">
             <li><a href="#">数学</a></li>
@@ -61,14 +63,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <div class="span9">
       <!--Body content-->
-     
+     <s:iterator value="#questions">
      	<div class="topic">
         <div class="well">
-    <p class="text-left text-info"><a href="TopicDetail.jsp">c语言printf用法？</a></p>
+    <p class="text-left text-info"><a href="TopicDetail?topicid=${id}"><s:property value="title"/></a></p>
     
     <div class="row">
     <div class="span9">
-    <p class="text-warning">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
+    <p class="text-warning"><s:property value="content"/></p>
     </div>
     </div>
     
@@ -76,8 +78,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="row">
     <div class="span3">
      <p class="text-success">
-     <em class="text-left">2013年5月11日</em>
-     <em class="text-center">张三</em>
+     <em class="text-left"><s:property value="time"/></em>
+     <em class="text-center"><s:property value="user.firstName"/></em>
      </p>
      </div>
      
@@ -91,253 +93,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       </div>
       </div>
-     
+     </s:iterator>
       
       
-      <div class="topic">
-        <div class="well">
-    <p class="text-left text-info">c语言printf用法？</p>
-    
-    <div class="row">
-    <div class="span9">
-    <p class="text-warning">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
-    </div>
-    </div>
-    
-    
-    <div class="row">
-    <div class="span3">
-     <p class="text-success">
-     <em class="text-left">2013年5月11日</em>
-     <em class="text-center">张三</em>
-     </p>
-     </div>
-     
-     <p class="text-error text-right">
-     <em>评论(8)</em>
-     </p>
-     
-      </div>
-      
-      
-      
-      </div>
-      </div>
-     
-     <div class="topic">
-        <div class="well">
-    <p class="text-left text-info">c语言printf用法？</p>
-    
-    <div class="row">
-    <div class="span9">
-    <p class="text-warning">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
-    </div>
-    </div>
-    
-    
-    <div class="row">
-    <div class="span3">
-     <p class="text-success">
-     <em class="text-left">2013年5月11日</em>
-     <em class="text-center">张三</em>
-     </p>
-     </div>
-     
-     <p class="text-error text-right">
-     <em>评论(8)</em>
-     </p>
-     
-      </div>
-      
-      
-      
-      </div>
-      </div>
-     
-     <div class="topic">
-        <div class="well">
-    <p class="text-left text-info">c语言printf用法？</p>
-    
-    <div class="row">
-    <div class="span9">
-    <p class="text-warning">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
-    </div>
-    </div>
-    
-    
-    <div class="row">
-    <div class="span3">
-     <p class="text-success">
-     <em class="text-left">2013年5月11日</em>
-     <em class="text-center">张三</em>
-     </p>
-     </div>
-     
-     <p class="text-error text-right">
-     <em>评论(8)</em>
-     </p>
-     
-      </div>
-      
-      
-      
-      </div>
-      </div>
-     
-     <div class="topic">
-        <div class="well">
-    <p class="text-left text-info">c语言printf用法？</p>
-    
-    <div class="row">
-    <div class="span9">
-    <p class="text-warning">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
-    </div>
-    </div>
-    
-    
-    <div class="row">
-    <div class="span3">
-     <p class="text-success">
-     <em class="text-left">2013年5月11日</em>
-     <em class="text-center">张三</em>
-     </p>
-     </div>
-     
-     <p class="text-error text-right">
-     <em>评论(8)</em>
-     </p>
-     
-      </div>
-      
-      
-      
-      </div>
-      </div>
-      
-       <div class="topic">
-        <div class="well">
-    <p class="text-left text-info">c语言printf用法？</p>
-    
-    <div class="row">
-    <div class="span9">
-    <p class="text-warning">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
-    </div>
-    </div>
-    
-    
-    <div class="row">
-    <div class="span3">
-     <p class="text-success">
-     <em class="text-left">2013年5月11日</em>
-     <em class="text-center">张三</em>
-     </p>
-     </div>
-     
-     <p class="text-error text-right">
-     <em>评论(8)</em>
-     </p>
-     
-      </div>
-      
-      
-      
-      </div>
-      </div>
-      
-      <div class="topic">
-        <div class="well">
-    <p class="text-left text-info">c语言printf用法？</p>
-    
-    <div class="row">
-    <div class="span9">
-    <p class="text-warning">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
-    </div>
-    </div>
-    
-    
-    <div class="row">
-    <div class="span3">
-     <p class="text-success">
-     <em class="text-left">2013年5月11日</em>
-     <em class="text-center">张三</em>
-     </p>
-     </div>
-     
-     <p class="text-error text-right">
-     <em>评论(8)</em>
-     </p>
-     
-      </div>
-      
-      
-      
-      </div>
-      </div>
-      
-      <div class="topic">
-        <div class="well">
-    <p class="text-left text-info">c语言printf用法？</p>
-    
-    <div class="row">
-    <div class="span9">
-    <p class="text-warning">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
-    </div>
-    </div>
-    
-    
-    <div class="row">
-    <div class="span3">
-     <p class="text-success">
-     <em class="text-left">2013年5月11日</em>
-     <em class="text-center">张三</em>
-     </p>
-     </div>
-     
-     <p class="text-error text-right">
-     <em>评论(8)</em>
-     </p>
-     
-      </div>
-      
-      
-      
-      </div>
-      </div>
-      
-      <div class="topic">
-        <div class="well">
-    <p class="text-left text-info">c语言printf用法？</p>
-    
-    <div class="row">
-    <div class="span9">
-    <p class="text-warning">c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？c语言printf用法？</p>
-    </div>
-    </div>
-    
-    
-    <div class="row">
-    <div class="span3">
-     <p class="text-success">
-     <em class="text-left">2013年5月11日</em>
-     <em class="text-center">张三</em>
-     </p>
-     </div>
-     
-     <p class="text-error text-right">
-     <em>评论(8)</em>
-     </p>
-     
-      </div>
-      
-      
+  
       
       </div>
       </div>
      </div>
     
   </div>
-</div>
-</div>
+
 
 
   <div class="footer" style="margin-top:400px;">

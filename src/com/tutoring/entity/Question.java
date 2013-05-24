@@ -1,150 +1,243 @@
+/**
+ * 
+ */
 package com.tutoring.entity;
 
-import java.sql.Timestamp;
-import java.util.HashSet;
+import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Id;
+
+
 /**
- * Question entity. @author MyEclipse Persistence Tools
+ * @author Ssn
+ *
  */
+public class Question  extends AbstractModel {
 
-public class Question implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	// Fields
-
-	private Integer id;
+	@Id
+	private int id;
+	
 	private User user;
-	private Subject subject;
+	
 	private String title;
+	
 	private String content;
-	private Timestamp time;
-	private Integer view;
-	private String picSn;
-	private String attachmentSn;
-	private Integer reply;
-	private Set answers = new HashSet(0);
+	
+	private Date time;
+	
+	private int view;
+	
+	private int reply;
+	
+	private String picture;
+	
+	private String attachment;
+	
+	private Subject subject;
+	
+	private Set<Answer> answers;
 
-	// Constructors
-
-	/** default constructor */
+	/**
+	 * 
+	 */
 	public Question() {
 	}
 
-	/** minimal constructor */
-	public Question(User user, Subject subject, String title, String content,
-			Timestamp time, Integer view, Integer reply) {
+	/**
+	 * @param user
+	 * @param title
+	 * @param content
+	 * @param subject
+	 */
+	public Question(User user, String title, String content, Subject subject) {
 		this.user = user;
+		this.title = title;
+		this.content = content;
 		this.subject = subject;
+	}
+
+	/**
+	 * @param user
+	 * @param title
+	 * @param content
+	 * @param time
+	 * @param view
+	 * @param reply
+	 * @param picture
+	 * @param attachment
+	 * @param subject
+	 */
+	public Question(User user, String title, String content, Date time,
+			int view, int reply, String picture, String attachment,
+			Subject subject) {
+		this.user = user;
 		this.title = title;
 		this.content = content;
 		this.time = time;
 		this.view = view;
 		this.reply = reply;
-	}
-
-	/** full constructor */
-	public Question(User user, Subject subject, String title, String content,
-			Timestamp time, Integer view, String picSn, String attachmentSn,
-			Integer reply, Set answers) {
-		this.user = user;
+		this.picture = picture;
+		this.attachment = attachment;
 		this.subject = subject;
-		this.title = title;
-		this.content = content;
-		this.time = time;
-		this.view = view;
-		this.picSn = picSn;
-		this.attachmentSn = attachmentSn;
-		this.reply = reply;
-		this.answers = answers;
 	}
 
-	// Property accessors
-
-	public Integer getId() {
-		return this.id;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the user
+	 */
 	public User getUser() {
-		return this.user;
+		return user;
 	}
 
+	/**
+	 * @param user the user to set
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public Subject getSubject() {
-		return this.subject;
-	}
-
-	public void setSubject(Subject subject) {
-		this.subject = subject;
-	}
-
+	/**
+	 * @return the title
+	 */
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
 
+	/**
+	 * @param title the title to set
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	/**
+	 * @return the content
+	 */
 	public String getContent() {
-		return this.content;
+		return content;
 	}
 
+	/**
+	 * @param content the content to set
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	public Timestamp getTime() {
-		return this.time;
+	/**
+	 * @return the time
+	 */
+	public Date getTime() {
+		return time;
 	}
 
-	public void setTime(Timestamp time) {
+	/**
+	 * @param time the time to set
+	 */
+	public void setTime(Date time) {
 		this.time = time;
 	}
 
-	public Integer getView() {
-		return this.view;
+	/**
+	 * @return the view
+	 */
+	public int getView() {
+		return view;
 	}
 
-	public void setView(Integer view) {
+	/**
+	 * @param view the view to set
+	 */
+	public void setView(int view) {
 		this.view = view;
 	}
 
-	public String getPicSn() {
-		return this.picSn;
+	/**
+	 * @return the reply
+	 */
+	public int getReply() {
+		return reply;
 	}
 
-	public void setPicSn(String picSn) {
-		this.picSn = picSn;
-	}
-
-	public String getAttachmentSn() {
-		return this.attachmentSn;
-	}
-
-	public void setAttachmentSn(String attachmentSn) {
-		this.attachmentSn = attachmentSn;
-	}
-
-	public Integer getReply() {
-		return this.reply;
-	}
-
-	public void setReply(Integer reply) {
+	/**
+	 * @param reply the reply to set
+	 */
+	public void setReply(int reply) {
 		this.reply = reply;
 	}
 
-	public Set getAnswers() {
-		return this.answers;
+	/**
+	 * @return the picture
+	 */
+	public String getPicture() {
+		return picture;
 	}
 
-	public void setAnswers(Set answers) {
+	/**
+	 * @param picture the picture to set
+	 */
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	/**
+	 * @return the attachment
+	 */
+	public String getAttachment() {
+		return attachment;
+	}
+
+	/**
+	 * @param attachment the attachment to set
+	 */
+	public void setAttachment(String attachment) {
+		this.attachment = attachment;
+	}
+
+	/**
+	 * @return the subject
+	 */
+	public Subject getSubject() {
+		return subject;
+	}
+
+	/**
+	 * @param subject the subject to set
+	 */
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
+
+	/**
+	 * @return the answers
+	 */
+	public Set<Answer> getAnswers() {
+		return answers;
+	}
+
+	/**
+	 * @param answers the answers to set
+	 */
+	public void setAnswers(Set<Answer> answers) {
 		this.answers = answers;
 	}
 

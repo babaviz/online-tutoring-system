@@ -1,76 +1,133 @@
+/**
+ * 
+ */
 package com.tutoring.entity;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
+import javax.persistence.Id;
 
 /**
- * Notification entity. @author MyEclipse Persistence Tools
+ * @author Ssn
+ *
  */
+public class Notification  extends AbstractModel {
 
-public class Notification implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	// Fields
-
-	private Integer id;
+	@Id
+	private int id;
+	
+	private int notification_id;
+	
+	private Date time;
+	
+	private int type;
+	
 	private User user;
-	private Integer notificationId;
-	private Integer type;
-	private Timestamp time;
 
-	// Constructors
-
-	/** default constructor */
+	/**
+	 * 
+	 */
 	public Notification() {
 	}
 
-	/** full constructor */
-	public Notification(User user, Integer notificationId, Integer type,
-			Timestamp time) {
-		this.user = user;
-		this.notificationId = notificationId;
+	/**
+	 * @param notification_id
+	 * @param type
+	 * @param user
+	 */
+	public Notification(int notification_id, int type, User user) {
+		this.notification_id = notification_id;
 		this.type = type;
+		this.user = user;
+	}
+
+	/**
+	 * @param notification_id
+	 * @param time
+	 * @param type
+	 * @param user
+	 */
+	public Notification(int notification_id, Date time, int type, User user) {
+		this.notification_id = notification_id;
 		this.time = time;
+		this.type = type;
+		this.user = user;
 	}
 
-	// Property accessors
-
-	public Integer getId() {
-		return this.id;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return this.user;
+	/**
+	 * @return the notification_id
+	 */
+	public int getNotification_id() {
+		return notification_id;
 	}
 
+	/**
+	 * @param notification_id the notification_id to set
+	 */
+	public void setNotification_id(int notification_id) {
+		this.notification_id = notification_id;
+	}
+
+	/**
+	 * @return the time
+	 */
+	public Date getTime() {
+		return time;
+	}
+
+	/**
+	 * @param time the time to set
+	 */
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public int getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public Integer getNotificationId() {
-		return this.notificationId;
-	}
-
-	public void setNotificationId(Integer notificationId) {
-		this.notificationId = notificationId;
-	}
-
-	public Integer getType() {
-		return this.type;
-	}
-
-	public void setType(Integer type) {
-		this.type = type;
-	}
-
-	public Timestamp getTime() {
-		return this.time;
-	}
-
-	public void setTime(Timestamp time) {
-		this.time = time;
-	}
-
+	
 }

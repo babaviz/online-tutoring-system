@@ -1,260 +1,421 @@
 package com.tutoring.entity;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
-/**
- * User entity. @author MyEclipse Persistence Tools
- */
+import javax.persistence.Id;
 
-public class User implements java.io.Serializable {
+public class User  extends AbstractModel {
 
-	// Fields
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	private Integer id;
+	@Id
+	private int id;
+	
 	private String firstName;
+	
 	private String lastName;
+	
 	private String email;
+	
 	private String password;
+	
 	private String phone;
+	
 	private Date birthday;
-	private String cardNum;
-	private String type;
+	
+	private String cardNumber;
+	
+	private char type;
+	
 	private Integer point;
-	private String headPicSn;
+	
+	private String picture;
+	
 	private String school;
-	private String cookieSn;
-	private Set answers = new HashSet(0);
-	private Set friendsForIdB = new HashSet(0);
-	private Set messagesForSenderId = new HashSet(0);
-	private Set messagesForReceiverId = new HashSet(0);
-	private Set notifications = new HashSet(0);
-	private Set questions = new HashSet(0);
-	private Set tutors = new HashSet(0);
-	private Set students = new HashSet(0);
-	private Set friendsForIdA = new HashSet(0);
+	
+	private String cookie;
+	
+	private Tutor tutor;
+	
+	private Student student;
 
-	// Constructors
+	private Set<User> friendsHaveMe;
+	
+	private Set<User> friendsIHave;
+	
+	private Set<Message> sends;
+	
+	private Set<Message> receives;
 
-	/** default constructor */
+	private Set<Question> questions;
+
+	private Set<Answer> answers;
+	
+	private Set<Notification> notifications;
+
+	/**
+	 * 
+	 */
 	public User() {
 	}
 
-	/** minimal constructor */
-	public User(String email, String password, String type) {
+	/**
+	 * @param email
+	 * @param password
+	 * @param type
+	 */
+	public User(String email, String password, char type) {
 		this.email = email;
 		this.password = password;
 		this.type = type;
 	}
 
-	/** full constructor */
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param password
+	 * @param phone
+	 * @param birthday
+	 * @param cardNumber
+	 * @param type
+	 * @param point
+	 * @param picture
+	 * @param school
+	 * @param cookie
+	 */
 	public User(String firstName, String lastName, String email,
-			String password, String phone, Date birthday, String cardNum,
-			String type, Integer point, String headPicSn, String school,
-			String cookieSn, Set answers, Set friendsForIdB,
-			Set messagesForSenderId, Set messagesForReceiverId,
-			Set notifications, Set questions, Set tutors, Set students,
-			Set friendsForIdA) {
+			String password, String phone, Date birthday, String cardNumber,
+			char type, Integer point, String picture, String school, String cookie) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
 		this.birthday = birthday;
-		this.cardNum = cardNum;
+		this.cardNumber = cardNumber;
 		this.type = type;
 		this.point = point;
-		this.headPicSn = headPicSn;
+		this.picture = picture;
 		this.school = school;
-		this.cookieSn = cookieSn;
-		this.answers = answers;
-		this.friendsForIdB = friendsForIdB;
-		this.messagesForSenderId = messagesForSenderId;
-		this.messagesForReceiverId = messagesForReceiverId;
-		this.notifications = notifications;
-		this.questions = questions;
-		this.tutors = tutors;
-		this.students = students;
-		this.friendsForIdA = friendsForIdA;
+		this.cookie = cookie;
 	}
 
-	// Property accessors
-
-	public Integer getId() {
-		return this.id;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the firstName
+	 */
 	public String getFirstName() {
-		return this.firstName;
+		return firstName;
 	}
 
+	/**
+	 * @param firstName the firstName to set
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+	/**
+	 * @return the lastName
+	 */
 	public String getLastName() {
-		return this.lastName;
+		return lastName;
 	}
 
+	/**
+	 * @param lastName the lastName to set
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+	/**
+	 * @return the email
+	 */
 	public String getEmail() {
-		return this.email;
+		return email;
 	}
 
+	/**
+	 * @param email the email to set
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * @return the password
+	 */
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
+	/**
+	 * @param password the password to set
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * @return the phone
+	 */
 	public String getPhone() {
-		return this.phone;
+		return phone;
 	}
 
+	/**
+	 * @param phone the phone to set
+	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
+	/**
+	 * @return the birthday
+	 */
 	public Date getBirthday() {
-		return this.birthday;
+		return birthday;
 	}
 
+	/**
+	 * @param birthday the birthday to set
+	 */
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 
-	public String getCardNum() {
-		return this.cardNum;
+	/**
+	 * @return the cardNumber
+	 */
+	public String getCardNumber() {
+		return cardNumber;
 	}
 
-	public void setCardNum(String cardNum) {
-		this.cardNum = cardNum;
+	/**
+	 * @param cardNumber the cardNumber to set
+	 */
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 
-	public String getType() {
-		return this.type;
+	/**
+	 * @return the type
+	 */
+	public char getType() {
+		return type;
 	}
 
-	public void setType(String type) {
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(char type) {
 		this.type = type;
 	}
 
+	/**
+	 * @return the point
+	 */
 	public Integer getPoint() {
-		return this.point;
+		return point;
 	}
 
+	/**
+	 * @param point the point to set
+	 */
 	public void setPoint(Integer point) {
 		this.point = point;
 	}
 
-	public String getHeadPicSn() {
-		return this.headPicSn;
+	/**
+	 * @return the picture
+	 */
+	public String getPicture() {
+		return picture;
 	}
 
-	public void setHeadPicSn(String headPicSn) {
-		this.headPicSn = headPicSn;
+	/**
+	 * @param picture the picture to set
+	 */
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
+	/**
+	 * @return the school
+	 */
 	public String getSchool() {
-		return this.school;
+		return school;
 	}
 
+	/**
+	 * @param school the school to set
+	 */
 	public void setSchool(String school) {
 		this.school = school;
 	}
 
-	public String getCookieSn() {
-		return this.cookieSn;
+	/**
+	 * @return the cookie
+	 */
+	public String getCookie() {
+		return cookie;
 	}
 
-	public void setCookieSn(String cookieSn) {
-		this.cookieSn = cookieSn;
+	/**
+	 * @param cookie the cookie to set
+	 */
+	public void setCookie(String cookie) {
+		this.cookie = cookie;
 	}
 
-	public Set getAnswers() {
-		return this.answers;
+
+
+	/**
+	 * @return the tutor
+	 */
+	public Tutor getTutor() {
+		return tutor;
 	}
 
-	public void setAnswers(Set answers) {
-		this.answers = answers;
+	/**
+	 * @param tutor the tutor to set
+	 */
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
 	}
 
-	public Set getFriendsForIdB() {
-		return this.friendsForIdB;
+	/**
+	 * @return the student
+	 */
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setFriendsForIdB(Set friendsForIdB) {
-		this.friendsForIdB = friendsForIdB;
+	/**
+	 * @param student the student to set
+	 */
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
-	public Set getMessagesForSenderId() {
-		return this.messagesForSenderId;
+	/**
+	 * @return the friendsHaveMe
+	 */
+	public Set<User> getFriendsHaveMe() {
+		return friendsHaveMe;
 	}
 
-	public void setMessagesForSenderId(Set messagesForSenderId) {
-		this.messagesForSenderId = messagesForSenderId;
+	/**
+	 * @param friendsHaveMe the friendsHaveMe to set
+	 */
+	public void setFriendsHaveMe(Set<User> friendsHaveMe) {
+		this.friendsHaveMe = friendsHaveMe;
 	}
 
-	public Set getMessagesForReceiverId() {
-		return this.messagesForReceiverId;
+	/**
+	 * @return the friendsIHave
+	 */
+	public Set<User> getFriendsIHave() {
+		return friendsIHave;
 	}
 
-	public void setMessagesForReceiverId(Set messagesForReceiverId) {
-		this.messagesForReceiverId = messagesForReceiverId;
+	/**
+	 * @param friendsIHave the friendsIHave to set
+	 */
+	public void setFriendsIHave(Set<User> friendsIHave) {
+		this.friendsIHave = friendsIHave;
 	}
 
-	public Set getNotifications() {
-		return this.notifications;
+	/**
+	 * @return the sends
+	 */
+	public Set<Message> getSends() {
+		return sends;
 	}
 
-	public void setNotifications(Set notifications) {
-		this.notifications = notifications;
+	/**
+	 * @param sends the sends to set
+	 */
+	public void setSends(Set<Message> sends) {
+		this.sends = sends;
 	}
 
-	public Set getQuestions() {
-		return this.questions;
+	/**
+	 * @return the receives
+	 */
+	public Set<Message> getReceives() {
+		return receives;
 	}
 
-	public void setQuestions(Set questions) {
+	/**
+	 * @param receives the receives to set
+	 */
+	public void setReceives(Set<Message> receives) {
+		this.receives = receives;
+	}
+
+	/**
+	 * @return the questions
+	 */
+	public Set<Question> getQuestions() {
+		return questions;
+	}
+
+	/**
+	 * @param questions the questions to set
+	 */
+	public void setQuestions(Set<Question> questions) {
 		this.questions = questions;
 	}
 
-	public Set getTutors() {
-		return this.tutors;
+	/**
+	 * @return the answers
+	 */
+	public Set<Answer> getAnswers() {
+		return answers;
 	}
 
-	public void setTutors(Set tutors) {
-		this.tutors = tutors;
+	/**
+	 * @param answers the answers to set
+	 */
+	public void setAnswers(Set<Answer> answers) {
+		this.answers = answers;
 	}
 
-	public Set getStudents() {
-		return this.students;
+	/**
+	 * @return the notifications
+	 */
+	public Set<Notification> getNotifications() {
+		return notifications;
 	}
 
-	public void setStudents(Set students) {
-		this.students = students;
+	/**
+	 * @param notifications the notifications to set
+	 */
+	public void setNotifications(Set<Notification> notifications) {
+		this.notifications = notifications;
 	}
 
-	public Set getFriendsForIdA() {
-		return this.friendsForIdA;
-	}
-
-	public void setFriendsForIdA(Set friendsForIdA) {
-		this.friendsForIdA = friendsForIdA;
-	}
-
+	
+	
+	
 }

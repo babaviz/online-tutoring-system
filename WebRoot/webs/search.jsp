@@ -1,8 +1,9 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/webs/";
 %>
+<base href="<%=basePath%>">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -27,9 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <ul class="nav">
         <li><a href="#">首页</a></li>
         <li><a href="#">课程管理</a></li>
-        <li  class="active"><a href="search.jsp">找老师</a></li>
-      	<li><a href="AllTopics.jsp">BBS</a></li>
-      	<li><a href="chatting.html">聊天</a></li>
+        <li  class="active"><a href="Search">找老师</a></li>
+      	<li><a href="AllTopics">BBS</a></li>
+      	<li><a href="Chatting">聊天</a></li>
       	<li><a href="flash/OnlineTutorPlayer.html">上课</a></li>
       </ul>
     </div>

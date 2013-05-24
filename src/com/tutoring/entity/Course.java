@@ -1,234 +1,398 @@
+/**
+ * 
+ */
 package com.tutoring.entity;
 
-import java.sql.Timestamp;
-import java.util.HashSet;
+import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Id;
+
+
 /**
- * Course entity. @author MyEclipse Persistence Tools
+ * @author Ssn
+ *
  */
+public class Course  extends AbstractModel {
 
-public class Course implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	// Fields
-
-	private Integer id;
-	private Tutor tutor;
-	private Student student;
-	private Subject subject;
-	private Timestamp startTime;
-	private Timestamp endTime;
-	private Integer duration;
-	private Integer price;
+	@Id
+	private int id;
+	
+	private Date startTime;
+	
+	private Date endTime;
+	
+	private int duration;
+	
+	private int price;
+	
 	private String name;
+	
 	private String description;
-	private Integer evalByTutorA;
-	private Integer evalByTutorB;
-	private Integer evalByTutorC;
-	private Integer evalByStuA;
-	private Integer evalByStuB;
-	private Integer evalByStuC;
+	
+	//evaluation by tutor
+	private int ebta;
+	
+	private int ebtb;
+	
+	private int ebtc;
+	
+	//evaluation by student
+	private int ebsa;
+	
+	private int ebsb;
+	
+	private int ebsc;
+	
 	private String evaluation;
-	private Set applications = new HashSet(0);
+	
+	private Student student;
+	
+	private Tutor tutor;
+	
+	private Subject subject;
+	
+	private Set<Student> applications;
 
-	// Constructors
-
-	/** default constructor */
+	/**
+	 * 
+	 */
 	public Course() {
 	}
 
-	/** minimal constructor */
-	public Course(Tutor tutor, Subject subject, Timestamp startTime,
-			Timestamp endTime, Integer duration, Integer price, String name,
-			String description, Integer evalByTutorA, Integer evalByTutorB,
-			Integer evalByTutorC, Integer evalByStuA, Integer evalByStuB,
-			Integer evalByStuC) {
-		this.tutor = tutor;
-		this.subject = subject;
+	/**
+	 * @param startTime
+	 * @param endTime
+	 * @param duration
+	 * @param tutor
+	 * @param price
+	 * @param name
+	 * @param description
+	 * @param subject
+	 * @param ebta
+	 * @param ebtb
+	 * @param ebtc
+	 * @param ebsa
+	 * @param ebsb
+	 * @param ebsc
+	 */
+	public Course(Date startTime, Date endTime, int duration, Tutor tutor,
+			int price, String name, String description, Subject subject,
+			int ebta, int ebtb, int ebtc, int ebsa, int ebsb, int ebsc) {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.duration = duration;
+		this.tutor = tutor;
 		this.price = price;
 		this.name = name;
 		this.description = description;
-		this.evalByTutorA = evalByTutorA;
-		this.evalByTutorB = evalByTutorB;
-		this.evalByTutorC = evalByTutorC;
-		this.evalByStuA = evalByStuA;
-		this.evalByStuB = evalByStuB;
-		this.evalByStuC = evalByStuC;
+		this.subject = subject;
+		this.ebta = ebta;
+		this.ebtb = ebtb;
+		this.ebtc = ebtc;
+		this.ebsa = ebsa;
+		this.ebsb = ebsb;
+		this.ebsc = ebsc;
 	}
 
-	/** full constructor */
-	public Course(Tutor tutor, Student student, Subject subject,
-			Timestamp startTime, Timestamp endTime, Integer duration,
-			Integer price, String name, String description,
-			Integer evalByTutorA, Integer evalByTutorB, Integer evalByTutorC,
-			Integer evalByStuA, Integer evalByStuB, Integer evalByStuC,
-			String evaluation, Set applications) {
-		this.tutor = tutor;
+	/**
+	 * @param startTime
+	 * @param endTime
+	 * @param duration
+	 * @param student
+	 * @param tutor
+	 * @param price
+	 * @param name
+	 * @param description
+	 * @param subject
+	 * @param ebta
+	 * @param ebtb
+	 * @param ebtc
+	 * @param ebsa
+	 * @param ebsb
+	 * @param ebsc
+	 * @param evaluation
+	 */
+	public Course(Date startTime, Date endTime, int duration, Student student,
+			Tutor tutor, int price, String name, String description,
+			Subject subject, int ebta, int ebtb, int ebtc, int ebsa, int ebsb,
+			int ebsc, String evaluation) {
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.duration = duration;
 		this.student = student;
-		this.subject = subject;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.duration = duration;
+		this.tutor = tutor;
 		this.price = price;
 		this.name = name;
 		this.description = description;
-		this.evalByTutorA = evalByTutorA;
-		this.evalByTutorB = evalByTutorB;
-		this.evalByTutorC = evalByTutorC;
-		this.evalByStuA = evalByStuA;
-		this.evalByStuB = evalByStuB;
-		this.evalByStuC = evalByStuC;
+		this.subject = subject;
+		this.ebta = ebta;
+		this.ebtb = ebtb;
+		this.ebtc = ebtc;
+		this.ebsa = ebsa;
+		this.ebsb = ebsb;
+		this.ebsc = ebsc;
 		this.evaluation = evaluation;
-		this.applications = applications;
 	}
 
-	// Property accessors
-
-	public Integer getId() {
-		return this.id;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Tutor getTutor() {
-		return this.tutor;
+	/**
+	 * @return the startTime
+	 */
+	public Date getStartTime() {
+		return startTime;
 	}
 
-	public void setTutor(Tutor tutor) {
-		this.tutor = tutor;
+	/**
+	 * @param startTime the startTime to set
+	 */
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
 
+	/**
+	 * @return the endTime
+	 */
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	/**
+	 * @param endTime the endTime to set
+	 */
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	/**
+	 * @return the duration
+	 */
+	public int getDuration() {
+		return duration;
+	}
+
+	/**
+	 * @param duration the duration to set
+	 */
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	/**
+	 * @return the student
+	 */
 	public Student getStudent() {
-		return this.student;
+		return student;
 	}
 
+	/**
+	 * @param student the student to set
+	 */
 	public void setStudent(Student student) {
 		this.student = student;
 	}
 
-	public Subject getSubject() {
-		return this.subject;
+	/**
+	 * @return the tutor
+	 */
+	public Tutor getTutor() {
+		return tutor;
 	}
 
-	public void setSubject(Subject subject) {
-		this.subject = subject;
+	/**
+	 * @param tutor the tutor to set
+	 */
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
 	}
 
-	public Timestamp getStartTime() {
-		return this.startTime;
+	/**
+	 * @return the price
+	 */
+	public int getPrice() {
+		return price;
 	}
 
-	public void setStartTime(Timestamp startTime) {
-		this.startTime = startTime;
-	}
-
-	public Timestamp getEndTime() {
-		return this.endTime;
-	}
-
-	public void setEndTime(Timestamp endTime) {
-		this.endTime = endTime;
-	}
-
-	public Integer getDuration() {
-		return this.duration;
-	}
-
-	public void setDuration(Integer duration) {
-		this.duration = duration;
-	}
-
-	public Integer getPrice() {
-		return this.price;
-	}
-
-	public void setPrice(Integer price) {
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
+	/**
+	 * @return the name
+	 */
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
+	/**
+	 * @param name the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return the description
+	 */
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
+	/**
+	 * @param description the description to set
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public Integer getEvalByTutorA() {
-		return this.evalByTutorA;
+	/**
+	 * @return the subject
+	 */
+	public Subject getSubject() {
+		return subject;
 	}
 
-	public void setEvalByTutorA(Integer evalByTutorA) {
-		this.evalByTutorA = evalByTutorA;
+	/**
+	 * @param subject the subject to set
+	 */
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 
-	public Integer getEvalByTutorB() {
-		return this.evalByTutorB;
+	/**
+	 * @return the ebta
+	 */
+	public int getEbta() {
+		return ebta;
 	}
 
-	public void setEvalByTutorB(Integer evalByTutorB) {
-		this.evalByTutorB = evalByTutorB;
+	/**
+	 * @param ebta the ebta to set
+	 */
+	public void setEbta(int ebta) {
+		this.ebta = ebta;
 	}
 
-	public Integer getEvalByTutorC() {
-		return this.evalByTutorC;
+	/**
+	 * @return the ebtb
+	 */
+	public int getEbtb() {
+		return ebtb;
 	}
 
-	public void setEvalByTutorC(Integer evalByTutorC) {
-		this.evalByTutorC = evalByTutorC;
+	/**
+	 * @param ebtb the ebtb to set
+	 */
+	public void setEbtb(int ebtb) {
+		this.ebtb = ebtb;
 	}
 
-	public Integer getEvalByStuA() {
-		return this.evalByStuA;
+	/**
+	 * @return the ebtc
+	 */
+	public int getEbtc() {
+		return ebtc;
 	}
 
-	public void setEvalByStuA(Integer evalByStuA) {
-		this.evalByStuA = evalByStuA;
+	/**
+	 * @param ebtc the ebtc to set
+	 */
+	public void setEbtc(int ebtc) {
+		this.ebtc = ebtc;
 	}
 
-	public Integer getEvalByStuB() {
-		return this.evalByStuB;
+	/**
+	 * @return the ebsa
+	 */
+	public int getEbsa() {
+		return ebsa;
 	}
 
-	public void setEvalByStuB(Integer evalByStuB) {
-		this.evalByStuB = evalByStuB;
+	/**
+	 * @param ebsa the ebsa to set
+	 */
+	public void setEbsa(int ebsa) {
+		this.ebsa = ebsa;
 	}
 
-	public Integer getEvalByStuC() {
-		return this.evalByStuC;
+	/**
+	 * @return the ebsb
+	 */
+	public int getEbsb() {
+		return ebsb;
 	}
 
-	public void setEvalByStuC(Integer evalByStuC) {
-		this.evalByStuC = evalByStuC;
+	/**
+	 * @param ebsb the ebsb to set
+	 */
+	public void setEbsb(int ebsb) {
+		this.ebsb = ebsb;
 	}
 
+	/**
+	 * @return the ebsc
+	 */
+	public int getEbsc() {
+		return ebsc;
+	}
+
+	/**
+	 * @param ebsc the ebsc to set
+	 */
+	public void setEbsc(int ebsc) {
+		this.ebsc = ebsc;
+	}
+
+	/**
+	 * @return the evaluation
+	 */
 	public String getEvaluation() {
-		return this.evaluation;
+		return evaluation;
 	}
 
+	/**
+	 * @param evaluation the evaluation to set
+	 */
 	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
 	}
 
-	public Set getApplications() {
-		return this.applications;
+	/**
+	 * @return the applications
+	 */
+	public Set<Student> getApplications() {
+		return applications;
 	}
 
-	public void setApplications(Set applications) {
+	/**
+	 * @param applications the applications to set
+	 */
+	public void setApplications(Set<Student> applications) {
 		this.applications = applications;
 	}
 
+
+
+	
 }

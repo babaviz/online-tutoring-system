@@ -60,6 +60,7 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`question` (
   `attachment_sn` VARCHAR(10) NULL ,
   `subject_id` INT NOT NULL ,
   `reply` INT NOT NULL DEFAULT 0 ,
+  `attach_name` VARCHAR(300) NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `picSn_UNIQUE` (`pic_sn` ASC) ,
   UNIQUE INDEX `attachmentSn_UNIQUE` (`attachment_sn` ASC) ,
@@ -89,13 +90,12 @@ CREATE  TABLE IF NOT EXISTS `onlinetutoring`.`answer` (
   `user_id` INT NOT NULL ,
   `content` VARCHAR(1000) NOT NULL ,
   `time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `question_id` INT NOT NULL ,
+  `question_id` INT NULL ,
   `pic_sn` VARCHAR(10) NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `questionId_idx` (`question_id` ASC) ,
   INDEX `authorId_idx` (`user_id` ASC) ,
-  UNIQUE INDEX `question_id_UNIQUE` (`question_id` ASC) ,
   CONSTRAINT `fk_ans_per_id`
     FOREIGN KEY (`user_id` )
     REFERENCES `onlinetutoring`.`user` (`id` )

@@ -62,4 +62,43 @@ function customizedFunc()
 	//alert("here is executed on loading");
 	$selectedCategory=$("#course_list div:eq(0)");
 	$tabNO=5;
+	$advancedSearchPointer=0;
+}
+
+function showAdvancedSearch()
+{
+	if($advancedSearchPointer==0)
+	{
+		$("#adv_search_bar").addClass("active_bar");
+		$("#adv_search_content").fadeIn(800,null_function(),showAdvancedSearch_callback());
+		$("#adv_search_bar img:eq(0)").fadeOut();
+		$("#adv_search_bar img:eq(1)").fadeIn();
+		
+	}
+	else
+	{
+		$("#adv_search_bar").removeClass("active_bar");
+		$("#adv_search_bar img:eq(1)").fadeOut(800);
+		$("#adv_search_bar img:eq(0)").fadeIn(800);
+		$("#adv_search_content").fadeOut(800,null_function(),showAdvancedSearch_callback());
+		
+	}
+}
+
+function showAdvancedSearch_callback()
+{
+	if($advancedSearchPointer==0)
+	{
+		$("html,body").animate({scrollTop:$("#adv_search_bar").offset().top-50},1000);
+		$advancedSearchPointer=1;
+	}
+	else
+	{
+		$("html,body").animate({scrollTop:$("#myTab").offset().top-50},1000);
+		$advancedSearchPointer=0;
+	}
+}
+
+function null_function()
+{
 }

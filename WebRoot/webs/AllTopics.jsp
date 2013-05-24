@@ -4,15 +4,16 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/webs/";
 %>
-<base href="<%=basePath%>">
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<base href="<%=basePath%>">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+
 <link href="css/topic.css" rel="stylesheet" type="text/css"/>
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
 
@@ -69,8 +70,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <p class="text-left text-info"><a href="TopicDetail?topicid=${id}"><s:property value="title"/></a></p>
     
     <div class="row">
-    <div class="span9">
-    <p class="text-warning"><s:property value="content"/></p>
+    <div style="padding-right:10px;padding-left:30px;">
+    <p class="text-warning" style="word-wrap:break-word"><s:property value="content"/></p>
     </div>
     </div>
     
@@ -78,13 +79,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="row">
     <div class="span3">
      <p class="text-success">
-     <em class="text-left"><s:property value="time"/></em>
+     <em class="text-left"><s:date name="time" format="dd/MM/yyyy"/></em>
      <em class="text-center"><s:property value="user.firstName"/></em>
      </p>
      </div>
      
      <p class="text-error text-right">
-     <em>评论(8)</em>
+     <em><a href="TopicDetail?topicid=${id}#comments">评论(<s:property value="answers.size"/>)</a></em>
      </p>
      
       </div>

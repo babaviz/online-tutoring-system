@@ -25,10 +25,10 @@ public class AllTopicsAction extends ActionSupport{
 		List<?> qlist = topicBiz.getQuestions(useremail);
 		
 		
-		System.out.println(qlist.size());
+		//System.out.println(qlist.size());
 		
 		ac.put("questions", qlist);
-		
+		//topicBiz.makeComment("panyan@gmail.com", "hello", 2);
 		return SUCCESS;
 	}
 

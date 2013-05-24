@@ -1,5 +1,6 @@
 package com.tutoring.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.sql.Timestamp;
@@ -25,7 +26,7 @@ public class QuestionDAOImpl extends HibernateDaoSupport implements QuestionDAO{
 		question.setTime(date);
 		question.setView(0);
 		question.setReply(0);
-		this.getHibernateTemplate().save(question);
+		this.getHibernateTemplate().merge(question);
 	}
 
 	@Override
@@ -39,6 +40,14 @@ public class QuestionDAOImpl extends HibernateDaoSupport implements QuestionDAO{
 		}
 		else
 			return null;
+	}
+
+	@Override
+	public List<Question> getQuestionsByUser(User u) {
+		// TODO Auto-generated method stub
+		List<Question> qlist = new ArrayList<Question>();
+		qlist.addAll(u.getQuestions());
+		return qlist;
 	}
 
 }

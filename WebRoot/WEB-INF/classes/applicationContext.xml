@@ -70,10 +70,15 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<bean id="AnswerDAO" class="com.tutoring.dao.AnswerDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	<bean id="TopicBiz" class="com.tutoring.biz.TopicBizImpl">
 		<property name="questionDAO" ref="QuestionDAO"></property>
 		<property name="userDAO" ref="UserDAO"></property>
 		<property name="subjectDAO" ref="SubjectDAO"></property>
+		<property name="answerDAO" ref="AnswerDAO"></property>
 	</bean>
 
 	<bean id="loginAction" class="com.tutoring.action.LoginAction">
@@ -90,6 +95,10 @@
 		<property name="topicBiz" ref="TopicBiz"></property>
 	</bean>
 	
+	<bean id="makeCommentAction" class="com.tutoring.action.MakeCommentAction" scope="prototype">
+		<property name="topicBiz" ref="TopicBiz"></property>
+	</bean>
+	
 	<bean id="downloadAction" class="com.tutoring.action.DownloadAction"></bean>
 	
 	<bean id="indexAction" class="com.tutoring.action.IndexAction"></bean>
@@ -98,7 +107,9 @@
 		<property name="topicBiz" ref="TopicBiz"></property>
 	</bean>
 	
-	<bean id="myTopicsAction" class="com.tutoring.action.MyTopicsAction"></bean>
+	<bean id="myTopicsAction" class="com.tutoring.action.MyTopicsAction">
+		<property name="topicBiz" ref="TopicBiz"></property>
+	</bean>
 	
 	<bean id="makeTopicAction" class="com.tutoring.action.MakeTopicAction"></bean>
 	

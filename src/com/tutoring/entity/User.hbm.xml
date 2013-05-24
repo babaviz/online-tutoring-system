@@ -42,7 +42,7 @@
 			<key column="receiver_id"></key>
 			<one-to-many class="com.tutoring.entity.Message"/>
 		</set>
-		<set name="questions" cascade="all-delete-orphan" inverse="true" lazy="true">
+		<set name="questions" cascade="all-delete-orphan" inverse="true" lazy="false">
 			<key column="user_id"></key>
 			<one-to-many class="com.tutoring.entity.Question"/>
 		</set>

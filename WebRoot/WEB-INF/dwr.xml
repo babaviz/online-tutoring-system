@@ -13,5 +13,8 @@
     <create creator="spring" javascript="registeraction">
       <param name="beanName" value="registerAction"/>
     </create>
+    <create creator="spring" javascript="makecommentaction">
+      <param name="beanName" value="makeCommentAction"/>
+    </create>
   </allow>
 </dwr>

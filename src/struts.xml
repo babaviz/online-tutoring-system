@@ -52,6 +52,9 @@
     		
     	</action>
     	
+    	<action name="MakeCommentAction" class="makeCommentAction">
+    	</action>
+    	
     	<action name="AllTopics" class="allTopicsAction">
     		<result name="success">/webs/AllTopics.jsp</result>
     	</action>

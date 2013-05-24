@@ -23,19 +23,6 @@ public abstract class AbstractModel implements Serializable {
 	    }
 
 	    
-//	    public void save() {
-//	        ICommonService commonService = SpringContextUtil.getBean("CommonService");
-//	        commonService.save(this);
-//	    }
-//	    
-//	    public void delete() {
-//	        ICommonService commonService = SpringContextUtil.getBean("CommonService");
-//	        commonService.deleteObject(this);
-//	    }
-//	    
-//	    public void update() {
-//	        ICommonService commonService = SpringContextUtil.getBean("CommonService");
-//	        commonService.update(this);
-//	    }
+
 	}
 

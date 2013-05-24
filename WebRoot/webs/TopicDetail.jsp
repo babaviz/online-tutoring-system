@@ -4,15 +4,16 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/webs/";
 %>
-<base href="<%=basePath%>">
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<base href="<%=basePath%>">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+
 <link href="css/topic.css" rel="stylesheet" type="text/css"/>
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
 
@@ -54,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h3>话题：<s:property value="title"/></h3>
             <div class="row">
                 <div class="span10 offset1">
-                <p class="text-info"><s:property value="content"/></p>
+                <p class="text-info" style="word-wrap:break-word"><s:property value="content"/></p>
             	<img src="images/headimg/1.png" alt="" />
             	
             	</div>
@@ -64,23 +65,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<div class="span11">
             		<p class="text-right">
                     <i class="icon-download-alt"></i><a href="DownloadAction?fileName=struts2.txt">20天学会c语言.pdf</a>&nbsp;
-                    <em><strong><s:property value="time"/></strong></em>&nbsp;
-                    <em><strong>类别：c语言</strong></em>
+                    <em><strong><s:date name="time" format="dd/MM/yyyy"/></strong></em>&nbsp;
+                    <em><strong>类别：
+                    	<s:property value="subject.name"/>
+                    </strong></em>
                     </p>
                 </div>
             </div>
         </div>
     </section>	
-    <section>
+    <section id="comments">
     	<div class="page-header">
         	<h5>评论区</h5>
         </div>
         <textarea rows="4" style="width:100%;" placeholder="说点什么......" id="replybox"></textarea>
-        <p align="right"><button type="submit" class="btn">我要评论</button></p>
+        <p align="right"><button type="button" class="btn" onclick="makeComment('${topicid}')">我要评论</button></p>
+        
+        
         
         <table class="table">
-        
         <tbody>
+        <s:iterator value="#answers">
         <tr>
         <td>
         <div class="media">
@@ -88,84 +93,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<img class="media-object" data-src="holder.js/64x64" />
             </a>
             <div class="media-body">
-            	<h6>李四</h6>
-                <p class="text-info">这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，</p>
+            	<h6><s:property value="user.firstName"/></h6>
+                <p class="text-info"><s:property value="content"/></p>
             </div>
             <p align="right">
-            <em>2013年5月12日</em>
-            <button class="btn btn-link" onclick="focusReplyBox('李四')">回复</button>
+            <em><s:date name="time" format="dd/MM/yyyy"/></em>
+            <button class="btn btn-link" onclick="focusReplyBox('<s:property value="user.firstName"/>')">回复</button>
             </p>
         </div>
         </td>
         </tr>
-        <tr>
-        <td>
-        <div class="media">
-        	<a href="#" class="pull-left">
-            	<img class="media-object" data-src="holder.js/64x64" />
-            </a>
-            <div class="media-body">
-            	<h6>李四</h6>
-                <p class="text-info">这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，</p>
-            </div>
-            <p align="right">
-            <em>2013年5月12日</em>
-            <button class="btn btn-link">回复</button>
-            </p>
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <div class="media">
-        	<a href="#" class="pull-left">
-            	<img class="media-object" data-src="holder.js/64x64" />
-            </a>
-            <div class="media-body">
-            	<h6>李四</h6>
-                <p class="text-info">这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，</p>
-            </div>
-            <p align="right">
-            <em>2013年5月12日</em>
-            <button class="btn btn-link">回复</button>
-            </p>
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <div class="media">
-        	<a href="#" class="pull-left">
-            	<img class="media-object" data-src="holder.js/64x64" />
-            </a>
-            <div class="media-body">
-            	<h6>李四</h6>
-                <p class="text-info">这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，</p>
-            </div>
-            <p align="right">
-            <em>2013年5月12日</em>
-            <button class="btn btn-link">回复</button>
-            </p>
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <div class="media">
-        	<a href="#" class="pull-left">
-            	<img class="media-object" data-src="holder.js/64x64" />
-            </a>
-            <div class="media-body">
-            	<h6>李四</h6>
-                <p class="text-info">这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，这是一条评论，</p>
-            </div>
-            <p align="right">
-            <em>2013年5月12日</em>
-            <button class="btn btn-link">回复</button>
-            </p>
-        </div>
-        </td>
-        </tr>
+        </s:iterator>
         </tbody>
         </table>
         
@@ -194,6 +132,22 @@ function focusReplyBox(person)
 {
 	$("#replybox").focus();
 	$("#replybox ").val("回复"+person+":");
+}
+</script>
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script>
+<script src='/OnlineTutoringSystem/dwr/interface/makecommentaction.js'></script>
+<script type="text/javascript">
+function makeComment(topicid)
+{
+	var content = $("#replybox").val();
+	makecommentaction.makeComment(content, topicid, makeCommentCallback);
+}
+function makeCommentCallback(msg)
+{
+	if(msg=="ok")
+		alert("评论成功");
+	else
+		alert("评论失败");
 }
 </script>
 </body>

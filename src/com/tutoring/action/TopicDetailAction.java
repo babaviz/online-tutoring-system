@@ -1,6 +1,8 @@
 package com.tutoring.action;
 
 
+import java.util.List;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.biz.TopicBiz;
@@ -26,10 +28,12 @@ public class TopicDetailAction extends ActionSupport{
 	public String execute() throws Exception{
 		
 		Question q = topicBiz.getQuestionById(topicid);
-		//System.out.println(q.getUser().getFirstName());
+		//System.out.println(q.getSubject());
 		ActionContext ac = ActionContext.getContext();
 		ac.getValueStack().push(q);
-		
+		List<?> answers =  topicBiz.getAnswers(topicid);
+		//System.out.println(answers.get(0).getUser().getFirstName());
+		ac.put("answers", answers);
 		return SUCCESS;
 	}
 }

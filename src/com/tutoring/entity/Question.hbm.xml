@@ -26,7 +26,7 @@
 		<many-to-one name="user" column="user_id" class="com.tutoring.entity.User" cascade="save-update" lazy="false" not-null="true"></many-to-one>
 		<many-to-one name="subject" column="subject_id" class="com.tutoring.entity.Subject" lazy="false" cascade="save-update" not-null="true"></many-to-one>
 		
-		<set name="answers" cascade="all-delete-orphan" inverse="true" lazy="true">
+		<set name="answers" cascade="all-delete-orphan" inverse="true" lazy="false">
 			<key column="question_id"></key>
 			<one-to-many class="com.tutoring.entity.Answer"/>
 		</set>

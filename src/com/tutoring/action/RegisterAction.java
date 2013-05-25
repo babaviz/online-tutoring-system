@@ -8,18 +8,25 @@ public class RegisterAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	String username;
-	String password;
-	String email;
-	String type;
-	public String getUsername() {
-		return username;
+	private String firstname;
+	private String lastname;
+	private String password;
+	private String email;
+	private String type;
+	public String getFirstname() {
+		return firstname;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 	public String getPassword() {
 		return password;
+	}
+	public String getLastname() {
+		return lastname;
+	}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	public void setPassword(String password) {
 		this.password = password;
@@ -44,7 +51,7 @@ public class RegisterAction extends ActionSupport{
 	}
 	public String execute() throws Exception{
 		//System.out.println(type);
-		userBiz.register(password, email, type);
+		userBiz.register(password, email, type,firstname,lastname);
 		return SUCCESS;
 	}
 	

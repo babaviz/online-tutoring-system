@@ -1,7 +1,8 @@
 var emailvalid=false;
 var passwordvalid=false;
 var sndpasswdvalid=false;
-
+var firstnamevalid=false;
+var lastnamevalid=false;
 
 function emailCheck () {
 	if($("#email").val()!=""){
@@ -90,9 +91,42 @@ function passwordIsSame()
 	}
 }
 
+function firstnameCheck()
+{
+	if($("#firstname").val()!="")
+	{
+		$("#_firstname").removeClass("error");
+		$("#firstname_info").html("");
+		firstnamevalid=true;
+	}
+	else
+	{
+		$("#_firstname").addClass("error");
+		$("#firstname_info").html("姓不能为空");
+		firstnamevalid=false;
+	}
+}
+
+function lastnameCheck()
+{
+	if($("#lastname").val()!="")
+	{
+		$("#_lastname").removeClass("error");
+		$("#lastname_info").html("");
+		lastnamevalid=true;
+		
+	}
+	else
+	{
+		$("#_lastname").addClass("error");
+		$("#lastname_info").html("名不能为空");
+		lastnamevalid=false;
+	}
+}
+
 function RegisterSubmit()
 {
-	if(emailvalid&passwordvalid&sndpasswdvalid)
+	if(emailvalid&passwordvalid&sndpasswdvalid&firstnamevalid&lastnamevalid)
 		$("#registerform").submit();
 	else
 		alert("信息填写不合法");

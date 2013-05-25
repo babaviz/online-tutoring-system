@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.tutoring.dao.AnswerDAO;
+import com.tutoring.dao.PageDAO;
 import com.tutoring.dao.QuestionDAO;
 import com.tutoring.dao.SubjectDAO;
 import com.tutoring.dao.UserDAO;
@@ -18,6 +19,10 @@ public class TopicBizImpl implements TopicBiz{
 	UserDAO userDAO;
 	SubjectDAO subjectDAO;
 	AnswerDAO answerDAO;
+	PageDAO pageDAO;
+	public void setPageDAO(PageDAO pageDAO) {
+		this.pageDAO = pageDAO;
+	}
 	public void setAnswerDAO(AnswerDAO answerDAO) {
 		this.answerDAO = answerDAO;
 	}
@@ -32,12 +37,12 @@ public class TopicBizImpl implements TopicBiz{
 	}
 	@Override
 	public void publishQuestion(String useremail, String title, String content,
-			String name) {
+			String name, String pic_sn,String attach_sn,String attach_name) {
 		// TODO Auto-generated method stub
 		
 		Subject subject = subjectDAO.getSubjectByName(name);
 		User user = userDAO.getUserByEmail(useremail);
-		questionDAO.addQuestion(user, title, content, subject);
+		questionDAO.addQuestion(user, title, content, subject,pic_sn,attach_sn,attach_name);
 	}
 	@Override
 	public List<?> getQuestions(String email) {
@@ -72,6 +77,67 @@ public class TopicBizImpl implements TopicBiz{
 		User user = userDAO.getUserByEmail(useremail);
 		
 		return questionDAO.getQuestionsByUser(user);
+	}
+	@Override
+	public String getRealFileName(String storename) {
+		// TODO Auto-generated method stub
+		String realname = questionDAO.getFileNameBySN(storename);
+		return realname;
+	}
+	@Override
+	public int getQuestionPageCount(int pageSize) {
+		// TODO Auto-generated method stub
+		int pagecount = pageDAO.getPageCount("Question","");
+		
+		if(pagecount/pageSize==0)
+			return pagecount/pageSize;
+		else
+			return pagecount/pageSize+1;
+
+	}
+	@Override
+	public List<?> getQuestionsByPage(int pageNumber,int pageSize) {
+		// TODO Auto-generated method stub
+		return pageDAO.findByPage("from Question", (pageNumber-1)*pageSize, pageSize);
+	}
+	@Override
+	public int getMyQuestionPageCount(int pageSize) {
+		// TODO Auto-generated method stub
+		ActionContext ac = ActionContext.getContext();
+		Map<String , Object> session = ac.getSession();
+		String useremail = (String) session.get("email");
+		User user = userDAO.getUserByEmail(useremail);
+		
+		int pagecount = pageDAO.getPageCount("Question", "where user_id = "+user.getId());
+		
+		if(pagecount/pageSize==0)
+			return pagecount/pageSize;
+		else
+			return pagecount/pageSize+1;
+	}
+	@Override
+	public List<?> getMyQuestions(int pageNumber, int pageSize) {
+		// TODO Auto-generated method stub
+		ActionContext ac = ActionContext.getContext();
+		Map<String , Object> session = ac.getSession();
+		String useremail = (String) session.get("email");
+		User user = userDAO.getUserByEmail(useremail);
+		
+		return pageDAO.findByPage("from Question where user_id="+user.getId(), (pageNumber-1)*pageSize, pageSize);
+	}
+	@Override
+	public int getCommentPageCount(int pageSize, int topicid) {
+		// TODO Auto-generated method stub
+		int pagecount = pageDAO.getPageCount("Answer", "where question_id = "+topicid);
+		if(pagecount%pageSize == 0)
+			return pagecount/pageSize;
+		else
+			return pagecount/pageSize+1;
+	}
+	@Override
+	public List<?> getCommentsByPage(int pageNumber, int pageSize, int topicid) {
+		// TODO Auto-generated method stub
+		return pageDAO.findByPage("from Answer where question_id = "+topicid, (pageNumber-1)*pageSize, pageSize);
 	}
 	
 

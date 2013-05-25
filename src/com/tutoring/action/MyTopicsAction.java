@@ -12,13 +12,34 @@ public class MyTopicsAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int pageCount;
+	private int pageSize;
+	private int pageIndex=1;
+	public int getPageIndex() {
+		return pageIndex;
+	}
+	public int getPageSize() {
+		return pageSize;
+	}
+	public int getPageCount() {
+		return pageCount;
+	}
+	public void setPageIndex(int pageIndex) {
+		this.pageIndex = pageIndex;
+	}
+	
 	TopicBiz topicBiz;
 	public void setTopicBiz(TopicBiz topicBiz) {
 		this.topicBiz = topicBiz;
 	}
 	public String execute() throws Exception{
 		ActionContext ac = ActionContext.getContext();
-		List<?> qlist = topicBiz.getMyQuestions();
+		
+		pageSize = 5;
+		
+		pageCount = topicBiz.getMyQuestionPageCount(pageSize);
+		
+		List<?> qlist = topicBiz.getMyQuestions(pageIndex, pageSize);//topicBiz.getMyQuestions();
 		ac.put("questions", qlist);
 		return SUCCESS;
 	}

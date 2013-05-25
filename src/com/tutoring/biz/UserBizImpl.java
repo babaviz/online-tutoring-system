@@ -9,8 +9,7 @@ import com.tutoring.dao.UserDAO;
 public class UserBizImpl implements UserBiz{
 
 	UserDAO userDAO;
-	
-	
+
 	@Override
 	public boolean login(String email, String password) {
 		// TODO Auto-generated method stub
@@ -41,14 +40,17 @@ public class UserBizImpl implements UserBiz{
 		return false;
 	}
 	
-	public void register(String password,String email,String type)
+	public void register(String password,String email,String type,String firstname, String lastname)
 	{
 		char t;
 		if(type.equals("student"))
+		
 			t='1';
+			
+		
 		else
 			t='2';
-		userDAO.addUser(email, password,t);
+		userDAO.addUser(email, password,t,firstname,lastname);
 		
 	}
 

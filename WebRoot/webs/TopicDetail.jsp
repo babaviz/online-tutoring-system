@@ -21,7 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 	
 <body>
-
     <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
   <div class="container">
@@ -46,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<img class="media-object" data-src="holder.js/64x64" />
                 </a>
                 <div class="media-body">
-                	<h4 class="media-heading"><s:property value="user.firstName"/></h4>
+                	<h4 class="media-heading"><s:property value="user.firstName"/><s:property value="user.lastName"/></h4>
                 </div>
                
             </div>
@@ -56,7 +55,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
                 <div class="span10 offset1">
                 <p class="text-info" style="word-wrap:break-word"><s:property value="content"/></p>
-            	<img src="images/headimg/1.png" alt="" />
+                
+                <s:if test='picture!=null'>
+            	<img src='../images/<s:property value="picture"/>' alt="" style="width:200px;height:200px;"/>
+            	</s:if>
             	
             	</div>
             </div>
@@ -64,7 +66,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
             	<div class="span11">
             		<p class="text-right">
-                    <i class="icon-download-alt"></i><a href="DownloadAction?fileName=struts2.txt">20天学会c语言.pdf</a>&nbsp;
+            		<s:if test='attachment!=null'>
+                    <i class="icon-download-alt"></i><a href="DownloadAction?fileName=<s:property value="attachment"/>"><s:property value="attachname"/></a>&nbsp;
+                    </s:if>
                     <em><strong><s:date name="time" format="dd/MM/yyyy"/></strong></em>&nbsp;
                     <em><strong>类别：
                     	<s:property value="subject.name"/>
@@ -93,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<img class="media-object" data-src="holder.js/64x64" />
             </a>
             <div class="media-body">
-            	<h6><s:property value="user.firstName"/></h6>
+            	<h6><s:property value="user.firstName"/><s:property value="user.lastName"/></h6>
                 <p class="text-info"><s:property value="content"/></p>
             </div>
             <p align="right">
@@ -108,11 +112,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </table>
         
         
-        <div class="btn-group">
-            <button class="btn btn-link active">1</button>
-            <button class="btn btn-link">2</button>
-            <button class="btn btn-link">3</button>
-            <button class="btn">下一页</button>
+        <div class="btn-group" style="padding-left:20px;">
+      		<s:if test="pageIndex!=1">
+            <a class="btn" href="TopicDetail?pageIndex=<s:property value="PageIndex-1" />#comments">上一页</a>
+            </s:if>
+      		<s:iterator value="new int[pageCount]" status="i">
+      		<s:if test="pageIndex==#i.index+1">
+            <a class="btn btn-link active" href='TopicDetail?pageIndex=<s:property value="#i.index+1"/>#comments'><s:property value="#i.index+1"/></a>
+            </s:if>
+            <s:else>
+            <a class="btn btn-link" href='TopicDetail?pageIndex=<s:property value="#i.index+1"/>#comments'><s:property value="#i.index+1"/></a>
+            </s:else>
+            </s:iterator>
+            <s:if test="pageIndex!=pageCount">
+            <a class="btn" href="TopicDetail?pageIndex=<s:property value="PageIndex+1" />#comments">下一页</a>
+            </s:if>
         </div>
         
         
@@ -145,7 +159,10 @@ function makeComment(topicid)
 function makeCommentCallback(msg)
 {
 	if(msg=="ok")
+	{
+		$("#replybox").val("");
 		alert("评论成功");
+	}
 	else
 		alert("评论失败");
 }

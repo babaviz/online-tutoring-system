@@ -28,7 +28,7 @@
 		<many-to-one name="tutor" column="tutor_id" class="com.tutoring.entity.Tutor" cascade="save-update" not-null="true"></many-to-one>
 		<many-to-one name="subject" column="subject_id" class="com.tutoring.entity.Subject" cascade="save-update" not-null="true"></many-to-one>
 		
-		<set name="applications" cascade="save-update" inverse="true" lazy="true" table="application">
+		<set name="applications" cascade="save-update" inverse="true" lazy="false" table="application">
 			<key column="course_id"></key>
 			<many-to-many class="com.tutoring.entity.Student" column="student_id"/>
 		</set>

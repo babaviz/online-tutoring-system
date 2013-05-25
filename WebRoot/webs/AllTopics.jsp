@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="span3">
      <p class="text-success">
      <em class="text-left"><s:date name="time" format="dd/MM/yyyy"/></em>
-     <em class="text-center"><s:property value="user.firstName"/></em>
+     <em class="text-center">发帖者：<s:property value="user.firstName"/><s:property value="user.lastName"/></em>
      </p>
      </div>
      
@@ -95,11 +95,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
       </div>
      </s:iterator>
+     
+     
+      <div class="btn-group" style="padding-left:20px;">
+      		<s:if test="pageIndex!=1">
+            <a class="btn" href="AllTopics?pageIndex=<s:property value="PageIndex-1" />">上一页</a>
+            </s:if>
+      		<s:iterator value="new int[pageCount]" status="i">
+      		<s:if test="pageIndex==#i.index+1">
+            <a class="btn btn-link active" href='AllTopics?pageIndex=<s:property value="#i.index+1"/>'><s:property value="#i.index+1"/></a>
+            </s:if>
+            <s:else>
+            <a class="btn btn-link" href='AllTopics?pageIndex=<s:property value="#i.index+1"/>'><s:property value="#i.index+1"/></a>
+            </s:else>
+            </s:iterator>
+            <s:if test="pageIndex!=pageCount">
+            <a class="btn" href="AllTopics?pageIndex=<s:property value="PageIndex+1" />">下一页</a>
+            </s:if>
+        </div>
       
-      
-  
       
       </div>
+      
+     
       </div>
      </div>
     

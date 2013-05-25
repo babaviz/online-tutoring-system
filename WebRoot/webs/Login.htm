@@ -124,7 +124,7 @@
 </div>
 
 	<!--注册-->
-    <div style="width:600px; height:345px;float:left; background:url(images/half_translucent.png) repeat;display:none;" id="register">
+    <div class="" style="width:600px; height:345px;float:left; background:url(images/half_translucent.png) repeat;display:none;overflow:auto;" id="register">
   <div class="container" style="margin-top:50px;">
   <div class="row">
       <form class="form-horizontal" action="RegisterAction" method="post" id="registerform">
@@ -133,32 +133,46 @@
     <div class="control-group" id="_email">
       <label class="control-label" for="input01">邮箱</label>
       <div class="controls">
-        <input type="text" class="input-large" placeholder="example@gmail.com" id="email" name="email" onblur="emailCheck()">
+        <input type="text" class="input-large" placeholder="example@gmail.com" id="email" name="email" onblur="emailCheck()"/>
         <span class="help-inline" id="email_info"></span>
       </div>
     </div>
     <div class="control-group" id="_password">
       <label class="control-label" for="input01">密码</label>
       <div class="controls">
-        <input type="password" class="input-large" id="password" name="password" onblur="passwordCheck()">
+        <input type="password" class="input-large" id="password" name="password" onblur="passwordCheck()"/>
         <span class="help-inline" id="password_info"></span>
       </div>
     </div>
      <div class="control-group" id="_secondpassword">
       <label class="control-label" for="input01">再次输入密码</label>
       <div class="controls">
-        <input type="password" class="input-large" id="secondpassword" onblur="passwordIsSame()">
+        <input type="password" class="input-large" id="secondpassword" onblur="passwordIsSame()"/>
         <span class="help-inline" id="secondpassword_info"></span>
+      </div>
+    </div>
+    <div class="control-group" id="_firstname">
+      <label class="control-label" for="input01">姓</label>
+      <div class="controls">
+        <input type="text" class="input-large" id="firstname" name="firstname" onblur="javascript:firstnameCheck()"/>
+        <span class="help-inline" id="firstname_info"></span>
+      </div>
+    </div>
+    <div class="control-group" id="_lastname">
+      <label class="control-label" for="input01">名</label>
+      <div class="controls">
+        <input type="text" class="input-large" id="lastname" name="lastname" onblur="javascript:lastnameCheck()"/>
+        <span class="help-inline" id="lastname_info"></span>
       </div>
     </div>
     
    <div class="controls">
               <label class="radio">
-                <input type="radio" name="type" id="optionsRadios1" value="student" checked="">
+                <input type="radio" name="type" id="optionsRadios1" value="student" checked=""/>
 		学生注册
               </label>
               <label class="radio">
-                <input type="radio" name="type" id="optionsRadios2" value="tutor">
+                <input type="radio" name="type" id="optionsRadios2" value="tutor"/>
 		老师注册
               </label>
             </div>

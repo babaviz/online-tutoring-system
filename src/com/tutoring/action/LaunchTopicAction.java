@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Map;
+import com.tutoring.util.StaticUtil;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -99,17 +100,33 @@ public class LaunchTopicAction extends ActionSupport{
 		//System.out.println(fileFileName+","+pictureFileName+","+type);
 		ActionContext ac = ActionContext.getContext();
 		Map<String, Object> session = ac.getSession();
+		String pic_sn = null;
+		String attach_sn = null;
 		
-		topicBiz.publishQuestion((String)session.get("email"), title, content, type);
+		if(picture!=null)
+		{
+			
+			String filetype = pictureFileName.substring(pictureFileName.indexOf('.'));
+			pic_sn = StaticUtil.generateRandomString(10)+filetype;
+			//System.out.println(filetype);
+			String storePath = ServletActionContext.getServletContext().getRealPath( "/images" )+"/"+pic_sn;
+			File storeFile = new File(storePath);
+			copy(picture,storeFile);
+		}
+		
+		
 		
 		if(file!=null)
 		{
-			String storePath = ServletActionContext.getServletContext().getRealPath( "/download" )+"/"+fileFileName;
+			
+			String filetype = fileFileName.substring(fileFileName.indexOf('.'));
+			attach_sn = StaticUtil.generateRandomString(10)+filetype;
+			String storePath = ServletActionContext.getServletContext().getRealPath( "/download" )+"/"+attach_sn;
 			File storeFile = new File(storePath);
 			copy(file,storeFile);
 			
 		}
-		
+		topicBiz.publishQuestion((String)session.get("email"), title, content, type,pic_sn,attach_sn,fileFileName);
 		return SUCCESS;
 	}
 	

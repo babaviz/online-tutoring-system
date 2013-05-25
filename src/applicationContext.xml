@@ -74,17 +74,28 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<bean id="PageDAO" class="com.tutoring.dao.PageDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	<bean id="TopicBiz" class="com.tutoring.biz.TopicBizImpl">
 		<property name="questionDAO" ref="QuestionDAO"></property>
 		<property name="userDAO" ref="UserDAO"></property>
 		<property name="subjectDAO" ref="SubjectDAO"></property>
 		<property name="answerDAO" ref="AnswerDAO"></property>
+		<property name="pageDAO" ref="PageDAO"></property>
 	</bean>
+	
+	<bean id="StudentDAO" class="com.tutoring.dao.StudentDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
 
-	<bean id="loginAction" class="com.tutoring.action.LoginAction">
+	<bean id="loginAction" class="com.tutoring.action.LoginAction" scope="prototype">
 		<property name="userBiz" ref="UserBiz"></property>
 	</bean>
-	<bean id="registerAction" class="com.tutoring.action.RegisterAction">
+	<bean id="registerAction" class="com.tutoring.action.RegisterAction" scope="prototype">
 		<property name="userBiz" ref="UserBiz"></property>
 	</bean>
 	
@@ -99,15 +110,17 @@
 		<property name="topicBiz" ref="TopicBiz"></property>
 	</bean>
 	
-	<bean id="downloadAction" class="com.tutoring.action.DownloadAction"></bean>
-	
-	<bean id="indexAction" class="com.tutoring.action.IndexAction"></bean>
-	
-	<bean id="allTopicsAction" class="com.tutoring.action.AllTopicsAction">
+	<bean id="downloadAction" class="com.tutoring.action.DownloadAction">
 		<property name="topicBiz" ref="TopicBiz"></property>
 	</bean>
 	
-	<bean id="myTopicsAction" class="com.tutoring.action.MyTopicsAction">
+	<bean id="indexAction" class="com.tutoring.action.IndexAction"></bean>
+	
+	<bean id="allTopicsAction" class="com.tutoring.action.AllTopicsAction" scope="prototype">
+		<property name="topicBiz" ref="TopicBiz"></property>
+	</bean>
+	
+	<bean id="myTopicsAction" class="com.tutoring.action.MyTopicsAction" scope="prototype">
 		<property name="topicBiz" ref="TopicBiz"></property>
 	</bean>
 	

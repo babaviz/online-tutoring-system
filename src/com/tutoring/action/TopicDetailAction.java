@@ -14,6 +14,22 @@ public class TopicDetailAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int pageCount;
+	private int pageSize;
+	private int pageIndex=1;
+	public int getPageIndex() {
+		return pageIndex;
+	}
+	public int getPageSize() {
+		return pageSize;
+	}
+	public int getPageCount() {
+		return pageCount;
+	}
+	public void setPageIndex(int pageIndex) {
+		this.pageIndex = pageIndex;
+	}
+	
 	TopicBiz topicBiz;
 	public void setTopicBiz(TopicBiz topicBiz) {
 		this.topicBiz = topicBiz;
@@ -31,7 +47,11 @@ public class TopicDetailAction extends ActionSupport{
 		//System.out.println(q.getSubject());
 		ActionContext ac = ActionContext.getContext();
 		ac.getValueStack().push(q);
-		List<?> answers =  topicBiz.getAnswers(topicid);
+		//System.out.println(q.getPicture());
+		pageSize = 5;
+		pageCount = topicBiz.getCommentPageCount(pageSize,topicid);
+		
+		List<?> answers = topicBiz.getCommentsByPage(pageIndex, pageSize,topicid); //topicBiz.getAnswers(topicid);
 		//System.out.println(answers.get(0).getUser().getFirstName());
 		ac.put("answers", answers);
 		return SUCCESS;

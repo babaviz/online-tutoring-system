@@ -13,12 +13,12 @@
 		
 		<many-to-one name="user" unique="true" column="user_id" class="com.tutoring.entity.User" cascade="save-update" not-null="true"></many-to-one>
 		
-		<set name="courses" cascade="all-delete-orphan" inverse="true" lazy="true">
+		<set name="courses" cascade="all-delete-orphan" inverse="true" lazy="false">
 			<key column="student_id"></key>
 			<one-to-many class="com.tutoring.entity.Course"/>
 		</set>
 		
-		<set name="applications" cascade="save-update" inverse="false" lazy="true" table="application">
+		<set name="applications" cascade="save-update" inverse="false" lazy="false" table="application">
 			<key column="student_id"></key>
 			<many-to-many class="com.tutoring.entity.Course" column="course_id"/>
 		</set>

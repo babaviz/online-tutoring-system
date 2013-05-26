@@ -4,17 +4,35 @@
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
 			   width="599" height="444" minWidth="955" minHeight="600"
 			   creationComplete="main()">
+	
 	<fx:Declarations>
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
 	</fx:Declarations>
 	<fx:Script source="Main.as">
 	</fx:Script>
-	<s:VideoDisplay source="{View.video_remote}" x="401" y="10" width="188" height="114.39081" id="videoDisplay_remote"/>
-	<s:VideoDisplay source="{View.video_local}" x="10" y="331" width="161" height="103" id="videoDisplay_local"/>
 	<s:Button x="521" y="414" width="68" height="21" label="发送" id="button_send" click="button_send_clickHandler(event)"/>
 	<s:Button id="button_offline" visible="{View.button_offline_visible}" x="437" y="413" label="断开连接" click="button_offline_clickHandler(event)"/>
 	<s:TextArea x="179" y="331" width="410" height="77" text="{View.input.text}" id="textArea_input" />
 	<s:Button name="button_reconnect" x="179" y="416" label="重连" visible="{View.button_reconnect_visible}" id="button_reconnect" click="button_reconnect_clickHandler(event)"/>
 	<s:TextArea id="textArea_output" x="401" y="132" width="188" height="191" editable="false"
 				enabled="true" text="{View.output}"/>
+	<s:Panel x="10" y="10" width="383" height="313" dropShadowVisible="false"
+			 skinClass="spark.skins.spark.SkinnableContainerSkin">
+		<mx:Canvas id="panel_draw" x="0" y="0" width="381" height="280" backgroundColor="0xffffff">
+		</mx:Canvas>
+		<s:HGroup x="0" y="278" width="383" height="35">
+			<s:Button id="button_pen" width="78" height="100%" label="画笔" click="button_pen_clickHandler(event)"/>
+			<mx:ColorPicker id="colorpicker" width="45" height="100%" selectedColor="{WhiteBoard.line_color}"/>
+			<s:Button id="button_undo" width="45" height="100%" label="撤销" click="button_undo_clickHandler(event)"/>
+			<s:Button id="button_rubber" width="54" height="100%" label="橡皮" click="button_rubber_clickHandler(event)"/>
+			<s:Button id="button_clear" width="52" height="100%" label="清空" click="button_clear_clickHandler(event)"/>
+			<s:Button id="button_upload" width="76" height="100%" label="上传图片" click="button_upload_clickHandler(event)"/>
+		</s:HGroup>
+	</s:Panel>
+	<s:BorderContainer x="11" y="331" width="161" height="103">
+		<s:VideoDisplay source="{View.video_local}" x="0" y="0" width="161" height="103" id="videoDisplay_local"/>
+	</s:BorderContainer>
+	<s:BorderContainer x="401" y="10" width="188" height="114">
+		<s:VideoDisplay source="{View.video_remote}" x="0" y="0" width="186" height="112.39081" id="videoDisplay_remote"/>
+	</s:BorderContainer>
 </s:Application>

@@ -1,27 +1,39 @@
 package com.tongji.onlinetutor.server;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.red5.server.api.IConnection;
 
 public class GroupManager {
-	private ArrayList<Group> groups_;
+	private HashMap<String, Group> groups;
+	private HashMap<String, User> name_users;
+	private HashMap<IConnection, User> conn_users;
 	public GroupManager() {
 		// TODO something to do with the DB
-		groups_ = new ArrayList<Group>();
+		groups = new HashMap<String, Group>();
+		name_users = new HashMap<String, User>();
+		conn_users = new HashMap<IConnection, User>();
 	}
 	
 	//if already exsits, return false;
 	public boolean addGroup(Group group){
-		boolean flag = true;
-		for(Group g : groups_){
-			if(g.getIdentification().equals(group.getIdentification())){
-				flag = false;
-				break;
-			}
-		}
-		if(flag)
-			groups_.add(group);
-		return flag;
+		if(groups.containsKey(group.getIdentification()))
+			return false;
+		groups.put(group.getIdentification(), group);
+		return true;
 	}
+	
+	public void removeGroup(Group group){
+		groups.remove(group.getIdentification());
+	}
+	public void removeGroup(String token){
+		groups.remove(token);
+	}
+	
+	public Group getGroup(String token){
+		return groups.get(token);
+	}
+	
 	public void CleanGroups(){
 		//TODO remove overdue groups
 	}

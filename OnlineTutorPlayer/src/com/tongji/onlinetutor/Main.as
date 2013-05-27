@@ -1,12 +1,13 @@
 // ActionScript file
 import com.tongji.onlinetutor.OnlineTutorPlayer;
-import com.tongji.onlinetutor.business.Connect;
-import com.tongji.onlinetutor.business.DrawTools;
+import com.tongji.onlinetutor.business.NetDispatcher;
 import com.tongji.onlinetutor.business.WhiteBoard;
+import com.tongji.onlinetutor.business.draw.DrawTools;
 import com.tongji.onlinetutor.view.View;
 
 import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
+import flash.net.NetConnection;
 import flash.ui.KeyboardType;
 
 import mx.binding.utils.BindingUtils;
@@ -18,8 +19,8 @@ import spark.components.Button;
 import spark.components.Image;
 import spark.components.VideoDisplay;
 
-private var connect:Connect;
-private var whiteboard:WhiteBoard;
+public var dispatcher:NetDispatcher;
+public var whiteboard:WhiteBoard;
 private var current_background_image:Image;
 private var background_images:Array;
 
@@ -31,22 +32,20 @@ public function main():void{
 	View.video_local = videoDisplay_local;
 	View.video_remote = videoDisplay_remote;
 	View.input = textArea_input;
-	connect = new Connect();
-	connect.init();
+	dispatcher = new NetDispatcher();
+	dispatcher.init();
+	dispatcher.Connect();
 	textArea_input.addEventListener(KeyboardEvent.KEY_DOWN,onEnterUpHandler);
 	
-	panel_draw.graphics.beginFill(0x000000);
-	panel_draw.graphics.endFill();
-	
 	//white board
-	whiteboard = new WhiteBoard(connect.getNetConnection());
-	//BindingUtils.bindProperty(this,"WhiteBoard.line_color",colorpicker,"selectedColor");
-	whiteboard.setPanel(panel_draw);
-	whiteboard.init();
+//	whiteboard = new WhiteBoard(connect.getNetConnection(),Connect.TEACHER);
+//	whiteboard.setTopPanel(panel_parent);
+//	whiteboard.Enable();
+	
 	
 }
 public function onBWDone():void{
-	connect.onBWDone();
+	dispatcher.onBWDone();
 }
 protected function onEnterUpHandler(event:KeyboardEvent):void{
 	if(event.keyCode == 13){
@@ -54,7 +53,7 @@ protected function onEnterUpHandler(event:KeyboardEvent):void{
 			View.input.text = "";
 			return;			
 		}
-		connect.onSend();
+		dispatcher.onMessageSend();
 	}
 }
 protected function button_send_clickHandler(event:MouseEvent):void
@@ -66,45 +65,18 @@ protected function button_send_clickHandler(event:MouseEvent):void
 		View.input.text = "";
 		return;
 	}
-	connect.onSend();
+	dispatcher.onMessageSend();
 }
 
 protected function button_reconnect_clickHandler(event:MouseEvent):void
 {
 //	if(connect.isConnected())
-		connect.reconnect();
+	dispatcher.reconnect();
 }
 
 protected function button_offline_clickHandler(event:MouseEvent):void
 {
-	connect.disconnect();
+	dispatcher.disconnect();
 }
 
-protected function button_pen_clickHandler(event:MouseEvent):void
-{
-	whiteboard.onChangeTool(DrawTools.PEN);
-}
 
-protected function button_undo_clickHandler(event:MouseEvent):void
-{
-	// TODO Auto-generated method stub
-	
-}
-
-protected function button_rubber_clickHandler(event:MouseEvent):void
-{
-	// TODO Auto-generated method stub
-	whiteboard.onChangeTool(DrawTools.RUBBER);
-}
-
-protected function button_clear_clickHandler(event:MouseEvent):void
-{
-	// TODO Auto-generated method stub
-	whiteboard.onClearScreen();
-}
-
-protected function button_upload_clickHandler(event:MouseEvent):void
-{
-	// TODO Auto-generated method stub
-	
-}

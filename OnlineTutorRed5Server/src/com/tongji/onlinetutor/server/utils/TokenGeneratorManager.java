@@ -1,7 +1,6 @@
 package com.tongji.onlinetutor.server.utils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class TokenGeneratorManager {
 	private ArrayList<TokenGenerator> buckets;
@@ -20,7 +19,7 @@ public class TokenGeneratorManager {
 	 * if all buckets are out of resource
 	 * Generate() will return ERROR_RESULT which is minimal value of Integer
 	 */
-	public int Generate(){
+	public int GenerateInt(){
 		int result = TokenGenerator.ERROR_RESULT;
 		for(int i = 0; i < buckets.size(); i++){
 			if(result == TokenGenerator.ERROR_RESULT){
@@ -31,5 +30,8 @@ public class TokenGeneratorManager {
 				break;
 		}
 		return result;
+	}
+	public String GenerateString(){
+		return String.valueOf(GenerateInt());
 	}
 }

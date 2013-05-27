@@ -3,72 +3,76 @@ package com.tongji.onlinetutor.server;
 import java.util.ArrayList;
 
 public class Group {
-	private User master_;
-	private ArrayList<User> children_;
-	private String time_;
+	private User master;
+	private ArrayList<User> children;
+	private String time;
 	
-	public Group(String master_name, String time){
-		master_ = new User(master_name);
-		children_ = new ArrayList<User>();
-		this.time_ = time;
+	public Group(String mastername, String token, String time){
+		this.master = new User(mastername);
+		this.children = new ArrayList<User>();
+		this.time = time;
 	}
 	public Group(User master, String time){
-		master_ = master;
-		children_ = new ArrayList<User>();
-		time_ = time;
+		this.master = master;
+		this.children = new ArrayList<User>();
+		this.time = time;
 	}
 	
 	public String getIdentification(){
-		return master_.name() + time_;
+		return master.token();
 	}
 	public String getMasterName(){
-		return master_.name();
+		return master.name();
 	}
 	public String getTime(){
-		return time_;
+		return time;
 	}
 	public int getAllChildrenCount(){
-		return children_.size();
+		return children.size();
 	}
 	public int getOnlineChildrenCount(){
 		int count = 0;
-		for(User user : children_){
+		for(User user : children){
 			if(user.isOnline())
 				count++;
 		}
 		return count;
 	}
 	//if child already exists, return false;
-	public boolean addChildren(String child_name){
+	public boolean addChildren(String child_name,String token){
 		boolean flag = true;
-		for(User user : children_){
+		for(User user : children){
 			if(user.name().equals(child_name)){
 				flag = false;
 				break;
 			}
 		}
 		if(flag)
-			children_.add(new User(child_name));
+			children.add(new User(child_name));
 		return flag;
 	}
 	//if child already exists, return false;
 	public boolean addChildren(User child){
 		boolean flag = true;
-		for(User user : children_){
+		for(User user : children){
 			if(user.name().equals(child.name())){
 				flag = false;
 				break;
 			}
 		}
 		if(flag)
-			children_.add(child);
+			children.add(child);
 		return flag;
 	}
 	//if no such child found, return false;
-	public boolean ChildOnline(String child_name){
+	public boolean UserCome(String token){
 		boolean flag = false;
-		for(User user : children_){
-			if(user.name().equals(child_name)){
+		if(master.token().equals(token)){
+			master.setIsOnline(true);
+			return true;
+		}
+		for(User user : children){
+			if(user.token().equals(token)){
 				user.setIsOnline(true);
 				flag = true;
 				break;
@@ -76,50 +80,54 @@ public class Group {
 		}
 		return flag;
 	}
-	public void ChildOffline(String child_name){
-		for(User user : children_){
-			if(user.name().equals(child_name)){
+	public void UserLeave(String token){
+		if(master.token().equals(token)){
+			master.setIsOnline(false);
+			return;
+		}
+		for(User user : children){
+			if(user.token().equals(token)){
 				user.setIsOnline(false);
 				break;
 			}
 		}
 	}
 	public boolean isReady(){
-		return (master_.isOnline() && getOnlineChildrenCount()>0);
+		return (master.isOnline() && getOnlineChildrenCount()>0);
 	}
-	public String getPublishStreamId(String requester_name){
+	public String getPublishStreamId(String requester_token){
 		if(!isReady())
 			return null;
 		String id = null;
-		if(master_.name().equals(requester_name)){
-			id = master_.name() + "-" +time_;
+		if(master.token().equals(requester_token)){
+			id = master.name() + "-" +time+"-"+master.token();
 		}
 		else{
-			for(User user : children_){
-				if(user.isOnline() && user.name().equals(requester_name)){
-					id = user.name() + "-" + master_.name() + "-" + time_;
+			for(User user : children){
+				if(user.isOnline() && user.token().equals(requester_token)){
+					id = user.name() + "-" + master.name() + "-" + time + "-" + user.token();
 					break;
 				}
 			}
 		}
 		return id;
 	}
-	public String getPlayStreamId(String requester_name){
+	public String getPlayStreamId(String requester_token){
 		if(!isReady())
 			return null;
 		String id = null;
-		if(master_.name().equals(requester_name)){
+		if(master.token().equals(requester_token)){
 			if(getOnlineChildrenCount() == 1){
-				for(User user : children_){
+				for(User user : children){
 					if(user.isOnline()){
-						id = user.name() + "-" + master_.name() + "-" + time_;
+						id = user.name() + "-" + master.name() + "-" + time + "-" + user.token();
 						break;
 					}
 				}
 			}
 		}
 		else{
-			id = master_.name() + "-" + time_;
+			id = master.name() + "-" + time + "-" + master.token();
 		}
 		return id;
 	}

@@ -2,6 +2,7 @@ package org.red5.core;
 
 import java.util.ArrayList;
 
+import org.red5.io.object.UnsignedInt;
 import org.red5.server.adapter.ApplicationAdapter;
 import org.red5.server.api.IConnection;
 import org.red5.server.api.scope.IScope;
@@ -21,18 +22,19 @@ public class Application extends ApplicationAdapter{
 		tempcontainer = new ArrayList<User>(); 
 		TokenGeneratorManager tgm = new TokenGeneratorManager();
 		tgm.setStrategy(new MinMemory());
-		tgm.Generate();  
+		tgm.GenerateInt();  
 	}
 	@Override
 	public synchronized boolean connect(IConnection conn, IScope scope, Object[] params) {
 		String username = (String)params[0];
+		String token = (String)params[1];
 		System.out.println(username + " connecting.");
 		
 		if(!super.connect(conn, scope, params)){
 			System.out.println("Unable to connect "+username);
 			return false;
 		} 
-		tempcontainer.add(new User(username,conn,scope));
+		tempcontainer.add(new User(username,token,conn,scope));
 		
 		//TODO i dont know what to say... anyway, a lot of things to do
 		System.out.println(username+" connected");
@@ -60,6 +62,10 @@ public class Application extends ApplicationAdapter{
 	public void signout(String username){
 		
 	}
+
+	public void onUserDisconnected(){
+		
+	}
 	
 	public void sendMessage(String msg, String sender){
 		for(User user : tempcontainer){
@@ -67,7 +73,48 @@ public class Application extends ApplicationAdapter{
 		}
 	}
 	
-	public void onUserDisconnected(){
+	public void sendMouseDown(int mX, int mY, int color){
+//		System.out.println("Mouse Down");
+		for(User user : tempcontainer){
+			callClient(user.conn(), "receiveMouseDown", new Object[]{mX,mY,color});
+		}
+	}
+	
+	public void sendMouseUp(int mX, int mY){
+//		System.out.println("Mouse Up");
+		for(User user : tempcontainer){
+			callClient(user.conn(), "receiveMouseUp", new Object[]{mX,mY});
+		}
+	}
+	
+	public void sendMouseMove(int mX, int mY){
+//		System.out.print(mX+" "+mY+" ");
+		for(User user : tempcontainer){
+			callClient(user.conn(), "receiveMouseMove", new Object[]{mX,mY});
+		}
+	}
+	
+	public void sendUndo(){
+		for(User user : tempcontainer){
+			callClient(user.conn(), "receiveUndo", null);
+		}
+	}
+	
+	public void sendChangeTool(int tool){
+		for(User user : tempcontainer){
+			callClient(user.conn(), "receiveChangeTool", new Object[]{tool});
+		}
+	}
+	
+	
+	public void sendClearScreen(){
+		for(User user : tempcontainer){
+			callClient(user.conn(), "receiveClearScreen", null);
+		}
+	}
+	
+	
+	public void sendDrawEnable(boolean isEnable){
 		
 	}
 }

@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 	
 <body>
-
+	
     <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
   <div class="container">
@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<img class="media-object" data-src="holder.js/64x64" />
                 </a>
                 <div class="media-body">
-                	<h4 class="media-heading"><s:property value="user.firstName"/></h4>
+                	<h4 class="media-heading"><s:property value="user.firstName"/><s:property value="user.lastName"/></h4>
                 </div>
                
             </div>
@@ -56,7 +56,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
                 <div class="span10 offset1">
                 <p class="text-info" style="word-wrap:break-word"><s:property value="content"/></p>
-            	<img src="images/headimg/1.png" alt="" />
+                
+                <s:if test='picture!=null'>
+            	<img src='../images/<s:property value="picture"/>' alt="" style="width:200px;height:200px;"/>
+            	</s:if>
             	
             	</div>
             </div>
@@ -64,7 +67,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
             	<div class="span11">
             		<p class="text-right">
-                    <i class="icon-download-alt"></i><a href="DownloadAction?fileName=struts2.txt">20天学会c语言.pdf</a>&nbsp;
+            		<s:if test='attachment!=null'>
+                    <i class="icon-download-alt"></i><a href="DownloadAction?fileName=<s:property value="attachment"/>"><s:property value="attachname"/></a>&nbsp;
+                    </s:if>
                     <em><strong><s:date name="time" format="dd/MM/yyyy"/></strong></em>&nbsp;
                     <em><strong>类别：
                     	<s:property value="subject.name"/>
@@ -75,12 +80,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </section>	
     <section id="comments">
+    <s:form action="MakeCommentAction.action " method="post" enctype="multipart/form-data" id="commentform">
     	<div class="page-header">
         	<h5>评论区</h5>
         </div>
-        <textarea rows="4" style="width:100%;" placeholder="说点什么......" id="replybox"></textarea>
-        <p align="right"><button type="button" class="btn" onclick="makeComment('${topicid}')">我要评论</button></p>
+        <textarea rows="4" style="width:100%;" placeholder="说点什么......" id="replybox" name="content"></textarea>
+        <input type="text" style="display:none" name="topicid" value="${topicid} "/>
         
+        <p align="right">
+        <a class="btn btn-link btn-small" style="margin-left:0" href="javascript:fileopen();" >图片</a>
+        <input type="file" id="commentpicture" style="width:0;height:0" name="picture"/>
+        <button type="button" class="btn" onclick="makeComment()">我要评论</button>
+        </p>
+    <s:token/>
+    </s:form>   
         
         
         <table class="table">
@@ -93,8 +106,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<img class="media-object" data-src="holder.js/64x64" />
             </a>
             <div class="media-body">
-            	<h6><s:property value="user.firstName"/></h6>
+            	<h6><s:property value="user.firstName"/><s:property value="user.lastName"/></h6>
                 <p class="text-info"><s:property value="content"/></p>
+                <s:if test='picture!=null'>
+            	<img src='../images/<s:property value="picture"/>' alt="" style="width:200px;height:200px;"/>
+            	</s:if>
+            	
+            	</div>
             </div>
             <p align="right">
             <em><s:date name="time" format="dd/MM/yyyy"/></em>
@@ -108,11 +126,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </table>
         
         
-        <div class="btn-group">
-            <button class="btn btn-link active">1</button>
-            <button class="btn btn-link">2</button>
-            <button class="btn btn-link">3</button>
-            <button class="btn">下一页</button>
+        <div class="btn-group" style="padding-left:20px;">
+      		<s:if test="pageIndex>1">
+            <a class="btn" href="TopicDetail?pageIndex=<s:property value="PageIndex-1" />#comments">上一页</a>
+            </s:if>
+      		<s:iterator value="new int[pageCount]" status="i">
+      		<s:if test="pageIndex==#i.index+1">
+            <a class="btn btn-link active" href='TopicDetail?pageIndex=<s:property value="#i.index+1"/>#comments'><s:property value="#i.index+1"/></a>
+            </s:if>
+            <s:else>
+            <a class="btn btn-link" href='TopicDetail?pageIndex=<s:property value="#i.index+1"/>#comments'><s:property value="#i.index+1"/></a>
+            </s:else>
+            </s:iterator>
+            <s:if test="pageCount!=0">
+            <s:if test="pageIndex!=pageCount">
+            <a class="btn" href="TopicDetail?pageIndex=<s:property value="PageIndex+1" />#comments">下一页</a>
+            </s:if>
+            </s:if>
         </div>
         
         
@@ -135,19 +165,35 @@ function focusReplyBox(person)
 }
 </script>
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script>
+<script src='/OnlineTutoringSystem/dwr/util.js'></script>
 <script src='/OnlineTutoringSystem/dwr/interface/makecommentaction.js'></script>
 <script type="text/javascript">
-function makeComment(topicid)
+function makeComment()
 {
-	var content = $("#replybox").val();
-	makecommentaction.makeComment(content, topicid, makeCommentCallback);
+	if(checkPicture())
+		$("#commentform").submit();
 }
-function makeCommentCallback(msg)
+
+function fileopen()
 {
-	if(msg=="ok")
-		alert("评论成功");
-	else
-		alert("评论失败");
+	$("#commentpicture").click();
+}
+function checkPicture()
+{
+	var picturename = $("#commentpicture").val();
+	//alert(picturename.split('.')[1]);
+	if(picturename!="")
+	{
+		if(picturename.split('.')[1]=="jpg"||picturename.split('.')[1]=="png"||picturename.split('.')[1]=="jpeg"
+			||picturename.split('.')[1]=="bmp")
+			return true;
+		else
+		{
+			alert("图片格式不允许");
+			return false;
+		}
+	}
+	return true;
 }
 </script>
 </body>

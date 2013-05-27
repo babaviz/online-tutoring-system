@@ -26,19 +26,19 @@
 		<one-to-one name="student" cascade="all-delete-orphan" lazy="false" class="com.tutoring.entity.Student" />
 		<one-to-one name="tutor" cascade="all-delete-orphan" lazy="false" class="com.tutoring.entity.Tutor"/>
 
-		<set name="friendsHaveMe" cascade="save-update" inverse="false" lazy="true" table="friend">
+		<set name="friendsHaveMe" cascade="save-update" inverse="false" lazy="false" table="friend">
 			<key column="id_b"></key>
 			<many-to-many class="com.tutoring.entity.User" column="id_a"/>
 		</set>
-		<set name="friendsIHave" cascade="save-update" inverse="true" lazy="true" table="friend">
+		<set name="friendsIHave" cascade="save-update" inverse="true" lazy="false" table="friend">
 			<key column="id_a"></key>
 			<many-to-many class="com.tutoring.entity.User" column="id_b"/>
 		</set>
-		<set name="sends" cascade="all-delete-orphan" inverse="true" lazy="true">
+		<set name="sends" cascade="all-delete-orphan" inverse="true" lazy="false">
 			<key column="sender_id"></key>
 			<one-to-many class="com.tutoring.entity.Message"/>
 		</set>
-		<set name="receives" cascade="all-delete-orphan" inverse="true" lazy="true">
+		<set name="receives" cascade="all-delete-orphan" inverse="true" lazy="false">
 			<key column="receiver_id"></key>
 			<one-to-many class="com.tutoring.entity.Message"/>
 		</set>
@@ -46,11 +46,11 @@
 			<key column="user_id"></key>
 			<one-to-many class="com.tutoring.entity.Question"/>
 		</set>
-		<set name="answers" cascade="all-delete-orphan" inverse="true" lazy="true">
+		<set name="answers" cascade="all-delete-orphan" inverse="true" lazy="false">
 			<key column="user_id"></key>
 			<one-to-many class="com.tutoring.entity.Answer"/>
 		</set>
-		<set name="notifications" cascade="all-delete-orphan" inverse="true" lazy="true">
+		<set name="notifications" cascade="all-delete-orphan" inverse="true" lazy="false">
 			<key column="user_id"></key>
 			<one-to-many class="com.tutoring.entity.Notification"/>
 		</set>

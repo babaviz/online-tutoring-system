@@ -39,6 +39,8 @@ public class Question  extends AbstractModel {
 	
 	private String attachment;
 	
+	private String attachname;
+	
 	private Subject subject;
 	
 	private Set<Answer> answers;
@@ -74,7 +76,7 @@ public class Question  extends AbstractModel {
 	 * @param subject
 	 */
 	public Question(User user, String title, String content, Date time,
-			int view, int reply, String picture, String attachment,
+			int view, int reply, String picture, String attachment,String attachname,
 			Subject subject) {
 		this.user = user;
 		this.title = title;
@@ -84,6 +86,7 @@ public class Question  extends AbstractModel {
 		this.reply = reply;
 		this.picture = picture;
 		this.attachment = attachment;
+		this.attachname = attachname;
 		this.subject = subject;
 	}
 
@@ -239,6 +242,14 @@ public class Question  extends AbstractModel {
 	 */
 	public void setAnswers(Set<Answer> answers) {
 		this.answers = answers;
+	}
+
+	public String getAttachname() {
+		return attachname;
+	}
+
+	public void setAttachname(String attachname) {
+		this.attachname = attachname;
 	}
 
 }

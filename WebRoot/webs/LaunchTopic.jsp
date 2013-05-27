@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <link href="css/topic.css" rel="stylesheet" type="text/css"/>
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
-
+<script src="js/launchtopic.js" charset="gbk"></script>
 <title>无标题文档</title>
 </head>
 	
@@ -64,9 +64,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <div class="span9">
       <!--Body content-->
-      <s:form action="LaunchTopicAction" method="post" enctype="multipart/form-data">
+      <s:form action="LaunchTopicAction" method="post" enctype="multipart/form-data" id="launchform">
       <legend>我要发起话题</legend>
-      <input type="text" placeholder="标题" name="title"/>
+      <input type="text" placeholder="标题" name="title" id="title"/>
      <textarea rows="6" style="width:100%" name="content"></textarea>
      
      <a class="btn btn-link btn-small" style="margin-left:0" data-toggle="modal" href="javascript:test();">分类</a>
@@ -129,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </div>
      </div>
      <s:token/>
-     <button type="submit" class="btn">提交话题</button>
+     <button type="button" class="btn" onclick="checkInfo()">提交话题</button>
      
      </s:form>
      </div>
@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-  
+
 <script language="javascript" type="text/javascript">
 function test()
 {

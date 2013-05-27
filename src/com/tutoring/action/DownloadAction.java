@@ -8,6 +8,7 @@ import org.apache.struts2.ServletActionContext;
 
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.tutoring.biz.TopicBiz;
 
 
 public class DownloadAction extends ActionSupport{
@@ -16,6 +17,11 @@ public class DownloadAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	TopicBiz topicBiz;
+	public void setTopicBiz(TopicBiz topicBiz) {
+		this.topicBiz = topicBiz;
+	}
+
 	private String fileName=null;
 	
 	public InputStream getInputStream() throws Exception {   
@@ -47,7 +53,7 @@ public class DownloadAction extends ActionSupport{
   
         try {   
   
-            downFileName = new String(fileName.getBytes(), "ISO8859-1");   
+            downFileName = new String(topicBiz.getRealFileName(fileName).getBytes(), "ISO8859-1");   
   
         } catch (UnsupportedEncodingException e) {   
   

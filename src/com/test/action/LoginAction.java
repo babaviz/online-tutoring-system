@@ -33,7 +33,7 @@ public class LoginAction extends ActionSupport{
 	}
 	public String execute() throws Exception
 	{
-		userBiz.deleteUser("e2@mail.com");
+		//userBiz.deleteUser("e2@mail.com");
 		return ERROR;
 	}
 	

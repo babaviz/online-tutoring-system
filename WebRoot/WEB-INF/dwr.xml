@@ -16,5 +16,8 @@
     <create creator="spring" javascript="makecommentaction">
       <param name="beanName" value="makeCommentAction"/>
     </create>
+    <create creator="spring" javascript="deletetopicaction">
+      <param name="beanName" value="deleteTopicAction"/>
+    </create>
   </allow>
 </dwr>

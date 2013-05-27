@@ -11,15 +11,15 @@
 		
 		<property name="name" column="name" type="string" length="20" not-null="true"/>
 		
-		<set name="questions" cascade="all-delete-orphan" inverse="true" lazy="true">
+		<set name="questions" cascade="all-delete-orphan" inverse="true" lazy="false">
 			<key column="subject_id"></key>
 			<one-to-many class="com.tutoring.entity.Question"/>
 		</set>
-		<set name="courses" cascade="all-delete-orphan" inverse="true" lazy="true">
+		<set name="courses" cascade="all-delete-orphan" inverse="true" lazy="false">
 			<key column="subject_id"></key>
 			<one-to-many class="com.tutoring.entity.Course"/>
 		</set>
-		<set name="tutors" cascade="save-update" inverse="true" lazy="true" table="specialty">
+		<set name="tutors" cascade="save-update" inverse="true" lazy="false" table="specialty">
 			<key column="subject_id"></key>
 			<many-to-many class="com.tutoring.entity.Tutor" column="tutor_id"/>
 		</set>

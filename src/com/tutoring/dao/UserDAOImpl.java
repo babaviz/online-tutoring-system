@@ -4,14 +4,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-
-import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.tutoring.entity.Student;
+import com.tutoring.entity.Tutor;
 import com.tutoring.entity.User;
 
 public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
@@ -31,15 +31,28 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 			return null;
 	}
 
-	public void addUser(String email, String password,char type)
+	public void addUser(String email, String password,char type,String firstname, String lastname)
 	{
 		User person = new User();
 		person.setEmail(email);
 		person.setPassword(password);
-		person.setFirstName("fn");
-		person.setLastName("ln");
+		person.setFirstName(firstname);
+		person.setLastName(lastname);
 		person.setType(type);
-		this.getHibernateTemplate().save(person);
+		if(type=='1')
+		{
+			Student stu = new Student();
+			stu.setUser(person);
+			this.getHibernateTemplate().save(stu);
+		}
+		else if(type=='2')
+		{
+			Tutor tutor = new Tutor();
+			tutor.setUser(person);
+			this.getHibernateTemplate().save(tutor);
+		}
+			
+		
 	}
 
 	@Override
@@ -56,24 +69,6 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		
 	}
 
-	@Override
-	public void deleteUser(String email) {
-		// TODO Auto-generated method stub
-		final User person = (User) this.getHibernateTemplate().find("from User where email='"+email+"'").get(0);
-		System.out.print(person.getEmail());
-		//this.getHibernateTemplate().delete(person);
-		this.getHibernateTemplate().executeFind(new HibernateCallback() {  
-            public Object doInHibernate(Session s)  
-                    throws HibernateException, SQLException {  
-                s.setFlushMode(FlushMode.AUTO);  
-                s.beginTransaction().begin();  
-                s.delete(person);  
-                s.beginTransaction().commit();  
-                s.close();  
-                return null;  
-            }  
-        }); 
-	}
 
 	@Override
 	public List<?> getQuestionsByEmail(final String email) {
@@ -81,11 +76,11 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		return this.getHibernateTemplate().executeFind(new HibernateCallback() {  
             public Object doInHibernate(Session s)  
                     throws HibernateException, SQLException { 
-            	User user = getUserByEmail(email);
+
             	//List<?> list = s.createFilter(user.getQuestions(), "").setFirstResult(1).setMaxResults(10).list();
             	//s.setFlushMode(FlushMode.AUTO); 
             	//List<?> list = (List<?>) user.getQuestions().iterator();
-            	Query query = s.createQuery("from Question where id<10");
+            	Query query = s.createQuery("from Question");
             
             	List<?> list = query.list();
             	//s.close();

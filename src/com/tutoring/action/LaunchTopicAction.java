@@ -1,12 +1,7 @@
 package com.tutoring.action;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Map;
 import com.tutoring.util.StaticUtil;
 
@@ -22,7 +17,7 @@ public class LaunchTopicAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final int BUFFER_SIZE=16*1024;
+	
 	
 	private File picture;
 	private File file;
@@ -102,16 +97,26 @@ public class LaunchTopicAction extends ActionSupport{
 		Map<String, Object> session = ac.getSession();
 		String pic_sn = null;
 		String attach_sn = null;
+		System.out.println("title length:"+title.length());
+		
+		if(title.length()>30||title.length()==0||content.length()>1000||type==null)
+			return ERROR;
+		
 		
 		if(picture!=null)
 		{
-			
-			String filetype = pictureFileName.substring(pictureFileName.indexOf('.'));
-			pic_sn = StaticUtil.generateRandomString(10)+filetype;
-			//System.out.println(filetype);
-			String storePath = ServletActionContext.getServletContext().getRealPath( "/images" )+"/"+pic_sn;
-			File storeFile = new File(storePath);
-			copy(picture,storeFile);
+			String pictureType = pictureFileName.substring(pictureFileName.indexOf('.'));
+			if(pictureType.equals(".jpg")||pictureType.equals(".jpeg")||pictureType.equals(".png")||pictureType.equals(".bmp"))
+			{
+				String filetype = pictureFileName.substring(pictureFileName.indexOf('.'));
+				pic_sn = StaticUtil.generateRandomString(10)+filetype;
+				//System.out.println(filetype);
+				String storePath = ServletActionContext.getServletContext().getRealPath( "/images" )+"/"+pic_sn;
+				File storeFile = new File(storePath);
+				StaticUtil.copy(picture,storeFile);
+			}
+			else
+				return ERROR;
 		}
 		
 		
@@ -123,37 +128,14 @@ public class LaunchTopicAction extends ActionSupport{
 			attach_sn = StaticUtil.generateRandomString(10)+filetype;
 			String storePath = ServletActionContext.getServletContext().getRealPath( "/download" )+"/"+attach_sn;
 			File storeFile = new File(storePath);
-			copy(file,storeFile);
+			StaticUtil.copy(file,storeFile);
 			
 		}
 		topicBiz.publishQuestion((String)session.get("email"), title, content, type,pic_sn,attach_sn,fileFileName);
 		return SUCCESS;
 	}
 	
-	private static void copy(File src, File dst) {
-        try {
-            InputStream in = null ;
-            OutputStream out = null ;
-             try {
-            	 in = new BufferedInputStream( new FileInputStream(src), BUFFER_SIZE);
-            	 out = new BufferedOutputStream( new FileOutputStream(dst), BUFFER_SIZE);
-                 byte [] buffer = new byte [BUFFER_SIZE];
-                 while (in.read(buffer) > 0 ) {
-                	 out.write(buffer);
-                 } 
-            } finally {
-                 if ( null != in) {
-                	 in.close();
-                 } 
-                 if ( null != out) {
-                	 out.close();
-                 } 
-            } 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-    } 
+	 
 	
 
 }

@@ -14,7 +14,7 @@ import com.tutoring.entity.User;
 public class AnswerDAOImpl extends HibernateDaoSupport implements AnswerDAO{
 
 	@Override
-	public void addAnswer(User user, String content, Question question) {
+	public void addAnswer(User user, String content, Question question, String pic_sn) {
 		// TODO Auto-generated method stub
 	
 		Answer ans = new Answer();
@@ -23,6 +23,7 @@ public class AnswerDAOImpl extends HibernateDaoSupport implements AnswerDAO{
 		ans.setQuestion(question);
 		Timestamp date = new Timestamp((new Date()).getTime());
 		ans.setTime(date);
+		ans.setPicture(pic_sn);
 		this.getHibernateTemplate().merge(ans);
 	}
 

@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-
-import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -71,24 +69,6 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		
 	}
 
-	@Override
-	public void deleteUser(String email) {
-		// TODO Auto-generated method stub
-		final User person = (User) this.getHibernateTemplate().find("from User where email='"+email+"'").get(0);
-		System.out.print(person.getEmail());
-		//this.getHibernateTemplate().delete(person);
-		this.getHibernateTemplate().executeFind(new HibernateCallback() {  
-            public Object doInHibernate(Session s)  
-                    throws HibernateException, SQLException {  
-                s.setFlushMode(FlushMode.AUTO);  
-                s.beginTransaction().begin();  
-                s.delete(person);  
-                s.beginTransaction().commit();  
-                s.close();  
-                return null;  
-            }  
-        }); 
-	}
 
 	@Override
 	public List<?> getQuestionsByEmail(final String email) {
@@ -96,7 +76,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		return this.getHibernateTemplate().executeFind(new HibernateCallback() {  
             public Object doInHibernate(Session s)  
                     throws HibernateException, SQLException { 
-            	User user = getUserByEmail(email);
+
             	//List<?> list = s.createFilter(user.getQuestions(), "").setFirstResult(1).setMaxResults(10).list();
             	//s.setFlushMode(FlushMode.AUTO); 
             	//List<?> list = (List<?>) user.getQuestions().iterator();

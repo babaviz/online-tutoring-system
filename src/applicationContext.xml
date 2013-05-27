@@ -99,9 +99,10 @@
 		<property name="userBiz" ref="UserBiz"></property>
 	</bean>
 	
-	<bean id="loginAction2" class="com.test.action.LoginAction">
-		<property name="userBiz" ref="UserBiz"></property>
+	<bean id="deleteTopicAction" class="com.tutoring.action.DeleteTopicAction" scope="prototype">
+		<property name="topicBiz" ref="TopicBiz"></property>
 	</bean>
+	
 	<bean id="launchTopicAction" class="com.tutoring.action.LaunchTopicAction" scope="prototype">
 		<property name="topicBiz" ref="TopicBiz"></property>
 	</bean>

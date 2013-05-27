@@ -56,11 +56,11 @@ public class TopicBizImpl implements TopicBiz{
 		return questionDAO.getQuestionById(id);
 	}
 	@Override
-	public void makeComment(String useremail, String content, int questionid) {
+	public void makeComment(String useremail, String content, int questionid, String pic_sn) {
 		// TODO Auto-generated method stub
 		User user = userDAO.getUserByEmail(useremail);
 		Question qt = questionDAO.getQuestionById(questionid);
-		answerDAO.addAnswer(user, content, qt);
+		answerDAO.addAnswer(user, content, qt,pic_sn);
 	}
 	@Override
 	public List<?> getAnswers(int topicid) {
@@ -89,7 +89,7 @@ public class TopicBizImpl implements TopicBiz{
 		// TODO Auto-generated method stub
 		int pagecount = pageDAO.getPageCount("Question","");
 		
-		if(pagecount/pageSize==0)
+		if(pagecount%pageSize==0)
 			return pagecount/pageSize;
 		else
 			return pagecount/pageSize+1;
@@ -110,7 +110,7 @@ public class TopicBizImpl implements TopicBiz{
 		
 		int pagecount = pageDAO.getPageCount("Question", "where user_id = "+user.getId());
 		
-		if(pagecount/pageSize==0)
+		if(pagecount%pageSize==0)
 			return pagecount/pageSize;
 		else
 			return pagecount/pageSize+1;
@@ -138,6 +138,14 @@ public class TopicBizImpl implements TopicBiz{
 	public List<?> getCommentsByPage(int pageNumber, int pageSize, int topicid) {
 		// TODO Auto-generated method stub
 		return pageDAO.findByPage("from Answer where question_id = "+topicid, (pageNumber-1)*pageSize, pageSize);
+	}
+	@Override
+	public void deleteTopic(int id) {
+		// TODO Auto-generated method stub
+		//questionDAO.deleteQuestionById(id);
+		
+		Question q = questionDAO.getQuestionById(id);
+		questionDAO.deleteQuestion(q);
 	}
 	
 

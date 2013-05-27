@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -73,6 +74,13 @@ public class QuestionDAOImpl extends HibernateDaoSupport implements QuestionDAO{
 	public int getPageNumber() {
 		// TODO Auto-generated method stub
 		return (Integer)this.getHibernateTemplate().iterate("select count(*) from Question as question").next();
+	}
+
+	@Override
+	public void deleteQuestion(Question q) {
+		// TODO Auto-generated method stub
+
+		this.getHibernateTemplate().delete(q);
 	}
 
 }

@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div style="margin-top:20px">
   <div class="container">
   <div class="row">
-    <div class="span3 bs-docs-sidenav dropdown">
+    <div class="span3 bs-docs-sidenav dropdown" style="z-index:100">
       <!--Sidebar content-->
       <ul class="affix bs-docs-sidenav nav nav-list" role="menu" aria-labelledby="dLabel">
       	<li class="active"><a href="AllTopics">帖子全览</a></li>
@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
      
       <div class="btn-group" style="padding-left:20px;">
-      		<s:if test="pageIndex!=1">
+      		<s:if test="pageIndex>1">
             <a class="btn" href="AllTopics?pageIndex=<s:property value="PageIndex-1" />">上一页</a>
             </s:if>
       		<s:iterator value="new int[pageCount]" status="i">
@@ -109,8 +109,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <a class="btn btn-link" href='AllTopics?pageIndex=<s:property value="#i.index+1"/>'><s:property value="#i.index+1"/></a>
             </s:else>
             </s:iterator>
+            <s:if test="pageCount!=0">
             <s:if test="pageIndex!=pageCount">
             <a class="btn" href="AllTopics?pageIndex=<s:property value="PageIndex+1" />">下一页</a>
+            </s:if>
             </s:if>
         </div>
       

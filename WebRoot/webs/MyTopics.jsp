@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div style="margin-top:20px">
   <div class="container">
   <div class="row">
-    <div class="span3 bs-docs-sidenav dropdown">
+    <div class="span3 bs-docs-sidenav dropdown" style="z-index:100">
       <!--Sidebar content-->
       <ul class="affix bs-docs-sidenav nav nav-list" role="menu" aria-labelledby="dLabel">
       	<li><a href="AllTopics">帖子全览</a></li>
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="span9">
       <!--Body content-->
      <s:iterator value="#questions">
-     	<div class="topic">
+     	<div class="topic" id="${id}">
         <div class="well">
     <p class="text-left text-info"><a href="TopicDetail?topicid=${id}"><s:property value="title"/></a></p>
     
@@ -84,6 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </div>
      
      <p class="text-error text-right">
+     <em><a href="javascript:deleteTopic(${id})">删除</a></em>
      <em><a href="TopicDetail?topicid=${id}#comments">评论(<s:property value="answers.size"/>)</a></em>
      </p>
      
@@ -96,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </s:iterator>
       
       <div class="btn-group" style="padding-left:20px;">
-      		<s:if test="pageIndex!=1">
+      		<s:if test="pageIndex>1">
             <a class="btn" href="MyTopics?pageIndex=<s:property value="PageIndex-1" />">上一页</a>
             </s:if>
       		<s:iterator value="new int[pageCount]" status="i">
@@ -107,8 +108,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <a class="btn btn-link" href='MyTopics?pageIndex=<s:property value="#i.index+1"/>'><s:property value="#i.index+1"/></a>
             </s:else>
             </s:iterator>
+            <s:if test="pageCount!=0">
             <s:if test="pageIndex!=pageCount">
             <a class="btn" href="MyTopics?pageIndex=<s:property value="PageIndex+1" />">下一页</a>
+            </s:if>
             </s:if>
         </div>
   
@@ -126,8 +129,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<p>copyright © 2013</p>
     </div>
   </div>
+  
+<script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script>
+<script src='/OnlineTutoringSystem/dwr/interface/deletetopicaction.js'></script>
+<script type="text/javascript">
+function deleteTopic(id)
+{
+	deletetopicaction.deleteTopicById(id,
+				{callback:function(msg){
+						deleteTopicCallback(msg,id);
+						}
+				}
+				);
+														
+}
+function deleteTopicCallback(msg,id)
+{
+	if(msg=="ok")
+	{
+		$("#"+id).remove();
+		alert("删除成功");
+	}
+}
 
-
+</script>
 
 
 </body>

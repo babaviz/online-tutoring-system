@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 	
 <body>
+	
     <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
   <div class="container">
@@ -79,12 +80,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </section>	
     <section id="comments">
+    <s:form action="MakeCommentAction.action " method="post" enctype="multipart/form-data" id="commentform">
     	<div class="page-header">
         	<h5>评论区</h5>
         </div>
-        <textarea rows="4" style="width:100%;" placeholder="说点什么......" id="replybox"></textarea>
-        <p align="right"><button type="button" class="btn" onclick="makeComment('${topicid}')">我要评论</button></p>
+        <textarea rows="4" style="width:100%;" placeholder="说点什么......" id="replybox" name="content"></textarea>
+        <input type="text" style="display:none" name="topicid" value="${topicid} "/>
         
+        <p align="right">
+        <a class="btn btn-link btn-small" style="margin-left:0" href="javascript:fileopen();" >图片</a>
+        <input type="file" id="commentpicture" style="width:0;height:0" name="picture"/>
+        <button type="button" class="btn" onclick="makeComment()">我要评论</button>
+        </p>
+    <s:token/>
+    </s:form>   
         
         
         <table class="table">
@@ -99,6 +108,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="media-body">
             	<h6><s:property value="user.firstName"/><s:property value="user.lastName"/></h6>
                 <p class="text-info"><s:property value="content"/></p>
+                <s:if test='picture!=null'>
+            	<img src='../images/<s:property value="picture"/>' alt="" style="width:200px;height:200px;"/>
+            	</s:if>
+            	
+            	</div>
             </div>
             <p align="right">
             <em><s:date name="time" format="dd/MM/yyyy"/></em>
@@ -113,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         
         <div class="btn-group" style="padding-left:20px;">
-      		<s:if test="pageIndex!=1">
+      		<s:if test="pageIndex>1">
             <a class="btn" href="TopicDetail?pageIndex=<s:property value="PageIndex-1" />#comments">上一页</a>
             </s:if>
       		<s:iterator value="new int[pageCount]" status="i">
@@ -124,8 +138,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <a class="btn btn-link" href='TopicDetail?pageIndex=<s:property value="#i.index+1"/>#comments'><s:property value="#i.index+1"/></a>
             </s:else>
             </s:iterator>
+            <s:if test="pageCount!=0">
             <s:if test="pageIndex!=pageCount">
             <a class="btn" href="TopicDetail?pageIndex=<s:property value="PageIndex+1" />#comments">下一页</a>
+            </s:if>
             </s:if>
         </div>
         
@@ -149,22 +165,35 @@ function focusReplyBox(person)
 }
 </script>
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script>
+<script src='/OnlineTutoringSystem/dwr/util.js'></script>
 <script src='/OnlineTutoringSystem/dwr/interface/makecommentaction.js'></script>
 <script type="text/javascript">
-function makeComment(topicid)
+function makeComment()
 {
-	var content = $("#replybox").val();
-	makecommentaction.makeComment(content, topicid, makeCommentCallback);
+	if(checkPicture())
+		$("#commentform").submit();
 }
-function makeCommentCallback(msg)
+
+function fileopen()
 {
-	if(msg=="ok")
+	$("#commentpicture").click();
+}
+function checkPicture()
+{
+	var picturename = $("#commentpicture").val();
+	//alert(picturename.split('.')[1]);
+	if(picturename!="")
 	{
-		$("#replybox").val("");
-		alert("评论成功");
+		if(picturename.split('.')[1]=="jpg"||picturename.split('.')[1]=="png"||picturename.split('.')[1]=="jpeg"
+			||picturename.split('.')[1]=="bmp")
+			return true;
+		else
+		{
+			alert("图片格式不允许");
+			return false;
+		}
 	}
-	else
-		alert("评论失败");
+	return true;
 }
 </script>
 </body>

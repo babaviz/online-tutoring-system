@@ -12,4 +12,5 @@ public interface QuestionDAO {
 	public List<Question> getQuestionsByUser(User u);
 	public String getFileNameBySN(String sn);
 	public int getPageNumber();
+	public void deleteQuestion(Question q);
 }

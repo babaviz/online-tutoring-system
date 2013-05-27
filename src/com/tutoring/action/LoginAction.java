@@ -42,7 +42,7 @@ public class LoginAction extends ActionSupport{
 			return SUCCESS;
 		}
 		else
-			return ERROR;
+			return LOGIN;
 	}
 	public String CanLoginDirectly()
 	{

@@ -63,11 +63,7 @@ public class UserBizImpl implements UserBiz{
 			return false;
 	}
 
-	@Override
-	public void deleteUser(String email) {
-		// TODO Auto-generated method stub
-		userDAO.deleteUser(email);
-	}
+	
 	
 	
 	

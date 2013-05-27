@@ -6,5 +6,4 @@ public interface UserBiz {
 	public boolean CanLoginByCookie();
 	public void register(String password,String email,String type,String firstname,String lastname);
 	public boolean isUserExist(String email);
-	public void deleteUser(String email);
 }

@@ -28,9 +28,9 @@ function createTab()
 	$x.find("a").tab('show');
 }
 
-function delTab(e)
+function delTab()
 {
-	$x=$(event.target).parent();
+	$x=$(event.srcElement).parent();
 	$y=$x.attr("href");
 	if($x.parent().next().length==0)
 	{
@@ -49,12 +49,12 @@ function delTab(e)
 	$($y).remove();
 }
 
-function selectCategory(e)
+function selectCategory()
 {
-	//$x=$(event.target);
+	//$x=$(event.srcElement);
 	$selectedCategory.removeClass("activecourse");
-	$(event.target).addClass("activecourse");
-	$selectedCategory=$(event.target);
+	$(event.srcElement).addClass("activecourse");
+	$selectedCategory=$(event.srcElement);
 }
 
 function customizedFunc()
@@ -99,6 +99,27 @@ function showAdvancedSearch_callback()
 	}
 }
 
+function adv_selectCourse()
+{
+	$("#adv_courseBtn").text($(event.srcElement).text());
+}
+
+function adv_selectEval()
+{
+	
+	if($(event.srcElement).text()!="自定义")
+	{
+		$("#adv_evalBtn").text($(event.srcElement).text());
+	}
+	else
+	{
+		var $x=$("#customized_eval").clone(true);
+		$("#adv_evalBtn").html($x.html());
+	}
+
+}
+
 function null_function()
 {
+
 }

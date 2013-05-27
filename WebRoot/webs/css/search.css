@@ -5,14 +5,7 @@
 	margin-top: -18px;
 	margin-right: -9px;
 }
-#down_content {
-	margin-left: auto;
-	margin-right: auto;
-	padding-top:30px;
-	padding-left:10px;
-	padding-right:10px;
-	width: 815px;
-}
+
 
 #myTabContent
 {
@@ -181,27 +174,4 @@
 {
 	margin-top:70px;
 	padding-bottom:200px;
-}
-
-::-webkit-scrollbar
-{
-    width: 6px;
-    height: 6px;
-}
-::-webkit-scrollbar-track-piece
-{
-    background-color: #CCCCCC;
-    -webkit-border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:vertical
-{
-    height: 5px;
-    background-color: #999999;
-    -webkit-border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:horizontal
-{
-    width: 5px;
-    background-color: #CCCCCC;
-    -webkit-border-radius: 6px;
 }

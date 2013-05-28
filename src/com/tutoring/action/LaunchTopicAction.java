@@ -10,6 +10,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.biz.TopicBiz;
+import com.tutoring.entity.User;
 
 public class LaunchTopicAction extends ActionSupport{
 
@@ -131,7 +132,7 @@ public class LaunchTopicAction extends ActionSupport{
 			StaticUtil.copy(file,storeFile);
 			
 		}
-		topicBiz.publishQuestion((String)session.get("email"), title, content, type,pic_sn,attach_sn,fileFileName);
+		topicBiz.publishQuestion(((User)session.get("user")).getEmail(), title, content, type,pic_sn,attach_sn,fileFileName);
 		return SUCCESS;
 	}
 	

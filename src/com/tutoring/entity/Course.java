@@ -3,7 +3,7 @@
  */
 package com.tutoring.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.Set;
 
 import javax.persistence.Id;
@@ -23,9 +23,9 @@ public class Course  extends AbstractModel {
 	@Id
 	private int id;
 	
-	private Date startTime;
+	private Timestamp startTime;
 	
-	private Date endTime;
+	private Timestamp endTime;
 	
 	private int duration;
 	
@@ -81,7 +81,7 @@ public class Course  extends AbstractModel {
 	 * @param ebsb
 	 * @param ebsc
 	 */
-	public Course(Date startTime, Date endTime, int duration, Tutor tutor,
+	public Course(Timestamp startTime, Timestamp endTime, int duration, Tutor tutor,
 			int price, String name, String description, Subject subject,
 			int ebta, int ebtb, int ebtc, int ebsa, int ebsb, int ebsc) {
 		this.startTime = startTime;
@@ -118,7 +118,7 @@ public class Course  extends AbstractModel {
 	 * @param ebsc
 	 * @param evaluation
 	 */
-	public Course(Date startTime, Date endTime, int duration, Student student,
+	public Course(Timestamp startTime, Timestamp endTime, int duration, Student student,
 			Tutor tutor, int price, String name, String description,
 			Subject subject, int ebta, int ebtb, int ebtc, int ebsa, int ebsb,
 			int ebsc, String evaluation) {
@@ -157,28 +157,28 @@ public class Course  extends AbstractModel {
 	/**
 	 * @return the startTime
 	 */
-	public Date getStartTime() {
+	public Timestamp getStartTime() {
 		return startTime;
 	}
 
 	/**
 	 * @param startTime the startTime to set
 	 */
-	public void setStartTime(Date startTime) {
+	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
 	}
 
 	/**
 	 * @return the endTime
 	 */
-	public Date getEndTime() {
+	public Timestamp getEndTime() {
 		return endTime;
 	}
 
 	/**
 	 * @param endTime the endTime to set
 	 */
-	public void setEndTime(Date endTime) {
+	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
 

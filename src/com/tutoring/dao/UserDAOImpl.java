@@ -1,6 +1,7 @@
 package com.tutoring.dao;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 
@@ -88,6 +89,19 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
             }  
         }); 
 		
+	}
+
+	@Override
+	public void setUser(User u, String FirstName, String LastName, char Sex,
+			String phone, Date birth, String school) {
+		// TODO Auto-generated method stub
+		u.setFirstName(FirstName);
+		u.setLastName(LastName);
+		u.setType(Sex);
+		u.setPhone(phone);
+		u.setBirthday(birth);
+		u.setSchool(school);
+		this.getHibernateTemplate().saveOrUpdate(u);
 	}
 	
 	

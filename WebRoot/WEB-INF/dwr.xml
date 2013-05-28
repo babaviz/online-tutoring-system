@@ -19,5 +19,8 @@
     <create creator="spring" javascript="deletetopicaction">
       <param name="beanName" value="deleteTopicAction"/>
     </create>
+    <create creator="spring" javascript="changeinfoaction">
+      <param name="beanName" value="changeInfoAction"/>
+    </create>
   </allow>
 </dwr>

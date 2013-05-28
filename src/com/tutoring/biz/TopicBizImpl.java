@@ -73,7 +73,7 @@ public class TopicBizImpl implements TopicBiz{
 		// TODO Auto-generated method stub
 		ActionContext ac = ActionContext.getContext();
 		Map<String , Object> session = ac.getSession();
-		String useremail = (String) session.get("email");
+		String useremail = ((User) session.get("user")).getEmail();
 		User user = userDAO.getUserByEmail(useremail);
 		
 		return questionDAO.getQuestionsByUser(user);
@@ -105,7 +105,7 @@ public class TopicBizImpl implements TopicBiz{
 		// TODO Auto-generated method stub
 		ActionContext ac = ActionContext.getContext();
 		Map<String , Object> session = ac.getSession();
-		String useremail = (String) session.get("email");
+		String useremail = ((User) session.get("user")).getEmail();
 		User user = userDAO.getUserByEmail(useremail);
 		
 		int pagecount = pageDAO.getPageCount("Question", "where user_id = "+user.getId());
@@ -120,7 +120,7 @@ public class TopicBizImpl implements TopicBiz{
 		// TODO Auto-generated method stub
 		ActionContext ac = ActionContext.getContext();
 		Map<String , Object> session = ac.getSession();
-		String useremail = (String) session.get("email");
+		String useremail = ((User) session.get("user")).getEmail();
 		User user = userDAO.getUserByEmail(useremail);
 		
 		return pageDAO.findByPage("from Question where user_id="+user.getId(), (pageNumber-1)*pageSize, pageSize);

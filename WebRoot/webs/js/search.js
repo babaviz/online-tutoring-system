@@ -107,7 +107,7 @@ function adv_selectCourse()
 function adv_selectEval()
 {
 	
-	if($(event.srcElement).text()!="自定义")
+	if($(event.srcElement).text()!="")
 	{
 		$("#adv_evalBtn").text($(event.srcElement).text());
 	}

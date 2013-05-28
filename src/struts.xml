@@ -21,10 +21,15 @@
 		</global-results>
     	
     	<action name="LoginAction" class="loginAction">
+    		<result name="student" type="redirectAction">
+    			Index
+    		</result>
+    		<result name="tutor" type="redirectAction">
+    			AllTopics
+    		</result>
     		<result name="success" type="redirectAction">
     			AllTopics
     		</result>
-    		
     	</action>
     	<action name="RegisterAction" class="registerAction">
     		<result name="success">/webs/Login.htm</result>
@@ -52,7 +57,7 @@
     		<result name="error">/fileError.jsp</result>
     	</action>
     	<action name="Index" class="indexAction">
-    		
+    		<result name="success">/webs/StudentHome.jsp</result>
     	</action>
     	
     	<action name="MakeCommentAction" class="makeCommentAction">
@@ -84,6 +89,9 @@
     		<result name="success">/webs/search.jsp</result>
     	</action>
     	
+    	<action name="BuildInfo" class="buildInfoAction">
+    		<result name="success">/webs/BuildInfo.jsp</result>
+    	</action>
     	
     </package>
     

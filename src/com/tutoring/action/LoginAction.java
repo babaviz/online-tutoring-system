@@ -1,10 +1,13 @@
 package com.tutoring.action;
 
+import java.util.List;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.tutoring.biz.CourseBiz;
 import com.tutoring.biz.UserBiz;
+import com.tutoring.entity.User;
 
 public class LoginAction extends ActionSupport{
 
@@ -33,12 +36,32 @@ public class LoginAction extends ActionSupport{
 		this.userBiz = userBiz;
 	}
 	
+	CourseBiz courseBiz;
+	public void setCourseBiz(CourseBiz courseBiz) {
+		this.courseBiz = courseBiz;
+	}
+	
 	public String execute() throws Exception{
 		if(userBiz.login(username, password)){
 			ActionContext ac = ActionContext.getContext();
 			Map<String, Object> session = ac.getSession();
-			session.put("email", username);
+			User user = userBiz.getUserInfo(username);
+			session.put("user", user);
+			
 			//System.out.println(session.get("username"));
+			if(userBiz.isStudent(username))
+			{
+				List<?> myCourses = courseBiz.getMyCourses();
+				session.put("mycourses", myCourses);
+				
+				List<?> mytutors = courseBiz.getMyTutors();
+				session.put("mytutors", mytutors);
+				//System.out.println(mytutors.size());
+				return "student";
+			}
+			else if(userBiz.isTutor(username))
+				return "tutor";
+			
 			return SUCCESS;
 		}
 		else

@@ -6,7 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 	
 	
-	
+
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName"
@@ -40,7 +40,10 @@
 			<value>com/tutoring/entity/Student.hbm.xml</value>
 			<value>com/tutoring/entity/Subject.hbm.xml</value>
 			<value>com/tutoring/entity/Answer.hbm.xml</value>
-			<value>com/tutoring/entity/Course.hbm.xml</value></list>
+			<value>com/tutoring/entity/Course.hbm.xml</value>
+			<value>com/tutoring/entity/Application.hbm.xml</value>
+			<value>com/tutoring/entity/Friend.hbm.xml</value>
+			<value>com/tutoring/entity/Specialty.hbm.xml</value></list>
 		</property>
 	</bean>
 	
@@ -90,10 +93,19 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<bean id="CourseDAO" class="com.tutoring.dao.CourseDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	
+	<bean id="CourseBiz" class="com.tutoring.biz.CourseBizImpl">
+		<property name="userDAO" ref="UserDAO"></property>
+		<property name="studentDAO" ref="StudentDAO"></property>
+		<property name="courseDAO" ref="CourseDAO"></property>
+	</bean>
 
 	<bean id="loginAction" class="com.tutoring.action.LoginAction" scope="prototype">
 		<property name="userBiz" ref="UserBiz"></property>
+		<property name="courseBiz" ref="CourseBiz"></property>
 	</bean>
 	<bean id="registerAction" class="com.tutoring.action.RegisterAction" scope="prototype">
 		<property name="userBiz" ref="UserBiz"></property>
@@ -115,7 +127,9 @@
 		<property name="topicBiz" ref="TopicBiz"></property>
 	</bean>
 	
-	<bean id="indexAction" class="com.tutoring.action.IndexAction"></bean>
+	<bean id="indexAction" class="com.tutoring.action.IndexAction">
+		
+	</bean>
 	
 	<bean id="allTopicsAction" class="com.tutoring.action.AllTopicsAction" scope="prototype">
 		<property name="topicBiz" ref="TopicBiz"></property>
@@ -134,4 +148,9 @@
 	</bean>
 	
 	<bean id="searchAction" class="com.tutoring.action.SearchAction"></bean>
+	
+	<bean id="buildInfoAction" class="com.tutoring.action.BuildInfoAction">
+		<property name="userBiz" ref="UserBiz"></property>
+	</bean>
+	
 </beans>

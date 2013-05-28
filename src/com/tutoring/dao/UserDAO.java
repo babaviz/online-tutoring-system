@@ -10,4 +10,5 @@ public interface UserDAO {
 	public void addUser(String email, String password,char type,String firstname,String lastname);
 	public User getUserByEmail(String email);
 	public List<?> getQuestionsByEmail(String email); 
+	
 }

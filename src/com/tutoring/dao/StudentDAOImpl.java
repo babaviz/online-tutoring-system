@@ -15,4 +15,10 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO{
 		this.getHibernateTemplate().merge(stu);
 	}
 
+	@Override
+	public Student getStudentByUser(User u) {
+		// TODO Auto-generated method stub
+		return u.getStudent();
+	}
+
 }

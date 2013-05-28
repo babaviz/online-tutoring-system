@@ -3,7 +3,7 @@
  */
 package com.tutoring.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.Set;
 
 import javax.persistence.Id;
@@ -29,7 +29,7 @@ public class Question  extends AbstractModel {
 	
 	private String content;
 	
-	private Date time;
+	private Timestamp time;
 	
 	private int view;
 	
@@ -75,7 +75,7 @@ public class Question  extends AbstractModel {
 	 * @param attachment
 	 * @param subject
 	 */
-	public Question(User user, String title, String content, Date time,
+	public Question(User user, String title, String content, Timestamp time,
 			int view, int reply, String picture, String attachment,String attachname,
 			Subject subject) {
 		this.user = user;
@@ -149,14 +149,14 @@ public class Question  extends AbstractModel {
 	/**
 	 * @return the time
 	 */
-	public Date getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
 
 	/**
 	 * @param time the time to set
 	 */
-	public void setTime(Date time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 

@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.tutoring.dao.UserDAO;
+import com.tutoring.entity.User;
 
 
 public class UserBizImpl implements UserBiz{
@@ -30,7 +31,7 @@ public class UserBizImpl implements UserBiz{
 		ActionContext ac = ActionContext.getContext();
 		Map<String, Object> session = ac.getSession();
 		
-		if(session.get("email")!=null)
+		if(session.get("user")!=null)
 			return true;
 		return false;
 	}
@@ -61,6 +62,33 @@ public class UserBizImpl implements UserBiz{
 			return true;
 		else
 			return false;
+	}
+
+	@Override
+	public boolean isStudent(String email) {
+		// TODO Auto-generated method stub
+		User u = userDAO.getUserByEmail(email);
+		if(u.getType() == '1')
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean isTutor(String email) {
+		// TODO Auto-generated method stub
+		User u = userDAO.getUserByEmail(email);
+		if(u.getType() == '2')
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public User getUserInfo(String email) {
+		// TODO Auto-generated method stub
+		
+		return userDAO.getUserByEmail(email);
 	}
 
 	

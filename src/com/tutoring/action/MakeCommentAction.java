@@ -11,6 +11,7 @@ import com.tutoring.util.StaticUtil;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.biz.TopicBiz;
+import com.tutoring.entity.User;
 
 public class MakeCommentAction extends ActionSupport{
 	/**
@@ -33,7 +34,7 @@ public class MakeCommentAction extends ActionSupport{
 		System.out.println(topicid);
 		ActionContext ac = ActionContext.getContext();
 		Map<String, Object> session = ac.getSession();
-		String useremail = (String)session.get("email");
+		String useremail = ((User)session.get("user")).getEmail();
 		
 		if(picture!=null)
 		{

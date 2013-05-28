@@ -9,8 +9,8 @@
             <generator class="native"/>
         </id>
      
-     	<property name="startTime" column="start_time" type="date" not-null="true"/>
-     	<property name="endTime" column="end_time" type="date" not-null="true"/>
+     	<property name="startTime" column="start_time" type="timestamp" not-null="true"/>
+     	<property name="endTime" column="end_time" type="timestamp" not-null="true"/>
      	<property name="duration" column="duration" type="int" not-null="true"/>
      	<property name="price" column="price" type="int" not-null="true"/>
         <property name="name" column="name" type="string" length="45" not-null="true"/>
@@ -25,7 +25,7 @@
      	
 		
 		<many-to-one name="student" column="student_id" class="com.tutoring.entity.Student" cascade="save-update"></many-to-one>
-		<many-to-one name="tutor" column="tutor_id" class="com.tutoring.entity.Tutor" cascade="save-update" not-null="true"></many-to-one>
+		<many-to-one name="tutor" column="tutor_id" class="com.tutoring.entity.Tutor" lazy="false" cascade="save-update" not-null="true"></many-to-one>
 		<many-to-one name="subject" column="subject_id" class="com.tutoring.entity.Subject" cascade="save-update" not-null="true"></many-to-one>
 		
 		<set name="applications" cascade="save-update" inverse="true" lazy="false" table="application">

@@ -26,7 +26,7 @@ public class SessionInterceptor extends AbstractInterceptor{
 		if(actionName.equals("LoginAction")||actionName.equals("RegisterAction"))
 			return arg0.invoke();
 		
-		if(session.get("email")!=null){
+		if(session.get("user")!=null){
 			return arg0.invoke();
 		}
 		

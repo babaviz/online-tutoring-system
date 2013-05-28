@@ -27,12 +27,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="container">
     <a class="brand" href="#">零距离家教</a>
     <ul class="nav">
-      <li><a href="#">首页</a></li>
+      <li><a href="Index">首页</a></li>
       <li><a href="#">课程管理</a></li>
       <li><a href="Search">找老师</a></li>
       <li class="active"><a href="AllTopics">BBS</a></li>
       <li><a href="Chatting">聊天</a></li>
       <li><a href="flash/OnlineTutorPlayer.html">上课</a></li>
+    </ul>
+    <ul class="nav pull-right">
+    	<li><a href="BuildInfo"><i class="icon-user"></i>个人设置</a></li>
+    	<li><a href="#"><i class="icon-envelope"></i>消息</a></li>
+    	<li><a href="#"><i class="icon-off"></i>登出</a></li>
     </ul>
     </div>
   </div>
@@ -79,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="row">
     <div class="span3">
      <p class="text-success">
-     <em class="text-left"><s:date name="time" format="dd/MM/yyyy"/></em>
+     <em class="text-left"><s:date name="time" format="dd/MM/yyyy HH:mm:ss"/></em>
      <em class="text-center">发帖者：<s:property value="user.firstName"/><s:property value="user.lastName"/></em>
      </p>
      </div>

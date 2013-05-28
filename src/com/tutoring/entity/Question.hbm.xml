@@ -11,8 +11,8 @@
      
         <property name="title" column="title" type="string" length="30" not-null="true"/>
         <property name="content" column="content" type="string" length="1000" not-null="true"/>
-        <property name="time" type="date" not-null="true" generated="insert">
-        	<column name="time" sql-type="datetime" default="CURRENT_TIMESTAMP"/>
+        <property name="time" type="timestamp" not-null="true" generated="insert">
+        	<column name="time" sql-type="timestamp" default="CURRENT_TIMESTAMP"/>
         </property>
         <property name="view" type="int" not-null="true" generated="insert">
         	<column name="view" sql-type="int" default="0"/>

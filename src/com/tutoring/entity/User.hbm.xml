@@ -23,8 +23,8 @@
         <property name="cookie" column="cookie_sn" type="string" length="20"/>
 		
 
-		<one-to-one name="student" cascade="all-delete-orphan" lazy="false" class="com.tutoring.entity.Student" />
-		<one-to-one name="tutor" cascade="all-delete-orphan" lazy="false" class="com.tutoring.entity.Tutor"/>
+		<one-to-one name="student" cascade="all-delete-orphan" lazy="false" class="com.tutoring.entity.Student" property-ref="user"/>
+		<one-to-one name="tutor" cascade="all-delete-orphan" lazy="false" class="com.tutoring.entity.Tutor" property-ref="user"/>
 
 		<set name="friendsHaveMe" cascade="save-update" inverse="false" lazy="false" table="friend">
 			<key column="id_b"></key>

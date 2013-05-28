@@ -92,12 +92,11 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	}
 
 	@Override
-	public void setUser(User u, String FirstName, String LastName, char Sex,
+	public void setUser(User u, String FirstName, String LastName,
 			String phone, Date birth, String school) {
 		// TODO Auto-generated method stub
 		u.setFirstName(FirstName);
 		u.setLastName(LastName);
-		u.setType(Sex);
 		u.setPhone(phone);
 		u.setBirthday(birth);
 		u.setSchool(school);

@@ -11,6 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="css/outerframe.css" rel="stylesheet" type="text/css" />
+<link href="css/buildinfo.css" rel="stylesheet" type="text/css" />
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
 <title>无标题文档</title>
 </head>
@@ -61,29 +62,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <form class="form-horizontal" action="" method="post">
           <fieldset class="control-group">
             <div class="control-group">
-              <label class="control-label" for="input01">邮箱</label>
-              <div class="controls">
+              <label class="setting_detail_label" for="input01">邮箱</label>
+	          <div class="setting_detail_info">
                 <div style="margin-top:5px">
                   <label><s:property value="#session.user.email"/></label>
                 </div>
               </div>
             </div>
             <div class="control-group disabled">
-              <label class="control-label" for="input01">姓</label>
-              <div class="controls">
-                <input type="text" class="input-large" placeholder="输入您的姓" id="input01" value='<s:property value="#session.user.firstName"/>'  onblur="check_lastname()"/><span class="help-inline"></span>
+              <label class="setting_detail_label" for="input01">姓</label>
+              <div class="setting_detail_info">
+                <input type="text" class="input-large" placeholder="输入您的姓" id="input_lastname" value='<s:property value="#session.user.firstName"/>'  onblur="check_lastname()"/><span class="help-inline"></span>
               </div>
             </div>
             <div class="control-group disabled">
-              <label class="control-label" for="input01">名</label>
-              <div class="controls">
-                <input type="text" class="input-large" placeholder="输入您的名" id="input01" value='<s:property value="#session.user.lastName"/>' onblur="check_firstname()"/>
+              <label class="setting_detail_label" for="input01">名</label>
+              <div class="setting_detail_info">
+                <input type="text" class="input-large" placeholder="输入您的名" id="input_firstname" value='<s:property value="#session.user.lastName"/>' onblur="check_firstname()"/>
               <span class="help-inline"></span>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="input01">性别</label>
-              <div class="controls">
+              <label class="setting_detail_label" for="input01">性别</label>
+              <div class="setting_detail_info">
                 <label class="radio inline">
                   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked/>
                   男 </label>
@@ -96,31 +97,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="input01">电话</label>
-              <div class="controls">
-                <input type="text" class="input-large" placeholder="请输入您的手机号码" id="input01" value='<s:property value="#session.user.phone"/>' onblur="check_phone()"/><span class="help-inline"></span>
+              <label class="setting_detail_label" for="input01">电话</label>
+              <div class="setting_detail_info">
+                <input type="text" class="input-large" placeholder="请输入您的手机号码" id="input_phone" value='<s:property value="#session.user.phone"/>' onblur="check_phone()"/><span class="help-inline"></span>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="input01">生日</label>
-              <div class="controls">
-                <input type="text" class="input-large" placeholder="yyyy-mm-dd" id="input01" value='<s:property value="#session.user.birthday"/>'/>
+              <label class="setting_detail_label" for="input01" >生日</label>
+              <div class="setting_detail_info">
+                <input type="text" class="input-large" placeholder="yyyy-mm-dd" id="input_birthday" value='<s:property value="#session.user.birthday"/>'/>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="input01">学校</label>
-              <div class="controls">
-                <input type="text" class="input-large" placeholder="请输入您在读的学校" id="input01" onblur="check_school()" value='<s:property value="#session.user.school"/>'/><span class="help-inline"></span>
+              <label class="setting_detail_label" for="input01">学校</label>
+              <div class="setting_detail_info">
+                <input type="text" class="input-large" id="input_school" placeholder="请输入您在读的学校" onblur="check_school()" value='<s:property value="#session.user.school"/>'/><span class="help-inline"></span>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="input01">个人简介</label>
-              <div class="controls">
-                <textarea rows="6" style="width:80%" placeholder="一句话介绍一下自己吧，让别人更了解你" id="input_description"></textarea>
+              <label class="setting_detail_label" for="input01" >个人简介</label>
+              <div class="setting_detail_info">
+                <textarea rows="6" style="width:80%" id="input_description" placeholder="一句话介绍一下自己吧，让别人更了解你" id="input_description"></textarea>
               </div>
             </div>
             <div class="control-group">
-              <div class="controls">
+              <div class="setting_detail_info">
                 <button type="button" class="btn btn-primary" onclick="save_info()">保存</button>
               </div>
             </div>

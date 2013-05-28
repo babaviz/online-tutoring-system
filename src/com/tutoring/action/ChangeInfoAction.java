@@ -9,7 +9,13 @@ public class ChangeInfoAction {
 	public void setUserBiz(UserBiz userBiz) {
 		this.userBiz = userBiz;
 	}
-	public void changeBasicInfo(String FirstName, String LastName, char Sex, String phone, Date birth, String school){
-		userBiz.changeUserInfo(FirstName, LastName, Sex, phone, birth, school);
+	@SuppressWarnings("deprecation")
+	public void changeBasicInfo(String FirstName, String LastName, String phone, String birthstr, String school){
+		Date birth = new Date();
+		String[] dates = birthstr.split("-");
+		birth.setYear(Integer.parseInt(dates[0]));
+		birth.setMonth(Integer.parseInt(dates[1]));
+		birth.setDate(Integer.parseInt(dates[2]));
+		userBiz.changeUserInfo(FirstName, LastName, phone, birth, school);
 	}
 }

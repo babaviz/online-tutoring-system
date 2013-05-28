@@ -93,13 +93,14 @@ public class UserBizImpl implements UserBiz{
 	}
 
 	@Override
-	public void changeUserInfo(String FirstName, String LastName, char Sex,
+	public void changeUserInfo(String FirstName, String LastName,
 			String phone, Date birth, String school) {
 		// TODO Auto-generated method stub
 		ActionContext ac = ActionContext.getContext();
 		Map<String ,Object > session = ac.getSession();
 		User u = userDAO.getUserByEmail(((User)session.get("user")).getEmail());
-		userDAO.setUser(u, FirstName, LastName, Sex, phone, birth, school);
+		System.out.println(phone);
+		userDAO.setUser(u, FirstName, LastName, phone, birth, school);
 	}
 
 	

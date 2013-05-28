@@ -1,11 +1,7 @@
 package com.tutoring.action;
 
-import java.util.Map;
-
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.biz.UserBiz;
-import com.tutoring.entity.User;
 
 public class BuildInfoAction extends ActionSupport{
 

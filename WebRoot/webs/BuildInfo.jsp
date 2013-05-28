@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div style="margin-left:160px;width:540px">
         <!-- 基本信息页面-->
         <div id="information">
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="" method="post">
           <fieldset class="control-group">
             <div class="control-group">
               <label class="control-label" for="input01">邮箱</label>
@@ -71,13 +71,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="control-group disabled">
               <label class="control-label" for="input01">姓</label>
               <div class="controls">
-                <input type="text" class="input-large" placeholder="输入您的姓" id="input01" value='<s:property value="#session.user.firstName"/>'/>
+                <input type="text" class="input-large" placeholder="输入您的姓" id="input01" value='<s:property value="#session.user.firstName"/>'  onblur="check_lastname()"/><span class="help-inline"></span>
               </div>
             </div>
             <div class="control-group disabled">
               <label class="control-label" for="input01">名</label>
               <div class="controls">
-                <input type="text" class="input-large" placeholder="输入您的名" id="input01" value='<s:property value="#session.user.lastName"/>'/>
+                <input type="text" class="input-large" placeholder="输入您的名" id="input01" value='<s:property value="#session.user.lastName"/>' onblur="check_firstname()"/>
+              <span class="help-inline"></span>
               </div>
             </div>
             <div class="control-group">
@@ -97,30 +98,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="control-group">
               <label class="control-label" for="input01">电话</label>
               <div class="controls">
-                <input type="text" class="input-large" placeholder="请输入您的手机号码" id="input01"/>
+                <input type="text" class="input-large" placeholder="请输入您的手机号码" id="input01" value='<s:property value="#session.user.phone"/>' onblur="check_phone()"/><span class="help-inline"></span>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="input01">生日</label>
               <div class="controls">
-                <input type="text" class="input-large" placeholder="yyyy-mm-dd" id="input01"/>
+                <input type="text" class="input-large" placeholder="yyyy-mm-dd" id="input01" value='<s:property value="#session.user.birthday"/>'/>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="input01">学校</label>
               <div class="controls">
-                <input type="text" class="input-large" placeholder="请输入您在读的学校" id="input01"/>
+                <input type="text" class="input-large" placeholder="请输入您在读的学校" id="input01" onblur="check_school()" value='<s:property value="#session.user.school"/>'/><span class="help-inline"></span>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="input01">个人简介</label>
               <div class="controls">
-                <textarea rows="6" style="width:80%" placeholder="一句话介绍一下自己吧，让别人更了解你"></textarea>
+                <textarea rows="6" style="width:80%" placeholder="一句话介绍一下自己吧，让别人更了解你" id="input_description"></textarea>
               </div>
             </div>
             <div class="control-group">
               <div class="controls">
-                <button type="submit" class="btn btn-primary">保存</button>
+                <button type="button" class="btn btn-primary" onclick="save_info()">保存</button>
               </div>
             </div>
           </fieldset>
@@ -144,7 +145,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <label class="control-label" for="input01">请输入原卡号</label>
               <div class="controls">
                 <input type="text" class="input-large" placeholder="原卡号" id="input01"/>
-                <span class="help-inline">卡号不能为空！</span> </div>
+                <span class="help-inline"></span> </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="input01">新卡号</label>
@@ -168,19 +169,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <label class="control-label" for="input01">请输入原密码</label>
               <div class="controls">
                 <input type="password" class="input-large" id="input01"/>
-                <span class="help-inline">密码不能为空！</span> </div>
+                <span class="help-inline"></span> </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="input01">新密码</label>
               <div class="controls">
                 <input type="password" class="input-large"  id="input01"/>
-                <span class="help-inline">密码强度不够！</span> </div>
+                <span class="help-inline"></span> </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="input01">重复新密码</label>
               <div class="controls">
                 <input type="password" class="input-large"  id="input01"/>
-                <span class="help-inline">两次密码输入不同！</span> </div>
+                <span class="help-inline"></span> </div>
             </div>
             <div class="control-group">
               <div class="controls">
@@ -212,6 +213,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/holder.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script> 
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script>
+<script src='/OnlineTutoringSystem/dwr/interface/changeinfoaction.js'></script>
+<script language="javascript" type="text/javascript" src="js/buildinfo.js"></script> 
 <script language="javascript" type="text/javascript">
   function test()
   {

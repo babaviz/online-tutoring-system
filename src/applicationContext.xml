@@ -153,4 +153,8 @@
 		<property name="userBiz" ref="UserBiz"></property>
 	</bean>
 	
+	<bean id="changeInfoAction" class="com.tutoring.action.ChangeInfoAction">
+		<property name="userBiz" ref="UserBiz"></property>
+	</bean>
+	
 </beans>

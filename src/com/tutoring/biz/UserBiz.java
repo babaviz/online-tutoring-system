@@ -1,5 +1,7 @@
 package com.tutoring.biz;
 
+import java.util.Date;
+
 import com.tutoring.entity.User;
 
 public interface UserBiz {
@@ -11,4 +13,5 @@ public interface UserBiz {
 	public boolean isStudent(String email);
 	public boolean isTutor(String email);
 	public User getUserInfo(String email);
+	public void changeUserInfo(String FirstName, String LastName, char Sex, String phone, Date birth, String school);
 }

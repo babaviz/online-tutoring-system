@@ -13,14 +13,14 @@ function check_lastname()
 	{
 		$lastname.parent().parent().removeClass("success");
 		$lastname.parent().parent().addClass("error");
-		$lastname.next().text("ÊäÈë´íÎó£¬²»ÄÜÎª¿Õ»ò³¬¶à25¸ö×Ö·û");
+		$lastname.next().text("è¾“å…¥é”™è¯¯ï¼Œä¸èƒ½ä¸ºç©ºæˆ–è¶…å¤š25ä¸ªå­—ç¬¦");
 		return false;
 	}
 	else
 	{
 		$lastname.parent().parent().removeClass("error");
 		$lastname.parent().parent().addClass("success");
-		$lastname.next().text("ÊäÈëÕıÈ·");
+		$lastname.next().text("è¾“å…¥æ­£ç¡®");
 		return true;
 	}
 }
@@ -32,14 +32,14 @@ function check_firstname()
 	{
 		$lastname.parent().parent().removeClass("success");
 		$lastname.parent().parent().addClass("error");
-		$lastname.next().text("ÊäÈë´íÎó£¬²»ÄÜÎª¿Õ»ò³¬¶à25¸ö×Ö·û");
+		$lastname.next().text("è¾“å…¥é”™è¯¯ï¼Œä¸èƒ½ä¸ºç©ºæˆ–è¶…å¤š25ä¸ªå­—ç¬¦");
 		return false;
 	}
 	else
 	{
 		$lastname.parent().parent().removeClass("error");
 		$lastname.parent().parent().addClass("success");
-		$lastname.next().text("ÊäÈëÕıÈ·");
+		$lastname.next().text("è¾“å…¥æ­£ç¡®");
 		return true;
 	}
 }
@@ -48,25 +48,25 @@ function check_phone()
 {
 	var $phone_num=$("#input_phone");
 	var phone_pattern=new RegExp("[\+0-9]+[0-9]+");
-	if($phone_num.val().length()==0)
+	if($phone_num.val().length==0)
 	{
 		$phone_num.parent().parent().removeClass("error");
 		$phone_num.parent().parent().removeClass("success");
 		$phone_num.next().text("");
 		return true;
 	}
-	else if((!(phone_pattern.test($phone_num.val())))||($phone_num.val().length()>15))
+	else if((!(phone_pattern.test($phone_num.val())))||($phone_num.val().length>15))
 	{
 		$phone_num.parent().parent().removeClass("success");
 		$phone_num.parent().parent().addClass("error");
-		$phone_num.next().text("ÊäÈë´íÎó");
+		$phone_num.next().text("è¾“å…¥é”™è¯¯");
 		return false;
 	}
 	else
 	{
 		$phone_num.parent().parent().removeClass("error");
 		$phone_num.parent().parent().addClass("success");
-		$phone_num.next().text("ÊäÈëÕıÈ·");
+		$phone_num.next().text("è¾“å…¥æ­£ç¡®");
 		return true;
 	}
 }
@@ -78,7 +78,7 @@ function check_school()
 	{
 		$school_name.parent().parent().removeClass("success");
 		$school_name.parent().parent().addClass("error");
-		$school_name.next().text("ÊäÈë´íÎó£¬Ñ§Ğ£Ãû×Ö¹ı³¤");
+		$school_name.next().text("è¾“å…¥é”™è¯¯ï¼Œå­¦æ ¡åå­—è¿‡é•¿");
 		return false;
 	}
 	else if($school_name.val().length==0)
@@ -91,7 +91,7 @@ function check_school()
 	{
 		$school_name.parent().parent().removeClass("error");
 		$school_name.parent().parent().addClass("success");
-		$school_name.next().text("ÊäÈëÕıÈ·");
+		$school_name.next().text("è¾“å…¥æ­£ç¡®");
 		return true;
 	}
 }

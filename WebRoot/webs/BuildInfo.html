@@ -3,39 +3,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-<link href="topic.css" rel="stylesheet" type="text/css"/>
+<link href="css/outerframe.css" rel="stylesheet" type="text/css" />
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
 <title>无标题文档</title>
 </head>
 
-<body>
+<body style="background:url(images/mainbackground.jpg)">
+
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-    <div class="container"> <a class="brand" href="#">零距离家教</a>
+    <div class="container">
       <ul class="nav">
         <li><a href="#">首页</a></li>
         <li><a href="#">课程管理</a></li>
-        <li><a href="#">找老师</a></li>
-        <li class="active"><a href="#">BBS</a></li>-
-        <li><a href="#">聊天</a></li>
-        <li><a href="#">上课</a></li>
+        <li  class="active"><a href="Search">找老师</a></li>
+        <li><a href="AllTopics">BBS</a></li>
+        <li><a href="Chatting">聊天</a></li>
+        <li><a href="flash/OnlineTutorPlayer.html">上课</a></li>
       </ul>
-    </div>
+      <a class="brand" href="#">零距离家教</a> </div>
   </div>
 </div>
-<div style="margin-top:60px">
-  <div class="container">
+<div id="down_content" style="background:url(images/half_translucent_2.png)">
+<div id="down_left_content">
     <div style="margin-left: auto; margin-right: auto; width: 700px;">
       <div >
         <form class="form-horizontal">
         <legend>个人信息</legend>
-
+        
         <!-- 左导航栏-->
         <div style="width:160px; float:left;">
           <div style="width:150px; height:150px;"> <img src="bootstrap/img/bootstrap-mdo-sfmoma-01.jpg"/> </div>
-          
           <ul class="nav nav-pills nav-stacked">
             <label><a>积分</a></label>
             <li class="active" onclick="toinformation()" id="information1"><a>基本信息</a></li>
@@ -44,14 +42,18 @@
             <li onclick="topassword()" id="password1"><a href="#">修改密码</a></li>
           </ul>
         </div>
-       <div margin-left:160px;width:540px>
-      <!-- 基本信息页面-->
-      <div id="information">
+        <div margin-left:160px;width:540px>
+        <!-- 基本信息页面-->
+        <div id="information">
         <form class="form-horizontal">
           <fieldset class="control-group">
             <div class="control-group">
               <label class="control-label" for="input01">邮箱</label>
-              <div class="controls"><div style="margin-top:5px"><label>xxx@xx.com</label></div></div>
+              <div class="controls">
+                <div style="margin-top:5px">
+                  <label>xxx@xx.com</label>
+                </div>
+              </div>
             </div>
             <div class="control-group disabled">
               <label class="control-label" for="input01">姓</label>
@@ -68,16 +70,16 @@
             <div class="control-group">
               <label class="control-label" for="input01">性别</label>
               <div class="controls">
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                男 </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1">
-                女 </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option1">
-                保密 </label>
-                </div>
+                <label class="radio inline">
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                  男 </label>
+                <label class="radio inline">
+                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1">
+                  女 </label>
+                <label class="radio inline">
+                  <input type="radio" name="optionsRadios" id="optionsRadios3" value="option1">
+                  保密 </label>
+              </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="input01">电话</label>
@@ -111,11 +113,11 @@
           </fieldset>
         </form>
       </div>
-      <!-- 头像页面--> 
+      <!-- 头像页面-->
       <div style="margin-top:30px; margin-left:200px; display:none" id="head_pic">
-      <div style="width:160px; height:160px;"> <img src="bootstrap/img/bootstrap-mdo-sfmoma-01.jpg"/> </div>
+        <div style="width:160px; height:160px;"> <img src="bootstrap/img/bootstrap-mdo-sfmoma-01.jpg"/> </div>
       </div>
-      <!-- 信用卡页面--> 
+      <!-- 信用卡页面-->
       <div style="margin-top:80px; display:none" id="card">
         <form class="form-horizontal">
           <fieldset class="control-group">
@@ -129,7 +131,7 @@
               <label class="control-label" for="input01">新卡号</label>
               <div class="controls">
                 <input type="text" class="input-large"  id="input01">
-            </div>
+              </div>
             </div>
             <div class="control-group">
               <div class="controls">
@@ -139,7 +141,7 @@
           </fieldset>
         </form>
       </div>
-      <!-- 修改密码页面--> 
+      <!-- 修改密码页面-->
       <div style="margin-top:80px; display:none" id="password">
         <form class="form-horizontal">
           <fieldset class="control-group">
@@ -169,14 +171,15 @@
           </fieldset>
         </form>
       </div>
-      
     </div>
-    
-    
   </div>
 </div>
 </div>
-</div>
+<div id="down_right_content">哈哈哈！！！！！</div>
+  
+
+
+
 <div class="footer " style="margin-top:100px;">
   <div class="container">
     <p>copyright © 2013</p>

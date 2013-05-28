@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <legend>个人信息</legend>
         <!-- 左导航栏-->
         <div style="width:160px; float:left;">
-          <div style="width:150px; height:150px;"> <img src="holder.js/150x150"/> </div>
+          <div style="width:150px; height:150px;"> <img data-src="holder.js/150x150"/> </div>
           <ul class="nav nav-pills nav-stacked">
             <label><a>积分</a></label>
             <li class="active" onclick="toinformation()" id="information1"><a>基本信息</a></li>

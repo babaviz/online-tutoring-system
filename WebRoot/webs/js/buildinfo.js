@@ -48,14 +48,14 @@ function check_phone()
 {
 	var $phone_num=$("#input_phone");
 	var phone_pattern=new RegExp("[\+0-9]+[0-9]+");
-	if($phone_num.val().length()==0)
+	if($phone_num.val().length==0)
 	{
 		$phone_num.parent().parent().removeClass("error");
 		$phone_num.parent().parent().removeClass("success");
 		$phone_num.next().text("");
 		return true;
 	}
-	else if((!(phone_pattern.test($phone_num.val())))||($phone_num.val().length()>15))
+	else if((!(phone_pattern.test($phone_num.val())))||($phone_num.val().length>15))
 	{
 		$phone_num.parent().parent().removeClass("success");
 		$phone_num.parent().parent().addClass("error");
@@ -113,4 +113,8 @@ function save_info()
 
 	if(ifOK==false)
 		return;
+	else
+	{
+		changeaction.changeBasicInfo();
+	}
 }

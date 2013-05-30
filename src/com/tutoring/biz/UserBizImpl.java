@@ -93,13 +93,24 @@ public class UserBizImpl implements UserBiz{
 	}
 
 	@Override
-	public void changeUserInfo(String FirstName, String LastName, char Sex,
+	public User changeUserInfo(String FirstName, String LastName,
 			String phone, Date birth, String school) {
 		// TODO Auto-generated method stub
 		ActionContext ac = ActionContext.getContext();
 		Map<String ,Object > session = ac.getSession();
 		User u = userDAO.getUserByEmail(((User)session.get("user")).getEmail());
-		userDAO.setUser(u, FirstName, LastName, Sex, phone, birth, school);
+		System.out.println("from biz:"+phone);
+		return userDAO.setUser(u, FirstName, LastName, phone, birth, school);
+	}
+
+	@Override
+	public void setHeadImagePathByEmail(User user, String path) {
+		// TODO Auto-generated method stub
+		//User user = userDAO.getUserByEmail(email);
+		
+		user.setPicture(path);
+		System.out.println(user.getPicture());
+		userDAO.save(user);
 	}
 
 	

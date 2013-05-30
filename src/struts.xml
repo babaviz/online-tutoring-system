@@ -21,14 +21,8 @@
 		</global-results>
     	
     	<action name="LoginAction" class="loginAction">
-    		<result name="student" type="redirectAction">
-    			Index
-    		</result>
-    		<result name="tutor" type="redirectAction">
-    			AllTopics
-    		</result>
     		<result name="success" type="redirectAction">
-    			AllTopics
+    			Index
     		</result>
     	</action>
     	<action name="RegisterAction" class="registerAction">
@@ -57,12 +51,18 @@
     		<result name="error">/fileError.jsp</result>
     	</action>
     	<action name="Index" class="indexAction">
-    		<result name="success">/webs/StudentHome.jsp</result>
+    		<result name="student">/webs/StudentHome.jsp</result>
+    		<result name="tutor">/webs/TutorHome.jsp</result>
     	</action>
     	
     	<action name="MakeCommentAction" class="makeCommentAction">
     	<result name="success" type="redirectAction">TopicDetail?topicid=${topicid}</result>
     	<result name="error">/launchTopicError.jsp</result>
+    	</action>
+    	
+    	<action name="ChangeHead" class="changeInfoAction" method="uploadHeadImg">
+    		<interceptor-ref name="MyInterceptorStack" />
+    		<interceptor-ref name="token" />
     	</action>
     	
     	<action name="AllTopics" class="allTopicsAction">

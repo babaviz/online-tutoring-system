@@ -28,6 +28,7 @@
 				<prop key="hibernate.dialect">
 					org.hibernate.dialect.MySQLDialect
 				</prop>
+				<prop key="javax.persistence.validation.mode">none</prop> 
 			</props>
 		</property>
 		<property name="mappingResources">
@@ -128,7 +129,7 @@
 	</bean>
 	
 	<bean id="indexAction" class="com.tutoring.action.IndexAction">
-		
+		<property name="userBiz" ref="UserBiz"></property>
 	</bean>
 	
 	<bean id="allTopicsAction" class="com.tutoring.action.AllTopicsAction" scope="prototype">
@@ -153,7 +154,7 @@
 		<property name="userBiz" ref="UserBiz"></property>
 	</bean>
 	
-	<bean id="changeInfoAction" class="com.tutoring.action.ChangeInfoAction">
+	<bean id="changeInfoAction" class="com.tutoring.action.ChangeInfoAction" scope="prototype">
 		<property name="userBiz" ref="UserBiz"></property>
 	</bean>
 	

@@ -40,6 +40,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		person.setFirstName(firstname);
 		person.setLastName(lastname);
 		person.setType(type);
+		person.setPoint(0);
 		if(type=='1')
 		{
 			Student stu = new Student();
@@ -92,7 +93,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	}
 
 	@Override
-	public void setUser(User u, String FirstName, String LastName,
+	public User setUser(User u, String FirstName, String LastName,
 			String phone, Date birth, String school) {
 		// TODO Auto-generated method stub
 		u.setFirstName(FirstName);
@@ -100,7 +101,15 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		u.setPhone(phone);
 		u.setBirthday(birth);
 		u.setSchool(school);
-		this.getHibernateTemplate().saveOrUpdate(u);
+		System.out.println("from dao:"+phone);
+		this.getHibernateTemplate().merge(u);
+		return u;
+	}
+
+	@Override
+	public void save(User u) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().merge(u);
 	}
 	
 	

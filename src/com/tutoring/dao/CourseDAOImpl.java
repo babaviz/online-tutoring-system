@@ -25,4 +25,12 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO{
 		return c.getTutor();
 	}
 
+	@Override
+	public List<Course> getCoursesByTutor(Tutor t) {
+		// TODO Auto-generated method stub
+		List<Course> list = new ArrayList<Course>();
+		list.addAll(t.getCourses());
+		return list;
+	}
+
 }

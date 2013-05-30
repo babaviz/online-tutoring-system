@@ -57,10 +57,13 @@ public class LoginAction extends ActionSupport{
 				List<?> mytutors = courseBiz.getMyTutors();
 				session.put("mytutors", mytutors);
 				//System.out.println(mytutors.size());
-				return "student";
 			}
 			else if(userBiz.isTutor(username))
-				return "tutor";
+			{
+				List<?> myCourses = courseBiz.getTutorCourses();
+				session.put("mycourses", myCourses);
+			}
+				
 			
 			return SUCCESS;
 		}

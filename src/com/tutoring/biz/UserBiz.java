@@ -13,5 +13,6 @@ public interface UserBiz {
 	public boolean isStudent(String email);
 	public boolean isTutor(String email);
 	public User getUserInfo(String email);
-	public void changeUserInfo(String FirstName, String LastName, String phone, Date birth, String school);
+	public User changeUserInfo(String FirstName, String LastName, String phone, Date birth, String school);
+	public void setHeadImagePathByEmail(User user , String path);
 }

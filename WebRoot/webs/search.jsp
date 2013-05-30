@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"  %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/webs/";
@@ -35,7 +36,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <ul class="nav">
         <li><a href="Index">首页</a></li>
         <li><a href="#">课程管理</a></li>
+        <s:if test="#session.user.type=='1'">
         <li  class="active"><a href="Search">找老师</a></li>
+        </s:if>
         <li><a href="AllTopics">BBS</a></li>
         <li><a href="Chatting">聊天</a></li>
         <li><a href="flash/OnlineTutorPlayer.html">上课</a></li>

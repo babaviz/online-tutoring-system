@@ -115,6 +115,14 @@ function save_info()
 		return;
 	else
 	{
-		changeaction.changeBasicInfo($("#input_lastname"),$("#input_firstname"),$("#input_phone"),$("#input_birthday"),$("#input_school"));
+		//alert("ok");
+		changeinfoaction.changeBasicInfo($("#input_lastname").val(),$("#input_firstname").val(),$("#input_phone").val(),$("#input_birthday").val(),$("#input_school").val(),changeCallBack);
+		//changeinfoaction.test(changeCallBack);
 	}
+}
+
+function changeCallBack(msg)
+{
+	if(msg=="ok")
+		alert("修改成功");
 }

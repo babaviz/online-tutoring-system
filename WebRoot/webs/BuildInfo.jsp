@@ -25,7 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <ul class="nav">
         <li><a href="Index">首页</a></li>
         <li><a href="#">课程管理</a></li>
+        <s:if test="#session.user.type=='1'">
         <li><a href="Search">找老师</a></li>
+        </s:if>
         <li><a href="AllTopics">BBS</a></li>
         <li><a href="Chatting">聊天</a></li>
         <li><a href="flash/OnlineTutorPlayer.html">上课</a></li>
@@ -47,9 +49,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <legend>个人信息</legend>
         <!-- 左导航栏-->
         <div style="width:160px; float:left;">
-          <div style="width:150px; height:150px;"> <img data-src="holder.js/150x150"/> </div>
+          <img data-src="holder.js/150x150" id="left-headimg" src="../headimg/<s:property value='#session.user.picture'/>" style="width:150px; height:150px;"/>
           <ul class="nav nav-pills nav-stacked">
-            <label><a>积分</a></label>
+            <label>积分:<s:property value="#session.user.point"/></label>
             <li class="active" onclick="toinformation()" id="information1"><a>基本信息</a></li>
             <li onclick="tohead_pic()" id="head_pic1"><a>头像</a></li>
             <li onclick="tocard()" id="card1"><a>信用卡</a></li>
@@ -63,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <fieldset class="control-group">
             <div class="control-group">
               <label class="setting_detail_label" for="input01">邮箱</label>
-              <div class="setting_detail_info">
+	          <div class="setting_detail_info">
                 <div style="margin-top:5px">
                   <label><s:property value="#session.user.email"/></label>
                 </div>
@@ -105,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="control-group">
               <label class="setting_detail_label" for="input01" >生日</label>
               <div class="setting_detail_info">
-                <input type="text" class="input-large" placeholder="yyyy-mm-dd" id="input_birthday" value='<s:property value="#session.user.birthday"/>'/>
+                <input type="text" class="input-large" placeholder="yyyy-mm-dd" id="input_birthday" value='<s:date name="#session.user.birthday" format="yyyy-MM-dd" />'/>
               </div>
             </div>
             <div class="control-group">
@@ -130,12 +132,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
       	<!-- 头像页面-->
         <div style="margin-top:30px; margin-left:200px; display:none" id="head_pic">
-        <form action="">
-        	<div style="width:160px; height:160px;"> 
-        		<img data-src="holder.js/150x150"/>
-         	</div>
-         	<input type="file"/>
-         	<button class="btn btn-primary" type="submit">上传头像</button>
+        <form id="headform" method="post" enctype="multipart/form-data">
+        	
+        	<img data-src="holder.js/150x150" id="right-headimg" src="../headimg/<s:property value='#session.user.picture'/>" style="width:150px; height:150px;"/>
+         	
+         	<input type="file"  name="fileupload"/>
+         	<button class="btn btn-primary" type="button" onclick="uploadImage()">上传头像</button>
+         	<s:token></s:token>
          </form>
         </div>
       	<!-- 信用卡页面-->
@@ -203,7 +206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-<div class="footer " style="margin-top:100px;">
+<div class="footer " style="margin-top:300px;">
   <div class="container">
     <p>copyright © 2013</p>
   </div>
@@ -213,6 +216,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/holder.js"></script> 
+<script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script>
+<script src='/OnlineTutoringSystem/dwr/interface/changeinfoaction.js'></script>
 <script language="javascript" type="text/javascript" src="js/buildinfo.js"></script> 
 <script language="javascript" type="text/javascript">
   function test()
@@ -266,8 +273,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 }
 
 
+function uploadImage() {  
+	//$("").submit(function(){
+		$("#headform").ajaxSubmit({
+			url : "<%=path%>/ChangeHead.action",  
+	        type : "POST",
+	        success:function(data){
+	        	//alert(data);
+	        	msg = data.split('&');
+	        	if(msg[0]=="ok")
+	        	{
+	        		alert("头像上传成功");
+	        		$("#right-headimg").attr("src","../headimg/"+msg[1]);
+	        		$("#left-headimg").attr("src","../headimg/"+msg[1]);
+	        	}
+	        	else
+	        		alert("头像上传失败");
+	        }
+		});
+}  
+
+
+
   </script>
-<script src='/OnlineTutoringSystem/dwr/engine.js'></script>
-<script src='/OnlineTutoringSystem/dwr/interface/changeinfoaction.js'></script>
 </body>
 </html>

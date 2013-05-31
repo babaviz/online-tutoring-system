@@ -13,14 +13,14 @@ function check_lastname()
 	{
 		$lastname.parent().parent().removeClass("success");
 		$lastname.parent().parent().addClass("error");
-		$lastname.next().text("è¾“å…¥é”™è¯¯ï¼Œä¸èƒ½ä¸ºç©ºæˆ–è¶…å¤š25ä¸ªå­—ç¬¦");
+		$lastname.next().text("ÊäÈë´íÎó£¬²»ÄÜÎª¿Õ»ò³¬¶à25¸ö×Ö·û");
 		return false;
 	}
 	else
 	{
 		$lastname.parent().parent().removeClass("error");
 		$lastname.parent().parent().addClass("success");
-		$lastname.next().text("è¾“å…¥æ­£ç¡®");
+		$lastname.next().text("ÊäÈëÕıÈ·");
 		return true;
 	}
 }
@@ -32,14 +32,14 @@ function check_firstname()
 	{
 		$lastname.parent().parent().removeClass("success");
 		$lastname.parent().parent().addClass("error");
-		$lastname.next().text("è¾“å…¥é”™è¯¯ï¼Œä¸èƒ½ä¸ºç©ºæˆ–è¶…å¤š25ä¸ªå­—ç¬¦");
+		$lastname.next().text("ÊäÈë´íÎó£¬²»ÄÜÎª¿Õ»ò³¬¶à25¸ö×Ö·û");
 		return false;
 	}
 	else
 	{
 		$lastname.parent().parent().removeClass("error");
 		$lastname.parent().parent().addClass("success");
-		$lastname.next().text("è¾“å…¥æ­£ç¡®");
+		$lastname.next().text("ÊäÈëÕıÈ·");
 		return true;
 	}
 }
@@ -59,14 +59,14 @@ function check_phone()
 	{
 		$phone_num.parent().parent().removeClass("success");
 		$phone_num.parent().parent().addClass("error");
-		$phone_num.next().text("è¾“å…¥é”™è¯¯");
+		$phone_num.next().text("ÊäÈë´íÎó");
 		return false;
 	}
 	else
 	{
 		$phone_num.parent().parent().removeClass("error");
 		$phone_num.parent().parent().addClass("success");
-		$phone_num.next().text("è¾“å…¥æ­£ç¡®");
+		$phone_num.next().text("ÊäÈëÕıÈ·");
 		return true;
 	}
 }
@@ -78,20 +78,20 @@ function check_school()
 	{
 		$school_name.parent().parent().removeClass("success");
 		$school_name.parent().parent().addClass("error");
-		$school_name.next().text("è¾“å…¥é”™è¯¯ï¼Œå­¦æ ¡åå­—è¿‡é•¿");
+		$school_name.next().text("ÊäÈë´íÎó£¬Ñ§Ğ£Ãû×Ö¹ı³¤");
 		return false;
 	}
 	else if($school_name.val().length==0)
 	{
 		$school_name.parent().parent().removeClass("error");
 		$school_name.parent().parent().removeClass("success");
-		$school_name.next().text("");
+		$school_name.next().text("ÊäÈëÕıÈ·");
 		return true;
 	}	else
 	{
 		$school_name.parent().parent().removeClass("error");
 		$school_name.parent().parent().addClass("success");
-		$school_name.next().text("è¾“å…¥æ­£ç¡®");
+		$school_name.next().text("");
 		return true;
 	}
 }
@@ -113,4 +113,16 @@ function save_info()
 
 	if(ifOK==false)
 		return;
+	else
+	{
+		//alert("ok");
+		changeinfoaction.changeBasicInfo($("#input_lastname").val(),$("#input_firstname").val(),$("#input_phone").val(),$("#input_birthday").val(),$("#input_school").val(),changeCallBack);
+		//changeinfoaction.test(changeCallBack);
+	}
+}
+
+function changeCallBack(msg)
+{
+	if(msg=="ok")
+		alert("ĞŞ¸Ä³É¹¦");
 }

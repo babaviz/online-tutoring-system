@@ -70,4 +70,14 @@ public class CourseBizImpl implements CourseBiz{
 		}
 		return false;
 	}
+	@Override
+	public List<?> getTutorCourses() {
+		// TODO Auto-generated method stub
+		ActionContext ac = ActionContext.getContext();
+		Map<String, Object> session = ac.getSession();
+		User user = (User)session.get("user");
+		Tutor tutor = (Tutor)user.getTutor();
+		
+		return courseDAO.getCoursesByTutor(tutor);
+	}
 }

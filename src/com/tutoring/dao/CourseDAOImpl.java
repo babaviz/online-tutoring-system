@@ -33,4 +33,17 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO{
 		return list;
 	}
 
+	@Override
+	public Course getCourseById(int id) {
+		// TODO Auto-generated method stub
+		List<?> list = this.getHibernateTemplate().find("from Course where id = "+id);
+		if(list.size()>0)
+		{
+			Course course = (Course) list.get(0);
+			return course;
+		}
+		else
+			return null;
+	}
+
 }

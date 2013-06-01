@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </ul>
     <ul class="nav pull-right">
     	<li><a href="BuildInfo"><i class="icon-user"></i>个人设置</a></li>
-    	<li><a href="#"><i class="icon-envelope"></i>消息</a></li>
+    	<li><a href="#" id="message"><i class="icon-envelope"></i>消息</a></li>
     	<li><a href="#"><i class="icon-off"></i>登出</a></li>
     	<li><a><strong class="text-success">欢迎登入：<s:property value="#session.user.firstName"/><s:property value="#session.user.lastName"/></strong></a></li>
     </ul>
@@ -85,5 +85,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script language="javascript" type="text/javascript" src="bootstrap/js/holder.js"></script>
+<script type="text/javascript" src="js/ajax-pushlet-client.js"></script>
+<script type="text/javascript">
+		PL._init();
+		PL.joinListen("/tutoring/numberofnotice");
+		function onData(event)
+		{
+			//alert(event.get("he"));
+			if(event.get("numberofnotice")!=0)
+			{
+				$("#message").append('<span class="badge badge-important">1</span>');
+			}
+		}
+		
+		function cancelListen()
+		{
+			PL.leave();
+		}
+		
+</script>
 </body>
 </html>

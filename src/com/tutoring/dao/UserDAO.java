@@ -13,4 +13,5 @@ public interface UserDAO {
 	public List<?> getQuestionsByEmail(String email); 
 	public User setUser(User u, String FirstName, String LastName, String phone, Date birth, String school);
 	public void save(User u);
+	public User getUserByID(int id);
 }

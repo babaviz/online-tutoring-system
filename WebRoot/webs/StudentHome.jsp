@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </td>
                         	<td><p class="text-info"><s:property value="user.firstName"/><s:property value="user.lastName"/></p></td>
                             <td style="padding-top:10px;">
-                            	<a href="##"><i class="icon-circle-arrow-right"></i></a>
+                            	<a href="TutorInfo?userid=<s:property value='user.id'/>"><i class="icon-circle-arrow-right"></i></a>
                             </td>
                         </tr>
                     </s:iterator>

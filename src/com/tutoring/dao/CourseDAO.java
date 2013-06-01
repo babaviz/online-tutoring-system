@@ -10,4 +10,5 @@ public interface CourseDAO {
 	public List<Course> getCoursesByStudent(Student stu);
 	public Tutor getTutorByCourse(Course c);
 	public List<Course> getCoursesByTutor(Tutor t);
+	public Course getCourseById(int id);
 }

@@ -15,4 +15,5 @@ public interface UserBiz {
 	public User getUserInfo(String email);
 	public User changeUserInfo(String FirstName, String LastName, String phone, Date birth, String school);
 	public void setHeadImagePathByEmail(User user , String path);
+	public User getUserInfoById(int id);
 }

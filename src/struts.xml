@@ -93,6 +93,10 @@
     		<result name="success">/webs/BuildInfo.jsp</result>
     	</action>
     	
+    	<action name="TutorInfo" class="tutorInfoAction">
+    		<result name="success">/webs/TutorInfo.jsp</result>
+    	</action>
+    	
     </package>
     
    

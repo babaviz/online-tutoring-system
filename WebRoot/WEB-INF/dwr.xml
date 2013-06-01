@@ -22,5 +22,8 @@
     <create creator="spring" javascript="changeinfoaction">
       <param name="beanName" value="changeInfoAction"/>
     </create>
+    <create creator="spring" javascript="applycourseaction">
+      <param name="beanName" value="applyCourseAction"/>
+    </create>
   </allow>
 </dwr>

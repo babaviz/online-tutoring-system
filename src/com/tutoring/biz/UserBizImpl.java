@@ -113,6 +113,12 @@ public class UserBizImpl implements UserBiz{
 		userDAO.save(user);
 	}
 
+	@Override
+	public User getUserInfoById(int id) {
+		// TODO Auto-generated method stub
+		return userDAO.getUserByID(id);
+	}
+
 	
 	
 	

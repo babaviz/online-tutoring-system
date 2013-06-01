@@ -27,7 +27,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>pushlet</servlet-name>
-		<url-pattern>/pushlet.srv</url-pattern>
+		<url-pattern>/webs/pushlet.srv</url-pattern>
 	</servlet-mapping>
 	
   	 <listener>

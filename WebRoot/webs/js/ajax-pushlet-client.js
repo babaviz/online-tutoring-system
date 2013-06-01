@@ -383,7 +383,7 @@ var PL = {
 			};
 		}
 
-		PL.pushletURL = PL._getWebRoot() + 'pushlet.srv';
+		PL.pushletURL = 'pushlet.srv';
 		PL._setStatus('initialized');
 		PL.state = PL.STATE_READY;
 	},

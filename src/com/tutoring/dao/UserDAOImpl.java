@@ -111,6 +111,19 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().merge(u);
 	}
+
+	@Override
+	public User getUserByID(int id) {
+		// TODO Auto-generated method stub
+		List<?> personList = this.getHibernateTemplate().find("from User where id = "+id);
+		if(personList.size()>0)
+		{
+			User person = (User) personList.get(0);
+			return person;
+		}
+		else
+			return null;
+	}
 	
 	
 }

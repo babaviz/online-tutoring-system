@@ -22,7 +22,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a class="brand" href="#">零距离家教</a>
     <ul class="nav">
       <li class="active"><a href="Index">首页</a></li>
-      <li><a href="#">课程管理</a></li>
+      <s:if test="#session.user.type=='2'">
+      <li><a href="CourseManage">课程管理</a></li>
+      </s:if>
       <s:if test="#session.user.type=='1'">
       <li><a href="Search">找老师</a></li>
       </s:if>
@@ -94,7 +96,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//alert(event.get("he"));
 			if(event.get("numberofnotice")!=0)
 			{
-				$("#message").append('<span class="badge badge-important">1</span>');
+				$("#message").html('<i class="icon-envelope"></i>消息</a><span class="badge badge-important">'+event.get("numberofnotice")+'</span>');
+			}
+			else
+			{
+				$("#message").html('<i class="icon-envelope"></i>消息</a>');
 			}
 		}
 		

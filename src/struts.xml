@@ -97,6 +97,10 @@
     		<result name="success">/webs/TutorInfo.jsp</result>
     	</action>
     	
+    	<action name="CourseManage" class="courseManageAction">
+    		<result name="success">/webs/CourseManage.jsp</result>
+    	</action>
+    	
     </package>
     
    

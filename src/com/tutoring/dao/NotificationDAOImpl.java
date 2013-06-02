@@ -19,6 +19,7 @@ public class NotificationDAOImpl extends HibernateDaoSupport implements Notifica
 	@Override
 	public void addNotice(int noticeid, int type, User user) {
 		// TODO Auto-generated method stub
+		System.out.println("addnotice:"+noticeid);
 		Notification notice = new Notification();
 		notice.setNotification_id(noticeid);
 		Timestamp date = new Timestamp((new Date()).getTime());
@@ -26,7 +27,8 @@ public class NotificationDAOImpl extends HibernateDaoSupport implements Notifica
 		notice.setType(type);
 		notice.setUser(user);
 		notice.setState(0);
-		this.getHibernateTemplate().merge(notice);
+		user.getNotifications().add(notice);
+		this.getHibernateTemplate().merge(user);
 	}
 
 	@Override
@@ -39,16 +41,12 @@ public class NotificationDAOImpl extends HibernateDaoSupport implements Notifica
 			public Integer doInHibernate(Session session)
 					throws HibernateException, SQLException {
 				// TODO Auto-generated method stub
-				session.setFlushMode(FlushMode.AUTO);
-				session.beginTransaction().begin();
+				
 				Query query = session.createQuery("select count(*) from Notification where state = 0");
 				int count = ((Number)query.uniqueResult()).intValue();
 				//session.flush();
 				//session.clear();
-				session.beginTransaction().commit();
-				//session.close();
-				//session.disconnect();
-				session.close();
+				
 				return count;
 			}
 			

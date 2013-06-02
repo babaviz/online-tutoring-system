@@ -176,4 +176,6 @@
 		<property name="studentBiz" ref="StudentBiz"></property>
 	</bean>
 	
+	<bean id="courseManageAction" class="com.tutoring.action.CourseManageAction"></bean>
+	
 </beans>

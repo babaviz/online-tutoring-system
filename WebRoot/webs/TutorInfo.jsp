@@ -22,7 +22,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a class="brand" href="#">零距离家教</a>
     <ul class="nav">
       <li><a href="Index">首页</a></li>
-      <li><a href="#">课程管理</a></li>
+      <s:if test="#session.user.type=='2'">
+      <li><a href="CourseManage">课程管理</a></li>
+      </s:if>
       <s:if test="#session.user.type=='1'">
       <li><a href="Search">找老师</a></li>
       </s:if>
@@ -126,10 +128,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </s:if>
                             </s:iterator>
                             <s:if test="#flag==0">
-                            <button class="btn btn-mini btn-success" onclick="applyCourse(<s:property value='id'/>)">申请</button>
+                            <button class="btn btn-mini btn-success" onclick="applyCourse(<s:property value='id'/>)" id="applybtn">申请</button>
                             </s:if>
                             <s:else>
-                            <button class="btn btn-mini" onclick="applyCourse(<s:property value='id'/>)" disabled="disabled">已申</button>
+                            <button class="btn btn-mini" onclick="applyCourse(<s:property value='id'/>)" disabled="disabled" id="applybtn">已申</button>
                             </s:else>
                             
                             </td>
@@ -174,7 +176,13 @@ function applyCourse(courseid)
 function applyCourseCallBack(msg)
 {
 	if(msg=="ok")
+	{
 		alert("申请成功");
+		
+		$("#applybtn").attr("disabled","disabled");
+		$("#applybtn").html("已申");
+		//$("#applybtn").removeClass("btn-success");
+	}
 }
 </script>
 </body>

@@ -1,6 +1,6 @@
 // JavaScript Document
 
-function createTab()
+function createTab($search_type)
 {
 	//$tabNum=$("#myTab").children().length;
 	var $words=$selectedCategory.text();
@@ -19,13 +19,150 @@ function createTab()
 	$x.find("a").html($words+$x.find("a").html());
 	$("#myTab:last").append($x);
 	
-	var $y=$("#tabContentTemplate").clone(true);
+	var $tabContent=$("#tabContentTemplate").clone(true);
 	//$y.css("display","block");
-	$y.attr("id","tab_"+$tabNO);
-	$y.find("p").text("xxx"+$tabNO+"zzz");
-	$("#myTabContent").append($y);
-	
+	$tabContent.attr("id","tab_"+$tabNO);
+	$tabContent.find("p").text("xxx"+$tabNO+"zzz");
+	$("#myTabContent").append($tabContent);
+	var $factors=new get_factors($search_type);
+	add_factors($tabContent,$factors,$search_type);
+	add_result($tabContent,$factors,$search_type);
 	$x.find("a").tab('show');
+}
+
+function add_factors($tabContent,$factors,$search_type)
+{
+	var $one_factor;
+	var $search_factors=$tabContent.find(".search_factors");
+	$one_factor=$("#factorTemplate").clone(true);
+	$one_factor.text("类别："+$factors.course_type);
+	$search_factors.append($one_factor);
+	
+	if($factors.course_name!="")
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("课名："+$factors.course_name);
+		$search_factors.append($one_factor);
+	}
+	
+		
+	if($factors.tutor_name!="")
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("老师："+$factors.tutor_name);
+		$search_factors.append($one_factor);
+	}
+	
+	if($factors.course_description!="")
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("课程简介："+$factors.course_description);
+		$search_factors.append($one_factor);
+	}
+	
+	if($search_type==1)
+	{
+	  
+		if(($factors.course_price_f!="")&&($factors.course_price_t!=""))
+		{
+			$one_factor=$("#factorTemplate").clone(true);
+			$one_factor.text("价格："+$factors.course_price_f+"-"+$factors.course_price_t+"元");
+			$search_factors.append($one_factor);
+		}
+		else if(($factors.course_price_f!="")&&($factors.course_price_t==""))
+		{
+			$one_factor=$("#factorTemplate").clone(true);
+			$one_factor.text("价格：大于"+$factors.course_price_f+"元");
+			$search_factors.append($one_factor);
+		}
+		else if(($factors.course_price_f=="")&&($factors.course_price_t!=""))
+		{
+			$one_factor=$("#factorTemplate").clone(true);
+			$one_factor.text("价格：小于"+$factors.course_price_t+"元");
+			$search_factors.append($one_factor);
+		}
+		
+		if($factors.tutor_description!="")
+		{
+			$one_factor=$("#factorTemplate").clone(true);
+			$one_factor.text("老师简介："+$factors.tutor_description);
+			$search_factors.append($one_factor);
+		}
+		
+		if(($factors.course_time_f!="")&&(($factors.course_time_t!="")))
+		{
+			$one_factor=$("#factorTemplate").clone(true);
+			$one_factor.text("上课时长："+$factors.course_time_f+"-"+$factors.course_time_t+"分钟");
+			$search_factors.append($one_factor);
+		}
+		else if(($factors.course_time_f=="")&&(($factors.course_time_t!="")))
+		{
+			$one_factor=$("#factorTemplate").clone(true);
+			$one_factor.text("上课时长：小于"+$factors.course_time_t+"分钟");
+			$search_factors.append($one_factor);
+		}
+		else if(($factors.course_time_f!="")&&(($factors.course_time_t=="")))
+		{
+			$one_factor=$("#factorTemplate").clone(true);
+			$one_factor.text("上课时长：大于"+$factors.course_time_f+"分钟");
+			$search_factors.append($one_factor);
+		}
+		
+		if($factors.course_start_time!="")
+		{
+			$one_factor=$("#factorTemplate").clone(true);
+			$one_factor.text("上课时间："+$factors.course_start_time+" 之后");
+			$search_factors.append($one_factor);
+		}
+		
+		if($factors.tutor_eval!="")
+		{
+			$one_factor=$("#factorTemplate").clone(true);
+			$one_factor.text("教师评分："+$factors.tutor_eval);
+			$search_factors.append($one_factor);
+		}
+	}
+}
+
+function add_result($tabContent,$factors,$search_type)
+{
+	
+}
+
+function get_factors($search_type)
+{
+	if($search_type==0)
+	{
+		this.course_type=$("#course_list .activecourse").text();
+		this.course_name=$("#searchCourseName").val();
+		this.tutor_name=$("#searchTeacherName").val();
+		this.course_description=$("#searchDescription").val();
+	}
+	else if($search_type==1)
+	{
+		this.course_type=$("#adv_courseBtn").text();
+		this.course_name=$("#adv_search_name").val();
+		this.course_description=$("#adv_description").val();
+		this.tutor_name=$("#adv_tutor_name").val();
+		this.tutor_description=$("#adv_tutor_description").val();
+		this.course_time_f=$("#adv_time_f").val();
+		this.course_time_t=$("#adv_time_t").val();
+		this.course_price_f=$("#adv_price_f").val();
+		this.course_price_t=$("#adv_price_t").val();
+		this.course_start_time=$("#adv_start_time").val();
+		if($("#adv_evalBtn input").length>0)
+		{
+			this.tutor_eval=$("#adv_evalBtn input").val()+"分以上";
+		}
+		else{
+			this.tutor_eval=$("#adv_evalBtn").text();
+		}
+	}
+}
+
+function fill_content($content, $search_type)
+{
+	
 }
 
 function delTab()
@@ -107,7 +244,7 @@ function adv_selectCourse()
 function adv_selectEval()
 {
 	
-	if($(event.srcElement).text()!="")
+	if($(event.srcElement).text()!="自定义")
 	{
 		$("#adv_evalBtn").text($(event.srcElement).text());
 	}

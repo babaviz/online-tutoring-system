@@ -175,3 +175,184 @@
 	margin-top:70px;
 	padding-bottom:200px;
 }
+
+.one_result
+{
+	background-color:#f5f5f5;
+	border:1.5px solid #e3e3e3;
+	border-radius:8px;
+	width:600px;
+	line-height: 26px;
+	margin-left:20px;
+	margin-top:5px;
+	margin-bottom:20px;
+	padding-left:15px;
+	padding-bottom:15px;
+	padding-top:15px;
+	padding-right:15px;
+}
+
+.up_left_content
+{
+	margin-top:3px;
+	margin-bottom:8px;
+	width:500px;
+	float:left;
+}
+
+.tutor_img
+{
+	background:url("../bootstrap/img/bootstrap-mdo-sfmoma-01.jpg") center no-repeat;
+	background-size:cover;
+	height:100px;
+	width:100px;
+	float:right;
+}
+
+.course_name_label
+{
+	font-size:18px;
+	height:38px;
+	color:#08c;
+	width:55px;
+	float: left;
+}
+
+.course_name
+{
+	font-size:18px;
+	color:#08c;
+	width:200px;
+	float: left;
+}
+
+.tutor_name_label
+{
+	font-size:15px;
+	color:#c09853;
+	width:50px;
+	position:absolute;
+	float: left;
+	margin-left:300px;
+}
+
+.tutor_name
+{
+	font-size:15px;
+	color:#960;
+	width:100px;
+	position:absolute;
+	float: left;
+	margin-left:350px;
+}
+
+.clean
+{
+	clear:both;
+}
+
+.course_type_label
+{
+	font-size:15px;
+	color:#c09853;
+	width:55px;
+	height:40px;
+	float: left;
+}
+.course_type
+{
+	font-size:15px;
+	color:#960;
+	width:200px;
+	float: left;
+}
+.course_price_label
+{
+	font-size:15px;
+	color:#c09853;
+	width:45px;
+	position:absolute;
+	float: left;
+	margin-left:300px;
+}
+
+.course_price
+{
+	font-size:15px;
+	color:#960;
+	width:100px;
+	position:absolute;
+	float: left;
+	margin-left:350px;
+}
+
+.start_time_label
+{
+	font-size:15px;
+	color:#c09853;
+	height:30px;
+	width:85px;
+	float:left;
+}
+
+.course_start_time
+{
+	font-size:15px;
+	color:#960;
+	width:170px;
+	float:left;
+}
+
+.course_duration_label
+{
+	font-size:15px;
+	color:#c09853;
+	width:70px;
+	position:absolute;
+	margin-left:300px;
+	float:left;
+}
+
+.course_duration
+{
+	font-size:15px;
+	color:#960;
+	float:left;
+	width:150px;
+	position:absolute;
+	margin-left:350px;
+}
+
+.course_description_label
+{
+	font-size:15px;
+	color:#c09853;
+	float:left;
+}
+.course_description
+{
+	font-size:15px;
+	color:#960;
+	width:600px;
+}
+
+.search_factors
+{
+	float:left;
+	margin-left:20px;
+}
+
+.one_factor
+{
+	float:left;
+	border:1px solid #e3e3e3;
+	font-size:12px;
+	color:#060;
+	padding-left:5px;
+	padding-right:5px;
+	padding-top:1px;
+	padding-bottom:1px;
+	margin-left:3px;
+	margin-right:5px;
+	margin-bottom:7px;
+}

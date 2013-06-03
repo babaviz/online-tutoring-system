@@ -27,7 +27,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a class="brand" href="#">零距离家教</a>
     <ul class="nav">
       <li><a href="Index">首页</a></li>
-      <li><a href="#">课程管理</a></li>
+      <s:if test="#session.user.type=='2'">
+      <li><a href="CourseManage">课程管理</a></li>
+      </s:if>
       <s:if test="#session.user.type=='1'">
       <li><a href="Search">找老师</a></li>
       </s:if>

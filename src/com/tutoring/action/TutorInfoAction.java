@@ -3,13 +3,11 @@ package com.tutoring.action;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.biz.UserBiz;
-import com.tutoring.dao.NotificationDAO;
 import com.tutoring.entity.User;
 
 public class TutorInfoAction extends ActionSupport{
@@ -59,15 +57,7 @@ public class TutorInfoAction extends ActionSupport{
 		time = new Timestamp((new Date()).getTime());
 		ActionContext ac = ActionContext.getContext();
 		User user = userBiz.getUserInfoById(userid);
-//		ApplicationContext context =new ClassPathXmlApplicationContext("applicationContext.xml");
-//		for(int i = 0;i < 10000;i++)
-//		{
-//			
-//			NotificationDAO notificationDAO = (NotificationDAO) context.getBean("NotificationDAO");
-//		
-//			System.out.println(notificationDAO.getNumberOfNotice());
-//			//Thread.sleep(1000);
-//		}
+
 		ac.getValueStack().push(user);
 		return SUCCESS;
 	}

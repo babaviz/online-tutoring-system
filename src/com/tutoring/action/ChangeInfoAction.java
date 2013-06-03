@@ -39,13 +39,16 @@ public class ChangeInfoAction extends ActionSupport implements ServletResponseAw
 	
 	
 	public String changeBasicInfo(String FirstName, String LastName, String phone, String birthstr, String school){
-		
-		String[] dates = birthstr.split("-");
-		//Timestamp birth = new Timestamp(Integer.parseInt(dates[0]),Integer.parseInt(dates[1]),Integer.parseInt(dates[2]),0,0,0,0);
-		Calendar cl = Calendar.getInstance();
-		cl.set(Integer.parseInt(dates[0]), Integer.parseInt(dates[1])-1, Integer.parseInt(dates[2]));
-		Date birth = cl.getTime();
-		System.out.println(FirstName+","+LastName+","+phone+","+Integer.parseInt(dates[0])+","+Integer.parseInt(dates[1])+","+Integer.parseInt(dates[2])+","+school);
+		Date birth = null;
+		if(birthstr!=null)
+		{
+			String[] dates = birthstr.split("-");
+			//Timestamp birth = new Timestamp(Integer.parseInt(dates[0]),Integer.parseInt(dates[1]),Integer.parseInt(dates[2]),0,0,0,0);
+			Calendar cl = Calendar.getInstance();
+			cl.set(Integer.parseInt(dates[0]), Integer.parseInt(dates[1])-1, Integer.parseInt(dates[2]));
+			birth = cl.getTime();
+			System.out.println(FirstName+","+LastName+","+phone+","+Integer.parseInt(dates[0])+","+Integer.parseInt(dates[1])+","+Integer.parseInt(dates[2])+","+school);
+		}
 		//birth.setYear(Integer.parseInt(dates[0]));
 		//birth.setMonth(Integer.parseInt(dates[1]));
 		//birth.setDate(Integer.parseInt(dates[2]));

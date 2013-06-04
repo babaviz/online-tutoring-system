@@ -40,7 +40,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		person.setFirstName(firstname);
 		person.setLastName(lastname);
 		person.setType(type);
-		person.setPoint(0);
+		person.setPoint((float) 0);
 		if(type=='1')
 		{
 			Student stu = new Student();

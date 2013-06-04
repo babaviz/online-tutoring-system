@@ -190,6 +190,7 @@
 	padding-bottom:15px;
 	padding-top:15px;
 	padding-right:15px;
+	clear:both;
 }
 
 .up_left_content
@@ -291,7 +292,7 @@
 	font-size:15px;
 	color:#c09853;
 	height:30px;
-	width:85px;
+	width:75px;
 	float:left;
 }
 

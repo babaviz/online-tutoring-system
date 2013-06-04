@@ -13,7 +13,29 @@
 
 <body style="background:url(images/mainbackground.jpg)">
 <div id="templates" style="display:none">
-<div id="factorTemplate" class="one_factor"></div>
+  <div id="oneResultTemplate" class="one_result">
+    <div class="up_left_content">
+      <div class="course_name_label">课名：</div>
+      <div class="course_name">移动应用开发</div>
+      <div class="tutor_name_label">老师：</div>
+      <div class="tutor_name">潘岩</div>
+      <div class="clean"></div>
+      <div class="course_type_label">类别：</div>
+      <div class="course_type">计算机</div>
+      <div class="course_price_label">价格：</div>
+      <div class="course_price">100元</div>
+      <div class="clean"></div>
+      <div class="start_time_label">开始时间：</div>
+      <div class="course_start_time">2013年6月28日</div>
+      <div class="course_duration_label">时长：</div>
+      <div class="course_duration">120分钟</div>
+    </div>
+    <div class="tutor_img"></div>
+    <div class="clean"></div>
+    <div class="course_description_label">课程简介：</div>
+    <div class="course_description"></div>
+  </div>
+  <div id="factorTemplate" class="one_factor"></div>
   <li id="tabTemplate" ><a href="#tabContentTemplate" data-toggle="tab"><img src="images/closebtn.png" longdesc="close" class="closetabbtn" onMouseOver="this.src='images/closebtn_hover.png'" onMouseOut="this.src='images/closebtn.png'" onClick="delTab();"/></a></li>
   <div id="tabContentTemplate" class="tab-pane fade"  style="overflow:hidden">
     <div class="search_factors"></div>
@@ -48,7 +70,8 @@
         <table id="simple_search" width="431" border="0">
           <tr>
             <td width="152" height="243"><div id="course_list">
-                <div onClick="selectCategory();" class="name_in_list activecourse">计算机</div>
+            	<div onClick="selectCategory();" class="name_in_list activecourse">不限类别</div>
+                <div onClick="selectCategory();" class="name_in_list">计算机</div>
                 <div onClick="selectCategory();" class="name_in_list">语文</div>
                 <div onClick="selectCategory();" class="name_in_list">数学</div>
                 <div onClick="selectCategory();" class="name_in_list">英语</div>
@@ -81,12 +104,20 @@
             <tr>
               <td class="text_tr">学&nbsp;&nbsp;&nbsp;&nbsp;科</td>
               <td><div class="btn-group" style="margin-top:-10px;">
-                  <button id="adv_courseBtn" class="btn btn-small" style="width:139px; height:30px;">计算机</button>
+                  <button id="adv_courseBtn" class="btn btn-small" style="width:139px; height:30px;">不限类别</button>
                   <button class="btn btn-small dropdown-toggle" data-toggle="dropdown" style="height:30px"><span class="caret" style="margin-bottom:8px;"></span></button>
                   <ul class="dropdown-menu">
+                  	<li><a onClick="adv_selectCourse();">不限类别</a></li>
                     <li><a onClick="adv_selectCourse();">计算机</a></li>
                     <li><a onClick="adv_selectCourse();">语文</a></li>
                     <li><a onClick="adv_selectCourse();">数学</a></li>
+                    <li><a onClick="adv_selectCourse();">英语</a></li>
+                    <li><a onClick="adv_selectCourse();">物理</a></li>
+                    <li><a onClick="adv_selectCourse();">化学</a></li>
+                    <li><a onClick="adv_selectCourse();">历史</a></li>
+                    <li><a onClick="adv_selectCourse();">地理</a></li>
+                    <li><a onClick="adv_selectCourse();">政治</a></li>
+                    <li><a onClick="adv_selectCourse();">生物</a></li>
                   </ul>
                 </div></td>
               <td class="text_tr">开始时间</td>
@@ -140,8 +171,14 @@
         </div>
       </div>
       <div id="tab_20" class="tab-pane fade in active"  style="overflow:hidden">
-      <div class="search_factors"><div class="one_factor">类别：计算机</div><div class="one_factor">课名：移动应用开发</div><div class="one_factor">价格：小于120元</div><div class="one_factor">开始时间：2013年6月20日之后</div><div class="one_factor">教师简介：很牛逼 很帅 很高端</div><div class="one_factor">教师名字：潘</div></div>
-      <div class="clean"></div>
+        <div class="search_factors">
+          <div class="one_factor">类别：计算机</div>
+          <div class="one_factor">课名：移动应用开发</div>
+          <div class="one_factor">价格：小于120元</div>
+          <div class="one_factor">开始时间：2013年6月20日之后</div>
+          <div class="one_factor">教师简介：很牛逼 很帅 很高端</div>
+          <div class="one_factor">教师名字：潘</div>
+        </div>
         <div class="one_result">
           <div class="up_left_content">
             <div class="course_name_label">课名：</div>
@@ -158,7 +195,6 @@
             <div class="course_start_time">2013年6月28日</div>
             <div class="course_duration_label">时长：</div>
             <div class="course_duration">120分钟</div>
-            
           </div>
           <div class="tutor_img"></div>
           <div class="clean"></div>
@@ -181,7 +217,6 @@
             <div class="course_start_time">2013年6月28日</div>
             <div class="course_duration_label">时长：</div>
             <div class="course_duration">120分钟</div>
-            
           </div>
           <div class="tutor_img"></div>
           <div class="clean"></div>
@@ -217,13 +252,16 @@ function test2()
 <script type="text/javascript">
 
     $(".form_datetime").datetimepicker({
-        format: "dd MM yyyy - HH:ii P",
+        format: "yyyy-mm-dd hh:ii",
         showMeridian: true,
         autoclose: true,
         todayBtn: true,
 		pickerPosition: "bottom-left"
     });
 
-</script>
+</script> 
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
+<script src='/OnlineTutoringSystem/dwr/interface/searchAction.js'></script> 
+<script src='/OnlineTutoringSystem/dwr/interface/searchFactors.js'></script>
 </body>
 </html>

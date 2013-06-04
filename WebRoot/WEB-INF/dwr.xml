@@ -3,27 +3,37 @@
 "http://getahead.org/dwr/dwr30.dtd">
 
 <dwr>
-  <allow>
-    <create creator="new" javascript="testdwr">
-      <param name="class" value="com.test.dwr.TestDwr"/>
-    </create>
-    <create creator="spring" javascript="loginaction">
-      <param name="beanName" value="loginAction"/>
-    </create>
-    <create creator="spring" javascript="registeraction">
-      <param name="beanName" value="registerAction"/>
-    </create>
-    <create creator="spring" javascript="makecommentaction">
-      <param name="beanName" value="makeCommentAction"/>
-    </create>
-    <create creator="spring" javascript="deletetopicaction">
-      <param name="beanName" value="deleteTopicAction"/>
-    </create>
-    <create creator="spring" javascript="changeinfoaction">
-      <param name="beanName" value="changeInfoAction"/>
-    </create>
-    <create creator="spring" javascript="applycourseaction">
-      <param name="beanName" value="applyCourseAction"/>
-    </create>
-  </allow>
+	<allow>
+		<create creator="new" javascript="testdwr">
+			<param name="class" value="com.test.dwr.TestDwr" />
+		</create>
+		<create creator="spring" javascript="loginaction">
+			<param name="beanName" value="loginAction" />
+		</create>
+		<create creator="spring" javascript="registeraction">
+			<param name="beanName" value="registerAction" />
+		</create>
+		<create creator="spring" javascript="makecommentaction">
+			<param name="beanName" value="makeCommentAction" />
+		</create>
+		<create creator="spring" javascript="deletetopicaction">
+			<param name="beanName" value="deleteTopicAction" />
+		</create>
+		<create creator="spring" javascript="changeinfoaction">
+			<param name="beanName" value="changeInfoAction" />
+		</create>
+		<create creator="spring" javascript="applycourseaction">
+			<param name="beanName" value="applyCourseAction" />
+		</create>
+		<create creator="spring" javascript="searchAction">
+			<param name="beanName" value="searchAction" />
+		</create>
+		<convert converter="bean" match="com.tutoring.bean.SearchResult">
+		</convert>
+		<create creator="spring" javascript="searchFactors">
+			<param name="beanName" value="searchFactors" />
+		</create>
+		<convert match="com.tutoring.bean.SearchFactors" converter="bean"
+			javascript="searchFactors"></convert>
+	</allow>
 </dwr>

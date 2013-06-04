@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
+﻿-- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
 --
 -- Host: localhost    Database: onlinetutoring
 -- ------------------------------------------------------
@@ -379,7 +379,7 @@ CREATE TABLE `user` (
   `birthday` date DEFAULT NULL,
   `card_num` varchar(16) DEFAULT NULL,
   `type` char(1) NOT NULL,
-  `point` int(11) DEFAULT '0',
+  `point` float DEFAULT '0',
   `head_pic_sn` varchar(15) DEFAULT NULL,
   `school` varchar(20) DEFAULT NULL,
   `cookie_sn` varchar(20) DEFAULT NULL,

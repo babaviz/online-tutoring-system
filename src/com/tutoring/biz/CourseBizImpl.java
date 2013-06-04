@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.tutoring.bean.SearchFactors;
+import com.tutoring.bean.SearchResult;
 import com.tutoring.dao.CourseDAO;
 import com.tutoring.dao.StudentDAO;
 import com.tutoring.dao.UserDAO;
@@ -59,6 +61,12 @@ public class CourseBizImpl implements CourseBiz{
 			
 		}
 		return tutors;
+	}
+	
+	@Override
+	public ArrayList<SearchResult> getCourses(SearchFactors factors)
+	{
+		return courseDAO.searchCourses(factors);
 	}
 	
 	private boolean isTutorExist(Tutor t, List<Tutor> l)

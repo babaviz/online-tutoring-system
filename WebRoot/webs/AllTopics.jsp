@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <ul class="nav my_pull_right">
         <li><a class="modify_padding" href="BuildInfo"><i class="icon-user"></i>个人设置</a></li>
         <li><a class="modify_padding" href="#"><i class="icon-envelope"></i>消息</a></li>
-        <li><a class="modify_padding" href="#"><i class="icon-off"></i>登出</a></li>
+        <li><a class="modify_padding" href="Logout"><i class="icon-off"></i>登出</a></li>
         <li><a class="modify_padding"><strong class="text-success"><div class="sub_name">欢迎登入：
           <s:property value="#session.user.firstName"/><s:property value="#session.user.lastName"/>
           </div></strong></a></li>

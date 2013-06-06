@@ -16,14 +16,12 @@
 		</default-interceptor-ref>
 		<global-results>  
     		<result name="invalid.token">/tokenError.jsp</result>  
-    		<result name="login" type="redirect">/webs/Login.htm</result>  
-    		<result name="sessionError" type="redirect">/webs/sessionError.htm</result> 
+    		<result name="login">/webs/Login.htm</result>  
+    		<result name="sessionError">/webs/Login.htm</result> 
 		</global-results>
     	
     	<action name="LoginAction" class="loginAction">
-    		<result name="success" type="redirectAction">
-    			Index
-    		</result>
+    		<result name="success" type="redirect">Index</result>
     	</action>
     	<action name="RegisterAction" class="registerAction">
     		<result name="success">/webs/Login.htm</result>
@@ -53,6 +51,9 @@
     	<action name="Index" class="indexAction">
     		<result name="student">/webs/StudentHome.jsp</result>
     		<result name="tutor">/webs/TutorHome.jsp</result>
+    	</action>
+    	<action name="Logout" class="logoutAction">
+    		<result name="success">/webs/Login.htm</result>
     	</action>
     	
     	<action name="MakeCommentAction" class="makeCommentAction">

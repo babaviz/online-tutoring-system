@@ -85,8 +85,8 @@
     		<result name="success">/webs/chatting.jsp</result>
     	</action>
     	
-    	<action name="Search" class="searchAction">
-    		<result name="success">/webs/search.jsp</result>
+    	<action name="SearchCourse" class="searchAction">
+    		<result name="success">/webs/SearchCourse.jsp</result>
     	</action>
     	
     	<action name="BuildInfo" class="buildInfoAction">

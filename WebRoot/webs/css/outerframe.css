@@ -10,6 +10,28 @@
 	width: 900px;
 }
 
+.navbar .nav > li > a.modify_padding
+{
+	padding-left:5px;
+	padding-right:5px;
+}
+
+.navbar .nav.my_pull_right
+{
+	float:right;
+	margin-right:25px;
+}
+
+.sub_name
+{
+	float:left;
+	min-width:150px;
+	max-width:200px;
+	text-overflow: ellipsis; 
+	overflow: hidden; 
+	white-space: nowrap;
+}
+
 #down_left_content
 {
 	float:left;

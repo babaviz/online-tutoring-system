@@ -34,12 +34,12 @@ public class CourseBizImpl implements CourseBiz{
 		// TODO Auto-generated method stub
 		ActionContext ac = ActionContext.getContext();
 		Map<String, Object> session = ac.getSession();
-		String email = ((User)session.get("user")).getEmail();
-		User u = userDAO.getUserByEmail(email);
+		User user=(User)session.get("user");
+//		User u = userDAO.getUserByEmail(email);
 		//System.out.println("userid:"+u.getId());
-		Student stu = studentDAO.getStudentByUser(u);
+//		Student stu = studentDAO.getStudentByUser(u);
 		//System.out.println("stugrade:"+stu.getGrade());
-		return courseDAO.getCoursesByStudent(stu);
+		return courseDAO.getCoursesByUser(user);
 	}
 	@Override
 	public List<?> getMyTutors() {

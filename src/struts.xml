@@ -16,15 +16,15 @@
 		</default-interceptor-ref>
 		<global-results>  
     		<result name="invalid.token">/tokenError.jsp</result>  
-    		<result name="login">/webs/Login.htm</result>  
-    		<result name="sessionError">/webs/Login.htm</result> 
+    		<result name="login">/webs/Login.jsp</result>  
+    		<result name="sessionError">/webs/Login.jsp</result> 
 		</global-results>
     	
     	<action name="LoginAction" class="loginAction">
-    		<result name="success" type="redirect">Index</result>
+    		<result name="success" type="redirect">/webs/Index</result>
     	</action>
     	<action name="RegisterAction" class="registerAction">
-    		<result name="success">/webs/Login.htm</result>
+    		<result name="success">/webs/Login.jsp</result>
     		<result name="error">/registerError.jsp</result>
     	</action>
     	
@@ -51,9 +51,10 @@
     	<action name="Index" class="indexAction">
     		<result name="student">/webs/StudentHome.jsp</result>
     		<result name="tutor">/webs/TutorHome.jsp</result>
+    		<result name="login">/webs/Login.jsp</result>
     	</action>
     	<action name="Logout" class="logoutAction">
-    		<result name="success">/webs/Login.htm</result>
+    		<result name="success">/webs/Login.jsp</result>
     	</action>
     	
     	<action name="MakeCommentAction" class="makeCommentAction">
@@ -100,6 +101,10 @@
     	
     	<action name="CourseManage" class="courseManageAction">
     		<result name="success">/webs/CourseManage.jsp</result>
+    	</action>
+    	
+    	<action name="TestAction" class="testAction">
+    		<result name="success">/webs/urlError.htm</result>
     	</action>
     	
     </package>

@@ -10,6 +10,7 @@ import com.tutoring.bean.SearchResult;
 import com.tutoring.entity.Course;
 import com.tutoring.entity.Student;
 import com.tutoring.entity.Tutor;
+import com.tutoring.entity.User;
 
 public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 
@@ -18,6 +19,19 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 		// TODO Auto-generated method stub
 		List<Course> list = new ArrayList<Course>();
 		list.addAll(stu.getCourses());
+		return list;
+	}
+	
+	public List<Course> getCoursesByUser(User user){
+		List<Course> list = new ArrayList<Course>();
+		if(user.getType()=='1')
+		{
+			list.addAll(user.getStudent().getCourses());
+		}
+		else if(user.getType()=='2')
+		{
+			list.addAll(user.getTutor().getCourses());
+		}
 		return list;
 	}
 

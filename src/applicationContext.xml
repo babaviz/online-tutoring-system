@@ -186,4 +186,11 @@
 
 	<bean id="logoutAction" class="com.tutoring.action.LogoutAction"></bean>
 
+	<bean id="SessionMaintainBiz" class="com.tutoring.biz.SessionMaintainBizImpl">
+		<property name="courseBiz" ref="CourseBiz"></property>
+	</bean>
+	
+	<bean id="testAction" class="com.test.action.TestAction">
+		<property name="sessionMaintainBiz" ref="SessionMaintainBiz"></property>
+	</bean>
 </beans>

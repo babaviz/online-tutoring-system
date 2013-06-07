@@ -21,7 +21,7 @@
 		</global-results>
     	
     	<action name="LoginAction" class="loginAction">
-    		<result name="success" type="redirect">/webs/Index</result>
+    		<result name="success" type="redirectAction">Index</result>
     	</action>
     	<action name="RegisterAction" class="registerAction">
     		<result name="success">/webs/Login.jsp</result>
@@ -58,7 +58,7 @@
     	</action>
     	
     	<action name="MakeCommentAction" class="makeCommentAction">
-    	<result name="success" type="redirectAction">TopicDetail?topicid=${topicid}</result>
+    	<result name="success" type="redirectAction">TopicDetail</result>
     	<result name="error">/launchTopicError.jsp</result>
     	</action>
     	

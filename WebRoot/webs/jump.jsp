@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base href="<%=basePath%>">
 <html>
 <head>
-<meta http-equiv='refresh'   content='0;url=Index'>
+<meta http-equiv='refresh'   content='0;url=../Index'>
 <title>Insert title here</title>
 </head>
 <body>

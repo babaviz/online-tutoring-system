@@ -53,6 +53,7 @@ public class MakeCommentAction extends ActionSupport{
 		}
 
 		topicBiz.makeComment(useremail, content, topicid,pic_sn);
+		ServletActionContext.getRequest().setAttribute("topicid", topicid);
 		return SUCCESS;
 	}
 

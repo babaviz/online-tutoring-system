@@ -32,8 +32,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a class="modify_padding" href="Logout"><i class="icon-off"></i>登出</a></li>
         <li><a class="modify_padding"><strong class="text-success">
           <div class="sub_name">
-            <s:property value="#session.user.firstName"/>
-            <s:property value="#session.user.lastName"/>
+            <div>
+              <s:property value="#session.user.firstName"/>
+            </div>
+            <div>
+              <s:property value="#session.user.lastName"/>
+            </div>
           </div>
           </strong></a></li>
       </ul>

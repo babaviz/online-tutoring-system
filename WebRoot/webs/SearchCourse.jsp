@@ -5,6 +5,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/webs/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <base href="<%=basePath%>">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -66,9 +67,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a class="modify_padding" href="BuildInfo"><i class="icon-user"></i>个人设置</a></li>
         <li><a class="modify_padding" href="#"><i class="icon-envelope"></i>消息</a></li>
         <li><a class="modify_padding" href="Logout"><i class="icon-off"></i>登出</a></li>
-        <li><a class="modify_padding"><strong class="text-success"><div class="sub_name">欢迎登入：高光宇高光宇高光宇高光宇
-          <s:property value="#session.user.firstName"/><s:property value="#session.user.lastName"/>
-          </div></strong></a></li>
+        <li><a class="modify_padding"><strong class="text-success">
+          <div class="sub_name">
+            <div>
+              <s:property value="#session.user.firstName"/>
+            </div>
+            <div>
+              <s:property value="#session.user.lastName"/>
+            </div>
+          </div>
+          </strong></a></li>
       </ul>
     </div>
   </div>

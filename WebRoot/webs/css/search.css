@@ -357,3 +357,185 @@
 	margin-right:5px;
 	margin-bottom:7px;
 }
+
+.one_result_tutor
+{
+	height:100px;
+	background-color:#f5f5f5;
+	border:1.5px solid #e3e3e3;
+	border-radius:8px;
+	width:600px;
+	line-height: 26px;
+	margin-left:20px;
+	margin-top:5px;
+	margin-bottom:20px;
+	padding-left:15px;
+	padding-bottom:15px;
+	padding-top:15px;
+	padding-right:15px;
+	clear:both;
+}
+
+.one_result_tutor .user_img
+{
+	background:url("../bootstrap/img/bootstrap-mdo-sfmoma-01.jpg") center no-repeat;
+	background-size:cover;
+	height:100px;
+	width:100px;
+	float:left;
+}
+
+.one_result_tutor .result_right_content
+{
+	float:left;
+	margin-left:10px;
+	height:80px;
+	width:480px;
+}
+
+.one_result_tutor .result_right_content .name
+{
+	font-size:18px;
+	clear:both;
+	height:30px;
+	color:#027BDF;
+	width:55px;
+	font-weight:900;
+	font-family:SimHei;
+}
+
+.one_result_tutor .result_right_content .gender_img
+{
+	background:url(../images/gender_na.png) center no-repeat;
+	width:17px;
+
+	height:17px;
+	float:left;
+	background-size:cover;
+}
+
+.one_result_tutor .result_right_content .user_type
+{
+	float:left;
+	width:30px;
+	margin-top:-5px;
+	margin-left:10px;
+	color:#0078b6;
+}
+
+.one_result_tutor .result_right_content .user_point
+{
+	float:left;
+	width:90px;
+	margin-top:-5px;
+	margin-left:13px;
+	color:#0078b6;
+}
+
+.one_result_tutor .result_right_content .tutor_subjects
+{
+	clear:both;
+	max-width:500px;
+	text-overflow: ellipsis;
+	overflow: hidden; 
+	white-space: nowrap;
+	margin-top:-5px;
+	margin-left:0px;
+	color:#0078b6;
+}
+
+.one_result_tutor .result_right_content .tutor_description
+{
+	clear:both;
+	max-width:500px;
+	text-overflow: ellipsis;
+	overflow: hidden; 
+	white-space: nowrap;
+	margin-top:0px;
+	margin-left:0px;
+	color:#0078b6;
+}
+
+.one_result_stu
+{
+	height:100px;
+	background-color:#f5f5f5;
+	border:1.5px solid #e3e3e3;
+	border-radius:8px;
+	width:600px;
+	line-height: 26px;
+	margin-left:20px;
+	margin-top:5px;
+	margin-bottom:20px;
+	padding-left:15px;
+	padding-bottom:15px;
+	padding-top:15px;
+	padding-right:15px;
+	clear:both;
+}
+
+.one_result_stu .user_img
+{
+	background:url("../bootstrap/img/bootstrap-mdo-sfmoma-01.jpg") center no-repeat;
+	background-size:cover;
+	height:100px;
+	width:100px;
+	float:left;
+}
+
+.one_result_stu .result_right_content
+{
+	float:left;
+	margin-left:10px;
+	height:80px;
+	width:480px;
+}
+
+.one_result_stu .result_right_content .name
+{
+	font-size:18px;
+	clear:both;
+	height:30px;
+	color:#268E2E;
+	width:55px;
+	font-weight:900;
+	font-family:SimHei;
+}
+
+.one_result_stu .result_right_content .gender_img
+{
+	background:url(../images/gender_na.png) center no-repeat;
+	width:17px;
+	margin-top:10px;
+	height:17px;
+	float:left;
+	background-size:cover;
+}
+
+.one_result_stu .result_right_content .user_type
+{
+	float:left;
+	width:30px;
+	margin-top:6px;
+	margin-left:10px;
+	color:#299A32;
+}
+
+.one_result_stu .result_right_content .stu_grade
+{
+	clear:both;
+	float:left;
+	width:90px;
+	margin-top:10px;
+	margin-left:0px;
+	color:#299A32;
+}
+
+.one_result_stu .result_right_content .user_point
+{
+	float:left;
+	width:90px;
+	margin-top:10px;
+	margin-left:0px;
+	color:#299A32;
+}

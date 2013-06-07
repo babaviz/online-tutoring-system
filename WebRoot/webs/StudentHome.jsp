@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
+<link href="css/outerframe.css" rel="stylesheet" type="text/css" />
 <title>无标题文档</title>
 </head>
 <body>
@@ -31,14 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a class="modify_padding" href="#"><i class="icon-envelope"></i>消息</a></li>
         <li><a class="modify_padding" href="Logout"><i class="icon-off"></i>登出</a></li>
         <li><a class="modify_padding"><strong class="text-success">
-          <div class="sub_name">
-            <div>
-              <s:property value="#session.user.firstName"/>
-            </div>
-            <div>
-              <s:property value="#session.user.lastName"/>
-            </div>
-          </div>
+          <div class="sub_name"><div><s:property value="#session.user.firstName"/></div><div><s:property value="#session.user.lastName"/></div></div>
           </strong></a></li>
       </ul>
     </div>

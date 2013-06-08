@@ -6,7 +6,7 @@ function createTab($search_type)
 	$tabNO++;
 	var $x=$("#tabTemplate").clone(true);
 	$x.find("a").attr("href","#tab_"+$tabNO);
-	$x.find("a").html($factors.course_type+$x.find("a").html());
+	$x.find("a").find("div").html($factors.course_type);
 	$("#myTab:last").append($x);
 	
 	var $tabContent=$("#tabContentTemplate").clone(true);
@@ -276,4 +276,24 @@ function adv_selectEval()
 function null_function()
 {
 
+}
+
+function searchUserAction()
+{	
+	$tabNO++;
+	var $searchUserName=$("#searchUserInput").val();
+	var $x=$("#tabTemplate").clone(true);
+	$x.find("a").attr("href","#tab_"+$tabNO);
+	$x.find("a").find("div").html($searchUserName);
+	$("#myTab:last").append($x);
+	
+	var $tabContent=$("#tabContentTemplate").clone(true);
+	$tabContent.attr("id","tab_"+$tabNO);
+	$("#myTabContent").append($tabContent);
+	$x.find("a").tab('show');
+/*	searchAction.getResult($factors,function myCallBack(data)
+	{
+		handleCallBack(data,$tabContent);
+	});*/
+	$("html,body").animate({scrollTop:$("#down_content").offset().top-50},300);
 }

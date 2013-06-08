@@ -36,7 +36,7 @@
     <div class="course_description"></div>
   </div>
   <div id="factorTemplate" class="one_factor"></div>
-  <li id="tabTemplate" ><a href="#tabContentTemplate" data-toggle="tab"><img src="images/closebtn.png" longdesc="close" class="closetabbtn" onMouseOver="this.src='images/closebtn_hover.png'" onMouseOut="this.src='images/closebtn.png'" onClick="delTab();"/></a></li>
+  <li id="tabTemplate" ><a href="#tabContentTemplate" data-toggle="tab"><div></div><img src="images/closebtn.png" longdesc="close" class="closetabbtn" onMouseOver="this.src='images/closebtn_hover.png'" onMouseOut="this.src='images/closebtn.png'" onClick="delTab();"/></a></li>
   <div id="tabContentTemplate" class="tab-pane fade"  style="overflow:hidden">
     <div class="search_factors"></div>
   </div>
@@ -44,6 +44,27 @@
     <input class="input-mini" type="text" placeholder="x.x" style="height:20px;margin-top:-3px;margin-left:5px;margin-right:5px; padding-left:20px;padding-right:20px;width:20px; float:left;">
     <div style="margin-top:2px;">分以上</div>
   </div>
+  <div id="tutor_result_template" class="one_result_tutor">
+    <div class="user_img"></div>
+    <div class="result_right_content">
+      <div class="name">潘岩</div>
+      <div class="gender_img"></div>
+      <div class="user_type">老师</div>
+      <div class="user_point">积分：1200</div>
+      <div class="tutor_subjects">授课类型：语文 数学 英语 物理 化学 计算机 生物 历史 地理 政治 新能源 机械 医学</div>
+      <div class="tutor_description">老师简介：这是位非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼的老师</div>
+    </div>
+  </div>
+  <div id="stu_result_template" class="one_result_stu">
+          <div class="user_img"></div>
+          <div class="result_right_content">
+            <div class="name">潘岩</div>
+            <div class="gender_img"></div>
+            <div class="user_type">学生</div>
+            <div class="stu_grade">年级：大二</div>
+            <div class="user_point">积分：1200</div>
+          </div>
+   </div>
 </div>
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
@@ -78,13 +99,13 @@
   <div id="down_left_content">
     <ul id="myTab" class="nav nav-tabs">
       <li><a href="#home" data-toggle="tab">首页</a></li>
-      <li class="active"><a href="#tab_20" data-toggle="tab">第二页<img src="images/closebtn.png" longdesc="close" class="closetabbtn" onMouseOver="this.src='images/closebtn_hover.png'" onMouseOut="this.src='images/closebtn.png'" onClick="delTab();"/></a></li>
+      <li class="active"><a href="#tab_20" data-toggle="tab"><div>第二页</div><img src="images/closebtn.png" longdesc="close" class="closetabbtn" onMouseOver="this.src='images/closebtn_hover.png'" onMouseOut="this.src='images/closebtn.png'" onClick="delTab();"/></a></li>
     </ul>
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane fade searchUser" id="home" >
         <div id="searchUserMainField">
-        <input class="input-xlarge" id="searchUserInput" type="text" placeholder="请输入您要找的人" style="font-family:KaiTi;font-size:23px;height:30px;width:400px;padding-top:10px;">
-        <button class="btn btn-primary btn-large" style=" padding-left:90px;padding-right:90px;margin-left:90px;font-family:KaiTi;font-size:23px;" onClick="createTab(0);">搜索</button>
+          <input class="input-xlarge" id="searchUserInput" type="text" placeholder="请输入您要找的人" style="font-family:KaiTi;font-size:23px;height:30px;width:400px;padding-top:10px;">
+          <button class="btn btn-primary btn-large" style=" padding-left:90px;padding-right:90px;margin-left:90px;font-family:KaiTi;font-size:23px;" onClick="searchUserAction();">搜索</button>
         </div>
       </div>
       <div id="tab_20" class="tab-pane fade in active"  style="overflow:hidden">

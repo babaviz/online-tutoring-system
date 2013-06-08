@@ -2,10 +2,24 @@
 /* CSS Document */
 
 .closetabbtn {
-	margin-top: -18px;
+	float:left;
+	margin-top: -5px;
 	margin-right: -9px;
 }
 
+#myTab li a div
+{
+	float:left;
+	max-width:100px;
+	text-overflow: ellipsis;
+	overflow: hidden; 
+	white-space: nowrap;
+}
+
+#myTab li a
+{
+	height:20px;
+}
 
 #myTabContent
 {

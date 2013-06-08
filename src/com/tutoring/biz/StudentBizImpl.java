@@ -30,12 +30,12 @@ public class StudentBizImpl implements StudentBiz{
 
 
 	@Override
-	public void addApplyCourse(User user, int courseid) {
+	public void addApplyCourse(User user, User recieveuser, int courseid) {
 		// TODO Auto-generated method stub
 		Course course = courseDAO.getCourseById(courseid);
 		user.getStudent().getApplications().add(course);
 		userDAO.save(user);
-		notificationDAO.addNotice(course.getId(), 1, user);
+		notificationDAO.addNotice(course.getId(), 1, recieveuser);
 	}
 	
 }

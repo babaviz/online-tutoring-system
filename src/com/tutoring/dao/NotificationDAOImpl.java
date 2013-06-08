@@ -1,14 +1,8 @@
 package com.tutoring.dao;
 
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import org.hibernate.FlushMode;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.tutoring.entity.Notification;
@@ -32,25 +26,26 @@ public class NotificationDAOImpl extends HibernateDaoSupport implements Notifica
 	}
 
 	@Override
-	public int getNumberOfNotice() {
+	public int getNumberOfNotice(User user) {
 		// TODO Auto-generated method stub
-		this.getHibernateTemplate().setMaxResults(3);
-		return this.getHibernateTemplate().execute(new HibernateCallback<Integer>(){
-
-			@Override
-			public Integer doInHibernate(Session session)
-					throws HibernateException, SQLException {
-				// TODO Auto-generated method stub
-				
-				Query query = session.createQuery("select count(*) from Notification where state = 0");
-				int count = ((Number)query.uniqueResult()).intValue();
-				//session.flush();
-				//session.clear();
-				
-				return count;
-			}
-			
-		});
+//		this.getHibernateTemplate().setMaxResults(3);
+//		return this.getHibernateTemplate().execute(new HibernateCallback<Integer>(){
+//
+//			@Override
+//			public Integer doInHibernate(Session session)
+//					throws HibernateException, SQLException {
+//				// TODO Auto-generated method stub
+//				
+//				Query query = session.createQuery("select count(*) from Notification where state = 0");
+//				int count = ((Number)query.uniqueResult()).intValue();
+//				//session.flush();
+//				//session.clear();
+//				
+//				return count;
+//			}
+//			
+//		});
+		return user.getNotifications().size();
 		
 	}
 

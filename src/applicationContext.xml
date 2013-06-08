@@ -93,6 +93,10 @@
 	<bean id="CourseDAO" class="com.tutoring.dao.CourseDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	
+	<bean id="TutorDAO" class="com.tutoring.dao.TutorDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 
 	<bean id="NotificationDAO" class="com.tutoring.dao.NotificationDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -108,6 +112,10 @@
 		<property name="userDAO" ref="UserDAO"></property>
 		<property name="courseDAO" ref="CourseDAO"></property>
 		<property name="notificationDAO" ref="NotificationDAO"></property>
+	</bean>
+	
+	<bean id="TutorBiz" class="com.tutoring.biz.TutorBizImpl">
+		<property name="tutorDAO" ref="TutorDAO"></property>
 	</bean>
 
 	<bean id="loginAction" class="com.tutoring.action.LoginAction"
@@ -180,6 +188,7 @@
 
 	<bean id="applyCourseAction" class="com.tutoring.action.ApplyCourseAction">
 		<property name="studentBiz" ref="StudentBiz"></property>
+		<property name="tutorBiz" ref="TutorBiz"></property>
 	</bean>
 
 	<bean id="courseManageAction" class="com.tutoring.action.CourseManageAction"></bean>
@@ -190,7 +199,5 @@
 		<property name="courseBiz" ref="CourseBiz"></property>
 	</bean>
 	
-	<bean id="testAction" class="com.test.action.TestAction">
-		<property name="sessionMaintainBiz" ref="SessionMaintainBiz"></property>
-	</bean>
+
 </beans>

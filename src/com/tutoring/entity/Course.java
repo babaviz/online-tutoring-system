@@ -57,6 +57,16 @@ public class Course  extends AbstractModel {
 	
 	private Subject subject;
 	
+	private int status;
+	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	private Set<Student> applications;
 
 	/**

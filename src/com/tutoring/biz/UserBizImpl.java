@@ -94,13 +94,13 @@ public class UserBizImpl implements UserBiz{
 
 	@Override
 	public User changeUserInfo(String FirstName, String LastName,
-			String phone, Date birth, String school) {
+			String phone, Date birth, String school,String description) {
 		// TODO Auto-generated method stub
 		ActionContext ac = ActionContext.getContext();
 		Map<String ,Object > session = ac.getSession();
 		User u = userDAO.getUserByEmail(((User)session.get("user")).getEmail());
 		System.out.println("from biz:"+phone);
-		return userDAO.setUser(u, FirstName, LastName, phone, birth, school);
+		return userDAO.setTutor(u, FirstName, LastName, phone, birth, school,description);
 	}
 
 	@Override
@@ -117,6 +117,32 @@ public class UserBizImpl implements UserBiz{
 	public User getUserInfoById(int id) {
 		// TODO Auto-generated method stub
 		return userDAO.getUserByID(id);
+	}
+
+	@Override
+	public User getMyUserInfo() {
+		// TODO Auto-generated method stub
+		ActionContext ac = ActionContext.getContext();
+		if(ac!=null)
+		{
+		Map<String ,Object > session = ac.getSession();
+		User user = (User) session.get("user");
+		
+		return user;
+		}
+		else
+			return null;
+	}
+
+	@Override
+	public User changeUserInfo(String FirstName, String LastName, String phone,
+			Date birth, String school, int grade) {
+		// TODO Auto-generated method stub
+		ActionContext ac = ActionContext.getContext();
+		Map<String ,Object > session = ac.getSession();
+		User u = userDAO.getUserByEmail(((User)session.get("user")).getEmail());
+		System.out.println("from biz:"+phone);
+		return userDAO.setStudent(u, FirstName, LastName, phone, birth, school,grade);
 	}
 
 	

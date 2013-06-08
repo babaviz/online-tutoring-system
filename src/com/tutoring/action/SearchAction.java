@@ -3,7 +3,6 @@ package com.tutoring.action;
 import java.util.ArrayList;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.test.action.*;
 import com.tutoring.bean.SearchFactors;
 import com.tutoring.bean.SearchResult;
 import com.tutoring.biz.CourseBiz;

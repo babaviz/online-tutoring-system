@@ -93,14 +93,16 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	}
 
 	@Override
-	public User setUser(User u, String FirstName, String LastName,
-			String phone, Date birth, String school) {
+	public User setTutor(User u, String FirstName, String LastName,
+			String phone, Date birth, String school,String description) {
 		// TODO Auto-generated method stub
 		u.setFirstName(FirstName);
 		u.setLastName(LastName);
 		u.setPhone(phone);
 		u.setBirthday(birth);
 		u.setSchool(school);
+		u.getTutor().setDescription(description);
+		System.out.println(u.getTutor().getBalance());
 		System.out.println("from dao:"+phone);
 		this.getHibernateTemplate().merge(u);
 		return u;
@@ -123,6 +125,21 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		}
 		else
 			return null;
+	}
+
+	@Override
+	public User setStudent(User u, String FirstName, String LastName,
+			String phone, Date birth, String school, int grade) {
+		// TODO Auto-generated method stub
+		u.setFirstName(FirstName);
+		u.setLastName(LastName);
+		u.setPhone(phone);
+		u.setBirthday(birth);
+		u.setSchool(school);
+		System.out.println("from dao:"+phone);
+		u.getStudent().setGrade(grade);
+		this.getHibernateTemplate().merge(u);
+		return u;
 	}
 	
 	

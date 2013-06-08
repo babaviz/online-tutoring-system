@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="control-group">
                 <label class="setting_detail_label" for="input01" >生日</label>
                 <div class="controls input-append date form_datetime" data-date="2013-05-27T08:30:07Z" data-date-format="yyyy-MM-dd" data-link-field="dtp_input1">
-                  <input id="input_birthday" size="16" type="text" value='<s:date name="#session.user.birthday" format="yyyy-MM-dd" />' readonly/>
+                  <input id="input_birthday" size="16" type="text" value='<s:date name="#session.user.birthday" format="yyyy-MM-dd" />' readonly>
                   <span class="add-on"><i class="icon-remove"></i></span> <span class="add-on"><i class="icon-th"></i></span> </div>
               </div>
               <div class="control-group">
@@ -123,14 +123,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <span class="help-inline"></span> </div>
               </div>
               <div class="control-group">
-                <label class="setting_detail_label" for="input01" >个人简介</label>
+                <label class="setting_detail_label" for="input01" >年级</label>
                 <div class="setting_detail_info">
-                  <textarea rows="6" style="width:80%" id="input_description" placeholder="一句话介绍一下自己吧，让别人更了解你"><s:property value="#session.user.tutor.description"/></textarea>
+                  <input type="text" class="input-large" placeholder="请输入您的年级" id="input_grade" value='<s:property value="#session.user.student.grade"/>'/>
                 </div>
               </div>
               <div class="control-group">
                 <div class="setting_detail_info">
-                  <button type="button" class="btn btn-primary" onclick="save_info()">保存</button>
+                  <button type="button" class="btn btn-primary" onclick="save_student_info()">保存</button>
                 </div>
               </div>
             </fieldset>
@@ -161,12 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <input type="text" class="input-large"  id="input01"/>
                 </div>
               </div>
-              <div class="control-group">
-                <label class="control-label" for="input01">收入</label>
-                <div class="controls">
-                  <s:property value="#session.user.tutor.balance"/>
-                </div>
-              </div>
+              
               <div class="control-group">
                 <div class="controls">
                   <button type="submit" class="btn btn-primary">保存</button>

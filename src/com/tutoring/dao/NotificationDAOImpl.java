@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -32,7 +31,7 @@ public class NotificationDAOImpl extends HibernateDaoSupport implements Notifica
 	}
 
 	@Override
-	public int getNumberOfNotice() {
+	public int getNumberOfNotice(final int userid) {
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().setMaxResults(3);
 		return this.getHibernateTemplate().execute(new HibernateCallback<Integer>(){
@@ -42,7 +41,7 @@ public class NotificationDAOImpl extends HibernateDaoSupport implements Notifica
 					throws HibernateException, SQLException {
 				// TODO Auto-generated method stub
 				
-				Query query = session.createQuery("select count(*) from Notification where state = 0");
+				Query query = session.createQuery("select count(*) from Notification where state = 0 and user_id = "+userid);
 				int count = ((Number)query.uniqueResult()).intValue();
 				//session.flush();
 				//session.clear();
@@ -51,6 +50,7 @@ public class NotificationDAOImpl extends HibernateDaoSupport implements Notifica
 			}
 			
 		});
+		//return user.getNotifications().size();
 		
 	}
 

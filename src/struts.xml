@@ -92,7 +92,8 @@
     	</action>
     	
     	<action name="BuildInfo" class="buildInfoAction">
-    		<result name="success">/webs/BuildInfo.jsp</result>
+    		<result name="tutor">/webs/BuildInfo.jsp</result>
+    		<result name="student">/webs/StudentInfo.jsp</result>
     	</action>
     	
     	<action name="TutorInfo" class="tutorInfoAction">

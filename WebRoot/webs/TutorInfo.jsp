@@ -109,6 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <table class="table">
                   <tbody>
                     <s:iterator value="tutor.courses">
+                    
                       <s:if test="startTime>time&&student==null">
                         <tr>
                           <td><s:property value="name"/></td>
@@ -119,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                               </s:if>
                             </s:iterator>
                             <s:if test="#flag==0">
-                              <button class="btn btn-mini btn-success" onclick="applyCourse(<s:property value='id'/>)" id="applybtn">申请</button>
+                              <button class="btn btn-mini btn-success" onclick="applyCourse(<s:property value='id'/>,<s:property value='#root[1].tutor.id'/>)" id="applybtn">申请</button>
                             </s:if>
                             <s:else>
                               <button class="btn btn-mini" onclick="applyCourse(<s:property value='id'/>)" disabled="disabled" id="applybtn">已申</button>
@@ -156,9 +157,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
 <script src='/OnlineTutoringSystem/dwr/interface/applycourseaction.js'></script> 
 <script type="text/javascript">
-function applyCourse(courseid)
+function applyCourse(courseid,tutorid)
 {
-	applycourseaction.applyForCourse(courseid,applyCourseCallBack);
+	//alert(tutorid);
+	applycourseaction.applyForCourse(courseid,tutorid,applyCourseCallBack);
 }
 
 

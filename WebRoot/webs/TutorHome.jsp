@@ -107,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//alert(event.get("he"));
 			if(event.get("numberofnotice")!=0)
 			{
-				alert(event.get("numberofnotice"));
+				//alert(event.get("numberofnotice"));
 				$("#message").html('<i class="icon-envelope"></i>消息</a><span class="badge badge-important">'+event.get("numberofnotice")+'</span>');
 			}
 			else

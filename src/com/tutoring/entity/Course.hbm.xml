@@ -22,7 +22,7 @@
      	<property name="ebsb" column="eval_by_stu_b" type="int" not-null="true"/>
      	<property name="ebsc" column="eval_by_stu_c" type="int" not-null="true"/>
      	<property name="evaluation" column="evaluation" type="string" length="1000"/>
-     	
+     	<property name="status" column="status" type="int" not-null="true"/>
 		
 		<many-to-one name="student" column="student_id" class="com.tutoring.entity.Student" cascade="save-update"></many-to-one>
 		<many-to-one name="tutor" column="tutor_id" class="com.tutoring.entity.Tutor" lazy="false" cascade="save-update" not-null="true"></many-to-one>

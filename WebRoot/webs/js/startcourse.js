@@ -1,4 +1,5 @@
 // JavaScript Document
+var isReady = false;
 
 function customizedFunc()
 {
@@ -10,6 +11,12 @@ function customizedFunc()
 function null_function()
 {
 
+}
+
+
+function getIsReady(){
+{
+    return isReady;
 }
 
 function getUserType()

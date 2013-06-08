@@ -1,4 +1,4 @@
-﻿-- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
 --
 -- Host: localhost    Database: onlinetutoring
 -- ------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE `answer` (
   KEY `authorId_idx` (`user_id`),
   CONSTRAINT `fk_ans_per_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_ans_que_id` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
-INSERT INTO `answer` VALUES (11,2,'haha','2013-05-26 19:21:06',12,NULL),(12,2,'评论一下','2013-05-26 19:21:32',13,NULL),(13,2,'沙发','2013-05-26 19:22:28',34,NULL),(14,6,'test','2013-05-26 23:40:23',12,NULL),(15,6,'测试图片','2013-05-26 23:42:34',12,NULL),(16,6,'测试图片2','2013-05-26 23:43:58',12,NULL),(17,6,'测试图片','2013-05-26 23:46:21',10,'YoT7ghJFVf.jpg'),(18,2,'尝试过出点金吗，不知道怎么样','2013-05-27 00:05:50',37,NULL),(19,3,'ls说的可以试试','2013-05-27 00:07:51',37,'b7tYy4ya7V.jpg'),(20,7,'2楼是傻逼吗？','2013-05-27 00:09:46',37,NULL),(21,6,'回复王翌潋:你会打dota吗？','2013-05-27 00:11:32',37,NULL),(22,6,'回复GaooGuangyu:恩，貌似很牛逼的样子。。。','2013-05-27 00:12:19',37,NULL),(23,6,'回复ChenYanjie:你试过吗？','2013-05-27 00:12:58',37,NULL),(24,6,'有人回答吗？','2013-05-28 21:24:56',38,NULL);
+INSERT INTO `answer` VALUES (11,2,'haha','2013-05-26 19:21:06',12,NULL),(12,2,'评论一下','2013-05-26 19:21:32',13,NULL),(13,2,'沙发','2013-05-26 19:22:28',34,NULL),(14,6,'test','2013-05-26 23:40:23',12,NULL),(15,6,'测试图片','2013-05-26 23:42:34',12,NULL),(16,6,'测试图片2','2013-05-26 23:43:58',12,NULL),(17,6,'测试图片','2013-05-26 23:46:21',10,'YoT7ghJFVf.jpg'),(18,2,'尝试过出点金吗，不知道怎么样','2013-05-27 00:05:50',37,NULL),(19,3,'ls说的可以试试','2013-05-27 00:07:51',37,'b7tYy4ya7V.jpg'),(20,7,'2楼是傻逼吗？','2013-05-27 00:09:46',37,NULL),(21,6,'回复王翌潋:你会打dota吗？','2013-05-27 00:11:32',37,NULL),(22,6,'回复GaooGuangyu:恩，貌似很牛逼的样子。。。','2013-05-27 00:12:19',37,NULL),(23,6,'回复ChenYanjie:你试过吗？','2013-05-27 00:12:58',37,NULL),(24,6,'有人回答吗？','2013-05-28 21:24:56',38,NULL),(25,6,'dddd','2013-06-07 19:31:25',10,NULL),(26,6,'ssssss','2013-06-07 19:32:07',12,NULL);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ CREATE TABLE `application` (
 
 LOCK TABLES `application` WRITE;
 /*!40000 ALTER TABLE `application` DISABLE KEYS */;
-INSERT INTO `application` VALUES (3,5);
+INSERT INTO `application` VALUES (3,5),(4,5);
 /*!40000 ALTER TABLE `application` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,6 +102,7 @@ CREATE TABLE `course` (
   `eval_by_stu_c` int(11) NOT NULL DEFAULT '0',
   `evaluation` varchar(1000) DEFAULT NULL,
   `flash_sn` varchar(10) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `flash_sn_UNIQUE` (`flash_sn`),
@@ -120,7 +121,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'2013-05-29 08:00:00','2013-05-29 08:30:00',30,5,1,200,'解析几何','1节课解决基本概念问题',1,0,0,0,0,0,0,NULL,NULL),(2,'2013-05-29 18:24:00','2013-05-29 18:54:00',30,5,1,250,'力学','主要分析牛顿三定律',4,0,0,0,0,0,0,NULL,NULL),(3,'2013-06-01 17:00:00','2013-06-01 17:30:00',30,NULL,1,300,'定语从句','30分钟学会',3,0,0,0,0,0,0,NULL,NULL),(4,'2013-06-01 17:45:00','2013-06-01 18:15:00',30,NULL,1,250,'电路','注重电路图的设计',4,0,0,0,0,0,0,NULL,NULL);
+INSERT INTO `course` VALUES (1,'2013-06-08 14:30:00','2013-06-08 15:30:00',60,5,1,200,'解析几何','1节课解决基本概念问题',1,0,0,0,0,0,0,NULL,NULL,0),(2,'2013-05-29 18:24:00','2013-05-29 18:54:00',30,5,1,250,'力学','主要分析牛顿三定律',4,0,0,0,0,0,0,NULL,NULL,0),(3,'2013-06-08 17:00:00','2013-06-08 17:30:00',30,NULL,1,300,'定语从句','30分钟学会',3,0,0,0,0,0,0,NULL,NULL,0),(4,'2013-06-08 17:45:00','2013-06-08 18:15:00',30,NULL,1,250,'电路','注重电路图的设计',4,0,0,0,0,0,0,NULL,NULL,0);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +201,7 @@ CREATE TABLE `notification` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `_idx` (`user_id`),
   CONSTRAINT `fk_not_per_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +210,7 @@ CREATE TABLE `notification` (
 
 LOCK TABLES `notification` WRITE;
 /*!40000 ALTER TABLE `notification` DISABLE KEYS */;
-INSERT INTO `notification` VALUES (1,3,6,1,'2013-05-31 19:18:16',0);
+INSERT INTO `notification` VALUES (1,3,8,1,'2013-05-31 19:18:16',0),(2,4,8,1,'2013-06-07 22:08:44',0);
 /*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,7 +305,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (2,2,0),(3,3,0),(4,4,0),(5,6,5),(6,7,6);
+INSERT INTO `student` VALUES (2,2,0),(3,3,0),(4,4,0),(5,6,3),(6,7,6);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -349,7 +350,7 @@ CREATE TABLE `tutor` (
   UNIQUE KEY `personId_UNIQUE` (`user_id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   CONSTRAINT `fk_tut_per_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -358,7 +359,7 @@ CREATE TABLE `tutor` (
 
 LOCK TABLES `tutor` WRITE;
 /*!40000 ALTER TABLE `tutor` DISABLE KEYS */;
-INSERT INTO `tutor` VALUES (1,8,0,NULL);
+INSERT INTO `tutor` VALUES (1,8,0,'我是同济大学的老师'),(2,9,0,'');
 /*!40000 ALTER TABLE `tutor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,8 +372,8 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(30) DEFAULT NULL,
-  `last_name` varchar(30) DEFAULT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
   `email` varchar(60) NOT NULL,
   `password` varchar(30) NOT NULL,
   `phone` varchar(15) DEFAULT NULL,
@@ -386,7 +387,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +396,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'Gao','Guangyu','py@gmail.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(3,'Chen','Yanjie','test@164.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(4,'Ha','ha','test2@163.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(6,'潘','岩','panyan@gmail.com','1234567','18801785239','1993-06-05',NULL,'1',0,'TX1WflAQEN.jpg','同济大学',NULL),(7,'王','翌潋','panyan@163.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(8,'Liu','Yan','hello@163.com','1234567',NULL,NULL,NULL,'2',0,'opRNfMShhl.jpg',NULL,NULL);
+INSERT INTO `user` VALUES (2,'Gao','Guangyu','py@gmail.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(3,'Chen','Yanjie','test@164.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(4,'Ha','ha','test2@163.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(6,'潘','岩','panyan@gmail.com','1234567','18801785239','1993-06-05',NULL,'1',0,'TX1WflAQEN.jpg','同济大学',NULL),(7,'王','翌潋','panyan@163.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(8,'Liu','Yan','hello@163.com','1234567','','2013-05-09',NULL,'2',0,'opRNfMShhl.jpg','',NULL),(9,'杜','庆峰','hello2@163.com','1234567','','2013-05-09',NULL,'2',0,NULL,'',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -408,4 +409,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-02  0:29:35
+-- Dump completed on 2013-06-08 16:01:33

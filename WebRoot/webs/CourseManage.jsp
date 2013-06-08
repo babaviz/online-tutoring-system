@@ -63,18 +63,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <th>结束时间</th>
             </tr>
           </thead>
+          <s:iterator value="#session.user.tutor.courses">
+          <s:if test="endTime>startTime&&student!=null">
           <tr>
-            <td>解析几何</td>
-            <td>2013-06-02 16:00:00</td>
-            <td>2013-06-02 16:30:00</td>
+            <td><s:property value="name"/></td>
+            <td><s:date name="startTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+            <td><s:date name="endTime" format="yyyy-MM-dd HH:mm:ss"/></td>
             <td><button class="btn btn-mini btn-success">上课</button></td>
           </tr>
-          <tr>
-            <td>力学</td>
-            <td>2013-06-02 18:00:00</td>
-            <td>2013-06-02 18:30:00</td>
-            <td><button class="btn btn-mini btn-success">上课</button></td>
-          </tr>
+          </s:if>
+          </s:iterator>
           <tbody>
           </tbody>
         </table>

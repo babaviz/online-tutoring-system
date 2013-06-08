@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   width="673" height="444" minWidth="955" minHeight="600"
+			   creationComplete="main()">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script source="Main.as">
+	</fx:Script>
+	<s:Button x="600" y="412" width="68" height="21" label="发送" id="button_send" click="button_send_clickHandler(event)"/>
+	<s:Button id="button_offline" visible="{View.button_offline_visible}" x="522" y="413" label="断开连接" click="button_offline_clickHandler(event)"/>
+	<s:TextArea x="180" y="330" width="483" height="77" text="{View.input.text}" id="textArea_input" />
+	<s:Button name="button_reconnect" x="179" y="413" label="重连" visible="{View.button_reconnect_visible}" id="button_reconnect" click="button_reconnect_clickHandler(event)"/>
+	<s:TextArea id="textArea_output" x="481" y="131" width="182" height="191" editable="false"
+				enabled="true" text="{View.output}"/>
+	<s:BorderContainer id="panel_parent" x="10" y="10" width="462" height="313" dropShadowVisible="false"
+			 skinClass="spark.skins.spark.SkinnableContainerSkin">
+		<mx:Canvas id="panel_draw" name="panel_draw" x="0" y="0" width="462" height="270" backgroundColor="0xffffff">
+		</mx:Canvas>
+		<s:HGroup id="hgroup" name="hgroup" x="0" y="278" width="462" height="35">
+			<s:Button id="button_pen" name="button_pen" width="78" height="100%" label="画笔" />
+			<mx:ColorPicker id="colorpicker" name="colorpicker" width="45" height="100%"/>
+			<s:Button id="button_undo" name="button_undo" width="45" height="100%" label="撤销" />
+			<s:Button id="button_rubber" name="button_rubber" width="70" height="100%" label="区域擦除" />
+			<s:Button id="button_clear" name="button_clear" width="52" height="100%" label="清空" />
+			<s:Button id="button_upload" name="button_upload" width="76" height="100%" label="上传图片" />
+		</s:HGroup>
+		<s:CheckBox id="checkbox" x="364" y="0" width="94" label="允许学生笔迹" enabled="true"
+					name="checkbox"/>
+	</s:BorderContainer>
+	<s:BorderContainer x="11" y="331" width="161" height="103">
+		<s:VideoDisplay source="{View.video_local}" x="0" y="0" width="161" height="103" id="videoDisplay_local"/>
+	</s:BorderContainer>
+	<s:BorderContainer x="480" y="11" width="183" height="114">
+	</s:BorderContainer>
+	<s:VideoDisplay source="{View.video_remote}" x="481" y="12" width="182" height="112.39081" id="videoDisplay_remote"/>
+</s:Application>

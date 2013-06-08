@@ -115,8 +115,33 @@ function save_info()
 		return;
 	else
 	{
+		//alert($("#input_description").val());
+		changeinfoaction.changeBasicInfo($("#input_lastname").val(),$("#input_firstname").val(),$("#input_phone").val(),$("#input_birthday").val(),$("#input_school").val(),$("#input_description").val(),changeCallBack);
+		//changeinfoaction.test(changeCallBack);
+	}
+}
+
+function save_student_info()
+{
+	var ifOK=true;
+	if(!check_lastname())
+		ifOK= false;
+
+	if(!check_firstname())
+		ifOK= false;
+
+	if(!check_phone())
+		ifOK= false;
+
+	if(!check_school())
+		ifOK= false;
+
+	if(ifOK==false)
+		return;
+	else
+	{
 		//alert("ok");
-		changeinfoaction.changeBasicInfo($("#input_lastname").val(),$("#input_firstname").val(),$("#input_phone").val(),$("#input_birthday").val(),$("#input_school").val(),changeCallBack);
+		changeinfoaction.changeStudentInfo($("#input_lastname").val(),$("#input_firstname").val(),$("#input_phone").val(),$("#input_birthday").val(),$("#input_school").val(),$("#input_grade").val(),changeCallBack);
 		//changeinfoaction.test(changeCallBack);
 	}
 }
@@ -125,4 +150,8 @@ function changeCallBack(msg)
 {
 	if(msg=="ok")
 		alert("修改成功");
+}
+
+function customizedFunc()
+{
 }

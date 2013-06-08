@@ -14,6 +14,7 @@
         	<column name="time" sql-type="datetime" default="CURRENT_TIMESTAMP"/>
         </property>
         <property name="type" column="type" type="int" not-null="true"/>
+        <property name="state" column="state" type="int" not-null="true"/>
 		
 		<many-to-one name="user" column="user_id" class="com.tutoring.entity.User" cascade="save-update" lazy="false" not-null="true"></many-to-one>
 		

@@ -1,7 +1,11 @@
 package com.tutoring.action;
 
+import java.util.Map;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.biz.UserBiz;
+import com.tutoring.entity.User;
 
 public class BuildInfoAction extends ActionSupport{
 
@@ -22,12 +26,18 @@ public class BuildInfoAction extends ActionSupport{
 		this.userBiz = userBiz;
 	}
 	public String execute() throws Exception{
-		//ActionContext ac = ActionContext.getContext();
-		//Map<String , Object> session = ac.getSession();
+		ActionContext ac = ActionContext.getContext();
+		Map<String , Object> session = ac.getSession();
 		//String email = (String) session.get("email");
 		//user = userBiz.getUserInfo(email);
 		//System.out.println(user.getFirstName());
-		return SUCCESS;
+		User user = (User) session.get("user");
+		if(user.getType()=='1')
+			return "student";
+		else if(user.getType()=='2')
+			return "tutor";
+		else
+			return null;
 	}
 
 }

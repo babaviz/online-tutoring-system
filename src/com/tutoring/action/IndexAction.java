@@ -32,11 +32,12 @@ public class IndexAction extends ActionSupport{
 		ActionContext ac = ActionContext.getContext();
 		Map<String, Object> session = ac.getSession();
 		User user = (User)session.get("user");
-		if(userBiz.isStudent(user.getEmail()))
+		if(user.getType()=='1')
 			return "student";
-		if(userBiz.isTutor(user.getEmail()))
+		else if(user.getType()=='2')
 			return "tutor";
-		return SUCCESS;
+		else
+			return ERROR;
 	}
 
 	public Timestamp getTime() {

@@ -28,6 +28,8 @@ public class Notification  extends AbstractModel {
 	private int type;
 	
 	private User user;
+	
+	private int state;
 
 	/**
 	 * 
@@ -127,6 +129,14 @@ public class Notification  extends AbstractModel {
 	 */
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
 	}
 
 	

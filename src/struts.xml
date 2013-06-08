@@ -16,17 +16,15 @@
 		</default-interceptor-ref>
 		<global-results>  
     		<result name="invalid.token">/tokenError.jsp</result>  
-    		<result name="login" type="redirect">/webs/Login.htm</result>  
-    		<result name="sessionError" type="redirect">/webs/sessionError.htm</result> 
+    		<result name="login">/webs/Login.jsp</result>  
+    		<result name="sessionError">/webs/Login.jsp</result> 
 		</global-results>
     	
     	<action name="LoginAction" class="loginAction">
-    		<result name="success" type="redirectAction">
-    			Index
-    		</result>
+    		<result name="success" type="redirectAction">Index</result>
     	</action>
     	<action name="RegisterAction" class="registerAction">
-    		<result name="success">/webs/Login.htm</result>
+    		<result name="success">/webs/Login.jsp</result>
     		<result name="error">/registerError.jsp</result>
     	</action>
     	
@@ -53,10 +51,14 @@
     	<action name="Index" class="indexAction">
     		<result name="student">/webs/StudentHome.jsp</result>
     		<result name="tutor">/webs/TutorHome.jsp</result>
+    		<result name="login">/webs/Login.jsp</result>
+    	</action>
+    	<action name="Logout" class="logoutAction">
+    		<result name="success">/webs/Login.jsp</result>
     	</action>
     	
     	<action name="MakeCommentAction" class="makeCommentAction">
-    	<result name="success" type="redirectAction">TopicDetail?topicid=${topicid}</result>
+    	<result name="success" type="redirectAction">TopicDetail</result>
     	<result name="error">/launchTopicError.jsp</result>
     	</action>
     	
@@ -85,12 +87,25 @@
     		<result name="success">/webs/chatting.jsp</result>
     	</action>
     	
-    	<action name="Search" class="searchAction">
-    		<result name="success">/webs/search.jsp</result>
+    	<action name="SearchCourse" class="searchAction">
+    		<result name="success">/webs/SearchCourse.jsp</result>
     	</action>
     	
     	<action name="BuildInfo" class="buildInfoAction">
-    		<result name="success">/webs/BuildInfo.jsp</result>
+    		<result name="tutor">/webs/BuildInfo.jsp</result>
+    		<result name="student">/webs/StudentInfo.jsp</result>
+    	</action>
+    	
+    	<action name="TutorInfo" class="tutorInfoAction">
+    		<result name="success">/webs/TutorInfo.jsp</result>
+    	</action>
+    	
+    	<action name="CourseManage" class="courseManageAction">
+    		<result name="success">/webs/CourseManage.jsp</result>
+    	</action>
+    	
+    	<action name="TestAction" class="testAction">
+    		<result name="success">/webs/urlError.htm</result>
     	</action>
     	
     </package>

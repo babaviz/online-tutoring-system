@@ -31,7 +31,7 @@ public class User  extends AbstractModel {
 	
 	private char type;
 	
-	private Integer point;
+	private Float point;
 	
 	private String picture;
 	
@@ -90,7 +90,7 @@ public class User  extends AbstractModel {
 	 */
 	public User(String firstName, String lastName, String email,
 			String password, String phone, Date birthday, String cardNumber,
-			char type, Integer point, String picture, String school, String cookie) {
+			char type, Float point, String picture, String school, String cookie) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -234,14 +234,14 @@ public class User  extends AbstractModel {
 	/**
 	 * @return the point
 	 */
-	public Integer getPoint() {
+	public Float getPoint() {
 		return point;
 	}
 
 	/**
 	 * @param point the point to set
 	 */
-	public void setPoint(Integer point) {
+	public void setPoint(Float point) {
 		this.point = point;
 	}
 

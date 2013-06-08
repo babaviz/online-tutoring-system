@@ -8,11 +8,11 @@
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
 <link href="css/outerframe.css" rel="stylesheet" type="text/css" />
 <title>无标题文档</title>
-<script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script> 
-<script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script> 
-<script language="javascript" type="text/javascript" src="js/startcourse.js"></script> 
- <script type="text/javascript" src="flash/swfobject.js"></script>
-        <script type="text/javascript">
+<script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<script language="javascript" type="text/javascript" src="js/startcourse.js"></script>
+<script type="text/javascript" src="flash/swfobject.js"></script>
+<script type="text/javascript">
 	  
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
             var swfVersionStr = "11.1.0";
@@ -36,73 +36,77 @@
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
             swfobject.createCSS("#flashContent", "display:block;text-align:left;");
         </script>
-
 </head>
 
 <body style="background:url(images/mainbackground.jpg)">
-
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-    <div class="container">
+    <div class="container"> <a class="brand" href="#">零距离家教</a>
       <ul class="nav">
-        <li><a href="#">首页</a></li>
-        <li><a href="#">课程管理</a></li>
-        <li  class="active"><a href="Search">找老师</a></li>
-        <li><a href="AllTopics">BBS</a></li>
-        <li><a href="Chatting">聊天</a></li>
-        <li><a href="flash/OnlineTutorPlayer.html">上课</a></li>
+        <li><a href="Index">首页</a></li>
+        <li><a href="SearchCourse">搜课</a></li>
+        <li><a href="SearchUser">搜人</a></li>
+        <li><a href="Chatting">私信</a></li>
+        <li><a href="CourseManage">课程管理</a></li>
+        <li class="active"><a href="AllTopics">BBS</a></li>
       </ul>
-      <a class="brand" href="#">零距离家教</a> </div>
+      <ul class="nav my_pull_right">
+        <li><a class="modify_padding" href="BuildInfo"><i class="icon-user"></i>个人设置</a></li>
+        <li><a class="modify_padding" href="#"><i class="icon-envelope"></i>消息</a></li>
+        <li><a class="modify_padding" href="Logout"><i class="icon-off"></i>登出</a></li>
+        <li><a class="modify_padding"><strong class="text-success">
+          <div class="sub_name">
+            <div>
+              <s:property value="#session.user.firstName"/>
+            </div>
+            <div>
+              <s:property value="#session.user.lastName"/>
+            </div>
+          </div>
+          </strong></a></li>
+      </ul>
+    </div>
   </div>
 </div>
-
 <div id="down_content" style="background:url(images/half_translucent_2.png)">
-<div id="down_left_content">啦啦啦！！！！！
-  <div id="flashContent">
-            <p>
-                To view this page ensure that Adobe Flash Player version 
-                11.1.0 or greater is installed. 
-            </p>
-            <script type="text/javascript"> 
+  <div id="down_left_content">啦啦啦！！！！！
+    <div id="flashContent">
+      <p> To view this page ensure that Adobe Flash Player version 
+        11.1.0 or greater is installed. </p>
+      <script type="text/javascript"> 
                 var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
                 document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
                                 + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
             </script> 
-        </div>
+    </div>
+    <noscript>
+    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="685" height="444" id="OnlineTutorPlayer">
+      <param name="movie" value="OnlineTutorPlayer.swf" />
+      <param name="quality" value="high" />
+      <param name="bgcolor" value="#ffffff" />
+      <param name="allowScriptAccess" value="always" />
+      <param name="allowFullScreen" value="true" />
+      <!--[if !IE]>-->
+      <object type="application/x-shockwave-flash" data="OnlineTutorPlayer.swf" width="685" height="444" id="OnlineTutorPlayer">
+        <param name="quality" value="high" />
+        <param name="bgcolor" value="#ffffff" />
+        <param name="allowScriptAccess" value="always" />
+        <param name="allowFullScreen" value="true" />
+        <!--<![endif]--> 
+        <!--[if gte IE 6]>-->
+        <p> Either scripts and active content are not permitted to run or Adobe Flash Player version
+          11.1.0 or greater is not installed. </p>
+        <!--<![endif]--> 
+        <a href="http://www.adobe.com/go/getflashplayer"> <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player!!!" /> </a> 
+        <!--[if !IE]>-->
         
-        <noscript>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="685" height="444" id="OnlineTutorPlayer">
-                <param name="movie" value="OnlineTutorPlayer.swf" />
-                <param name="quality" value="high" />
-                <param name="bgcolor" value="#ffffff" />
-                <param name="allowScriptAccess" value="always" />
-                <param name="allowFullScreen" value="true" />
-                <!--[if !IE]>-->
-                <object type="application/x-shockwave-flash" data="OnlineTutorPlayer.swf" width="685" height="444" id="OnlineTutorPlayer">
-                    <param name="quality" value="high" />
-                    <param name="bgcolor" value="#ffffff" />
-                    <param name="allowScriptAccess" value="always" />
-                    <param name="allowFullScreen" value="true" />
-                <!--<![endif]-->
-                <!--[if gte IE 6]>-->
-                    <p> 
-                        Either scripts and active content are not permitted to run or Adobe Flash Player version
-                        11.1.0 or greater is not installed.
-                    </p>
-                <!--<![endif]-->
-                    <a href="http://www.adobe.com/go/getflashplayer">
-                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player!!!" />
-                    </a>
-                <!--[if !IE]>-->
-		    
-                </object>
-                <!--<![endif]-->
-            </object>
-        </noscript>    
-</div>
-<div id="down_right_content">哈哈哈！！！！！</div>
+      </object>
+      <!--<![endif]-->
+    </object>
+    </noscript>
+  </div>
+  <div id="down_right_content">哈哈哈！！！！！</div>
   <div id="copy_statement">版权所有</div>
 </div>
-
 </body>
 </html>

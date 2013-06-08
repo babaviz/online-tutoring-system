@@ -42,7 +42,7 @@ public class TopicDetailAction extends ActionSupport{
 		this.topicid = id;
 	}
 	public String execute() throws Exception{
-		
+		System.out.println("topicid:"+topicid);
 		Question q = topicBiz.getQuestionById(topicid);
 		//System.out.println(q.getSubject());
 		ActionContext ac = ActionContext.getContext();

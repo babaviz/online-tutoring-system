@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.tutoring.bean.SearchFactors;
+import com.tutoring.bean.SearchResult;
 import com.tutoring.dao.CourseDAO;
 import com.tutoring.dao.StudentDAO;
 import com.tutoring.dao.UserDAO;
@@ -32,12 +34,12 @@ public class CourseBizImpl implements CourseBiz{
 		// TODO Auto-generated method stub
 		ActionContext ac = ActionContext.getContext();
 		Map<String, Object> session = ac.getSession();
-		String email = ((User)session.get("user")).getEmail();
-		User u = userDAO.getUserByEmail(email);
+		User user=(User)session.get("user");
+//		User u = userDAO.getUserByEmail(email);
 		//System.out.println("userid:"+u.getId());
-		Student stu = studentDAO.getStudentByUser(u);
+//		Student stu = studentDAO.getStudentByUser(u);
 		//System.out.println("stugrade:"+stu.getGrade());
-		return courseDAO.getCoursesByStudent(stu);
+		return courseDAO.getCoursesByUser(user);
 	}
 	@Override
 	public List<?> getMyTutors() {
@@ -59,6 +61,12 @@ public class CourseBizImpl implements CourseBiz{
 			
 		}
 		return tutors;
+	}
+	
+	@Override
+	public ArrayList<SearchResult> getCourses(SearchFactors factors)
+	{
+		return courseDAO.searchCourses(factors);
 	}
 	
 	private boolean isTutorExist(Tutor t, List<Tutor> l)

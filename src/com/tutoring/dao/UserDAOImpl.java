@@ -40,7 +40,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		person.setFirstName(firstname);
 		person.setLastName(lastname);
 		person.setType(type);
-		person.setPoint(0);
+		person.setPoint((float) 0);
 		if(type=='1')
 		{
 			Student stu = new Student();
@@ -93,14 +93,16 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	}
 
 	@Override
-	public User setUser(User u, String FirstName, String LastName,
-			String phone, Date birth, String school) {
+	public User setTutor(User u, String FirstName, String LastName,
+			String phone, Date birth, String school,String description) {
 		// TODO Auto-generated method stub
 		u.setFirstName(FirstName);
 		u.setLastName(LastName);
 		u.setPhone(phone);
 		u.setBirthday(birth);
 		u.setSchool(school);
+		u.getTutor().setDescription(description);
+		System.out.println(u.getTutor().getBalance());
 		System.out.println("from dao:"+phone);
 		this.getHibernateTemplate().merge(u);
 		return u;
@@ -110,6 +112,34 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	public void save(User u) {
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().merge(u);
+	}
+
+	@Override
+	public User getUserByID(int id) {
+		// TODO Auto-generated method stub
+		List<?> personList = this.getHibernateTemplate().find("from User where id = "+id);
+		if(personList.size()>0)
+		{
+			User person = (User) personList.get(0);
+			return person;
+		}
+		else
+			return null;
+	}
+
+	@Override
+	public User setStudent(User u, String FirstName, String LastName,
+			String phone, Date birth, String school, int grade) {
+		// TODO Auto-generated method stub
+		u.setFirstName(FirstName);
+		u.setLastName(LastName);
+		u.setPhone(phone);
+		u.setBirthday(birth);
+		u.setSchool(school);
+		System.out.println("from dao:"+phone);
+		u.getStudent().setGrade(grade);
+		this.getHibernateTemplate().merge(u);
+		return u;
 	}
 	
 	

@@ -221,6 +221,12 @@ var PL = {
 
 		// Construct base URL for GET
 		var url = PL.pushletURL + '?p_event=' + anEvent;
+		
+		//var userid = getMenuValue("userid");
+		if(anEvent=="join"||anEvent=="join-listen"){
+			url = url + "&userid="+PL.userid;
+			//alert(url);
+		}
 
 		// Optionally attach query string
 		if (aQuery) {

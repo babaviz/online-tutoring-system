@@ -13,6 +13,8 @@ import com.tutoring.entity.User;
 
 import nl.justobjects.pushlet.core.Event;
 import nl.justobjects.pushlet.core.EventPullSource;
+import nl.justobjects.pushlet.core.Session;
+import nl.justobjects.pushlet.core.SessionManager;
 
 public class NotificationPushlet extends EventPullSource implements Serializable{
 
@@ -33,7 +35,29 @@ public class NotificationPushlet extends EventPullSource implements Serializable
 	protected Event pullEvent() {
 		// TODO Auto-generated method stub
 		Event event = Event.createDataEvent("/tutoring/numberofnotice");
+		int userid = 0;
+		Session[] sessions = SessionManager.getInstance().getSessions();
+		if(sessions.length>0){
+			//StringBuilder str = new StringBuilder("");
+//			for(int i = 0;i<sessions.length;i++)
+//			{
+//				System.out.println(i+":"+sessions[i].getId());
+//				
+//			}
+			userid = Integer.parseInt(sessions[0].getId());
+		}
+		//System.out.println("lastid:"+userid);
+		NotificationDAO notificationDAO = (NotificationDAO) context.getBean("NotificationDAO");
 		
+		
+//		if(SessionManager.getInstance().hasSession("0"))
+//		{
+//			System.out.println("yes");
+//		}
+//		else
+//		{
+//			System.out.println("no");
+//		}
 		
 //		NotificationDAO notificationDAO = (NotificationDAO) context.getBean("NotificationDAO");
 //		UserBiz userBiz = (UserBiz)context.getBean("UserBiz");
@@ -45,7 +69,7 @@ public class NotificationPushlet extends EventPullSource implements Serializable
 //		System.out.println(user.getLastName());
 //		event.setField("numberofnotice", number);
 //		}
-		event.setField("numberofnotice", 0);
+		event.setField("numberofnotice", notificationDAO.getNumberOfNotice(userid));
 		return event;
 	}
 

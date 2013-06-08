@@ -99,6 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" type="text/javascript" src="bootstrap/js/holder.js"></script> 
 <script type="text/javascript" src="js/ajax-pushlet-client.js"></script> 
 <script type="text/javascript">
+		PL.userid='<s:property value="#session.user.id" />';
 		PL._init();
 		PL.joinListen("/tutoring/numberofnotice");
 		function onData(event)

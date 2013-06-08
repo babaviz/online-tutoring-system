@@ -3,6 +3,8 @@ package com.tutoring.action;
 import java.util.List;
 import java.util.Map;
 
+import nl.justobjects.pushlet.core.SessionManager;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.biz.CourseBiz;
@@ -47,6 +49,7 @@ public class LoginAction extends ActionSupport{
 			Map<String, Object> session = ac.getSession();
 			User user = userBiz.getUserInfo(username);
 			session.put("user", user);
+			
 			
 			//System.out.println(session.get("username"));
 			if(userBiz.isStudent(username))

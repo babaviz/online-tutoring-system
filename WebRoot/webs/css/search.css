@@ -358,6 +358,20 @@
 	margin-bottom:7px;
 }
 
+#home.searchUser
+{
+	height:450px;
+}
+
+#searchUserMainField
+{
+	padding-top:100px;
+	clear:both;
+	width:400px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
 .one_result_tutor
 {
 	height:100px;

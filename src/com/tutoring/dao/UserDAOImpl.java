@@ -157,19 +157,28 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		ArrayList<SearchUserResult> searchUserResults = new ArrayList<SearchUserResult>();
 		for (int i = 0; i < list.size(); i++) {
 			result=new SearchUserResult();
-			result.setDescription(((User)list.get(i)).getTutor().getDescription());
+			if(((User)list.get(i)).getType()=='1')
+			{
+				result.setType("学生");
+			}
+			else if(((User)list.get(i)).getType()=='2')
+			{
+				result.setType("老师");
+				result.setDescription(((User)list.get(i)).getTutor().getDescription());
+				
+				Iterator<Subject> it=((User)list.get(i)).getTutor().getSubjects().iterator();
+				String subjectsTmpStr="";
+				while(it.hasNext())
+				{
+					subjectsTmpStr=it.next().getName()+" "+subjectsTmpStr;
+				}
+				result.setSubjects(subjectsTmpStr);
+			}
+			
 			result.setGrade("大一");//((User)list.get(i)).getStudent().getGrade());
 			result.setName(((User)list.get(i)).getLastName()+((User)list.get(i)).getFirstName());
 			result.setPoint(((User)list.get(i)).getPoint()+"");
 			
-			Iterator<Subject> it=((User)list.get(i)).getTutor().getSubjects().iterator();
-			String subjectsTmpStr="";
-			while(it.hasNext())
-			{
-				subjectsTmpStr=subjectsTmpStr+" "+it.next();
-			}
-			result.setSubjects(subjectsTmpStr);
-			result.setType(((User)list.get(i)).getType()==1?"学生":"老师");
 			searchUserResults.add(result);
 		}
 		return searchUserResults;

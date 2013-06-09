@@ -300,7 +300,27 @@ function searchUserAction()
 
 function handleSearchUserCallBack(data,$tabContent)
 {
-	alert(data.length);
+//	alert(data.length);
+	var $one_result;
+	for(var i=0;i<data.length;i++)
+	{
+//		alert(data[i].name+"\n"+data[i].type+"\n"+data[i].point+"\n"+data[i].subjects);
+		if(data[i].type=="老师")
+		{
+			$one_result=$("#tutor_result_template").clone(true);
+			$one_result.find(".tutor_subjects").text("授课类型："+data[i].subjects);
+			$one_result.find(".tutor_description").text("老师简介："+data[i].description);
+			$tabContent.append($one_result);
+		}
+		else if(data[i].type=="学生")
+		{
+			$one_result=$("#stu_result_template").clone(true);
+			$one_result.find(".stu_grade").text("年级："+data[i].grade);
+			$tabContent.append($one_result);
+		}
+		$one_result.find(".name").text(data[i].name);
+		$one_result.find(".user_point").text("积分"+data[i].point);
+	}
 }
 
 function get_seatchUserFactors()

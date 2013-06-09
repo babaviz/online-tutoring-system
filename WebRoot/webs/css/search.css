@@ -427,9 +427,12 @@
 	clear:both;
 	height:30px;
 	color:#027BDF;
-	width:55px;
+	width:200px;
 	font-weight:900;
 	font-family:SimHei;
+	text-overflow: ellipsis; 
+	overflow: hidden; 
+	white-space: nowrap;
 }
 
 .one_result_tutor .result_right_content .gender_img

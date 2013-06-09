@@ -17,4 +17,6 @@ public interface CourseDAO {
 	public List<Course> getCoursesByTutor(Tutor t);
 	public ArrayList<SearchResult> searchCourses(SearchFactors factors);
 	public Course getCourseById(int id);
+	public int getApplyNumberOfCourse(Course c);
+	public void deleteCourse(Course c);
 }

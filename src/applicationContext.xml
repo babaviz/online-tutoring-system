@@ -104,6 +104,8 @@
 		<property name="userDAO" ref="UserDAO"></property>
 		<property name="studentDAO" ref="StudentDAO"></property>
 		<property name="courseDAO" ref="CourseDAO"></property>
+		<property name="tutorDAO" ref="TutorDAO"></property>
+		<property name="subjectDAO" ref="SubjectDAO"></property>
 	</bean>
 
 	<bean id="StudentBiz" class="com.tutoring.biz.StudentBizImpl">
@@ -190,11 +192,21 @@
 		<property name="tutorBiz" ref="TutorBiz"></property>
 	</bean>
 
-	<bean id="courseManageAction" class="com.tutoring.action.CourseManageAction"></bean>
+	<bean id="courseManageAction" class="com.tutoring.action.CourseManageAction">
+		<property name="courseBiz" ref="CourseBiz"></property>
+	</bean>
 
 	<bean id="logoutAction" class="com.tutoring.action.LogoutAction"></bean>
 
 	<bean id="SessionMaintainBiz" class="com.tutoring.biz.SessionMaintainBizImpl">
+		<property name="courseBiz" ref="CourseBiz"></property>
+	</bean>
+	
+	<bean id="openCourseAction" class="com.tutoring.action.OpenCourseAction">
+		<property name="courseBiz" ref="CourseBiz"></property>
+	</bean>
+	
+	<bean id="deleteCourseAction" class="com.tutoring.action.DeleteCourseAction">
 		<property name="courseBiz" ref="CourseBiz"></property>
 	</bean>
 	

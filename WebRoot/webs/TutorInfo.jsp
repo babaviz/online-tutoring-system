@@ -53,8 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="media"> <a class="pull-left"> <img class="media-object" data-src="holder.js/64x64" style="height:64px;width:64px;" src="../headimg/<s:property value='picture'/>"/> </a>
             <div class="media-body">
               <h4 class="media-heading">
-                <s:property value="lastName"/>
-                <s:property value="firstName"/>
+                <s:property value="lastName"/><s:property value="firstName"/>
               </h4>
               <br/>
               <p class="text-info">评分：
@@ -68,10 +67,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <tbody>
               <tr>
                 <td>学校</td>
-                <td><s:if test="school!=null">
+                <td>
+                  <s:if test="school!=null">
                     <s:property value="school"/>
                   </s:if>
-                  <s:else> 未公开 </s:else></td>
+                  <s:else>
+                  	未公开 
+                  </s:else>
+                </td>
               </tr>
               <tr>
                 <td>专项</td>
@@ -94,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </tr>
               <tr>
                 <td style="width:100px;">个人简述</td>
-                <td> I am a hardworking and dedicated individual who is adamant in the success of others. I've had personal experience throughout my entire life of instructing or tutoring others and I have encountered many different styles of learning as well as teaching. I've always gotten 's in high school and graduated with a 4.0. I have always loved school since I was young. When someone comes to me for help I will explain the concept in as many ways as possible using examples that are both tangible and intangible. Also, I like to make learning fun and enjoyable and if there is ever anything I wouldn't be able to help your child with, I would take it into my own hands and personally access the proper resources to learn the material myself (correctly) and therefore relate such information onto them. I don't just help your child understand one concept, I help them develop study habits and get excited about going to school and I enjoy having meaningful discussions on the importance of school and learning as well as how that may effect his or her future. </td>
+                <td><s:property value="tutor.description"/></td>
               </tr>
             </tbody>
           </table>

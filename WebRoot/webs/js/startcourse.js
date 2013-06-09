@@ -14,7 +14,7 @@ function null_function()
 }
 
 
-function getIsReady(){
+function getIsReady()
 {
     return isReady;
 }

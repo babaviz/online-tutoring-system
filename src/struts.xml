@@ -112,6 +112,10 @@
     		<result name="success">/webs/urlError.htm</result>
     	</action>
     	
+    	<action name="OpenCourseAction" class="openCourseAction">
+    		<result name="success" type="redirectAction">CourseManage</result>
+    	</action>
+    	
     </package>
     
    

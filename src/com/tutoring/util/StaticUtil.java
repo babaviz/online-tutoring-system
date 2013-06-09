@@ -70,4 +70,13 @@ public class StaticUtil {
         }
         
     }
+	
+	public static int getDuration(int starthour, int startminute, int startsecond, 
+			int endhour,int endminute,int endsecond){
+		int secondDuration = endsecond-startsecond;
+		int minuteDuration = endminute-startminute;
+		int hourDuration = endhour-starthour;
+		int duration = hourDuration*3600 + minuteDuration*60+secondDuration;
+		return duration;
+	}
 }

@@ -1,8 +1,13 @@
 package com.tutoring.dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.tutoring.bean.SearchFactors;
@@ -165,5 +170,30 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 			searchResults.add(result);
 		}
 		return searchResults;
+	}
+
+	@Override
+	public int getApplyNumberOfCourse(final Course c) {
+		// TODO Auto-generated method stub
+		return this.getHibernateTemplate().execute(new HibernateCallback<Integer>(){
+
+			@Override
+			public Integer doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				// TODO Auto-generated method stub
+				Query query = session.createQuery("select count(*) from Application where course_id = "+c.getId());
+				return ((Number)query.uniqueResult()).intValue();
+			}
+			
+		});
+	}
+
+	@Override
+	public void deleteCourse(Course c) {
+		// TODO Auto-generated method stub
+		System.out.println("delete id:"+c.getId());
+		List<?> list = this.getHibernateTemplate().find("from Application where course_id="+c.getId());
+		this.getHibernateTemplate().deleteAll(list);
+		this.getHibernateTemplate().delete(c);
 	}
 }

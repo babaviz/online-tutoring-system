@@ -64,12 +64,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
           </thead>
           <s:iterator value="#session.user.tutor.courses">
-          <s:if test="endTime>startTime&&student!=null">
+          <s:if test="endTime>time&&student!=null">
           <tr>
             <td><s:property value="name"/></td>
             <td><s:date name="startTime" format="yyyy-MM-dd HH:mm:ss"/></td>
             <td><s:date name="endTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+            <s:if test="startTime<time">
             <td><button class="btn btn-mini btn-success">上课</button></td>
+            </s:if>
+            <s:else>
+            <td><button class="btn btn-mini" disabled="disabled">上课</button></td>
+            </s:else>
           </tr>
           </s:if>
           </s:iterator>
@@ -87,55 +92,71 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <th>申请人数</th>
             </tr>
           </thead>
-          <tr>
-            <td>定语从句</td>
-            <td>2013-06-02 16:00:00</td>
-            <td>2013-06-02 16:30:00</td>
-            <td>3</td>
-            <td><button class="btn btn-mini btn-danger">删除</button></td>
+          <s:iterator value="#unhandlecourses">
+          
+          <tr id='<s:property value="courseid"/>'>
+            <td><s:property value="courseName"/></td>
+            <td><s:date name="startTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+            <td><s:date name="endTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+            <td><s:property value="applyNumber"/></td>
+            <td><button class="btn btn-mini btn-danger" onclick="deleteCourse(<s:property value='courseid'/>)">删除</button></td>
           </tr>
-          <tr>
-            <td>电路</td>
-            <td>2013-06-02 18:00:00</td>
-            <td>2013-06-02 18:30:00</td>
-            <td>5</td>
-            <td><button class="btn btn-mini btn-danger">删除</button></td>
-          </tr>
+          
+          </s:iterator>
           <tbody>
           </tbody>
         </table>
       </div>
       <div class="tab-pane" id="opencourse">
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="OpenCourseAction" method="post">
           <fieldset class="control-group">
             <div class="control-group">
               <label class="setting_detail_label" for="input01">课程名称</label>
               <div class="setting_detail_info">
-                <input type="text" class="input-large" placeholder="输入课程名称" id="input_lastname"/>
+                <input type="text" class="input-large" placeholder="输入课程名称" id="input_lastname" name="coursename"/>
               </div>
             </div>
             <div class="control-group">
               <label class="setting_detail_label" for="input01">开始时间</label>
               <div class="setting_detail_info">
-                <input type="text" class="input-large" placeholder="yyyy-mm-dd hh:mm:ss" id="input_lastname"/>
+                <input type="text" class="input-large" placeholder="yyyy-mm-dd hh:mm:ss" id="input_lastname" name="startTime"/>
               </div>
             </div>
             <div class="control-group">
               <label class="setting_detail_label" for="input01">结束时间</label>
               <div class="setting_detail_info">
-                <input type="text" class="input-large" placeholder="yyyy-mm-dd hh:mm:ss" id="input_lastname"/>
+                <input type="text" class="input-large" placeholder="yyyy-mm-dd hh:mm:ss" id="input_lastname" name="endTime"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="setting_detail_label" for="input01">学费</label>
+              <div class="setting_detail_info">
+                <input type="text" class="input-large" placeholder="输入学费" id="input_lastname" name="price"/>
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="setting_detail_label" for="input01">分类</label>
+              <div class="setting_detail_info">
+                <select multiple="multiple" id="choosetype" name="type">
+                <option>数学</option>
+                <option>英语</option>
+                <option>语文</option>
+                <option>物理</option>
+                <option>化学</option>
+              	</select>
               </div>
             </div>
             <div class="control-group">
               <label class="setting_detail_label" for="input01">课程描述</label>
               <div class="setting_detail_info">
-                <textarea rows="6" style="width:80%" id="input_description" placeholder="一句话介课程吧，让课程更受欢迎" id="input_description">
+                <textarea rows="6" style="width:80%" id="input_description" placeholder="一句话介课程吧，让课程更受欢迎" id="input_description" name="description">
                 </textarea>
               </div>
             </div>
             <div class="control-group">
               <div class="setting_detail_info">
-                <button type="button" class="btn btn-primary">开设</button>
+                <button type="submit" class="btn btn-primary">开设</button>
               </div>
             </div>
           </fieldset>
@@ -146,5 +167,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
+<script src='/OnlineTutoringSystem/dwr/interface/deletecourseaction.js'></script> 
+<script type="text/javascript">
+function deleteCourse(id)
+{
+	deletecourseaction.deleteCourse(id,
+				{callback:function(msg){
+						deleteCourseCallback(msg,id);
+						}
+				}
+				);
+														
+}
+function deleteCourseCallback(msg,id)
+{
+	if(msg=="ok")
+	{
+		$("#"+id).remove();
+		alert("删除成功");
+	}
+}
+</script>
 </body>
 </html>

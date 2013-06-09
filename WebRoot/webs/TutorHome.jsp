@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="accordion-inner">
                 <table class="table">
                   <tbody>
-                      <s:iterator value="#session.mycourses">
+                      <s:iterator value="#session.user.tutor.courses">
                     
                       <s:if test="time<endTime">
                     

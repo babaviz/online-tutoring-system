@@ -21,4 +21,10 @@ public class TutorDAOImpl extends HibernateDaoSupport implements TutorDAO{
 			return null;
 	}
 
+	@Override
+	public void save(Tutor t) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().save(t);
+	}
+
 }

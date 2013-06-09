@@ -36,10 +36,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a class="modify_padding"><strong class="text-success">
           <div class="sub_name">
             <div>
-              <s:property value="#session.user.firstName"/>
+              <s:property value="#session.user.lastName"/>
             </div>
             <div>
-              <s:property value="#session.user.lastName"/>
+              <s:property value="#session.user.firstName"/>
             </div>
           </div>
           </strong></a></li>
@@ -53,8 +53,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="media"> <a class="pull-left"> <img class="media-object" data-src="holder.js/64x64" src="../headimg/<s:property value='user.picture'/>" style="height:64px;width:64px;"/> </a>
       <div class="media-body">
         <h4 class="media-heading">
-          <s:property value="user.firstName"/>
           <s:property value="user.lastName"/>
+          <s:property value="user.firstName"/>
         </h4>
       </div>
     </div>
@@ -107,8 +107,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <td><div class="media"> <a href="#" class="pull-left"> <img class="media-object" data-src="holder.js/64x64" src="../headimg/<s:property value='user.picture'/>" style="height:64px;width:64px;"/> </a>
             <div class="media-body">
               <h6>
+              	<s:property value="user.lastName"/>
                 <s:property value="user.firstName"/>
-                <s:property value="user.lastName"/>
               </h6>
               <p class="text-info">
                 <s:property value="content"/>

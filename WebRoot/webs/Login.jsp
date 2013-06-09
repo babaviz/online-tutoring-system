@@ -157,18 +157,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <span class="help-inline" id="secondpassword_info"></span>
       </div>
     </div>
-    <div class="control-group" id="_firstname">
-      <label class="control-label" for="input01">姓</label>
-      <div class="controls">
-        <input type="text" class="input-large" id="firstname" name="firstname" onblur="javascript:firstnameCheck()"/>
-        <span class="help-inline" id="firstname_info"></span>
-      </div>
-    </div>
     <div class="control-group" id="_lastname">
-      <label class="control-label" for="input01">名</label>
+      <label class="control-label" for="input01">姓</label>
       <div class="controls">
         <input type="text" class="input-large" id="lastname" name="lastname" onblur="javascript:lastnameCheck()"/>
         <span class="help-inline" id="lastname_info"></span>
+      </div>
+    </div>
+    <div class="control-group" id="_firstname">
+      <label class="control-label" for="input01">名</label>
+      <div class="controls">
+        <input type="text" class="input-large" id="firstname" name="firstname" onblur="javascript:firstnameCheck()"/>
+        <span class="help-inline" id="firstname_info"></span>
       </div>
     </div>
     

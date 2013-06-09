@@ -116,7 +116,7 @@ function save_info()
 	else
 	{
 		//alert($("#input_description").val());
-		changeinfoaction.changeBasicInfo($("#input_lastname").val(),$("#input_firstname").val(),$("#input_phone").val(),$("#input_birthday").val(),$("#input_school").val(),$("#input_description").val(),changeCallBack);
+		changeinfoaction.changeBasicInfo($("#input_firstname").val(),$("#input_lastname").val(),$("#input_phone").val(),$("#input_birthday").val(),$("#input_school").val(),$("#input_description").val(),changeCallBack);
 		//changeinfoaction.test(changeCallBack);
 	}
 }
@@ -141,7 +141,7 @@ function save_student_info()
 	else
 	{
 		//alert("ok");
-		changeinfoaction.changeStudentInfo($("#input_lastname").val(),$("#input_firstname").val(),$("#input_phone").val(),$("#input_birthday").val(),$("#input_school").val(),$("#input_grade").val(),changeCallBack);
+		changeinfoaction.changeStudentInfo($("#input_firstname").val(),$("#input_lastname").val(),$("#input_phone").val(),$("#input_birthday").val(),$("#input_school").val(),$("#input_grade").val(),changeCallBack);
 		//changeinfoaction.test(changeCallBack);
 	}
 }

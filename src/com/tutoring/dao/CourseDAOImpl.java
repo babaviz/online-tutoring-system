@@ -138,7 +138,7 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 
 		if (factors.getTutor_name().length()>0)
 		{
-			query=query+" and LOWER(CONCAT(u.firstName, u.lastName)) like LOWER('%"+factors.getTutor_name()+"%') ";
+			query=query+" and LOWER(CONCAT(u.lastName,u.firstName)) like LOWER('%"+factors.getTutor_name()+"%') ";
 		}
 		
 		if(factors.getTutor_eval().length()>0)
@@ -159,7 +159,7 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 			result.setCourse_name(((Course) list.get(i)).getName());
 			result.setCourse_duration(((Course) list.get(i)).getDuration()+"");
 			result.setCourse_price(((Course) list.get(i)).getPrice()+"");
-			result.setTutor_name(((Course) list.get(i)).getTutor().getUser().getFirstName()+((Course) list.get(i)).getTutor().getUser().getLastName());
+			result.setTutor_name(((Course) list.get(i)).getTutor().getUser().getLastName()+((Course) list.get(i)).getTutor().getUser().getFirstName());
 			result.setCourse_type(((Course) list.get(i)).getSubject().getName());
 			result.setStart_time(((Course) list.get(i)).getStartTime().toLocaleString());
 			searchResults.add(result);

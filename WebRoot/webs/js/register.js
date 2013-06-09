@@ -11,7 +11,7 @@ function emailCheck () {
 		var matchArray=emailStr.match(emailPat);
 		if (matchArray==null) {
 			$("#_email").addClass("error");
-			$("#email_info").html("ÓÊÏä¸ñÊ½²»ÕıÈ·");
+			$("#email_info").html("é‚®ç®±æ ¼å¼ä¸æ­£ç¡®");
 			emailvalid=false;
 		}
 		else{
@@ -21,7 +21,7 @@ function emailCheck () {
 	else
 	{
 		$("#_email").addClass("error");
-		$("#email_info").html("ÓÊÏä²»¿ÉÒÔÎª¿Õ");
+		$("#email_info").html("é‚®ç®±ä¸å¯ä»¥ä¸ºç©º");
 		emailvalid=false;
 	}
 }
@@ -32,13 +32,13 @@ function checkEmailCallback(msg)
 	{
 		
 		$("#_email").addClass("error");
-		$("#email_info").html("ÓÊÏäÒÑ×¢²á");
+		$("#email_info").html("é‚®ç®±å·²æ³¨å†Œ");
 		emailvalid=false;
 	}
 	else
 	{
 		$("#_email").removeClass("error");
-		$("#email_info").html("ÓÊÏäºÏ¸ñ");
+		$("#email_info").html("é‚®ç®±åˆæ ¼");
 		emailvalid=true;
 	}
 		
@@ -57,13 +57,13 @@ function passwordCheck()
 		else
 		{
 			$("#_password").addClass("error");
-			$("#password_info").html("ÃÜÂë³¤¶È±ØĞë´óÓÚ6");
+			$("#password_info").html("å¯†ç é•¿åº¦å¿…é¡»å¤§äº6");
 			passwordvalid=false;
 		}
 	}
 	else{
 		$("#_password").addClass("error");
-		$("#password_info").html("ÃÜÂë²»¿ÉÒÔÎª¿Õ");
+		$("#password_info").html("å¯†ç ä¸å¯ä»¥ä¸ºç©º");
 		passwordvalid=false;
 	}
 }
@@ -75,7 +75,7 @@ function passwordIsSame()
 		if($("#password").val()!=$("#secondpassword").val())
 		{
 			$("#_secondpassword").addClass("error");
-			$("#secondpassword_info").html("Á½´ÎÃÜÂë²»Ò»ÖÂ");
+			$("#secondpassword_info").html("ä¸¤æ¬¡å¯†ç ä¸ä¸€è‡´");
 			sndpasswdvalid=false;
 		}
 		else
@@ -86,7 +86,7 @@ function passwordIsSame()
 		}
 	}else{
 		$("#_secondpassword").addClass("error");
-		$("#secondpassword_info").html("È·ÈÏÃÜÂë²»ÄÜÎª¿Õ");
+		$("#secondpassword_info").html("ç¡®è®¤å¯†ç ä¸èƒ½ä¸ºç©º");
 		sndpasswdvalid=false;
 	}
 }
@@ -102,7 +102,7 @@ function firstnameCheck()
 	else
 	{
 		$("#_firstname").addClass("error");
-		$("#firstname_info").html("ĞÕ²»ÄÜÎª¿Õ");
+		$("#firstname_info").html("åä¸èƒ½ä¸ºç©º");
 		firstnamevalid=false;
 	}
 }
@@ -119,7 +119,7 @@ function lastnameCheck()
 	else
 	{
 		$("#_lastname").addClass("error");
-		$("#lastname_info").html("Ãû²»ÄÜÎª¿Õ");
+		$("#lastname_info").html("å§“ä¸èƒ½ä¸ºç©º");
 		lastnamevalid=false;
 	}
 }
@@ -129,6 +129,6 @@ function RegisterSubmit()
 	if(emailvalid&passwordvalid&sndpasswdvalid&firstnamevalid&lastnamevalid)
 		$("#registerform").submit();
 	else
-		alert("ĞÅÏ¢ÌîĞ´²»ºÏ·¨");
+		alert("ä¿¡æ¯å¡«å†™ä¸åˆæ³•");
 }
 

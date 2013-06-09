@@ -36,10 +36,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a class="modify_padding"><strong class="text-success">
           <div class="sub_name">
             <div>
-              <s:property value="#session.user.firstName"/>
+              <s:property value="#session.user.lastName"/>
             </div>
             <div>
-              <s:property value="#session.user.lastName"/>
+              <s:property value="#session.user.firstName"/>
             </div>
           </div>
           </strong></a></li>
@@ -87,8 +87,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <p class="text-success"> <em class="text-left">
                     <s:date name="time" format="dd/MM/yyyy HH:mm:ss"/>
                     </em> <em class="text-center">发帖者：
-                    <s:property value="user.firstName"/>
                     <s:property value="user.lastName"/>
+                    <s:property value="user.firstName"/>
                     </em> </p>
                 </div>
                 <p class="text-error text-right"> <em><a href="TopicDetail?topicid=${id}#comments">评论(

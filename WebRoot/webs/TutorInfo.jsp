@@ -34,10 +34,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a class="modify_padding"><strong class="text-success">
           <div class="sub_name">
             <div>
-              <s:property value="#session.user.firstName"/>
+              <s:property value="#session.user.lastName"/>
             </div>
             <div>
-              <s:property value="#session.user.lastName"/>
+              <s:property value="#session.user.firstName"/>
             </div>
           </div>
           </strong></a></li>
@@ -53,8 +53,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="media"> <a class="pull-left"> <img class="media-object" data-src="holder.js/64x64" style="height:64px;width:64px;" src="../headimg/<s:property value='picture'/>"/> </a>
             <div class="media-body">
               <h4 class="media-heading">
-                <s:property value="firstName"/>
                 <s:property value="lastName"/>
+                <s:property value="firstName"/>
               </h4>
               <br/>
               <p class="text-info">评分：

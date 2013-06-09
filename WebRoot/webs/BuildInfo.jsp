@@ -36,10 +36,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a class="modify_padding"><strong class="text-success">
           <div class="sub_name">
             <div>
-              <s:property value="#session.user.firstName"/>
+              <s:property value="#session.user.lastName"/>
             </div>
             <div>
-              <s:property value="#session.user.lastName"/>
+              <s:property value="#session.user.firstName"/>
             </div>
           </div>
           </strong></a></li>
@@ -81,13 +81,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="control-group disabled">
                 <label class="setting_detail_label" for="input01">姓</label>
                 <div class="setting_detail_info">
-                  <input type="text" class="input-large" placeholder="输入您的姓" id="input_lastname" value='<s:property value="#session.user.firstName"/>'  onblur="check_lastname()"/>
+                  <input type="text" class="input-large" placeholder="输入您的姓" id="input_lastname" value='<s:property value="#session.user.lastName"/>'  onblur="check_lastname()"/>
                   <span class="help-inline"></span> </div>
               </div>
               <div class="control-group disabled">
                 <label class="setting_detail_label" for="input01">名</label>
                 <div class="setting_detail_info">
-                  <input type="text" class="input-large" placeholder="输入您的名" id="input_firstname" value='<s:property value="#session.user.lastName"/>' onblur="check_firstname()"/>
+                  <input type="text" class="input-large" placeholder="输入您的名" id="input_firstname" value='<s:property value="#session.user.firstName"/>' onblur="check_firstname()"/>
                   <span class="help-inline"></span> </div>
               </div>
               <div class="control-group">

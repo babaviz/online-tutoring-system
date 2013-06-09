@@ -70,10 +70,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a class="modify_padding"><strong class="text-success">
           <div class="sub_name">
             <div>
-              <s:property value="#session.user.firstName"/>
+              <s:property value="#session.user.lastName"/>
             </div>
             <div>
-              <s:property value="#session.user.lastName"/>
+              <s:property value="#session.user.firstName"/>
             </div>
           </div>
           </strong></a></li>

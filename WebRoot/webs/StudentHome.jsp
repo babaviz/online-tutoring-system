@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a class="modify_padding" href="#"><i class="icon-envelope"></i>消息</a></li>
         <li><a class="modify_padding" href="Logout"><i class="icon-off"></i>登出</a></li>
         <li><a class="modify_padding"><strong class="text-success">
-          <div class="sub_name"><div><s:property value="#session.user.firstName"/></div><div><s:property value="#session.user.lastName"/></div></div>
+          <div class="sub_name"><div><s:property value="#session.user.lastName"/></div><div><s:property value="#session.user.firstName"/></div></div>
           </strong></a></li>
       </ul>
     </div>
@@ -54,8 +54,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <tr>
                         <td><a href="#" class="pull-left"> <img class="media-object" data-src="holder.js/26x26" src="../headimg/<s:property value='user.picture'/>" style="width:26px; height:26px;"/> </a></td>
                         <td><p class="text-info">
-                            <s:property value="user.firstName"/>
                             <s:property value="user.lastName"/>
+                            <s:property value="user.firstName"/>
                           </p></td>
                         <td style="padding-top:10px;"><a href="TutorInfo?userid=<s:property value='user.id'/>"><i class="icon-circle-arrow-right"></i></a></td>
                       </tr>

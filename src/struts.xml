@@ -91,6 +91,10 @@
     		<result name="success">/webs/SearchCourse.jsp</result>
     	</action>
     	
+    	<action name="SearchUser" class="searchAction">
+    		<result name="success">/webs/SearchUser.jsp</result>
+    	</action>
+    	
     	<action name="BuildInfo" class="buildInfoAction">
     		<result name="tutor">/webs/BuildInfo.jsp</result>
     		<result name="student">/webs/StudentInfo.jsp</result>

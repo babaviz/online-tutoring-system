@@ -30,6 +30,8 @@
 		</create>
 		<convert converter="bean" match="com.tutoring.bean.SearchResult">
 		</convert>
+		<convert converter="bean" match="com.tutoring.bean.SearchUserResult">
+		</convert>
 		<create creator="spring" javascript="searchFactors">
 			<param name="beanName" value="searchFactors" />
 		</create>

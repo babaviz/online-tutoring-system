@@ -127,7 +127,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script> 
-<script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script> 
 <script language="javascript" type="text/javascript">
 function test()
 {

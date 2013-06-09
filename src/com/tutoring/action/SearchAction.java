@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.bean.SearchFactors;
 import com.tutoring.bean.SearchResult;
+import com.tutoring.bean.SearchUserResult;
 import com.tutoring.biz.CourseBiz;
+import com.tutoring.biz.UserBiz;
 
 public class SearchAction extends ActionSupport {
 
@@ -19,9 +21,14 @@ public class SearchAction extends ActionSupport {
 	}
 
 	CourseBiz courseBiz;
+	UserBiz userBiz;
 	
 	public void setCourseBiz(CourseBiz courseBiz) {
 		this.courseBiz = courseBiz;
+	}
+
+	public void setUserBiz(UserBiz userBiz) {
+		this.userBiz = userBiz;
 	}
 
 	public ArrayList<SearchResult> getResult(SearchFactors factors) {
@@ -37,5 +44,9 @@ public class SearchAction extends ActionSupport {
 //		searchResults.add(s);
 //		return searchResults;
 		return courseBiz.getCourses(factors);
+	}
+	
+	public ArrayList<SearchUserResult> getUserResult(SearchFactors factors) {
+		return userBiz.getUsers(factors);
 	}
 }

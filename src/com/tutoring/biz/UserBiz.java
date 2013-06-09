@@ -1,7 +1,10 @@
 package com.tutoring.biz;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import com.tutoring.bean.SearchFactors;
+import com.tutoring.bean.SearchUserResult;
 import com.tutoring.entity.User;
 
 public interface UserBiz {
@@ -18,4 +21,5 @@ public interface UserBiz {
 	public void setHeadImagePathByEmail(User user , String path);
 	public User getUserInfoById(int id);
 	public User getMyUserInfo();
+	public ArrayList<SearchUserResult> getUsers(SearchFactors factors);
 }

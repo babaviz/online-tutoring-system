@@ -1,7 +1,9 @@
 package com.tutoring.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -11,7 +13,11 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.tutoring.bean.SearchFactors;
+import com.tutoring.bean.SearchResult;
+import com.tutoring.bean.SearchUserResult;
 import com.tutoring.entity.Student;
+import com.tutoring.entity.Subject;
 import com.tutoring.entity.Tutor;
 import com.tutoring.entity.User;
 
@@ -141,6 +147,31 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 		this.getHibernateTemplate().merge(u);
 		return u;
 	}
-	
-	
+
+	@Override
+	public ArrayList<SearchUserResult> searchUsers(SearchFactors factors) {
+		// TODO Auto-generated method stub
+		String query="from User where LOWER(CONCAT(lastName,firstName)) like LOWER('%"+factors.getUser_name()+"%') ";
+		List<?> list = this.getHibernateTemplate().find(query);
+		SearchUserResult result;
+		ArrayList<SearchUserResult> searchUserResults = new ArrayList<SearchUserResult>();
+		for (int i = 0; i < list.size(); i++) {
+			result=new SearchUserResult();
+			result.setDescription(((User)list.get(i)).getTutor().getDescription());
+			result.setGrade("大一");//((User)list.get(i)).getStudent().getGrade());
+			result.setName(((User)list.get(i)).getLastName()+((User)list.get(i)).getFirstName());
+			result.setPoint(((User)list.get(i)).getPoint()+"");
+			
+			Iterator<Subject> it=((User)list.get(i)).getTutor().getSubjects().iterator();
+			String subjectsTmpStr="";
+			while(it.hasNext())
+			{
+				subjectsTmpStr=subjectsTmpStr+" "+it.next();
+			}
+			result.setSubjects(subjectsTmpStr);
+			result.setType(((User)list.get(i)).getType()==1?"学生":"老师");
+			searchUserResults.add(result);
+		}
+		return searchUserResults;
+	}
 }

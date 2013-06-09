@@ -18,12 +18,12 @@ function createTab($search_type)
 	$x.find("a").tab('show');
 	searchAction.getResult($factors,function myCallBack(data)
 	{
-		handleCallBack(data,$tabContent);
+		handleSearchCourseCallBack(data,$tabContent);
 	});
 	$("html,body").animate({scrollTop:$("#down_content").offset().top-50},300);
 }
 
-function handleCallBack(data,$tabContent)
+function handleSearchCourseCallBack(data,$tabContent)
 {
 	//alert(data.length);
 	for(var i=0;i<data.length;i++)
@@ -281,19 +281,31 @@ function null_function()
 function searchUserAction()
 {	
 	$tabNO++;
-	var $searchUserName=$("#searchUserInput").val();
+	var $factors=new get_seatchUserFactors();
 	var $x=$("#tabTemplate").clone(true);
 	$x.find("a").attr("href","#tab_"+$tabNO);
-	$x.find("a").find("div").html($searchUserName);
+	$x.find("a").find("div").html($factors.user_name);
 	$("#myTab:last").append($x);
 	
 	var $tabContent=$("#tabContentTemplate").clone(true);
 	$tabContent.attr("id","tab_"+$tabNO);
 	$("#myTabContent").append($tabContent);
 	$x.find("a").tab('show');
-/*	searchAction.getResult($factors,function myCallBack(data)
+	searchAction.getUserResult($factors,function myCallBack(data)
 	{
-		handleCallBack(data,$tabContent);
-	});*/
+		handleSearchUserCallBack(data,$tabContent);
+	});
 	$("html,body").animate({scrollTop:$("#down_content").offset().top-50},300);
+}
+
+function handleSearchUserCallBack(data,$tabContent)
+{
+	alert(data.length);
+}
+
+function get_seatchUserFactors()
+{
+	var $factors=new searchFactors();
+	$factors.user_name=$("#searchUserInput").val();
+	return $factors;
 }

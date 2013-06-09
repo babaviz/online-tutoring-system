@@ -1,8 +1,15 @@
 package com.tutoring.bean;
 
 public class SearchFactors {
+	public String user_name;
 	public String course_type;
 	public String course_name;
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 	public String tutor_name;
 	public String course_description;
 	public String tutor_description;

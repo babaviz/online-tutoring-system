@@ -1,9 +1,12 @@
 package com.tutoring.biz;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.tutoring.bean.SearchFactors;
+import com.tutoring.bean.SearchUserResult;
 import com.tutoring.dao.UserDAO;
 import com.tutoring.entity.User;
 
@@ -145,8 +148,9 @@ public class UserBizImpl implements UserBiz{
 		return userDAO.setStudent(u, FirstName, LastName, phone, birth, school,grade);
 	}
 
-	
-	
-	
-	
+	@Override
+	public ArrayList<SearchUserResult> getUsers(SearchFactors factors) {
+		// TODO Auto-generated method stub
+		return userDAO.searchUsers(factors);
+	}
 }

@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <tbody>
                       <s:iterator value="#session.user.tutor.courses">
                     
-                      <s:if test="time<endTime">
+                      <s:if test="time<endTime&&status==1">
                     
                     <s:if test="startTime<time&&endTime>time">
                       <tr class="success"> 

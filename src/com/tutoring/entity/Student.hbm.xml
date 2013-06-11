@@ -9,7 +9,7 @@
             <generator class="native"/>
         </id>
      
-        <property name="grade" column="grade" type="int"/>
+        <property name="grade" column="grade" type="string" length="20"/>
 		
 		<many-to-one name="user" unique="true" column="user_id" class="com.tutoring.entity.User" cascade="all-delete-orphan" not-null="true"></many-to-one>
 		

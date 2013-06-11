@@ -192,8 +192,18 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 	public void deleteCourse(Course c) {
 		// TODO Auto-generated method stub
 		System.out.println("delete id:"+c.getId());
-		List<?> list = this.getHibernateTemplate().find("from Application where course_id="+c.getId());
-		this.getHibernateTemplate().deleteAll(list);
+		List<?> applylist = this.getHibernateTemplate().find("from Application where course_id="+c.getId());
+		List<?> noticelist = this.getHibernateTemplate().find("from Notification where type=1 and notification_id="+c.getId());
+		this.getHibernateTemplate().deleteAll(applylist);
+		this.getHibernateTemplate().deleteAll(noticelist);
 		this.getHibernateTemplate().delete(c);
+	}
+
+	@Override
+	public List<Course> getOrderedCoursesByTutorId(int id) {
+		// TODO Auto-generated method stub
+		@SuppressWarnings("unchecked")
+		List<Course> list = this.getHibernateTemplate().find("from Course where tutor_id="+id);
+		return list;
 	}
 }

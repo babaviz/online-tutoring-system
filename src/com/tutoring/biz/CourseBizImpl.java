@@ -116,13 +116,14 @@ public class CourseBizImpl implements CourseBiz{
 		String[] eTimeClock = eTime[1].split(":");
 		
 		Calendar cl = Calendar.getInstance();
-		cl.set(Integer.parseInt(sTimeDate[0]), Integer.parseInt(sTimeDate[1]), Integer.parseInt(sTimeDate[2]), Integer.parseInt(sTimeClock[0]), Integer.parseInt(sTimeClock[1]), Integer.parseInt(sTimeClock[2]));
+		System.out.println("month:"+Integer.parseInt(sTimeDate[1]));
+		cl.set(Integer.parseInt(sTimeDate[0]), Integer.parseInt(sTimeDate[1])-1, Integer.parseInt(sTimeDate[2]), Integer.parseInt(sTimeClock[0]), Integer.parseInt(sTimeClock[1]), Integer.parseInt(sTimeClock[2]));
 		
 		Timestamp startstamp = new Timestamp(cl.getTime().getTime());
 		
 		c.setStartTime(startstamp);
 		
-		cl.set(Integer.parseInt(eTimeDate[0]), Integer.parseInt(eTimeDate[1]), Integer.parseInt(eTimeDate[2]), Integer.parseInt(eTimeClock[0]), Integer.parseInt(eTimeClock[1]), Integer.parseInt(eTimeClock[2]));
+		cl.set(Integer.parseInt(eTimeDate[0]), Integer.parseInt(eTimeDate[1])-1, Integer.parseInt(eTimeDate[2]), Integer.parseInt(eTimeClock[0]), Integer.parseInt(eTimeClock[1]), Integer.parseInt(eTimeClock[2]));
 		
 		Timestamp endstamp = new Timestamp(cl.getTime().getTime());
 		
@@ -150,7 +151,14 @@ public class CourseBizImpl implements CourseBiz{
 		c.setTutor(u.getTutor());
 		
 		u.getTutor().getCourses().add(c);
+		
 		userDAO.save(u);
+		List<Course> l = courseDAO.getOrderedCoursesByTutorId(u.getTutor().getId());
+		
+		u.getTutor().getCourses().remove(c);
+		
+		//System.out.println();
+		u.getTutor().getCourses().add(l.get(l.size()-1));
 	}
 	@Override
 	public List<UnhandleCourse> getUnhandleCourseInfoList(Set<Course> allcourses) {
@@ -161,6 +169,7 @@ public class CourseBizImpl implements CourseBiz{
 			if(c.getStudent()==null)
 			{
 			UnhandleCourse uc = new UnhandleCourse();
+			System.out.println("courseid:"+c.getId());
 			uc.setCourseid(c.getId());
 			uc.setApplyNumber(courseDAO.getApplyNumberOfCourse(c));
 			uc.setCourseName(c.getName());
@@ -179,10 +188,21 @@ public class CourseBizImpl implements CourseBiz{
 		Map<String, Object> session = ac.getSession();
 		User user = (User)session.get("user");
 		Tutor tutor = (Tutor)user.getTutor();
-		//System.out.println("before sessionsize:"+tutor.getCourses().size());
-		tutor.getCourses().remove(c);
-		session.put("user", user);
-		//System.out.println("after sessionsize:"+tutor.getCourses().size()); 
+		System.out.println("before sessionsize:"+tutor.getCourses().size());
+		
+		for(Course course: tutor.getCourses())
+		{
+			System.out.println(course.getId());
+			if(course.getId() == c.getId())
+			{
+				tutor.getCourses().remove(course);
+				break;
+			}
+		}
+		
+		
+		//session.put("user", user);
+		System.out.println("after sessionsize:"+tutor.getCourses().size()); 
 		courseDAO.deleteCourse(c);
 	}
 }

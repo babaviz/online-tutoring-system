@@ -23,7 +23,7 @@ public class Student  extends AbstractModel {
 	
 	private User user;
 	
-	private int grade;
+	private String grade;
 
 	private Set<Course> courses;
 	
@@ -46,7 +46,7 @@ public class Student  extends AbstractModel {
 	 * @param user
 	 * @param grade
 	 */
-	public Student(User user, int grade) {
+	public Student(User user, String grade) {
 		this.user = user;
 		this.grade = grade;
 	}
@@ -82,14 +82,14 @@ public class Student  extends AbstractModel {
 	/**
 	 * @return the grade
 	 */
-	public int getGrade() {
+	public String getGrade() {
 		return grade;
 	}
 
 	/**
 	 * @param grade the grade to set
 	 */
-	public void setGrade(int grade) {
+	public void setGrade(String grade) {
 		this.grade = grade;
 	}
 

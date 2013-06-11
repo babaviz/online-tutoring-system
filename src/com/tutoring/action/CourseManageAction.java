@@ -37,7 +37,11 @@ public class CourseManageAction extends ActionSupport{
 			List<UnhandleCourse> l = courseBiz.getUnhandleCourseInfoList(user.getTutor().getCourses());
 			System.out.println("unhandlesize:"+l.size());
 			ac.put("unhandlecourses", l);
-			return SUCCESS;
+			return "tutor";
+		}
+		else if(user.getType()=='1')
+		{
+			return "student";
 		}
 		else
 			return ERROR;

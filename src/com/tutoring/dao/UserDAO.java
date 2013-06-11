@@ -17,6 +17,6 @@ public interface UserDAO {
 	public User setTutor(User u, String FirstName, String LastName, String phone, Date birth, String school,String description);
 	public void save(User u);
 	public User getUserByID(int id);
-	public User setStudent(User u, String FirstName, String LastName, String phone, Date birth, String school,int grade);
+	public User setStudent(User u, String FirstName, String LastName, String phone, Date birth, String school,String grade);
 	public ArrayList<SearchUserResult> searchUsers(SearchFactors factors);
 }

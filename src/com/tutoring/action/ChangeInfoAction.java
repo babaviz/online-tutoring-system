@@ -61,7 +61,7 @@ public class ChangeInfoAction extends ActionSupport implements ServletResponseAw
 		return "ok";
 	}
 	
-	public String changeStudentInfo(String FirstName, String LastName, String phone, String birthstr, String school, int grade){
+	public String changeStudentInfo(String FirstName, String LastName, String phone, String birthstr, String school, String grade){
 		Date birth = null;
 		if(!birthstr.equals(""))
 		{
@@ -75,7 +75,7 @@ public class ChangeInfoAction extends ActionSupport implements ServletResponseAw
 		//birth.setYear(Integer.parseInt(dates[0]));
 		//birth.setMonth(Integer.parseInt(dates[1]));
 		//birth.setDate(Integer.parseInt(dates[2]));
-		User user = userBiz.changeUserInfo(FirstName, LastName, phone, birth, school,grade);
+		User user = userBiz.changeStuInfo(FirstName, LastName, phone, birth, school,grade);
 		ActionContext ac = ActionContext.getContext();
 		Map<String, Object> session = ac.getSession();
 		session.put("user", user);

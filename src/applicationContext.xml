@@ -44,12 +44,6 @@
 		</property>
 	</bean>
 
-	<bean id="userDAO" class="com.test.spring.UserDaoImpl">
-	</bean>
-
-	<bean id="userBiz" class="com.test.spring.UserBizImpl">
-		<property name="userDAO" ref="userDAO"></property>
-	</bean>
 
 	<bean id="UserDAO" class="com.tutoring.dao.UserDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>

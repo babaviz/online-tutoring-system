@@ -10,6 +10,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -117,7 +118,9 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	@Override
 	public void save(User u) {
 		// TODO Auto-generated method stub
+		//Transaction t = this.getSession().beginTransaction();
 		this.getHibernateTemplate().merge(u);
+		
 	}
 
 	@Override
@@ -135,7 +138,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 
 	@Override
 	public User setStudent(User u, String FirstName, String LastName,
-			String phone, Date birth, String school, int grade) {
+			String phone, Date birth, String school, String grade) {
 		// TODO Auto-generated method stub
 		u.setFirstName(FirstName);
 		u.setLastName(LastName);

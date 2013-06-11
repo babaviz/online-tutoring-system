@@ -138,8 +138,8 @@ public class UserBizImpl implements UserBiz{
 	}
 
 	@Override
-	public User changeUserInfo(String FirstName, String LastName, String phone,
-			Date birth, String school, int grade) {
+	public User changeStuInfo(String FirstName, String LastName, String phone,
+			Date birth, String school, String grade) {
 		// TODO Auto-generated method stub
 		ActionContext ac = ActionContext.getContext();
 		Map<String ,Object > session = ac.getSession();

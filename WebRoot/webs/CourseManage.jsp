@@ -49,12 +49,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div style="margin-top:30px">
   <div class="container">
     <ul id="myTab" class="nav nav-tabs">
-      <li class="active"><a href="#existcourse" data-toggle="tab">已开课程</a></li>
+      <li class="active"><a href="#historycourse" data-toggle="tab">历史课程</a></li>
+      <li><a href="#existcourse" data-toggle="tab">已开课程</a></li>
       <li><a href="#unhandledcourse" data-toggle="tab">待处理课程</a></li>
       <li><a href="#opencourse" data-toggle="tab">开设课程</a></li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane active" id="existcourse">
+    <div class="tab-pane active" id="historycourse">
+      <table class="table">
+      	<thead>
+        	<tr>
+            	<th>课程名称</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>学生</th>
+            </tr>
+        </thead>
+        	<s:iterator value="#session.user.tutor.courses">
+        	<s:if test="status==2">
+         	<tr>
+            	<td><s:property value="name"/></td>
+                <td><s:date name="startTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+                <td><s:date name="endTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+                <td><s:property value="student.user.lastName"/><s:property value="student.user.firstName"/></td>
+                
+            </tr>
+            </s:if>
+            </s:iterator>
+      	<tbody>
+        
+        </tbody>
+      </table>
+      </div>
+      <div class="tab-pane" id="existcourse">
         <table class="table">
           <thead>
             <tr>
@@ -64,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
           </thead>
           <s:iterator value="#session.user.tutor.courses">
-          <s:if test="endTime>time&&student!=null">
+          <s:if test="endTime>time&&student!=null&&status==1">
           <tr>
             <td><s:property value="name"/></td>
             <td><s:date name="startTime" format="yyyy-MM-dd HH:mm:ss"/></td>

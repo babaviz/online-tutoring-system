@@ -105,7 +105,8 @@
     	</action>
     	
     	<action name="CourseManage" class="courseManageAction">
-    		<result name="success">/webs/CourseManage.jsp</result>
+    		<result name="tutor">/webs/CourseManage.jsp</result>
+    		<result name="student">/webs/StudentCourseManage.jsp</result>
     	</action>
     	
     	<action name="TestAction" class="testAction">

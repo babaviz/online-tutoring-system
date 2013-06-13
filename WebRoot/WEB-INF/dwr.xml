@@ -31,6 +31,9 @@
 		<create creator="spring" javascript="searchAction">
 			<param name="beanName" value="searchAction" />
 		</create>
+		<create creator="spring" javascript="handleapplicationaction">
+			<param name="beanName" value="handleApplicationAction" />
+		</create>
 		<convert converter="bean" match="com.tutoring.bean.SearchResult">
 		</convert>
 		<convert converter="bean" match="com.tutoring.bean.SearchUserResult">

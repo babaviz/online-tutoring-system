@@ -17,7 +17,7 @@
         <property name="state" column="state" type="int" not-null="true"/>
 		
 		<many-to-one name="user" column="user_id" class="com.tutoring.entity.User" cascade="save-update" lazy="false" not-null="true"></many-to-one>
-		
+		<many-to-one name="fromuser" column="fromuser" class="com.tutoring.entity.User" cascade="save-update" lazy="false" not-null="true"></many-to-one>
 
     </class>
 </hibernate-mapping>

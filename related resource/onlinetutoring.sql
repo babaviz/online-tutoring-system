@@ -35,7 +35,7 @@ CREATE TABLE `answer` (
   KEY `authorId_idx` (`user_id`),
   CONSTRAINT `fk_ans_per_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_ans_que_id` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
-INSERT INTO `answer` VALUES (11,2,'haha','2013-05-26 19:21:06',12,NULL),(12,2,'评论一下','2013-05-26 19:21:32',13,NULL),(13,2,'沙发','2013-05-26 19:22:28',34,NULL),(14,6,'test','2013-05-26 23:40:23',12,NULL),(15,6,'测试图片','2013-05-26 23:42:34',12,NULL),(16,6,'测试图片2','2013-05-26 23:43:58',12,NULL),(17,6,'测试图片','2013-05-26 23:46:21',10,'YoT7ghJFVf.jpg'),(18,2,'尝试过出点金吗，不知道怎么样','2013-05-27 00:05:50',37,NULL),(19,3,'ls说的可以试试','2013-05-27 00:07:51',37,'b7tYy4ya7V.jpg'),(20,7,'2楼是傻逼吗？','2013-05-27 00:09:46',37,NULL),(21,6,'回复王翌潋:你会打dota吗？','2013-05-27 00:11:32',37,NULL),(22,6,'回复GaooGuangyu:恩，貌似很牛逼的样子。。。','2013-05-27 00:12:19',37,NULL),(23,6,'回复ChenYanjie:你试过吗？','2013-05-27 00:12:58',37,NULL),(24,6,'有人回答吗？','2013-05-28 21:24:56',38,NULL),(25,6,'dddd','2013-06-07 19:31:25',10,NULL),(26,6,'ssssss','2013-06-07 19:32:07',12,NULL);
+INSERT INTO `answer` VALUES (11,2,'haha','2013-05-26 19:21:06',12,NULL),(12,2,'评论一下','2013-05-26 19:21:32',13,NULL);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ CREATE TABLE `application` (
 
 LOCK TABLES `application` WRITE;
 /*!40000 ALTER TABLE `application` DISABLE KEYS */;
-INSERT INTO `application` VALUES (3,5),(4,5);
+INSERT INTO `application` VALUES (18,2),(18,3),(19,2),(19,3);
 /*!40000 ALTER TABLE `application` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +112,7 @@ CREATE TABLE `course` (
   CONSTRAINT `fk_cou_stu_per_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_cou_sub_id` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_cou_tut_per_id` FOREIGN KEY (`tutor_id`) REFERENCES `tutor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +121,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'2013-06-08 14:30:00','2013-06-08 15:30:00',60,5,1,200,'解析几何','1节课解决基本概念问题',1,0,0,0,0,0,0,NULL,NULL,0),(2,'2013-05-29 18:24:00','2013-05-29 18:54:00',30,5,1,250,'力学','主要分析牛顿三定律',4,0,0,0,0,0,0,NULL,NULL,0),(3,'2013-06-08 17:00:00','2013-06-08 17:30:00',30,NULL,1,300,'定语从句','30分钟学会',3,0,0,0,0,0,0,NULL,NULL,0),(4,'2013-06-08 17:45:00','2013-06-08 18:15:00',30,NULL,1,250,'电路','注重电路图的设计',4,0,0,0,0,0,0,NULL,NULL,0);
+INSERT INTO `course` VALUES (3,'2013-06-08 17:00:00','2013-06-08 17:30:00',30,2,1,300,'定语从句','30分钟学会',3,0,0,0,0,0,0,NULL,NULL,2),(5,'2013-07-20 18:00:00','2013-07-20 18:30:00',1800,2,1,200,'化学方程式','一节课学会',5,0,0,0,0,0,0,NULL,NULL,1),(18,'2013-06-20 18:00:00','2013-06-20 18:30:00',1800,2,1,200,'test','223                ',1,0,0,0,0,0,0,NULL,NULL,1),(19,'2013-06-20 18:00:00','2013-06-20 18:30:00',1800,3,1,200,'牛顿三定律','22323                ',4,0,0,0,0,0,0,NULL,NULL,1),(20,'2013-06-20 18:00:00','2013-06-20 18:30:00',1800,3,1,200,'力学','223232                ',4,0,0,0,0,0,0,NULL,NULL,1);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,11 +197,12 @@ CREATE TABLE `notification` (
   `type` int(11) NOT NULL,
   `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `state` int(11) NOT NULL DEFAULT '0',
+  `fromuser` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `_idx` (`user_id`),
   CONSTRAINT `fk_not_per_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +211,7 @@ CREATE TABLE `notification` (
 
 LOCK TABLES `notification` WRITE;
 /*!40000 ALTER TABLE `notification` DISABLE KEYS */;
-INSERT INTO `notification` VALUES (1,3,8,1,'2013-05-31 19:18:16',0),(2,4,8,1,'2013-06-07 22:08:44',0);
+INSERT INTO `notification` VALUES (1,18,8,1,'2013-06-11 00:00:00',1,2),(2,19,8,1,'2013-06-13 00:00:00',1,2),(3,18,8,1,'2013-06-13 00:00:00',1,3),(5,19,8,1,'2013-06-13 00:00:00',1,3);
 /*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +242,7 @@ CREATE TABLE `question` (
   KEY `fk_que_sub_id_idx` (`subject_id`),
   CONSTRAINT `fk_que_per_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_que_sub_id` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -250,7 +251,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (10,2,'一道高中化学题','一个半径为r的圆形油漆刷蘸满油漆在边长为a的等边三角形盒子内部沿着等边三角形的三条边刷一周油漆盒子的底部，并且始终保持与等边三角形的边相切','2013-05-25 21:23:04',0,NULL,NULL,5,0,NULL),(12,3,'发一个玩玩','测试测试测试','2013-05-26 00:24:47',0,NULL,NULL,2,0,NULL),(13,3,'有意思','哈哈哈哈','2013-05-26 00:25:09',0,NULL,NULL,4,0,NULL),(14,3,'可乐','可口可乐2元1罐','2013-05-26 00:25:53',0,NULL,NULL,5,0,NULL),(15,3,'好吧','第三方撒旦东方大厦发送到嘎斯刚发给发送到官方的三国杀的分公司的风格','2013-05-26 00:26:22',0,NULL,NULL,3,0,NULL),(16,3,'数据库','学的差啊。。。。','2013-05-26 00:27:05',0,NULL,NULL,4,0,NULL),(34,6,'我的新号','新号不要被删了','2013-05-26 19:16:48',0,NULL,NULL,1,0,NULL),(37,6,'求问一个dota问题','sf怎么出装打c最高效','2013-05-27 00:04:31',0,'mYEad0eXqy.jpg',NULL,4,0,NULL),(38,6,'我要发起话题','哈哈哈哈','2013-05-28 21:24:31',0,'6zaSCqm7dB.jpg','rBI4CAUj2z.txt',1,0,'数据库.txt');
+INSERT INTO `question` VALUES (10,2,'一道高中化学题','一个半径为r的圆形油漆刷蘸满油漆在边长为a的等边三角形盒子内部沿着等边三角形的三条边刷一周油漆盒子的底部，并且始终保持与等边三角形的边相切','2013-05-25 21:23:04',0,NULL,NULL,5,0,NULL),(12,3,'发一个玩玩','测试测试测试','2013-05-26 00:24:47',0,NULL,NULL,2,0,NULL),(13,3,'有意思','哈哈哈哈','2013-05-26 00:25:09',0,NULL,NULL,4,0,NULL),(14,3,'可乐','可口可乐2元1罐','2013-05-26 00:25:53',0,NULL,NULL,5,0,NULL),(15,3,'好吧','第三方撒旦东方大厦发送到嘎斯刚发给发送到官方的三国杀的分公司的风格','2013-05-26 00:26:22',0,NULL,NULL,3,0,NULL),(16,3,'数据库','学的差啊。。。。','2013-05-26 00:27:05',0,NULL,NULL,4,0,NULL);
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,7 +292,7 @@ DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `grade` int(11) DEFAULT NULL,
+  `grade` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `personId_UNIQUE` (`user_id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
@@ -305,7 +306,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (2,2,0),(3,3,0),(4,4,0),(5,6,3),(6,7,6);
+INSERT INTO `student` VALUES (2,2,'大三'),(3,3,'0'),(4,4,'0'),(6,7,'6');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,7 +397,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'Gao','Guangyu','py@gmail.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(3,'Chen','Yanjie','test@164.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(4,'Ha','ha','test2@163.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(6,'潘','岩','panyan@gmail.com','1234567','18801785239','1993-06-05',NULL,'1',0,'TX1WflAQEN.jpg','同济大学',NULL),(7,'王','翌潋','panyan@163.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(8,'Liu','Yan','hello@163.com','1234567','','2013-05-09',NULL,'2',0,'opRNfMShhl.jpg','',NULL),(9,'杜','庆峰','hello2@163.com','1234567','','2013-05-09',NULL,'2',0,NULL,'',NULL);
+INSERT INTO `user` VALUES (2,'Gao','Guangyu','py@gmail.com','1234567','',NULL,NULL,'1',0,'Jtqne3pw3w.jpg','',NULL),(3,'Chen','Yanjie','test@164.com','1234567',NULL,NULL,NULL,'1',0,'CDdkuTQSdn.jpg',NULL,NULL),(4,'Ha','ha','test2@163.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(7,'王','翌潋','panyan@163.com','1234567',NULL,NULL,NULL,'1',0,NULL,NULL,NULL),(8,'Liu','Yan','hello@163.com','1234567','18801781234','2013-05-09',NULL,'2',0,'HyOsEW4Fee.jpg','',NULL),(9,'杜','庆峰','hello2@163.com','1234567','','2013-05-09',NULL,'2',0,NULL,'',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -409,4 +410,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-08 16:01:33
+-- Dump completed on 2013-06-13 14:56:58

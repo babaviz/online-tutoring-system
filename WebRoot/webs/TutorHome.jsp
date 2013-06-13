@@ -28,7 +28,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </ul>
       <ul class="nav my_pull_right">
         <li><a class="modify_padding" href="BuildInfo"><i class="icon-user"></i>个人设置</a></li>
-        <li><a class="modify_padding" href="#" id="message"><i class="icon-envelope"></i>消息</a></li>
+        <li><a class="btn-link modify_padding dropdown-toggle" id="message" data-toggle="dropdown">
+        	<i class="icon-envelope"></i>消息</a>
+        	<ul class="dropdown-menu" style="margin-left:100px">
+        	<li><a href="#" id="friendmsg">好友信息</a></li>
+        	<li><a href="CourseMessage" id="coursemsg">课程信息</a></li>
+        	<li><a href="#" id="chatmsg">私信</a></li>
+        	</ul>
+        	
+        </li>
+        
         <li><a class="modify_padding" href="Logout"><i class="icon-off"></i>登出</a></li>
         <li><a class="modify_padding"><strong class="text-success">
           <div class="sub_name">
@@ -108,11 +117,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if(event.get("numberofnotice")!=0)
 			{
 				//alert(event.get("numberofnotice"));
-				$("#message").html('<i class="icon-envelope"></i>消息</a><span class="badge badge-important">'+event.get("numberofnotice")+'</span>');
+				$("#message").html('<i class="icon-envelope"></i>消息<span class="badge badge-important">'+event.get("numberofnotice")+'</span>');
 			}
 			else
 			{
 				$("#message").html('<i class="icon-envelope"></i>消息</a>');
+			}
+			if(event.get("numberofcoursenotice")!=0)
+			{
+				//alert(event.get("numberofnotice"));
+				$("#coursemsg").html('课程信息<span class="badge badge-important">'+event.get("numberofcoursenotice")+'</span>');
+			}
+			else
+			{
+				$("#coursemsg").html('课程信息');
+			}
+			if(event.get("numberoffriendnotice")!=0)
+			{
+				//alert(event.get("numberofnotice"));
+				$("#friendmsg").html('好友信息<span class="badge badge-important">'+event.get("numberoffriendnotice")+'</span>');
+			}
+			else
+			{
+				$("#friendmsg").html('好友信息');
+			}
+			if(event.get("numberofchatnotice")!=0)
+			{
+				//alert(event.get("numberofnotice"));
+				$("#chatmsg").html('私信<span class="badge badge-important">'+event.get("numberofchatnotice")+'</span>');
+			}
+			else
+			{
+				$("#chatmsg").html('私信');
 			}
 		}
 		

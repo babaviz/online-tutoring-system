@@ -31,6 +31,7 @@ public class Notification  extends AbstractModel {
 	
 	private int state;
 
+	private User fromuser;
 	/**
 	 * 
 	 */
@@ -137,6 +138,14 @@ public class Notification  extends AbstractModel {
 
 	public void setState(int state) {
 		this.state = state;
+	}
+
+	public User getFromuser() {
+		return fromuser;
+	}
+
+	public void setFromuser(User fromuser) {
+		this.fromuser = fromuser;
 	}
 
 	

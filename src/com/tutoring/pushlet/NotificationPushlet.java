@@ -70,6 +70,9 @@ public class NotificationPushlet extends EventPullSource implements Serializable
 //		event.setField("numberofnotice", number);
 //		}
 		event.setField("numberofnotice", notificationDAO.getNumberOfNotice(userid));
+		event.setField("numberofcoursenotice", notificationDAO.getNumberOfCourseNotice(userid));
+		event.setField("numberoffriendnotice", notificationDAO.getNumberOfFriendNotice(userid));
+		event.setField("numberofchatnotice", notificationDAO.getNumberOfChatNotice(userid));
 		return event;
 	}
 

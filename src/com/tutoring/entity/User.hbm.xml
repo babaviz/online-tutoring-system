@@ -55,6 +55,10 @@
 			<one-to-many class="com.tutoring.entity.Notification"/>
 		</set>
 		
+		<set name="sendnotifications" cascade="all-delete-orphan" inverse="true" lazy="false">
+			<key column="fromuser"></key>
+			<one-to-many class="com.tutoring.entity.Notification"/>
+		</set>
 
     </class>
 </hibernate-mapping>

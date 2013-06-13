@@ -16,4 +16,6 @@ public interface CourseBiz {
 	public void openCourse(User u, String startTime, String endTime, int price, String coursename, String description,String type);
 	public List<UnhandleCourse> getUnhandleCourseInfoList(Set<Course> allcourses);
 	public void deleteCourse(int courseid);
+	public List<CourseNotice> getCourseNoticeList(User user);
+	public Course getCourseById(int id);
 }

@@ -117,6 +117,10 @@
     		<result name="success" type="redirectAction">CourseManage</result>
     	</action>
     	
+    	<action name="CourseMessage" class="courseMessageAction">
+    		<result name="success">/webs/CourseMessage.jsp</result>
+    	</action>
+    	
     </package>
     
    

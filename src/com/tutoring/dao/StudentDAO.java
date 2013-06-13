@@ -6,4 +6,5 @@ import com.tutoring.entity.User;
 public interface StudentDAO {
 	public void addStudent(User u);
 	public Student getStudentByUser(User u);
+	public Student getStudentById(int id);
 }

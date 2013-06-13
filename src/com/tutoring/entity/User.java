@@ -57,6 +57,8 @@ public class User  extends AbstractModel {
 	
 	private Set<Notification> notifications;
 
+	private Set<Notification> sendnotifications;
+	
 	/**
 	 * 
 	 */
@@ -413,6 +415,14 @@ public class User  extends AbstractModel {
 	 */
 	public void setNotifications(Set<Notification> notifications) {
 		this.notifications = notifications;
+	}
+
+	public Set<Notification> getSendnotifications() {
+		return sendnotifications;
+	}
+
+	public void setSendnotifications(Set<Notification> sendnotifications) {
+		this.sendnotifications = sendnotifications;
 	}
 
 	

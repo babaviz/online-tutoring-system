@@ -206,4 +206,10 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 		List<Course> list = this.getHibernateTemplate().find("from Course where tutor_id="+id);
 		return list;
 	}
+
+	@Override
+	public void save(Course c) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().merge(c);
+	}
 }

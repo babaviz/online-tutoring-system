@@ -20,4 +20,5 @@ public interface CourseDAO {
 	public int getApplyNumberOfCourse(Course c);
 	public void deleteCourse(Course c);
 	public List<Course> getOrderedCoursesByTutorId(int id);
+	public void save(Course c);
 }

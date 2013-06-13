@@ -8,15 +8,18 @@ import java.util.Map;
 import java.util.Set;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.tutoring.bean.CourseNotice;
 import com.tutoring.bean.SearchFactors;
 import com.tutoring.bean.SearchResult;
 import com.tutoring.bean.UnhandleCourse;
+import com.tutoring.dao.ApplicationDAO;
 import com.tutoring.dao.CourseDAO;
 import com.tutoring.dao.StudentDAO;
 import com.tutoring.dao.SubjectDAO;
 import com.tutoring.dao.TutorDAO;
 import com.tutoring.dao.UserDAO;
 import com.tutoring.entity.Course;
+import com.tutoring.entity.Notification;
 import com.tutoring.entity.Student;
 import com.tutoring.entity.Tutor;
 import com.tutoring.entity.User;
@@ -29,6 +32,10 @@ public class CourseBizImpl implements CourseBiz{
 	CourseDAO courseDAO;
 	TutorDAO tutorDAO;
 	SubjectDAO subjectDAO;
+	ApplicationDAO applicationDAO;
+	public void setApplicationDAO(ApplicationDAO applicationDAO) {
+		this.applicationDAO = applicationDAO;
+	}
 	public void setSubjectDAO(SubjectDAO subjectDAO) {
 		this.subjectDAO = subjectDAO;
 	}
@@ -204,5 +211,37 @@ public class CourseBizImpl implements CourseBiz{
 		//session.put("user", user);
 		System.out.println("after sessionsize:"+tutor.getCourses().size()); 
 		courseDAO.deleteCourse(c);
+	}
+	@Override
+	public List<CourseNotice> getCourseNoticeList(User user) {
+		// TODO Auto-generated method stub
+		List<CourseNotice> list = new ArrayList<CourseNotice>();
+		for(Notification notice : user.getNotifications()){
+			if(notice.getType() == 1)
+			{
+				CourseNotice cn = new CourseNotice();
+				Course c = courseDAO.getCourseById(notice.getNotification_id());
+				cn.setCourse(c);
+				
+				Student stu = notice.getFromuser().getStudent();
+				cn.setStu(stu);
+				cn.setNoticeid(notice.getId());
+				if(c.getStudent()==null)
+					cn.setStatus(0);
+				else
+					if(c.getStudent().getId()==stu.getId())
+						cn.setStatus(1);
+					else
+						cn.setStatus(2);
+				list.add(cn);
+			}
+		}
+		System.out.println("list size:"+list.size());
+		return list;
+	}
+	@Override
+	public Course getCourseById(int id) {
+		// TODO Auto-generated method stub
+		return courseDAO.getCourseById(id);
 	}
 }

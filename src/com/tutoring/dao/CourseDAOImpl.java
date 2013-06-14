@@ -66,6 +66,7 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 			return null;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public ArrayList<SearchResult> searchCourses(SearchFactors factors) {
 		String query = "select distinct c from Course c, Subject s, Tutor t, User u where s.id = c.subject and c.tutor = t.id and u.id = t.user ";
@@ -120,8 +121,8 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 		System.out.println("tutor_name:" + factors.getTutor_name());
 		
 		if (factors.getCourse_start_time().length() > 0) {
-			String[] tmpStr=factors.getCourse_start_time().split(" ");
-			String dd=tmpStr[0];
+			//String[] tmpStr=factors.getCourse_start_time().split(" ");
+			//String dd=tmpStr[0];
 			
 			query = query + " and c.startTime >= '"
 					+ factors.getCourse_start_time() + ":00' ";

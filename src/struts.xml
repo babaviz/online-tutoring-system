@@ -121,6 +121,9 @@
     		<result name="success">/webs/CourseMessage.jsp</result>
     	</action>
     	
+    	<action name="FriendMessage" class="friendMessageAction">
+    		<result name="success">/webs/FriendMessage.jsp</result>
+    	</action>
     </package>
     
    

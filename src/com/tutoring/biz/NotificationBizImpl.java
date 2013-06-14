@@ -47,5 +47,10 @@ public class NotificationBizImpl implements NotificationBiz{
 		// TODO Auto-generated method stub
 		notificationDAO.setNoticeStatus(notificationDAO.getNotificationById(noticeid), 1);
 	}
+	@Override
+	public void handleNotification(int id) {
+		// TODO Auto-generated method stub
+		notificationDAO.setNoticeStatus(notificationDAO.getNotificationById(id), 1);
+	}
 
 }

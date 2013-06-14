@@ -3,13 +3,8 @@ package com.tutoring.dao;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.tutoring.entity.Question;

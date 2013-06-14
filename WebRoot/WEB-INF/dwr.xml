@@ -34,6 +34,15 @@
 		<create creator="spring" javascript="handleapplicationaction">
 			<param name="beanName" value="handleApplicationAction" />
 		</create>
+		<create creator="spring" javascript="handlefriendaction">
+			<param name="beanName" value="handleFriendAction" />
+		</create>
+		<create creator="spring" javascript="sendmessageaction">
+			<param name="beanName" value="sendMessageAction" />
+		</create>
+		<create creator="spring" javascript="flashinfoaction">
+			<param name="beanName" value="flashInfoAction" />
+		</create>
 		<convert converter="bean" match="com.tutoring.bean.SearchResult">
 		</convert>
 		<convert converter="bean" match="com.tutoring.bean.SearchUserResult">

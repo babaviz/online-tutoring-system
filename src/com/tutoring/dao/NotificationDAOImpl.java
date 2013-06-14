@@ -29,7 +29,9 @@ public class NotificationDAOImpl extends HibernateDaoSupport implements Notifica
 		notice.setFromuser(fromuser);
 		notice.setState(0);
 		user.getNotifications().add(notice);
+		System.out.println("before merge");
 		this.getHibernateTemplate().merge(user);
+		System.out.println("after merge");
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class PageDAOImpl extends HibernateDaoSupport implements PageDAO{
 	@Override
 	public List<?> findByPage(final String hql,final int offset,final int pageSize) {
 		// TODO Auto-generated method stub
-		return this.getHibernateTemplate().executeFind(new HibernateCallback(){
+		return this.getHibernateTemplate().executeFind(new HibernateCallback<Object>(){
 			
 			@Override
 			public Object doInHibernate(Session session)

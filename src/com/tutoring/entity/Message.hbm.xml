@@ -9,8 +9,8 @@
             <generator class="native"/>
         </id>
         
-        <property name="time" type="date" not-null="true" generated="insert">
-        	<column name="time" sql-type="datetime" default="CURRENT_TIMESTAMP"/>
+        <property name="time" type="timestamp" not-null="true" generated="insert">
+        	<column name="time" sql-type="timestamp" default="CURRENT_TIMESTAMP"/>
         </property>
         <property name="content" column="content" type="string" length="200" not-null="true"/>
 		

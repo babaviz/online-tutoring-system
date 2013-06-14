@@ -1,13 +1,10 @@
 package com.tutoring.pushlet;
 
 import java.io.Serializable;
-import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.opensymphony.xwork2.ActionContext;
-import com.tutoring.biz.UserBiz;
 import com.tutoring.dao.NotificationDAO;
 import com.tutoring.entity.User;
 

@@ -10,12 +10,10 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.tutoring.bean.SearchFactors;
-import com.tutoring.bean.SearchResult;
 import com.tutoring.bean.SearchUserResult;
 import com.tutoring.entity.Student;
 import com.tutoring.entity.Subject;
@@ -82,7 +80,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	@Override
 	public List<?> getQuestionsByEmail(final String email) {
 		// TODO Auto-generated method stub
-		return this.getHibernateTemplate().executeFind(new HibernateCallback() {  
+		return this.getHibernateTemplate().executeFind(new HibernateCallback<Object>() {  
             public Object doInHibernate(Session s)  
                     throws HibernateException, SQLException { 
 

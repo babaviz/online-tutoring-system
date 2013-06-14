@@ -3,7 +3,7 @@
  */
 package com.tutoring.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Id;
 
@@ -26,7 +26,7 @@ public class Message  extends AbstractModel {
 	
 	private User receiver;
 	
-	private Date time;
+	private Timestamp time;
 	
 	private String content;
 
@@ -53,7 +53,7 @@ public class Message  extends AbstractModel {
 	 * @param time
 	 * @param content
 	 */
-	public Message(User sender, User receiver, Date time, String content) {
+	public Message(User sender, User receiver, Timestamp time, String content) {
 		this.sender = sender;
 		this.receiver = receiver;
 		this.time = time;
@@ -105,14 +105,14 @@ public class Message  extends AbstractModel {
 	/**
 	 * @return the time
 	 */
-	public Date getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
 
 	/**
 	 * @param time the time to set
 	 */
-	public void setTime(Date time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 

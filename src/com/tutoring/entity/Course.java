@@ -59,6 +59,8 @@ public class Course  extends AbstractModel {
 	
 	private int status;
 	
+	private String flash_sn;
+	
 	public int getStatus() {
 		return status;
 	}
@@ -400,6 +402,14 @@ public class Course  extends AbstractModel {
 	 */
 	public void setApplications(Set<Student> applications) {
 		this.applications = applications;
+	}
+
+	public String getFlash_sn() {
+		return flash_sn;
+	}
+
+	public void setFlash_sn(String flash_sn) {
+		this.flash_sn = flash_sn;
 	}
 
 

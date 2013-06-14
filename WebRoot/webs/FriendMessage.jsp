@@ -1,19 +1,35 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"  %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/webs/";
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<base href="<%=basePath%>">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<base href="<%=basePath%>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="css/outerframe.css" rel="stylesheet" type="text/css" />
 <link href="css/topic.css" rel="stylesheet" type="text/css"/>
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
+<script src='/OnlineTutoringSystem/dwr/interface/handlefriendaction.js'></script> 
+<script type="text/javascript">
+function accept(requestuserid,noticeid)
+{
+	handlefriendaction.acceptFriend(requestuserid,noticeid,acceptCallback);
+}
+function acceptCallback(msg)
+{
+	if(msg=='ok')
+	{
+		alert("操作成功");
+		window.location = window.location;
+	}
+}
+</script>
 <title>无标题文档</title>
 </head>
 
@@ -27,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a href="SearchUser">搜人</a></li>
         <li><a href="Chatting">私信</a></li>
         <li><a href="CourseManage">课程管理</a></li>
-        <li class="active"><a href="AllTopics">BBS</a></li>
+        <li><a href="AllTopics">BBS</a></li>
       </ul>
       <ul class="nav my_pull_right">
         <li><a class="modify_padding" href="BuildInfo"><i class="icon-user"></i>个人设置</a></li>
@@ -50,86 +66,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <s:property value="#session.user.firstName"/>
             </div>
           </div>
-          </strong></a></li>
+          </strong></a><br></li>
       </ul>
     </div>
   </div>
 </div>
-<div style="margin-top:20px">
-  <div class="container">
-    <div class="row">
-      <div class="span3 bs-docs-sidenav dropdown" style="z-index:100"> 
-        <!--Sidebar content-->
-        <ul class="affix bs-docs-sidenav nav nav-list" role="menu" aria-labelledby="dLabel">
-          <li class="active"><a href="AllTopics">帖子全览</a></li>
-          <li><a href="MyTopics">我的帖子</a></li>
-          <li><a href="MakeTopic">发表帖子</a></li>
-          <li class="dropdown-submenu"><a href="#">分类</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">数学</a></li>
-              <li><a href="#">语文</a></li>
-              <li><a href="#">物理</a></li>
-              <li><a href="#">化学</a></li>
-              <li><a href="#">英语</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="span9"> 
-        <!--Body content-->
-        <s:iterator value="#questions">
-          <div class="topic">
-            <div class="well">
-              <p class="text-left text-info"><a href="TopicDetail?topicid=${id}">
-                <s:property value="title"/>
-                </a></p>
-              <div class="row">
-                <div style="padding-right:10px;padding-left:30px;">
-                  <p class="text-warning" style="word-wrap:break-word">
-                    <s:property value="content"/>
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="span3">
-                  <p class="text-success"> <em class="text-left">
-                    <s:date name="time" format="dd/MM/yyyy HH:mm:ss"/>
-                    </em> <em class="text-center">发帖者：
-                    <s:property value="user.lastName"/>
-                    <s:property value="user.firstName"/>
-                    </em> </p>
-                </div>
-                <p class="text-error text-right"> <em><a href="TopicDetail?topicid=${id}#comments">评论(
-                  <s:property value="answers.size"/>
-                  )</a></em> </p>
-              </div>
+
+<div class="container" style="margin-top:50px;">
+	<s:iterator value="#session.user.notifications">
+	<s:if test="type==2">
+	<div class="well">
+		<div class="media">
+        	<a class="pull-left">
+            	<img class="media-object" data-src="holder.js/64x64" style="height:64px;width:64px;" src="../headimg/<s:property value='fromuser.picture'/>"/>
+            </a>
+            <div class="media-body">
+            	<h6><s:property value="fromuser.lastName"/><s:property value="fromuser.firstName"/></h6>
+                <p class="text-info">请求成为您的好友</p>
+                <p align="right">
+                <s:if test="state==0">
+            		<button class="btn btn-success" onclick="accept(<s:property value='fromuser.id'/>,<s:property value='id'/>)">接受</button>
+            		<button class="btn btn-danger">拒绝</button>
+            	</s:if>
+            	<s:elseif test="state==1">
+            		<button class="btn btn-success" disabled="disabled">已处理</button>
+            	</s:elseif>
+            	</p>
             </div>
-          </div>
-        </s:iterator>
-        <div class="btn-group" style="padding-left:20px;">
-          <s:if test="pageIndex>1"> <a class="btn" href="AllTopics?pageIndex=<s:property value="PageIndex-1" />">上一页</a> </s:if>
-          <s:iterator value="new int[pageCount]" status="i">
-            <s:if test="pageIndex==#i.index+1"> <a class="btn btn-link active" href='AllTopics?pageIndex=<s:property value="#i.index+1"/>'>
-              <s:property value="#i.index+1"/>
-              </a> </s:if>
-            <s:else> <a class="btn btn-link" href='AllTopics?pageIndex=<s:property value="#i.index+1"/>'>
-              <s:property value="#i.index+1"/>
-              </a> </s:else>
-          </s:iterator>
-          <s:if test="pageCount!=0">
-            <s:if test="pageIndex!=pageCount"> <a class="btn" href="AllTopics?pageIndex=<s:property value="PageIndex+1" />">下一页</a> </s:if>
-          </s:if>
+            
         </div>
-      </div>
     </div>
-  </div>
+    </s:if>
+    </s:iterator>
+    
 </div>
-<div class="footer" style="margin-top:400px;">
-  <div class="container">
-    <p>copyright © 2013</p>
-  </div>
-</div>
-<script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script> 
+
+<script language="javascript" type="text/javascript" src="bootstrap/js/holder.js"></script> 
+<script type="text/javascript" src="bootstrap/js/jquery.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script> 
 <script type="text/javascript" src="js/ajax-pushlet-client.js"></script> 
 <script type="text/javascript">

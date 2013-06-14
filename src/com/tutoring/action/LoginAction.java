@@ -3,7 +3,6 @@ package com.tutoring.action;
 import java.util.List;
 import java.util.Map;
 
-import nl.justobjects.pushlet.core.SessionManager;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;

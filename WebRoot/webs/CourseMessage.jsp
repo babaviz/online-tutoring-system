@@ -15,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css/topic.css" rel="stylesheet" type="text/css"/>
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="bootstrap/js/jquery.js"></script> 
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script> 
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
 <script src='/OnlineTutoringSystem/dwr/interface/handleapplicationaction.js'></script> 
 <script type="text/javascript">
@@ -49,6 +50,58 @@ function refuseCallback(msg)
 	}
 }
 </script>
+<script type="text/javascript" src="js/ajax-pushlet-client.js"></script> 
+<script type="text/javascript">
+		PL.userid='<s:property value="#session.user.id" />';
+		PL._init();
+		PL.joinListen("/tutoring/numberofnotice");
+		function onData(event)
+		{
+			//alert(event.get("he"));
+			if(event.get("numberofnotice")!=0)
+			{
+				//alert(event.get("numberofnotice"));
+				$("#message").html('<i class="icon-envelope"></i>消息<span class="badge badge-important">'+event.get("numberofnotice")+'</span>');
+			}
+			else
+			{
+				$("#message").html('<i class="icon-envelope"></i>消息</a>');
+			}
+			if(event.get("numberofcoursenotice")!=0)
+			{
+				//alert(event.get("numberofnotice"));
+				$("#coursemsg").html('课程信息<span class="badge badge-important">'+event.get("numberofcoursenotice")+'</span>');
+			}
+			else
+			{
+				$("#coursemsg").html('课程信息');
+			}
+			if(event.get("numberoffriendnotice")!=0)
+			{
+				//alert(event.get("numberofnotice"));
+				$("#friendmsg").html('好友信息<span class="badge badge-important">'+event.get("numberoffriendnotice")+'</span>');
+			}
+			else
+			{
+				$("#friendmsg").html('好友信息');
+			}
+			if(event.get("numberofchatnotice")!=0)
+			{
+				//alert(event.get("numberofnotice"));
+				$("#chatmsg").html('私信<span class="badge badge-important">'+event.get("numberofchatnotice")+'</span>');
+			}
+			else
+			{
+				$("#chatmsg").html('私信');
+			}
+		}
+		
+		function cancelListen()
+		{
+			PL.leave();
+		}
+		
+</script>
 <title>无标题文档</title>
 </head>
 
@@ -66,7 +119,15 @@ function refuseCallback(msg)
       </ul>
       <ul class="nav my_pull_right">
         <li><a class="modify_padding" href="BuildInfo"><i class="icon-user"></i>个人设置</a></li>
-        <li class="active"><a class="modify_padding" href="#"><i class="icon-envelope"></i>消息</a></li>
+        <li><a class="btn-link modify_padding dropdown-toggle" id="message" data-toggle="dropdown">
+        	<i class="icon-envelope"></i>消息</a>
+        	<ul class="dropdown-menu" style="margin-left:100px">
+        	<li><a href="FriendMessage" id="friendmsg">好友信息</a></li>
+        	<li><a href="CourseMessage" id="coursemsg">课程信息</a></li>
+        	<li><a href="Chatting" id="chatmsg">私信</a></li>
+        	</ul>
+        	
+        </li>
         <li><a class="modify_padding" href="Logout"><i class="icon-off"></i>登出</a></li>
         <li><a class="modify_padding"><strong class="text-success">
           <div class="sub_name">
@@ -87,8 +148,8 @@ function refuseCallback(msg)
 	<s:iterator value="#noticelist">
 	<div class="well">
 		<div class="media">
-        	<a href="#" class="pull-left">
-            	<img class="media-object" data-src="holder.js/64x64" />
+        	<a class="pull-left">
+            	<img class="media-object" data-src="holder.js/64x64" src="../headimg/<s:property value='stu.user.picture'/>" style="height:64px;width:64px;"/>
             </a>
             <div class="media-body">
             	<h6><s:property value="stu.user.lastName"/><s:property value="stu.user.firstName"/></h6>

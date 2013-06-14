@@ -97,6 +97,20 @@
 	<bean id="ApplicationDAO" class="com.tutoring.dao.ApplicationDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	
+	<bean id="FriendDAO" class="com.tutoring.dao.FriendDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="MessageDAO" class="com.tutoring.dao.MessageDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="MessageBiz" class="com.tutoring.biz.MessageBizImpl">
+		<property name="messageDAO" ref="MessageDAO"></property>
+		<property name="userDAO" ref="UserDAO"></property>
+		<property name="notificationDAO" ref="NotificationDAO"></property>
+	</bean>
 
 	<bean id="CourseBiz" class="com.tutoring.biz.CourseBizImpl">
 		<property name="userDAO" ref="UserDAO"></property>
@@ -122,6 +136,11 @@
 		<property name="courseDAO" ref="CourseDAO"></property>
 		<property name="studentDAO" ref="StudentDAO"></property>
 		<property name="notificationDAO" ref="NotificationDAO"></property>
+	</bean>
+
+	<bean id="FriendBiz" class="com.tutoring.biz.FriendBizImpl">
+		<property name="userDAO" ref="UserDAO"></property>
+		<property name="friendDAO" ref="FriendDAO"></property>
 	</bean>
 
 	<bean id="loginAction" class="com.tutoring.action.LoginAction"
@@ -169,7 +188,9 @@
 
 	<bean id="makeTopicAction" class="com.tutoring.action.MakeTopicAction"></bean>
 
-	<bean id="chattingAction" class="com.tutoring.action.ChattingAction"></bean>
+	<bean id="chattingAction" class="com.tutoring.action.ChattingAction">
+		<property name="messageBiz" ref="MessageBiz"></property>
+	</bean>
 
 	<bean id="topicDetailAction" class="com.tutoring.action.TopicDetailAction">
 		<property name="topicBiz" ref="TopicBiz"></property>
@@ -225,5 +246,23 @@
 		<property name="sessionMaintainBiz" ref="SessionMaintainBiz"></property>
 		<property name="notificationBiz" ref="NotificationBiz"></property>
 	</bean>
+	
+	<bean id="friendMessageAction" class="com.tutoring.action.FriendMessageAction">
+	</bean>
+	
+	<bean id="handleFriendAction" class="com.tutoring.action.HandleFriendAction">
+		<property name="friendBiz" ref="FriendBiz"></property>
+		<property name="notificationBiz" ref="NotificationBiz"></property>
+		<property name="sessionMaintainBiz" ref="SessionMaintainBiz"></property>
+	</bean>
 
+	<bean id="sendMessageAction" class="com.tutoring.action.SendMessageAction">
+		<property name="messageBiz" ref="MessageBiz"></property>
+		<property name="sessionMaintainBiz" ref="SessionMaintainBiz"></property>
+	</bean>
+	
+	<bean id="flashInfoAction" class="com.tutoring.action.FlashInfoAction">
+		<property name="courseBiz" ref="CourseBiz"></property>
+		<property name="userBiz" ref="UserBiz"></property>
+	</bean>
 </beans>

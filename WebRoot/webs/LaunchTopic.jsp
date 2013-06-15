@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css/outerframe.css" rel="stylesheet" type="text/css" />
 <link href="css/topic.css" rel="stylesheet" type="text/css"/>
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
-<script src="js/launchtopic.js" charset="gbk"></script>
+<script src="js/launchtopic.js" charset="UTF-8"></script>
 <title>无标题文档</title>
 </head>
 

@@ -11,7 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="css/outerframe.css" rel="stylesheet" type="text/css" />
-<link href="topic.css" rel="stylesheet" type="text/css"/>
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
 <title>无标题文档</title>
 <style type="text/css">
@@ -34,7 +33,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script>
 <script src='/OnlineTutoringSystem/dwr/interface/loginaction.js'></script>
 <script src='/OnlineTutoringSystem/dwr/interface/registeraction.js'></script>
-<script src='js/register.js' charset="gbk"></script>
 <script type="text/javascript">
 	function loginBySession()
 	{
@@ -224,9 +222,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <p>copyright © 2013</p>
   </div>
 </div>
-<script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script> 
+<script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="js/register2.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script> 
-<script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script> 
 <script language="javascript" type="text/javascript">
 function test()
 {

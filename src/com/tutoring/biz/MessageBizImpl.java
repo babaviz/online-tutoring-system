@@ -39,6 +39,7 @@ public class MessageBizImpl implements MessageBiz{
 	@Override
 	public List<Message> getOrderedMessages(User user) {
 		// TODO Auto-generated method stub
+		user = userDAO.getUserByID(user.getId());
 		List<Message> sendmsgs = new ArrayList<Message>(user.getSends());
 		List<Message> receives = new ArrayList<Message>(user.getReceives());
 		sendmsgs.addAll(receives);

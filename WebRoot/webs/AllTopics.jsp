@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <s:iterator value="#questions">
           <div class="topic">
             <div class="well">
-              <p class="text-left text-info"><a href="TopicDetail?topicid=${id}">
+              <p class="text-left text-info"><a href="TopicDetail?topicid=<s:property value='id'/>">
                 <s:property value="title"/>
                 </a></p>
               <div class="row">

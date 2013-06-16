@@ -202,6 +202,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 			result.setGrade("大一");//((User)list.get(i)).getStudent().getGrade());
 			result.setName(((User)list.get(i)).getLastName()+((User)list.get(i)).getFirstName());
 			result.setPoint(((User)list.get(i)).getPoint()+"");
+			result.setHeadimg(((User)list.get(i)).getPicture());
 			
 			searchUserResults.add(result);
 		}

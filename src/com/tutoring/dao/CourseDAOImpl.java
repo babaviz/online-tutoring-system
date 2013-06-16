@@ -68,10 +68,8 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public ArrayList<SearchResult> searchCourses(SearchFactors factors) {
+	public ArrayList<SearchResult> searchCourses(SearchFactors factors, int pageNO) {
 		String query = "select distinct c from Course c, Subject s, Tutor t, User u where s.id = c.subject and c.tutor = t.id and u.id = t.user ";
-
-		System.out.println("\nlalala");
 		
 		if(!factors.getCourse_type().equals("不限类别"))
 		{
@@ -159,7 +157,31 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 		List<?> list = this.getHibernateTemplate().find(query);
 		SearchResult result;
 		ArrayList<SearchResult> searchResults = new ArrayList<SearchResult>();
-		for (int i = 0; i < list.size(); i++) {
+		
+		
+		int startNO, endNO;
+		if((pageNO-1)*10>=list.size()||pageNO<1)
+		{
+			startNO=0;
+			endNO=list.size()-1;
+		}
+		else if(pageNO*10<=list.size())
+		{
+			startNO=(pageNO-1)*10;
+			endNO=pageNO*10-1;
+		}
+		else if(pageNO*10>list.size())
+		{
+			startNO=(pageNO-1)*10;
+			endNO=list.size()-1;
+		}
+		else
+		{
+			startNO=0;
+			endNO=list.size()-1;
+		}
+		
+		for (int i = startNO; i <= endNO; i++) {
 			result = new SearchResult();
 			result.setCourse_description(((Course) list.get(i)).getDescription());
 			result.setCourse_name(((Course) list.get(i)).getName());
@@ -168,6 +190,7 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 			result.setTutor_name(((Course) list.get(i)).getTutor().getUser().getLastName()+((Course) list.get(i)).getTutor().getUser().getFirstName());
 			result.setCourse_type(((Course) list.get(i)).getSubject().getName());
 			result.setStart_time(((Course) list.get(i)).getStartTime().toLocaleString());
+			result.setHeadimg(((Course) list.get(i)).getTutor().getUser().getPicture());
 			searchResults.add(result);
 		}
 		return searchResults;
@@ -212,5 +235,84 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 	public void save(Course c) {
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().merge(c);
+	}
+
+	@Override
+	public int searchCoursesNum(SearchFactors factors) {
+		// TODO Auto-generated method stub
+		String query = "select distinct c from Course c, Subject s, Tutor t, User u where s.id = c.subject and c.tutor = t.id and u.id = t.user ";
+		
+		if(!factors.getCourse_type().equals("不限类别"))
+		{
+			query=query+" and s.name = '"+factors.getCourse_type()+"' ";
+		}
+		
+		if (factors.getCourse_description().length() > 0) {
+			query = query + " and c.description like '%"
+					+ factors.getCourse_description() + "%' ";
+			System.out.println("c_description:"
+					+ factors.getCourse_description());
+		}
+
+		if (factors.getTutor_description().length() > 0) {
+			query = query + " and t.description like '%"
+					+ factors.getTutor_description() + "%' ";
+			System.out.println("t_description:"
+					+ factors.getTutor_description());
+		}
+
+		if (factors.getCourse_name().length() > 0) {
+			query = query + " and c.name like '%" + factors.getCourse_name()
+					+ "%' ";
+			System.out.println("c_name:" + factors.getCourse_name());
+		}
+
+		if ((factors.getCourse_price_f().length() > 0)
+				&& (factors.getCourse_price_t().length() > 0)) {
+			query = query + " and c.price <= " + factors.getCourse_price_t()
+					+ " and c.price >= " + factors.getCourse_price_f() + " ";
+		} else if ((factors.getCourse_price_f().length() == 0)
+				&& (factors.getCourse_price_t().length() > 0)) {
+			query = query + " and c.price <= " + factors.getCourse_price_t()
+					+ " ";
+		} else if ((factors.getCourse_price_f().length() > 0)
+				&& (factors.getCourse_price_t().length() == 0)) {
+			query = query + " and c.price >= " + factors.getCourse_price_f()
+					+ " ";
+		}
+		
+		if (factors.getCourse_start_time().length() > 0) {
+			query = query + " and c.startTime >= '"
+					+ factors.getCourse_start_time() + ":00' ";
+		}
+
+		if ((factors.getCourse_time_f().length() > 0)
+				&& (factors.getCourse_time_t().length() == 0)) {
+			query = query + " and c.duration >= " + factors.getCourse_time_f()
+					+ " ";
+		} else if ((factors.getCourse_time_f().length() == 0)
+				&& (factors.getCourse_time_t().length() > 0)) {
+			query = query + " and c.duration <= " + factors.getCourse_time_t()
+					+ " ";
+		} else if ((factors.getCourse_time_f().length() > 0)
+				&& (factors.getCourse_time_t().length() > 0)) {
+			query = query + " and c.duration >= " + factors.getCourse_time_f()
+					+ " and c.duration <= " + factors.getCourse_time_t()+" ";
+		}
+
+		if (factors.getTutor_name().length()>0)
+		{
+			query=query+" and LOWER(CONCAT(u.lastName,u.firstName)) like LOWER('%"+factors.getTutor_name()+"%') ";
+		}
+		
+		if(factors.getTutor_eval().length()>0)
+		{
+			query=query+" and u.point >= "+Float.valueOf(factors.getTutor_eval().substring(0, 2))+" ";
+			System.out.println("tutor_eval:" + Float.valueOf(factors.getTutor_eval().substring(0, 2)));
+		}
+		
+		System.out.println(query);
+		List<?> list = this.getHibernateTemplate().find(query);
+		return list.size();
 	}
 }

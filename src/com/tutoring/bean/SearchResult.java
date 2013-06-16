@@ -2,6 +2,13 @@ package com.tutoring.bean;
 
 public class SearchResult {
 	public String course_name;
+	public String headimg;
+	public String getHeadimg() {
+		return headimg;
+	}
+	public void setHeadimg(String headimg) {
+		this.headimg = headimg;
+	}
 	public String getCourse_name() {
 		return course_name;
 	}

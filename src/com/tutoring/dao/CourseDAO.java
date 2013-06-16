@@ -15,10 +15,11 @@ public interface CourseDAO {
 	public List<Course> getCoursesByUser(User user);
 	public Tutor getTutorByCourse(Course c);
 	public List<Course> getCoursesByTutor(Tutor t);
-	public ArrayList<SearchResult> searchCourses(SearchFactors factors);
+	public ArrayList<SearchResult> searchCourses(SearchFactors factors, int pageNO);
 	public Course getCourseById(int id);
 	public int getApplyNumberOfCourse(Course c);
 	public void deleteCourse(Course c);
 	public List<Course> getOrderedCoursesByTutorId(int id);
 	public void save(Course c);
+	public int searchCoursesNum(SearchFactors factors);
 }

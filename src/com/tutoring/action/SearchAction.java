@@ -31,7 +31,7 @@ public class SearchAction extends ActionSupport {
 		this.userBiz = userBiz;
 	}
 
-	public ArrayList<SearchResult> getResult(SearchFactors factors) {
+	public ArrayList<SearchResult> getResult(SearchFactors factors,int pageNO) {
 //		ArrayList<SearchResult> searchResults = new ArrayList<SearchResult>();
 //		SearchResult s = new SearchResult();
 //		s.setTutor_name("PY");
@@ -43,7 +43,7 @@ public class SearchAction extends ActionSupport {
 //		s.setCourse_duration("60");
 //		searchResults.add(s);
 //		return searchResults;
-		return courseBiz.getCourses(factors);
+		return courseBiz.getCourses(factors, pageNO);
 	}
 	
 	public ArrayList<SearchUserResult> getUserResult(SearchFactors factors, int pageNO) {
@@ -52,5 +52,9 @@ public class SearchAction extends ActionSupport {
 	
 	public int getUserResultNum(SearchFactors factors) {
 		return userBiz.getUsersNum(factors);
+	}
+	
+	public int getCourseResultNum(SearchFactors factors) {
+		return courseBiz.getCoursesNum(factors);
 	}
 }

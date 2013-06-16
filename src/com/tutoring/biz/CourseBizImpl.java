@@ -86,9 +86,9 @@ public class CourseBizImpl implements CourseBiz{
 	}
 	
 	@Override
-	public ArrayList<SearchResult> getCourses(SearchFactors factors)
+	public ArrayList<SearchResult> getCourses(SearchFactors factors,int pageNO)
 	{
-		return courseDAO.searchCourses(factors);
+		return courseDAO.searchCourses(factors, pageNO);
 	}
 	
 	private boolean isTutorExist(Tutor t, List<Tutor> l)
@@ -243,5 +243,10 @@ public class CourseBizImpl implements CourseBiz{
 	public Course getCourseById(int id) {
 		// TODO Auto-generated method stub
 		return courseDAO.getCourseById(id);
+	}
+	@Override
+	public int getCoursesNum(SearchFactors factors) {
+		// TODO Auto-generated method stub
+		return courseDAO.searchCoursesNum(factors);
 	}
 }

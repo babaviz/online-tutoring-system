@@ -1,0 +1,1 @@
+This is the floder to store users' head images.

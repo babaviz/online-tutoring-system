@@ -18,5 +18,6 @@ public interface UserDAO {
 	public void save(User u);
 	public User getUserByID(int id);
 	public User setStudent(User u, String FirstName, String LastName, String phone, Date birth, String school,String grade);
-	public ArrayList<SearchUserResult> searchUsers(SearchFactors factors);
+	public ArrayList<SearchUserResult> searchUsers(SearchFactors factors, int pageNO);
+	public int searchUsersNum(SearchFactors factors);
 }

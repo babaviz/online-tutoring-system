@@ -155,6 +155,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="tutor_description">老师简介：这是位非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼的老师</div>
           </div>
         </div>
+        <div class="btn-group search">
+             <a class="btn btn-link active" href="AllTopics?pageIndex=1">
+              1
+              </a>
+             <a class="btn btn-link unactive" href="javascript:void(0)" onclick="changeUserResultPage(this);">
+              2
+              </a>
+        </div>
       </div>
     </div>
   </div>

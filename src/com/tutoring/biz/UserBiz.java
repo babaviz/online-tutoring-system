@@ -21,5 +21,6 @@ public interface UserBiz {
 	public void setHeadImagePathByEmail(User user , String path);
 	public User getUserInfoById(int id);
 	public User getMyUserInfo();
-	public ArrayList<SearchUserResult> getUsers(SearchFactors factors);
+	public ArrayList<SearchUserResult> getUsers(SearchFactors factors, int pageNO);
+	public int getUsersNum(SearchFactors factors);
 }

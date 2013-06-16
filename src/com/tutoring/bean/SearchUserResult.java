@@ -5,6 +5,13 @@ public class SearchUserResult {
 	public String type;
 	public String point;
 	public String grade;
+	public String pageNum;
+	public String getPageNum() {
+		return pageNum;
+	}
+	public void setPageNum(String pageNum) {
+		this.pageNum = pageNum;
+	}
 	public String subjects;
 	public String getName() {
 		return name;

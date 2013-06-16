@@ -46,7 +46,11 @@ public class SearchAction extends ActionSupport {
 		return courseBiz.getCourses(factors);
 	}
 	
-	public ArrayList<SearchUserResult> getUserResult(SearchFactors factors) {
-		return userBiz.getUsers(factors);
+	public ArrayList<SearchUserResult> getUserResult(SearchFactors factors, int pageNO) {
+		return userBiz.getUsers(factors, pageNO);
+	}
+	
+	public int getUserResultNum(SearchFactors factors) {
+		return userBiz.getUsersNum(factors);
 	}
 }

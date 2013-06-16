@@ -214,6 +214,7 @@ function selectCategory()
 function customizedFunc()
 {
 	//alert("here is executed on loading");
+	$factorsMap=new HashMap();
 	$selectedCategory=$("#course_list div:eq(0)");
 	$tabNO=5;
 	$advancedSearchPointer=0;
@@ -279,11 +280,12 @@ function null_function()
 }
 
 function searchUserAction()
-{	
+{
 	$tabNO++;
 	var $factors=new get_seatchUserFactors();
 	var $x=$("#tabTemplate").clone(true);
 	$x.find("a").attr("href","#tab_"+$tabNO);
+	$factorsMap.put("tab_"+$tabNO,$factors);
 	$x.find("a").find("div").html($factors.user_name);
 	$("#myTab:last").append($x);
 	
@@ -291,16 +293,19 @@ function searchUserAction()
 	$tabContent.attr("id","tab_"+$tabNO);
 	$("#myTabContent").append($tabContent);
 	$x.find("a").tab('show');
-	searchAction.getUserResult($factors,function myCallBack(data)
+	searchAction.getUserResultNum($factors,function myCallBack(resultNum)
 	{
-		handleSearchUserCallBack(data,$tabContent);
+		//alert("Result Num:"+resultNum);
+		searchAction.getUserResult($factors,1,function myCallBack(data)
+		{
+			handleSearchUserCallBack(data,$tabContent,resultNum,1);
+		});
 	});
 	$("html,body").animate({scrollTop:$("#down_content").offset().top-50},300);
 }
 
-function handleSearchUserCallBack(data,$tabContent)
+function handleSearchUserCallBack(data,$tabContent,resultNum,activeNO)
 {
-//	alert(data.length);
 	var $one_result;
 	for(var i=0;i<data.length;i++)
 	{
@@ -321,6 +326,8 @@ function handleSearchUserCallBack(data,$tabContent)
 		$one_result.find(".name").text(data[i].name);
 		$one_result.find(".user_point").text("积分"+data[i].point);
 	}
+	add_btn_group($tabContent,resultNum,activeNO);
+	//alert($factorsMap.get("tab_6").user_name);
 }
 
 function get_seatchUserFactors()
@@ -328,4 +335,128 @@ function get_seatchUserFactors()
 	var $factors=new searchFactors();
 	$factors.user_name=$("#searchUserInput").val();
 	return $factors;
+}
+
+function add_btn_group($tabContent,resultNum,activeNO)
+{
+	var $btnGroup=$('<div class="btn-group search" style=""></div>');
+	var pageNum=Math.ceil(resultNum/10);
+	for(var i=1;i<=pageNum;i++)
+	{
+		var $tempBtn;
+		if(i==activeNO)
+		{
+			$tempBtn=$('<a class="btn btn-link active" href="javascript:void(0)" onclick="changeUserResultPage(this);"></a>');
+		}
+		else
+		{
+			$tempBtn=$('<a class="btn btn-link unactive" href="javascript:void(0)" onclick="changeUserResultPage(this);"></a>');
+		}
+		$tempBtn.text(i+"");
+		$btnGroup.append($tempBtn);
+	}
+	$tabContent.append($btnGroup);
+}
+
+function changeUserResultPage(targetA)
+{
+	var $tabContent=$(targetA).parent().parent();
+	var pageNO=$.trim($(targetA).text());
+	$tabContent.empty();
+	var $factors=$factorsMap.get($tabContent.attr("id"));
+	searchAction.getUserResultNum($factors,function myCallBack(resultNum)
+	{
+		searchAction.getUserResult($factors,pageNO,function myCallBack(data)
+		{
+			handleSearchUserCallBack(data,$tabContent,resultNum,pageNO);
+		});
+	
+	});
+}
+
+function HashMap()
+{
+    /** Map 大小 **/
+    var size = 0;
+   /** 对象 **/
+   var entry = new Object();
+  
+   /** 存 **/
+    this.put = function (key , value)
+     {
+       if(!this.containsKey(key))
+       {
+           size ++ ;
+      }
+      entry[key] = value;
+   }
+  
+  /** 取 **/
+    this.get = function (key)
+   {
+       return this.containsKey(key) ? entry[key] : null;
+    }
+   
+   /** 删除 **/
+  this.remove = function ( key )
+  {
+       if( this.containsKey(key) && ( delete entry[key] ) )
+      {
+           size --;
+        }
+    }
+   
+    /** 是否包含 Key **/
+    this.containsKey = function ( key )
+   {
+        return (key in entry);
+   }
+    
+   /** 是否包含 Value **/
+   this.containsValue = function ( value )
+    {
+        for(var prop in entry)
+       {
+           if(entry[prop] == value)
+           {
+               return true;
+           }
+       }
+        return false;
+    }
+   
+    /** 所有 Value **/
+   this.values = function ()
+   {
+       var values = new Array();
+       for(var prop in entry)
+       {
+           values.push(entry[prop]);
+       }
+       return values;
+    }
+   
+   /** 所有 Key **/
+    this.keys = function ()
+   {
+       var keys = new Array();
+       for(var prop in entry)
+       {
+           keys.push(prop);
+       }
+       return keys;
+   }
+
+   /** Map Size **/
+    this.size = function ()
+   {
+        return size;
+   }
+   
+  /* 清空 */
+   this.clear = function ()
+  {
+        size = 0;
+        entry = new Object();
+   }
 }

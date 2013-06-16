@@ -150,13 +150,36 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	}
 
 	@Override
-	public ArrayList<SearchUserResult> searchUsers(SearchFactors factors) {
+	public ArrayList<SearchUserResult> searchUsers(SearchFactors factors, int pageNO) {
 		// TODO Auto-generated method stub
 		String query="from User where LOWER(CONCAT(lastName,firstName)) like LOWER('%"+factors.getUser_name()+"%') ";
 		List<?> list = this.getHibernateTemplate().find(query);
 		SearchUserResult result;
 		ArrayList<SearchUserResult> searchUserResults = new ArrayList<SearchUserResult>();
-		for (int i = 0; i < list.size(); i++) {
+		
+		int startNO, endNO;
+		if((pageNO-1)*10>=list.size()||pageNO<1)
+		{
+			startNO=0;
+			endNO=list.size()-1;
+		}
+		else if(pageNO*10<=list.size())
+		{
+			startNO=(pageNO-1)*10;
+			endNO=pageNO*10-1;
+		}
+		else if(pageNO*10>list.size())
+		{
+			startNO=(pageNO-1)*10;
+			endNO=list.size()-1;
+		}
+		else
+		{
+			startNO=0;
+			endNO=list.size()-1;
+		}
+		
+		for (int i = startNO; i <= endNO; i++) {
 			result=new SearchUserResult();
 			if(((User)list.get(i)).getType()=='1')
 			{
@@ -183,5 +206,13 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 			searchUserResults.add(result);
 		}
 		return searchUserResults;
+	}
+
+	@Override
+	public int searchUsersNum(SearchFactors factors) {
+		// TODO Auto-generated method stub
+		String query="from User where LOWER(CONCAT(lastName,firstName)) like LOWER('%"+factors.getUser_name()+"%') ";
+		List<?> list = this.getHibernateTemplate().find(query);
+		return list.size();
 	}
 }

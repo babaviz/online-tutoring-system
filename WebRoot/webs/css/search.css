@@ -427,9 +427,9 @@
 	clear:both;
 	height:30px;
 	color:#027BDF;
-	width:200px;
 	font-weight:900;
 	font-family:SimHei;
+	max-width:200px;
 	text-overflow: ellipsis; 
 	overflow: hidden; 
 	white-space: nowrap;
@@ -528,9 +528,12 @@
 	clear:both;
 	height:30px;
 	color:#268E2E;
-	width:55px;
 	font-weight:900;
 	font-family:SimHei;
+	max-width:200px;
+	text-overflow: ellipsis; 
+	overflow: hidden; 
+	white-space: nowrap;
 }
 
 .one_result_stu .result_right_content .gender_img
@@ -569,4 +572,14 @@
 	margin-top:10px;
 	margin-left:0px;
 	color:#299A32;
+}
+
+.btn.btn-link.unactive
+{
+	background-color:#FFF;
+}
+
+.btn-group.search
+{
+	padding-left:20px;
 }

@@ -149,8 +149,14 @@ public class UserBizImpl implements UserBiz{
 	}
 
 	@Override
-	public ArrayList<SearchUserResult> getUsers(SearchFactors factors) {
+	public ArrayList<SearchUserResult> getUsers(SearchFactors factors, int pageNO) {
 		// TODO Auto-generated method stub
-		return userDAO.searchUsers(factors);
+		return userDAO.searchUsers(factors, pageNO);
+	}
+	
+	@Override
+	public int getUsersNum(SearchFactors factors) {
+		// TODO Auto-generated method stub
+		return userDAO.searchUsersNum(factors);
 	}
 }

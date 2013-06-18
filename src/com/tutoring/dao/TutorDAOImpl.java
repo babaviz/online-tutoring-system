@@ -27,4 +27,12 @@ public class TutorDAOImpl extends HibernateDaoSupport implements TutorDAO{
 		this.getHibernateTemplate().save(t);
 	}
 
+	@Override
+	public float getEvalAvgByTutorId(int id) {
+		// TODO Auto-generated method stub
+		List<?> eval = this.getHibernateTemplate().find("select AVG(ebsa+ebsb+ebsc) from Course where tutor="+id);
+		if(eval.size()!=0)
+			return ((Double) eval.get(0)).floatValue();
+		return 0;
+	}
 }

@@ -92,11 +92,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="down_content" style="background:url(images/half_translucent_2.png)">
   <div id="down_left_content">
     <ul id="myTab" class="nav nav-tabs">
-      <li><a href="#home" data-toggle="tab">首页</a></li>
-      <li class="active"><a href="#tab_20" data-toggle="tab"><div>第二页</div><img src="images/closebtn.png" longdesc="close" class="closetabbtn" onMouseOver="this.src='images/closebtn_hover.png'" onMouseOut="this.src='images/closebtn.png'" onClick="delTab();"/></a></li>
+      <li class="active"><a href="#home" data-toggle="tab">首页</a></li>
+      
     </ul>
     <div id="myTabContent" class="tab-content">
-      <div class="tab-pane fade" id="home" >
+      <div class="tab-pane fade in active" id="home" >
         <table id="simple_search" width="431" border="0">
           <tr>
             <td width="152" height="243"><div id="course_list">
@@ -129,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </tr>
         </table>
         <div id="adv_search_bar" onclick="showAdvancedSearch();"><img src="images/adv_search_bar_c.png" /><img src="images/adv_search_bar_d.png" style="display:none;" /></div>
-        <div id="adv_search_content">
+        <div id="adv_search_content" style="display: none;">
           <table id="adv_search_table_1" border="0">
             <tr>
               <td class="text_tr">学&nbsp;&nbsp;&nbsp;&nbsp;科</td>
@@ -198,60 +198,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <td></td>
             </tr>
           </table>
-        </div>
-      </div>
-      <div id="tab_20" class="tab-pane fade in active"  style="overflow:hidden">
-        <div class="search_factors">
-          <div class="one_factor">类别：计算机</div>
-          <div class="one_factor">课名：移动应用开发</div>
-          <div class="one_factor">价格：小于120元</div>
-          <div class="one_factor">开始时间：2013年6月20日之后</div>
-          <div class="one_factor">教师简介：很牛逼 很帅 很高端</div>
-          <div class="one_factor">教师名字：潘</div>
-        </div>
-        <div class="one_result">
-          <div class="up_left_content">
-            <div class="course_name_label">课名：</div>
-            <div class="course_name">移动应用开发</div>
-            <div class="tutor_name_label">老师：</div>
-            <div class="tutor_name">潘岩</div>
-            <div class="clean"></div>
-            <div class="course_type_label">类别：</div>
-            <div class="course_type">计算机</div>
-            <div class="course_price_label">价格：</div>
-            <div class="course_price">100元</div>
-            <div class="clean"></div>
-            <div class="start_time_label">开始时间：</div>
-            <div class="course_start_time">2013年6月28日</div>
-            <div class="course_duration_label">时长：</div>
-            <div class="course_duration">120分钟</div>
-          </div>
-          <div class="tutor_img"></div>
-          <div class="clean"></div>
-          <div class="course_description_label">课程简介：</div>
-          <div class="course_description">适合对手机软件开发有浓厚兴趣，并且有良好软件开发经验者。适合需要跳槽以及转换手机开发平台的学员。教师由上海交通大学继续教育学院E-learning Lab实验室，iPhone项目团队提供，该团队长期致力于iPhone / iPod Touch游戏开发，得到美国天使风险投资支持。目前已开发出多款游戏（如iHorse、iDomino、iCheese、BeerDuel、Magic Fluid、Orient Brush、FarmLand），其中，1款免费游戏(多米诺骨牌欣赏版，iDomino Lite)全球下载量超过100万，另1款农庄游戏(农家乐，FarmLand)全球下载量超过10万</div>
-        </div>
-        <div class="one_result">
-          <div class="up_left_content">
-            <div class="course_name_label">课名：</div>
-            <div class="course_name">移动应用开发</div>
-            <div class="tutor_name_label">老师：</div>
-            <div class="tutor_name">潘岩</div>
-            <div class="clean"></div>
-            <div class="course_type_label">类别：</div>
-            <div class="course_type">计算机</div>
-            <div class="course_price_label">价格：</div>
-            <div class="course_price">100元</div>
-            <div class="clean"></div>
-            <div class="start_time_label">开始时间：</div>
-            <div class="course_start_time">2013年6月28日</div>
-            <div class="course_duration_label">时长：</div>
-            <div class="course_duration">120分钟</div>
-          </div>
-          <div class="tutor_img"></div>
-          <div class="clean"></div>
-          <div class="course_description_label">课程简介：</div>
-          <div class="course_description">适合对手机软件开发有浓厚兴趣，并且有良好软件开发经验者。适合需要跳槽以及转换手机开发平台的学员。教师由上海交通大学继续教育学院E-learning Lab实验室，iPhone项目团队提供，该团队长期致力于iPhone / iPod Touch游戏开发，得到美国天使风险投资支持。目前已开发出多款游戏（如iHorse、iDomino、iCheese、BeerDuel、Magic Fluid、Orient Brush、FarmLand），其中，1款免费游戏(多米诺骨牌欣赏版，iDomino Lite)全球下载量超过100万，另1款农庄游戏(农家乐，FarmLand)全球下载量超过10万</div>
         </div>
       </div>
     </div>

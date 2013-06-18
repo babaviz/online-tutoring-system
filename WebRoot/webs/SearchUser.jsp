@@ -112,58 +112,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="down_content" style="background:url(images/half_translucent_2.png)">
   <div id="down_left_content">
     <ul id="myTab" class="nav nav-tabs">
-      <li><a href="#home" data-toggle="tab">首页</a></li>
-      <li class="active"><a href="#tab_20" data-toggle="tab"><div>第二页</div><img src="images/closebtn.png" longdesc="close" class="closetabbtn" onMouseOver="this.src='images/closebtn_hover.png'" onMouseOut="this.src='images/closebtn.png'" onClick="delTab();"/></a></li>
+      <li class="active"><a href="#home" data-toggle="tab">首页</a></li>
     </ul>
     <div id="myTabContent" class="tab-content">
-      <div class="tab-pane fade searchUser" id="home" >
+      <div class="tab-pane fade in active" id="home" >
         <div id="searchUserMainField">
           <input class="input-xlarge" id="searchUserInput" type="text" placeholder="请输入您要找的人" style="font-family:KaiTi;font-size:23px;height:30px;width:400px;padding-top:10px;">
           <button class="btn btn-primary btn-large" style=" padding-left:90px;padding-right:90px;margin-left:90px;font-family:KaiTi;font-size:23px;" onClick="searchUserAction();">搜索</button>
         </div>
       </div>
-      <div id="tab_20" class="tab-pane fade in active"  style="overflow:hidden">
-        <div class="one_result_tutor">
-          <div class="user_img"></div>
-          <div class="result_right_content">
-            <div class="name">潘岩</div>
-            <div class="gender_img"></div>
-            <div class="user_type">老师</div>
-            <div class="user_point">积分：1200</div>
-            <div class="tutor_subjects">授课类型：语文 数学 英语 物理 化学 计算机 生物 历史 地理 政治 新能源 机械 医学</div>
-            <div class="tutor_description">老师简介：这是位非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼的老师</div>
-          </div>
-        </div>
-        <div class="one_result_stu">
-          <div class="user_img"></div>
-          <div class="result_right_content">
-            <div class="name">潘岩</div>
-            <div class="gender_img"></div>
-            <div class="user_type">学生</div>
-            <div class="stu_grade">年级：大二</div>
-            <div class="user_point">积分：1200</div>
-          </div>
-        </div>
-        <div class="one_result_tutor">
-          <div class="user_img"></div>
-          <div class="result_right_content">
-            <div class="name">潘岩</div>
-            <div class="gender_img"></div>
-            <div class="user_type">老师</div>
-            <div class="user_point">积分：1200</div>
-            <div class="tutor_subjects">授课类型：语文 数学 英语 物理 化学 计算机 生物 历史 地理 政治 新能源 机械 医学</div>
-            <div class="tutor_description">老师简介：这是位非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼非常屌非常牛逼的老师</div>
-          </div>
-        </div>
-        <div class="btn-group search">
-             <a class="btn btn-link active" href="AllTopics?pageIndex=1">
-              1
-              </a>
-             <a class="btn btn-link unactive" href="javascript:void(0)" onclick="changeUserResultPage(this);">
-              2
-              </a>
-        </div>
-      </div>
+      
     </div>
   </div>
 </div>

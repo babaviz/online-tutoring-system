@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	function customizedFunc()
 	{
-		alert(decodeURI("%E4%B8%AD%E6%96%87"));
+		//alert(decodeURI("%E4%B8%AD%E6%96%87"));
 	}
 </script>
 </head>

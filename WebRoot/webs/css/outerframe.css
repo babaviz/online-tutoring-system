@@ -7,7 +7,7 @@
 	padding-top:30px;
 	padding-left:10px;
 	padding-right:10px;
-	width: 900px;
+	width: 950px;
 }
 
 .navbar .nav > li > a.modify_padding
@@ -39,7 +39,7 @@
 #down_left_content
 {
 	float:left;
-	width:700px;
+	width:650px;
 	background-image:url(../images/half_translucent_2.png);
 }
 
@@ -47,7 +47,7 @@
 {
 	float:left;
 	background-color:#6CF;
-	width:200px;
+	width:300px;
 	height:500px;
 }
 

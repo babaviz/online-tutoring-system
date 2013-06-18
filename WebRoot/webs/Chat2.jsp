@@ -238,7 +238,7 @@ function SendMessageCallback(msg)
 		            +"</div>"
 		            
 		            +"<div class=\"content\">"
-		            +"<p class=\"text-info\"><small>"+event.get("content")+"</small></p>"
+		            +"<p class=\"text-info\"><small>"+decodeURI(event.get("content"))+"</small></p>"
 		            +"<p class=\"text-info\" align=\"right\"><small>"+date.toLocaleString( )+"</small></p>"
 		            +"</div>"
 		            

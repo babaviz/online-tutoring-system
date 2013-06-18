@@ -48,7 +48,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			window.location.href="AllTopics.jsp";
 		}
 	}
-	
+	function customizedFunc()
+	{
+		alert(decodeURI("%E4%B8%AD%E6%96%87"));
+	}
 </script>
 </head>
 

@@ -158,4 +158,17 @@ public class NotificationDAOImpl extends HibernateDaoSupport implements Notifica
 		this.getHibernateTemplate().merge(n);
 	}
 
+	@Override
+	public void setFriendNotification(User u,int senderid) {
+		// TODO Auto-generated method stub
+		for(Notification n :u.getNotifications())
+		{
+			if(n.getFromuser().getId()==senderid)
+			{
+				n.setState(1);
+			}
+		}
+		this.getHibernateTemplate().merge(u);
+	}
+
 }

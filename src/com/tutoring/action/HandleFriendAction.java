@@ -33,6 +33,19 @@ public class HandleFriendAction {
 		return "ok";
 	}
 	public String refuseFriend(int requestuserid){
+		ActionContext ac = ActionContext.getContext();
+		Map<String, Object> session = ac.getSession();
+		User user = (User) session.get("user");
+		notificationBiz.refuseFriend(user, requestuserid);
+		return "ok";
+	}
+	
+	public String applyForFriend(int id){
+		ActionContext ac = ActionContext.getContext();
+		Map<String, Object> session = ac.getSession();
+		User user = (User) session.get("user");
+		
+		notificationBiz.applyForFriend(user.getId(),id);
 		return "ok";
 	}
 }

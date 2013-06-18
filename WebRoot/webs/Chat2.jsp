@@ -23,10 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="navbar-inner">
     <div class="container"> <a class="brand" href="#">零距离家教</a>
       <ul class="nav">
-        <li class="active"><a href="Index">首页</a></li>
+        <li><a href="Index">首页</a></li>
         <li><a href="SearchCourse">搜课</a></li>
         <li><a href="SearchUser">搜人</a></li>
-        <li><a href="Chatting">私信</a></li>
+        <li class="active"><a href="Chatting">私信</a></li>
         <li><a href="CourseManage">课程管理</a></li>
         <li><a href="AllTopics">BBS</a></li>
       </ul>

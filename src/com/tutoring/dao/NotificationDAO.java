@@ -15,4 +15,5 @@ public interface NotificationDAO {
 	public Notification getNotificationById(int id);
 	public List<Notification> getNotificationListByQuery(String condition);
 	public void save(Notification n);
+	public void setFriendNotification(User u,int senderid);
 }

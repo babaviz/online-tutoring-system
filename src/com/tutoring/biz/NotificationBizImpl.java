@@ -5,15 +5,21 @@ import java.util.List;
 import com.tutoring.dao.CourseDAO;
 import com.tutoring.dao.NotificationDAO;
 import com.tutoring.dao.StudentDAO;
+import com.tutoring.dao.UserDAO;
 import com.tutoring.entity.Course;
 import com.tutoring.entity.Notification;
 import com.tutoring.entity.Student;
+import com.tutoring.entity.User;
 
 public class NotificationBizImpl implements NotificationBiz{
 
 	CourseDAO courseDAO;
 	StudentDAO studentDAO;
 	NotificationDAO notificationDAO;
+	UserDAO userDAO;
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
 	public void setNotificationDAO(NotificationDAO notificationDAO) {
 		this.notificationDAO = notificationDAO;
 	}
@@ -51,6 +57,18 @@ public class NotificationBizImpl implements NotificationBiz{
 	public void handleNotification(int id) {
 		// TODO Auto-generated method stub
 		notificationDAO.setNoticeStatus(notificationDAO.getNotificationById(id), 1);
+	}
+	@Override
+	public void applyForFriend(int a_id, int b_id) {
+		// TODO Auto-generated method stub
+		User u1 = userDAO.getUserByID(a_id);
+		User u2 = userDAO.getUserByID(b_id);
+		notificationDAO.addNotice(a_id, 2, u2, u1);
+	}
+	@Override
+	public void refuseFriend(User u, int id) {
+		// TODO Auto-generated method stub
+		notificationDAO.setFriendNotification(u, id);
 	}
 
 }

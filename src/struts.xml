@@ -53,6 +53,10 @@
     		<result name="tutor">/webs/TutorHome.jsp</result>
     		<result name="login">/webs/Login.jsp</result>
     	</action>
+    	<action name="UserInfo" class="userInfoAction">
+    		<result type="chain" name="student">StudentInfo</result>
+    		<result type="chain" name="tutor">TutorInfo</result>
+    	</action>
     	<action name="Logout" class="logoutAction">
     		<result name="success">/webs/Login.jsp</result>
     	</action>
@@ -127,6 +131,9 @@
     	
     	<action name="StudentInfo" class="studentInfoAction">
     		<result name="success">/webs/StudentPage.jsp</result>
+    	</action>
+    	<action name="CourseInfo" class="courseInfoAction">
+    		<result name="success">/webs/CourseInfo.jsp</result>
     	</action>
     </package>
     

@@ -239,6 +239,7 @@
 	color:#08c;
 	width:200px;
 	float: left;
+	cursor:pointer;
 }
 
 .tutor_name_label
@@ -259,6 +260,7 @@
 	position:absolute;
 	float: left;
 	margin-left:350px;
+	cursor:pointer;
 }
 
 .clean

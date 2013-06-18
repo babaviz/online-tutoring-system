@@ -192,6 +192,7 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 			result.setStart_time(((Course) list.get(i)).getStartTime().toLocaleString());
 			result.setHeadimg(((Course) list.get(i)).getTutor().getUser().getPicture());
 			result.setId(((Course) list.get(i)).getId()+"");
+			result.setTutorid(((Course) list.get(i)).getTutor().getUser().getId()+"");
 			searchResults.add(result);
 		}
 		return searchResults;

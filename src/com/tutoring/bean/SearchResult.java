@@ -4,6 +4,13 @@ public class SearchResult {
 	public String course_name;
 	public String headimg;
 	public String id;
+	public String tutorid;
+	public String getTutorid() {
+		return tutorid;
+	}
+	public void setTutorid(String tutorid) {
+		this.tutorid = tutorid;
+	}
 	public String getId() {
 		return id;
 	}

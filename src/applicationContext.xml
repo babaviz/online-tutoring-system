@@ -270,4 +270,10 @@
 	<bean id="studentInfoAction" class="com.tutoring.action.StudentInfoAction">
 		<property name="userBiz" ref="UserBiz"></property>
 	</bean>
+	<bean id="userInfoAction" class="com.tutoring.action.UserInfoAction">
+		<property name="userBiz" ref="UserBiz"></property>
+	</bean>
+	<bean id="courseInfoAction" class="com.tutoring.action.CourseInfoAction">
+		<property name="courseBiz" ref="CourseBiz"></property>
+	</bean>
 </beans>

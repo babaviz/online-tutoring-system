@@ -20,6 +20,7 @@
 	margin-top:30px;
 	font-size:25px;
 	line-height:25px;
+	cursor:pointer;
 }
 
 .bkbd_content
@@ -86,4 +87,9 @@
 	font-weight:600;
 	font-size:20px;
 	margin-top:20px;
+}
+
+#tutor_name_detail
+{
+	cursor:pointer;
 }

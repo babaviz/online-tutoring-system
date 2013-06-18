@@ -231,6 +231,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
 <script src='/OnlineTutoringSystem/dwr/interface/changeinfoaction.js'></script> 
 <script language="javascript" type="text/javascript" src="js/buildinfo.js"></script> 
+<script language="javascript" type="text/javascript" src="js/common.js"></script> 
 <script language="javascript" type="text/javascript">
 function test()
 {     

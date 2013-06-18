@@ -264,6 +264,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script> 
 <script language="javascript" type="text/javascript" src="js/search.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap-datetimepicker.js"></script> 
+<script language="javascript" type="text/javascript" src="js/common.js"></script>
 <script language="javascript">
 function test()
 {

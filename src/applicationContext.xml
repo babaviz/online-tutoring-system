@@ -84,6 +84,7 @@
 
 	<bean id="CourseDAO" class="com.tutoring.dao.CourseDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="tutorDAO" ref="TutorDAO"></property>
 	</bean>
 	
 	<bean id="TutorDAO" class="com.tutoring.dao.TutorDAOImpl">

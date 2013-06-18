@@ -18,6 +18,16 @@ import com.tutoring.entity.Tutor;
 import com.tutoring.entity.User;
 
 public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
+	
+	TutorDAO tutorDAO;
+
+	public TutorDAO getTutorDAO() {
+		return tutorDAO;
+	}
+
+	public void setTutorDAO(TutorDAO tutorDAO) {
+		this.tutorDAO = tutorDAO;
+	}
 
 	@Override
 	public List<Course> getCoursesByStudent(Student stu) {
@@ -145,16 +155,32 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 			query=query+" and LOWER(CONCAT(u.lastName,u.firstName)) like LOWER('%"+factors.getTutor_name()+"%') ";
 		}
 		
-		if(factors.getTutor_eval().length()>0)
-		{
-			query=query+" and u.point >= "+Float.valueOf(factors.getTutor_eval().substring(0, 2))+" ";
-			System.out.println("tutor_eval:" + Float.valueOf(factors.getTutor_eval().substring(0, 2)));
-		}
+//		if(factors.getTutor_eval().length()>0)
+//		{
+//			query=query+" and u.point >= "+Float.valueOf(factors.getTutor_eval().substring(0, 2))+" ";
+//			System.out.println("tutor_eval:" + Float.valueOf(factors.getTutor_eval().substring(0, 2)));
+//		}
 		
 //		query="select distinct c from Course c, Subject s, Tutor t, User u where s.id = c.subject and c.tutor = t.id and u.id = t.user and s.name='计算机' ";
 //		query="from Course where startTime > '2013-05-30 17:39:05' ";
 		System.out.println(query);
 		List<?> list = this.getHibernateTemplate().find(query);
+		
+		if (factors.getTutor_eval().length() > 0) {
+			float fv=Float.valueOf(factors.getTutor_eval().substring(0, 2));
+			ArrayList<Course> rmList=new ArrayList<Course>();
+			for (Course c:(List<Course>)list) {
+				float evalAvg=tutorDAO.getEvalAvgByTutorId(c.getTutor().getId());
+				if(evalAvg<fv)
+					rmList.add(c);
+			}
+			for(int i=0;i<rmList.size();i++)
+			{
+				list.remove(rmList.get(i));
+			}
+		}
+		
+		
 		SearchResult result;
 		ArrayList<SearchResult> searchResults = new ArrayList<SearchResult>();
 		
@@ -241,7 +267,7 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 
 	@Override
 	public int searchCoursesNum(SearchFactors factors) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub		
 		String query = "select distinct c from Course c, Subject s, Tutor t, User u where s.id = c.subject and c.tutor = t.id and u.id = t.user ";
 		
 		if(!factors.getCourse_type().equals("不限类别"))
@@ -307,14 +333,29 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 			query=query+" and LOWER(CONCAT(u.lastName,u.firstName)) like LOWER('%"+factors.getTutor_name()+"%') ";
 		}
 		
-		if(factors.getTutor_eval().length()>0)
-		{
-			query=query+" and u.point >= "+Float.valueOf(factors.getTutor_eval().substring(0, 2))+" ";
-			System.out.println("tutor_eval:" + Float.valueOf(factors.getTutor_eval().substring(0, 2)));
-		}
+//		if(factors.getTutor_eval().length()>0)
+//		{
+//			query=query+" and u.point >= "+Float.valueOf(factors.getTutor_eval().substring(0, 2))+" ";
+//			System.out.println("tutor_eval:" + Float.valueOf(factors.getTutor_eval().substring(0, 2)));
+//		}
 		
 		System.out.println(query);
 		List<?> list = this.getHibernateTemplate().find(query);
+		
+		if (factors.getTutor_eval().length() > 0) {
+			float fv=Float.valueOf(factors.getTutor_eval().substring(0, 2));
+			ArrayList<Course> rmList=new ArrayList<Course>();
+			for (Course c:(List<Course>)list) {
+				float evalAvg=tutorDAO.getEvalAvgByTutorId(c.getTutor().getId());
+				if(evalAvg<fv)
+					rmList.add(c);
+			}
+			for(int i=0;i<rmList.size();i++)
+			{
+				list.remove(rmList.get(i));
+			}
+		}
+		
 		return list.size();
 	}
 }

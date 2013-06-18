@@ -94,5 +94,16 @@ public class MessageBizImpl implements MessageBiz{
 		}
 		return result;
 	}
+	@Override
+	public void readAllMessage(User u1,User u2) {
+		// TODO Auto-generated method stub
+		for(Notification n:u1.getNotifications())
+		{
+			if(n.getState()==0&&n.getType()==3&&n.getFromuser().getId()==u2.getId())
+			{
+				notificationDAO.setNoticeStatus(n, 1);
+			}
+		}
+	}
 
 }

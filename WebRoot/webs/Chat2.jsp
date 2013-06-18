@@ -188,7 +188,7 @@ function SendMessageCallback(msg)
 		function onData(event)
 		{
 			//alert(event.get("he"));
-			if(event.get("numberofnotice"+PL.userid)!=0&&event.get("numberofnotice"+PL.userid)!="undefined")
+			if(event.get("numberofnotice"+PL.userid)>0&&event.get("numberofnotice"+PL.userid)!="undefined")
 			{
 				//alert(event.get("numberofnotice"));
 				$("#message").html('<i class="icon-envelope"></i>消息<span class="badge badge-important">'+event.get("numberofnotice"+PL.userid)+'</span>');
@@ -197,7 +197,7 @@ function SendMessageCallback(msg)
 			{
 				$("#message").html('<i class="icon-envelope"></i>消息</a>');
 			}
-			if(event.get("numberofcoursenotice"+PL.userid)!=0&&event.get("numberofcoursenotice"+PL.userid)!="undefined")
+			if(event.get("numberofcoursenotice"+PL.userid)>0&&event.get("numberofcoursenotice"+PL.userid)!="undefined")
 			{
 				//alert(event.get("numberofnotice"));
 				$("#coursemsg").html('课程信息<span class="badge badge-important">'+event.get("numberofcoursenotice"+PL.userid)+'</span>');
@@ -206,7 +206,7 @@ function SendMessageCallback(msg)
 			{
 				$("#coursemsg").html('课程信息');
 			}
-			if(event.get("numberoffriendnotice"+PL.userid)!=0&&event.get("numberoffriendnotice"+PL.userid)!="undefined")
+			if(event.get("numberoffriendnotice"+PL.userid)>0&&event.get("numberoffriendnotice"+PL.userid)!="undefined")
 			{
 				//alert(event.get("numberofnotice"));
 				$("#friendmsg").html('好友信息<span class="badge badge-important">'+event.get("numberoffriendnotice"+PL.userid)+'</span>');
@@ -215,7 +215,7 @@ function SendMessageCallback(msg)
 			{
 				$("#friendmsg").html('好友信息');
 			}
-			if(event.get("numberofchatnotice"+PL.userid)!=0&&event.get("numberofchatnotice"+PL.userid)!="undefined")
+			if(event.get("numberofchatnotice"+PL.userid)>0&&event.get("numberofchatnotice"+PL.userid)!="undefined")
 			{
 				//alert(event.get("numberofnotice"));
 				$("#chatmsg").html('私信<span class="badge badge-important">'+event.get("numberofchatnotice"+PL.userid)+'</span>');
@@ -246,9 +246,11 @@ function SendMessageCallback(msg)
 		        +"</div>");
 		        
 		        $("#messages")[0].scrollTop = $("#messages")[0].scrollHeight;
+		        chattingaction.readMessage(sendid,readCallback);
 			}
 		}
-		
+		function readCallback(msg)
+		{}
 		function cancelListen()
 		{
 			PL.leave();

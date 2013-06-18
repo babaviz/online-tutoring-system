@@ -58,8 +58,14 @@ public class ChattingAction extends ActionSupport{
 			List<Message> receives = new ArrayList<Message>(user.getReceives());
 			ComparatorMessage comparator = new ComparatorMessage();
 			Collections.sort(receives,comparator);
-			currentReceiver = receives.get(receives.size()-1).getSender();
-			
+			if(receives.size()>0)
+			{
+				currentReceiver = receives.get(receives.size()-1).getSender();
+			}
+			else
+			{
+				
+			}
 		}
 		else
 		{
@@ -107,6 +113,15 @@ public class ChattingAction extends ActionSupport{
 		Event event = Event.createDataEvent("/tutoring/numberofnotice");
 		event.setField("content", content);
 		Dispatcher.getInstance().unicast(event, currentReceiver.getId()+"");
+	}
+	
+	public void readMessage(int receiveid)
+	{
+		ActionContext ac = ActionContext.getContext();
+		Map<String, Object>session = ac.getSession();
+		User user = (User)session.get("user");
+		messageBiz.readAllMessage(user, userBiz.getUserInfoById(receiveid));
+		sessionMaintainBiz.updateUser();
 	}
 	
 }

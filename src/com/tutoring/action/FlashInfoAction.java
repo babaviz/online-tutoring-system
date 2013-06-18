@@ -28,7 +28,7 @@ public class FlashInfoAction {
 			info += " student ";
 		}
 		else
-			info += " tutor ";
+			info += " Teacher ";
 		info+=c.getFlash_sn();
 		return info;
 	}

@@ -84,7 +84,7 @@
     	</action>
     	
     	<action name="Chatting" class="chattingAction">
-    		<result name="success">/webs/chatting.jsp</result>
+    		<result name="success">/webs/Chat2.jsp</result>
     	</action>
     	
     	<action name="SearchCourse" class="searchAction">

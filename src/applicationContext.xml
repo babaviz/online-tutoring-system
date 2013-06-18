@@ -190,6 +190,8 @@
 
 	<bean id="chattingAction" class="com.tutoring.action.ChattingAction">
 		<property name="messageBiz" ref="MessageBiz"></property>
+		<property name="sessionMaintainBiz" ref="SessionMaintainBiz"></property>
+		<property name="userBiz" ref="UserBiz"></property>
 	</bean>
 
 	<bean id="topicDetailAction" class="com.tutoring.action.TopicDetailAction">

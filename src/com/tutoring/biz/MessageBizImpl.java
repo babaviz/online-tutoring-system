@@ -56,5 +56,43 @@ public class MessageBizImpl implements MessageBiz{
 		
 		return sendmsgs;
 	}
+	@Override
+	public List<Message> getOrderedMessagesWithUser(User u1, User u2) {
+		// TODO Auto-generated method stub
+		u1 = userDAO.getUserByID(u1.getId());
+		List<Message> sendmsgs = new ArrayList<Message>(u1.getSends());
+		List<Message> receives = new ArrayList<Message>(u1.getReceives());
+		List<Message> result = new ArrayList<Message>();
+		
+		for(Message m:sendmsgs)
+		{
+			if(m.getReceiver().getId()==u2.getId())
+			{
+				result.add(m);
+			}
+		}
+		
+		for(Message m : receives)
+		{
+			if(m.getSender().getId()==u2.getId())
+			{
+				result.add(m);
+			}
+		}
+		
+		//sendmsgs.addAll(receives);
+		
+		ComparatorMessage comparator = new ComparatorMessage();
+		Collections.sort(result,comparator);
+		
+		for(Notification n:u1.getNotifications())
+		{
+			if(n.getState()==0&&n.getType()==3&&n.getFromuser().getId()==u2.getId())
+			{
+				notificationDAO.setNoticeStatus(n, 1);
+			}
+		}
+		return result;
+	}
 
 }

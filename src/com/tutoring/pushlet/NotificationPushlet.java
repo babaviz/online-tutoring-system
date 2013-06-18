@@ -39,7 +39,7 @@ public class NotificationPushlet extends EventPullSource implements Serializable
 			//StringBuilder str = new StringBuilder("");
 			for(int i = 0;i<sessions.length;i++)
 			{
-				System.out.println(i+":"+sessions[i].getId());
+				//System.out.println(i+":"+sessions[i].getId());
 				
 			
 			userid = Integer.parseInt(sessions[i].getId());

@@ -101,7 +101,7 @@
     	</action>
     	
     	<action name="TutorInfo" class="tutorInfoAction">
-    		<result name="success">/webs/TutorInfo.jsp</result>
+    		<result name="success">/webs/TutorPage.jsp</result>
     	</action>
     	
     	<action name="CourseManage" class="courseManageAction">
@@ -123,6 +123,10 @@
     	
     	<action name="FriendMessage" class="friendMessageAction">
     		<result name="success">/webs/FriendMessage.jsp</result>
+    	</action>
+    	
+    	<action name="StudentInfo" class="studentInfoAction">
+    		<result name="success">/webs/StudentPage.jsp</result>
     	</action>
     </package>
     

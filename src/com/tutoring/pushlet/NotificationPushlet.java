@@ -34,17 +34,23 @@ public class NotificationPushlet extends EventPullSource implements Serializable
 		Event event = Event.createDataEvent("/tutoring/numberofnotice");
 		int userid = 0;
 		Session[] sessions = SessionManager.getInstance().getSessions();
+		NotificationDAO notificationDAO = (NotificationDAO) context.getBean("NotificationDAO");
 		if(sessions.length>0){
 			//StringBuilder str = new StringBuilder("");
-//			for(int i = 0;i<sessions.length;i++)
-//			{
-//				System.out.println(i+":"+sessions[i].getId());
-//				
-//			}
-			userid = Integer.parseInt(sessions[0].getId());
+			for(int i = 0;i<sessions.length;i++)
+			{
+				System.out.println(i+":"+sessions[i].getId());
+				
+			
+			userid = Integer.parseInt(sessions[i].getId());
+			event.setField("numberofnotice"+userid, notificationDAO.getNumberOfNotice(userid));
+			event.setField("numberofcoursenotice"+userid, notificationDAO.getNumberOfCourseNotice(userid));
+			event.setField("numberoffriendnotice"+userid, notificationDAO.getNumberOfFriendNotice(userid));
+			event.setField("numberofchatnotice"+userid, notificationDAO.getNumberOfChatNotice(userid));
+			}
 		}
 		//System.out.println("lastid:"+userid);
-		NotificationDAO notificationDAO = (NotificationDAO) context.getBean("NotificationDAO");
+		
 		
 		
 //		if(SessionManager.getInstance().hasSession("0"))
@@ -66,10 +72,7 @@ public class NotificationPushlet extends EventPullSource implements Serializable
 //		System.out.println(user.getLastName());
 //		event.setField("numberofnotice", number);
 //		}
-		event.setField("numberofnotice", notificationDAO.getNumberOfNotice(userid));
-		event.setField("numberofcoursenotice", notificationDAO.getNumberOfCourseNotice(userid));
-		event.setField("numberoffriendnotice", notificationDAO.getNumberOfFriendNotice(userid));
-		event.setField("numberofchatnotice", notificationDAO.getNumberOfChatNotice(userid));
+		
 		return event;
 	}
 

@@ -10,10 +10,20 @@
 <title>无标题文档</title>
 <script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
+<script src='/OnlineTutoringSystem/dwr/interface/flashinfoaction.js'></script> 
 <script language="javascript" type="text/javascript" src="js/startcourse.js"></script>
 <script type="text/javascript" src="flash/swfobject.js"></script>
 <script type="text/javascript">
-	  
+			function test()
+			{
+				alert(getUserType());
+			}
+	  		window.onload = function(){
+	  			getInfo();
+	  		};
+			
+	
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
             var swfVersionStr = "11.1.0";
             // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
@@ -35,10 +45,11 @@
                 flashvars, params, attributes);
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
             swfobject.createCSS("#flashContent", "display:block;text-align:left;");
-        </script>
+</script>
 </head>
 
 <body style="background:url(images/mainbackground.jpg)">
+
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"> <a class="brand" href="#">零距离家教</a>

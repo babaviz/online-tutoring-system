@@ -215,6 +215,7 @@ public class CourseBizImpl implements CourseBiz{
 	@Override
 	public List<CourseNotice> getCourseNoticeList(User user) {
 		// TODO Auto-generated method stub
+		user = userDAO.getUserByID(user.getId());
 		List<CourseNotice> list = new ArrayList<CourseNotice>();
 		for(Notification notice : user.getNotifications()){
 			if(notice.getType() == 1)

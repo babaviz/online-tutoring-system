@@ -120,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
               <div class="control-group">
                 <label class="setting_detail_label" for="input01" >生日</label>
-                <div class="controls input-append date form_datetime" data-date="2013-05-27T08:30:07Z" data-date-format="yyyy-MM-dd" data-link-field="dtp_input1">
+                <div class="controls input-append date form_datetime" data-date="2013-05-27" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
                   <input id="input_birthday" size="16" type="text" value='<s:date name="#session.user.birthday" format="yyyy-MM-dd" />' readonly/>
                   <span class="add-on"><i class="icon-remove"></i></span> <span class="add-on"><i class="icon-th"></i></span> </div>
               </div>
@@ -307,7 +307,7 @@ function uploadImage()
 <script type="text/javascript">
 
     $(".form_datetime").datetimepicker({
-        format: "yyyy-mm-dd",
+		format: "yyyy-mm-dd",
         showMeridian: true,
         autoclose: true,
         todayBtn: true,

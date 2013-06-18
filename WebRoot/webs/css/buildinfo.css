@@ -25,3 +25,13 @@
 	width:150px;
 	margin-bottom:30px;
 }
+
+.controls.input-append.date.form_datetime
+{
+	margin-left:20px;
+}
+
+#input_birthday
+{
+	width:155px;
+}

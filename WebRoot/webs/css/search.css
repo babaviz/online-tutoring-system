@@ -410,6 +410,7 @@
 {
 	background:url("../bootstrap/img/bootstrap-mdo-sfmoma-01.jpg") center no-repeat;
 	background-size:cover;
+	cursor:pointer;
 	height:100px;
 	width:100px;
 	float:left;

@@ -40,6 +40,8 @@ function handleSearchCourseCallBack(data,$tabContent,resultNum,pageNO)
 		$one_result.find(".course_name").attr("onclick","toCourse("+data[i].id+")");
 		$one_result.find(".tutor_name").attr("onclick","toUser("+data[i].tutorid+")");
 		$one_result.find(".tutor_name").text(data[i].tutor_name);
+		$one_result.find(".tutor_name").attr("onclick","toUser("+data[i].userid+")");
+		$one_result.find(".tutor_img").attr("onclick","toUser("+data[i].userid+")");
 		$one_result.find(".course_type").text(data[i].course_type);
 		$one_result.find(".course_price").text(data[i].course_price+"元");
 		$one_result.find(".course_start_time").text(data[i].start_time);

@@ -2,6 +2,13 @@ package com.tutoring.bean;
 
 public class SearchUserResult {
 	public String headimg;
+	public String userid;
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	public String getHeadimg() {
 		return headimg;
 	}

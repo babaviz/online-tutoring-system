@@ -67,3 +67,9 @@ function getCourseID()
 {
 	return coursesn;
 }
+
+function afterClass()
+{
+	$("#myModal").modal('show');
+	
+}

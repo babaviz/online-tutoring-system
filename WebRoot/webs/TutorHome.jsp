@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </s:else>
                   <td><s:property value="name"/></td>
                     <td><s:if test="startTime<time&&endTime>time">
-                        <button class="btn btn-mini btn-success">上课</button>
+                        <button class="btn btn-mini btn-success" onclick="takeclass(<s:property value='id'/>)">上课</button>
                       </s:if>
                       <s:else>
                         <button class="btn btn-mini" disabled="disabled">上课</button>
@@ -109,5 +109,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/ajax-pushlet-client.js"></script> 
 <script>PL.userid='<s:property value="#session.user.id" />';</script>
 <script type="text/javascript" src="js/push.js"></script>
+<script>
+function takeclass(id)
+{
+	window.location.href='StartCourse.html?courseid='+id;
+}
+</script>
 </body>
 </html>

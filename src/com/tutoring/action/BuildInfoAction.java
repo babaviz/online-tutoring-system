@@ -1,5 +1,7 @@
 package com.tutoring.action;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -22,10 +24,14 @@ public class BuildInfoAction extends ActionSupport{
 	public void setUser(User user) {
 		this.user = user;
 	}*/
+	
+	private Timestamp time;
+	
 	public void setUserBiz(UserBiz userBiz) {
 		this.userBiz = userBiz;
 	}
 	public String execute() throws Exception{
+		time = new Timestamp((new Date()).getTime());
 		ActionContext ac = ActionContext.getContext();
 		Map<String , Object> session = ac.getSession();
 		//String email = (String) session.get("email");
@@ -38,6 +44,12 @@ public class BuildInfoAction extends ActionSupport{
 			return "tutor";
 		else
 			return null;
+	}
+	public Timestamp getTime() {
+		return time;
+	}
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
 
 }

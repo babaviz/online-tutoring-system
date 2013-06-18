@@ -48,6 +48,44 @@
 
 <body style="background:url(images/mainbackground.jpg)">
 
+
+			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;width:250px;left:60%;">
+            <div class="modal-header">
+              <button type="button" class="close"  onclick="closeTypeDlg()">×</button>
+              <h3 id="myModalLabel">评价</h3>
+            </div>
+            <div class="modal-body">
+              <p>课程内容：</p>
+              <select id="choosetype" name="type">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <p>老师讲课：</p>
+              <select id="choosetype" name="type">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <p>性价比：</p>
+              <select id="choosetype" name="type">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary"  onclick="defineType()"  type="button">确定</button>
+            </div>
+          </div>
+
+
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"> <a class="brand" href="#">零距离家教</a>
@@ -62,18 +100,7 @@
       <ul class="nav my_pull_right">
         <li><a class="modify_padding" href="BuildInfo"><i class="icon-user"></i>个人设置</a></li>
         <li><a class="modify_padding" href="#"><i class="icon-envelope"></i>消息</a></li>
-        <li><a class="modify_padding" href="Logout"><i class="icon-off"></i>登出</a></li>
-        <li><a class="modify_padding"><strong class="text-success">
-          <div class="sub_name">
-            <div>
-              <s:property value="#session.user.lastName"/>
-            </div>
-            <div>
-              <s:property value="#session.user.firstName"/>
-            </div>
-          </div>
-          </strong></a></li>
-      </ul>
+        <li><a class="modify_padding" href="Logout">登出</a></li></ul>
     </div>
   </div>
 </div>

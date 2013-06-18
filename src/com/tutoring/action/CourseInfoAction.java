@@ -27,6 +27,7 @@ public class CourseInfoAction extends ActionSupport {
 		ActionContext ac = ActionContext.getContext();
 		Course course=courseBiz.getCourseById(courseid);
 		Tutor tutor=course.getTutor();
+		ac.put("course", course);
 		ac.put("course_name", course.getName());
 		ac.put("tutor_name", tutor.getUser().getLastName()+tutor.getUser().getFirstName());
 		ac.put("tutor_user_id", tutor.getUser().getId()+"");

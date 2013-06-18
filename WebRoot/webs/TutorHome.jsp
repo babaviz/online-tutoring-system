@@ -31,9 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a class="btn-link modify_padding dropdown-toggle" id="message" data-toggle="dropdown">
         	<i class="icon-envelope"></i>消息</a>
         	<ul class="dropdown-menu" style="margin-left:100px">
-        	<li><a href="#" id="friendmsg">好友信息</a></li>
+        	<li><a href="FriendMessage" id="friendmsg">好友信息</a></li>
         	<li><a href="CourseMessage" id="coursemsg">课程信息</a></li>
-        	<li><a href="#" id="chatmsg">私信</a></li>
+        	<li><a href="Chatting" id="chatmsg">私信</a></li>
         	</ul>
         	
         </li>

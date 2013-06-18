@@ -66,26 +66,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
   <s:if test="#session.user.type=='1'">
   <s:set name="flag" value="0"/>
+  <s:if test="#course.student==null">
                             <s:iterator value="#session.user.student.applications">
-                              <s:if test="id==#root[1].id">
+                              <s:if test="id==#course.id">
                                 <s:set name="flag" value="1"/>
                               </s:if>
                             </s:iterator>
                             <s:if test="#flag==0">
   <button type="button" class="btn btn-success control_course_btn" id="apply_course" onclick="apply_course();">申请该课</button>
   </s:if>
+  
+  <s:if test="#flag==1">
    <button type="button" class="btn btn-info control_course_btn" id="cancel_application" onclick="cancel_application();">取消申请</button>
    </s:if>
+   </s:if>
+   </s:if>
+   <s:set name="flag" value="0"/>
+   <s:if test="#session.user.type=='2'">
+   <s:if test="#course.student!=null">
+   <s:iterator value="#session.user.tutor.courses">
+                              <s:if test="id==#root[1].id">
+                                <s:set name="flag" value="1"/>
+                              </s:if>
+                            </s:iterator>
+                            <s:if test="#flag==1">
     <button type="button" class="btn btn-danger control_course_btn" id="delete_course" onclick="delete_course();">删除该课</button>
+  </s:if>
+  </s:if>
+  </s:if>
   <div id="course_detail_label" class="detail_under_bkbd theLabel">课程信息</div>
-  <div id="start_time_detail" class="detail_under_bkbd theContent">开始时间：2013年6月28日</div>
-  <div id="duration_detail" class="detail_under_bkbd theContent">课程时长：120分钟</div>
-  <div id="course_type_detail" class="detail_under_bkbd theContent">类&nbsp;&nbsp;&nbsp;&nbsp;别：计算机</div>
-  <div id="course_description_detail" class="detail_under_bkbd theContent">简&nbsp;&nbsp;&nbsp;&nbsp;介：这是门非常非常非常牛逼的课！！！这是门非常非常非常牛逼的课！！！这是门非常非常非常牛逼的课！！！这是门非常非常非常牛逼的课！！！这是门非常非常非常牛逼的课！！！这是门非常非常非常牛逼的课！！！这是门非常非常非常牛逼的课！！！这是门非常非常非常牛逼的课！！！这是门非常非常非常牛逼的课！！！</div>
+  <div id="start_time_detail" class="detail_under_bkbd theContent">开始时间：<s:date name="#course.startTime" format="yyyy-MM-dd HH:mm:ss" /></div>
+  <div id="duration_detail" class="detail_under_bkbd theContent">课程时长：<s:property value="#course.duration"/>分钟</div>
+  <div id="course_type_detail" class="detail_under_bkbd theContent">类&nbsp;&nbsp;&nbsp;&nbsp;别：<s:property value="#course.subject.name"/></div>
+  <div id="course_description_detail" class="detail_under_bkbd theContent">简&nbsp;&nbsp;&nbsp;&nbsp;介：<s:property value="#course.description"/></div>
   <div id="tutor_detail_label" class="detail_under_bkbd theLabel">教师信息</div>
-  <div id="tutor_name_detail" class="detail_under_bkbd theContent" onclick="toUser(3);">姓名：刘岩</div>
-  <div id="tutor_eval_detail" class="detail_under_bkbd theContent">评分：0.0</div>
-  <div id="tutor_description_detail" class="detail_under_bkbd theContent">简介：这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！这是个非常非常非常屌的老师！！！</div>
+  <div id="tutor_name_detail" class="detail_under_bkbd theContent" onclick="toUser(3);">姓名：<s:property value="#tutor_name"/></div>
+  <div id="tutor_eval_detail" class="detail_under_bkbd theContent">评分：<s:property value="tutor_eval"/></div>
+  <div id="tutor_description_detail" class="detail_under_bkbd theContent">简介：<s:property value="tutor_description"/></div>
   </div>
 </div>
 <div id="down_right_content"></div>

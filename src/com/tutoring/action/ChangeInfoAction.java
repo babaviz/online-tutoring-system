@@ -1,5 +1,6 @@
 package com.tutoring.action;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class ChangeInfoAction extends ActionSupport implements ServletResponseAw
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private Timestamp time;
 	UserBiz userBiz;
 	public void setUserBiz(UserBiz userBiz) {
 		this.userBiz = userBiz;
@@ -139,5 +141,13 @@ public class ChangeInfoAction extends ActionSupport implements ServletResponseAw
 	}
 	public void setFileupload(File fileupload) {
 		this.fileupload = fileupload;
+	}
+
+	public Timestamp getTime() {
+		return time;
+	}
+
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
 }

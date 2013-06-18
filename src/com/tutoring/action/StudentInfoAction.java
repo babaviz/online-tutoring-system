@@ -1,5 +1,8 @@
 package com.tutoring.action;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.biz.UserBiz;
@@ -13,6 +16,7 @@ public class StudentInfoAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	
 	private int userid;
+	private Timestamp time;
 	
 	UserBiz userBiz;
 	
@@ -21,6 +25,7 @@ public class StudentInfoAction extends ActionSupport{
 	}
 
 	public String execute() throws Exception{
+		setTime(new Timestamp((new Date()).getTime()));
 		User user = userBiz.getUserInfoById(userid);
 		ActionContext ac = ActionContext.getContext();
 		ac.getValueStack().push(user);
@@ -33,6 +38,14 @@ public class StudentInfoAction extends ActionSupport{
 
 	public void setUserid(int userid) {
 		this.userid = userid;
+	}
+
+	public Timestamp getTime() {
+		return time;
+	}
+
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
 	
 }

@@ -23,7 +23,9 @@ public class CourseInfoAction extends ActionSupport {
 		this.courseBiz = courseBiz;
 	}
 	private int courseid;
+	private Timestamp time;
 	public String execute() throws Exception{
+		setTime(new Timestamp((new Date()).getTime()));
 		ActionContext ac = ActionContext.getContext();
 		Course course=courseBiz.getCourseById(courseid);
 		Tutor tutor=course.getTutor();
@@ -41,5 +43,11 @@ public class CourseInfoAction extends ActionSupport {
 	}
 	public void setCourseid(int courseid) {
 		this.courseid = courseid;
+	}
+	public Timestamp getTime() {
+		return time;
+	}
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
 }

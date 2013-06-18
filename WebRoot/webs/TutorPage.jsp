@@ -169,7 +169,115 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   </div>
   
-  <div id="down_right_content"></div>
+  <div id="down_right_content">
+  <s:if test="#session.user.type=='1'">
+<div class="accordion" id="accordion2">
+          <div class="accordion-group">
+            <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">我的老师</a> </div>
+            <div id="collapseOne" class="accordion-body collapse in">
+              <div class="accordion-inner">
+                <table class="table">
+                  <tbody>
+                    <s:iterator value="#session.mytutors">
+                      <tr>
+                        <td><a href="#" class="pull-left"> <img class="media-object" data-src="holder.js/26x26" src="../headimg/<s:property value='user.picture'/>" style="width:26px; height:26px;"/> </a></td>
+                        <td><p class="text-info">
+                            <s:property value="user.lastName"/>
+                            <s:property value="user.firstName"/>
+                          </p></td>
+                        <td style="padding-top:10px;"><a href="TutorInfo?userid=<s:property value='user.id'/>"><i class="icon-circle-arrow-right"></i></a></td>
+                      </tr>
+                    </s:iterator>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">我的课程</a> </div>
+            <div id="collapseTwo" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <table class="table">
+                  <tbody>
+                      <s:iterator value="#session.mycourses">
+                    
+                      <s:if test="time<endTime&&status==1">
+                    
+                    <s:if test="startTime<time&&endTime>time">
+                      <tr class="success"> 
+                    </s:if>
+                    <s:else>
+                      <tr> 
+                    </s:else>
+                  <td><s:property value="name"/></td>
+                    <td><s:if test="startTime<time&&endTime>time">
+                        <button class="btn btn-mini btn-success" onclick="takeclass(<s:property value='id'/>)">上课</button>
+                      </s:if>
+                      <s:else>
+                        <button class="btn btn-mini" disabled="disabled">上课</button>
+                      </s:else></td>
+                    <td><p class="text-warning">
+                        <s:date name="startTime" format="yyyy-MM-dd HH:mm:ss" />
+                        ~
+                        <s:date name="endTime" format="HH:mm:ss" />
+                      </p></td>
+                  </tr>
+                    </s:if>
+                  
+                    </s:iterator>
+                  
+                    </tbody>
+                  
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        </s:if>
+        <s:else>
+        <div class="accordion" id="accordion2">
+          <div class="accordion-group">
+            <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">我的课程</a> </div>
+            <div id="collapseTwo" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <table class="table">
+                  <tbody>
+                      <s:iterator value="#session.user.tutor.courses">
+                    
+                      <s:if test="time<endTime&&status==1">
+                    
+                    <s:if test="startTime<time&&endTime>time">
+                      <tr class="success"> 
+                    </s:if>
+                    <s:else>
+                      <tr> 
+                    </s:else>
+                  <td><s:property value="name"/></td>
+                    <td><s:if test="startTime<time&&endTime>time">
+                        <button class="btn btn-mini btn-success" onclick="takeclass(<s:property value='id'/>)">上课</button>
+                      </s:if>
+                      <s:else>
+                        <button class="btn btn-mini" disabled="disabled">上课</button>
+                      </s:else></td>
+                    <td><p class="text-warning">
+                        <s:date name="startTime" format="yyyy-MM-dd HH:mm:ss" />
+                        ~
+                        <s:date name="endTime" format="HH:mm:ss" />
+                      </p></td>
+                  </tr>
+                    </s:if>
+                  
+                    </s:iterator>
+                  
+                    </tbody>
+                  
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        </s:else>
+  </div>
   
 </div>
 

@@ -32,4 +32,13 @@ public class FlashInfoAction {
 		info+=c.getFlash_sn();
 		return info;
 	}
+	public String estimateByTutor(int a, int b , int c)
+	{
+		return "ok";
+	}
+	
+	public String estimateByStudent(int a , int b, int c)
+	{
+		return "ok";
+	}
 }

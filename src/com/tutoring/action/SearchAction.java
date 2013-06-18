@@ -1,6 +1,8 @@
 package com.tutoring.action;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.bean.SearchFactors;
@@ -15,8 +17,11 @@ public class SearchAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private Timestamp time;
 
 	public String execute() throws Exception {
+		time = new Timestamp((new Date()).getTime());
 		return SUCCESS;
 	}
 
@@ -56,5 +61,13 @@ public class SearchAction extends ActionSupport {
 	
 	public int getCourseResultNum(SearchFactors factors) {
 		return courseBiz.getCoursesNum(factors);
+	}
+
+	public Timestamp getTime() {
+		return time;
+	}
+
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
 }

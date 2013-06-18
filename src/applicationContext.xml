@@ -276,5 +276,6 @@
 	</bean>
 	<bean id="courseInfoAction" class="com.tutoring.action.CourseInfoAction">
 		<property name="courseBiz" ref="CourseBiz"></property>
+		<property name="tutorBiz" ref="TutorBiz"></property>
 	</bean>
 </beans>

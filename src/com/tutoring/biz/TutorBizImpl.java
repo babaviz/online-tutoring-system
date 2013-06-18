@@ -14,5 +14,10 @@ public class TutorBizImpl implements TutorBiz{
 		// TODO Auto-generated method stub
 		return tutorDAO.getTutorById(id);
 	}
+	@Override
+	public float getEvalAvgByTutorId(int id) {
+		// TODO Auto-generated method stub
+		return tutorDAO.getEvalAvgByTutorId(id);
+	}
 
 }

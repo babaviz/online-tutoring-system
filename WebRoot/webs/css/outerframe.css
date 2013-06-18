@@ -38,6 +38,7 @@
 
 #down_left_content
 {
+	min-height:700px;
 	float:left;
 	width:650px;
 	background-image:url(../images/half_translucent_2.png);
@@ -46,9 +47,9 @@
 #down_right_content
 {
 	float:left;
-	background-color:#6CF;
+	background:url(../images/half_translucent_5.png);
 	width:300px;
-	height:500px;
+	height:800px;
 }
 
 ::-webkit-scrollbar

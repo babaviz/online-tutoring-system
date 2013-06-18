@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+
+#down_left_content
+{
+	background-image:url(../images/bknd02.png);
+	background-repeat:no-repeat;
+	min-height:1500px;
+}
+
+#course_name_bkbd
+{
+	font-size:45px;
+	line-height:47px;
+	font-family:KaiTi;
+}
+
+#tutor_name_bkbd
+{
+	margin-top:30px;
+	font-size:25px;
+	line-height:25px;
+}
+
+.bkbd_content
+{
+	text-align:center;
+	color:#FFF;
+	margin-left:auto;
+	margin-right:auto;
+	padding-right:60px;
+	width:370px;
+}
+
+#blackboard_content
+{
+	margin-top:160px;
+	height:280px;
+}
+
+.control_course_btn
+{
+	margin-left:70px;
+	width:90px;
+}
+
+#apply_course
+{
+	
+}
+
+#cancel_application
+{
+	
+}
+
+#delete_course
+{
+	
+}
+
+.detail_under_bkbd
+{
+	color:#FFF;
+	font-family:STHeiti Light;
+}
+
+#course_detail_label
+{
+
+}
+
+.theContent.detail_under_bkbd
+{
+	margin-left:93px;
+	margin-top:5px;
+	width:470px;
+	line-height:22px;
+}
+
+.detail_under_bkbd.theLabel
+{
+	margin-bottom:10px;
+	margin-left:70px;
+	line-height:20px;
+	font-weight:600;
+	font-size:20px;
+	margin-top:20px;
+}

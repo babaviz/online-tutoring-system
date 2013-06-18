@@ -53,6 +53,8 @@
 		function updateclass(id)
 		{
 			alert("你申请的id为"+id+"的课程被接受");
-			handleapplicationaction.updateUser();
+			handleapplicationaction.updateUser(callback);
 			
 		}
+		
+		function callback(msg){}

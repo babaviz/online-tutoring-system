@@ -13,6 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
 <link href="css/outerframe.css" rel="stylesheet" type="text/css" />
+<link href="css/userPage.css" rel="stylesheet" type="text/css" />
 <title>无标题文档</title>
 </head>
 <body background="images/mainbackground.jpg">
@@ -49,7 +50,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div style="margin-top:30px">
   <div class="container">
     <div class="row">
-      <div class="span8"> </div>
+      <div class="span8"> 
+      
+      <div class="left">
+  <div class="dropshadow2"><div class="innerbox">
+  <img data-src="holder.js/64x64" src="../headimg/<s:property value='#session.user.picture'/>" style="height:150px;width:150px;"/>
+  </div></div>
+	<div id="tutor_result_template" class="">
+    <div class="result_right_content">
+      <div class="name"><s:property value="#session.user.lastName"/><s:property value="#session.user.firstName"/>
+      </div>
+     
+  
+      <div class="gender_img"></div>
+      <s:if test="#session.user.type=='1'">
+      <div class="user_type">学生</div>
+      </s:if>
+      <s:else>
+      <div class="user_type">老师</div>
+      </s:else>
+      <div class="user_point">积分：<s:property value="#session.user.point"/></div>
+
+    </div>
+  </div>
+
+  </div>
+  
+  
+  
+  <div class="border_grey">  
+  
+  	  <div class="base">基本信息</div>
+      <div class="demo_line_02"></div>
+      <div class="base2">性别：男</div>
+      <div class="base2">学校：<s:property value="#session.user.school"/></div>
+      <div class="base2">生日：<s:date name="#session.user.birthday" format="yyyy-MM-dd" /></div>
+      <div class="base">联系方式</div>
+            <div class="demo_line_02"></div>
+      <div class="base2">Email：<s:property value="#session.user.email"/></div>
+      <div class="base2">Phone：<s:property value="#session.user.phone"/></div>
+      <div class="base">教师简介</div>
+      <div class="demo_line_02"></div>
+      <div class="base2"><div class="intro_length"><s:property value="#session.user.tutor.description"/></div></div>
+      </div>
+      
+      </div>
       <div class="span4">
         <div class="accordion" id="accordion2">
           <div class="accordion-group">
@@ -122,6 +167,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" type="text/javascript" src="bootstrap/js/holder.js"></script>
 <script type="text/javascript" src="js/ajax-pushlet-client.js"></script> 
 <script>PL.userid='<s:property value="#session.user.id" />';</script>
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
+<script src='/OnlineTutoringSystem/dwr/interface/handleapplicationaction.js'></script> 
 <script type="text/javascript" src="js/push.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script>

@@ -141,4 +141,5 @@ public class ChattingAction extends ActionSupport{
 		sessionMaintainBiz.updateUser();
 	}
 	
+	
 }

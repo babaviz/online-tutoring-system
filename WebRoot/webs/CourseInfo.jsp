@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                               </s:if>
                             </s:iterator>
                             <s:if test="#flag==0">
-  <button type="button" class="btn btn-success control_course_btn" id="apply_course" onclick="apply_course();">申请该课</button>
+  <button type="button" class="btn btn-success control_course_btn" id="apply_course" onclick="apply_course(<s:property value='#course.id'/>,<s:property value='#course.tutor.id'/>);">申请该课</button>
   </s:if>
   
   <s:if test="#flag==1">
@@ -182,5 +182,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" type="text/javascript" src="js/common.js"></script>
 <script>PL.userid='<s:property value="#session.user.id" />';</script>
 <script type="text/javascript" src="js/push.js"></script>
+<script src='/OnlineTutoringSystem/dwr/interface/applycourseaction.js'></script> 
+<script type="text/javascript">
+function apply_course(courseid,tutorid)
+{
+	//alert(tutorid);
+	applycourseaction.applyForCourse(courseid,tutorid,applyCourseCallBack);
+}
+
+
+function applyCourseCallBack(msg)
+{
+	if(msg=="ok")
+	{
+		alert("申请成功");
+		
+		$("#applybtn").attr("disabled","disabled");
+		$("#applybtn").html("已申");
+		//$("#applybtn").removeClass("btn-success");
+	}
+}
+</script>
 </body>
 </html>

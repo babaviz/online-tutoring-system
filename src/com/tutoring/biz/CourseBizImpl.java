@@ -113,6 +113,8 @@ public class CourseBizImpl implements CourseBiz{
 	@Override
 	public void openCourse(User u, String startTime, String endTime, int price, String coursename, String description,String type) {
 		// TODO Auto-generated method stub
+		String str = StaticUtil.generateRandomString(10);
+		
 		
 		Course c = new Course();
 		String[] sTime = startTime.split(" ");
@@ -149,6 +151,7 @@ public class CourseBizImpl implements CourseBiz{
 		c.setEbta(0);
 		c.setEbtb(0);
 		c.setEbtc(0);
+		c.setFlash_sn(str);
 		
 		c.setStatus(0);
 		

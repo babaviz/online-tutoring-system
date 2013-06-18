@@ -39,9 +39,20 @@
 			{
 				$("#chatmsg").html('私信');
 			}
+			if(event.get("application"+PL.userid)!=null&&event.get("application"+PL.userid)!="undefined")
+			{
+				updateclass(event.get("application"+PL.userid));
+			}
 		}
 		
 		function cancelListen()
 		{
 			PL.leave();
+		}
+		
+		function updateclass(id)
+		{
+			alert("你申请的id为"+id+"的课程被接受");
+			handleapplicationaction.updateUser();
+			
 		}

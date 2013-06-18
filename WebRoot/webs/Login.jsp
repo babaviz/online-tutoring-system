@@ -24,7 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	width: 800px;
 }
 .mybt{
-	 border:0px;
+	font-family:KaiTi;
+	color:#00F;
+	border:0px;
 	width:200px; 
 	height:115px;
 	font-size:xx-large;
@@ -55,6 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div style="margin-top:100px">
   <div class="container">
     <div id="outerframe">
+    <img src="images/title.png" />
       <div style="width:600px; height:345px;float:left;" id="intro">
         <div id="myCarousel" class="carousel slide">
           <ol class="carousel-indicators">
@@ -64,28 +67,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li data-target="#myCarousel" data-slide-to="3" class=""></li>
           </ol>
           <div class="carousel-inner">
-            <div class="item active"> <img src="bootstrap/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+            <div class="item active"> <img src="images/login_pic_03.jpg" alt="">
               <div class="carousel-caption">
-                <h4>First Thumbnail label</h4>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <h4 style="font-size:20px;">觉得高级学府离你很远吗？</h4>
+                <p style="line-height:23px;">其实并不是，也许就在你的身边，也许就在你面对的屏幕之后，也许轻点鼠标你就能找到合适的导师！想要知道为什么吗？来试试我们的在线辅导课程吧！</p>
               </div>
             </div>
-            <div class="item"> <img src="bootstrap/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+            <div class="item"> <img src="images/lecture-hall.jpg" alt="">
               <div class="carousel-caption">
-                <h4>Second Thumbnail label</h4>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <h4 style="font-size:20px;">觉得传播知识很过瘾？</h4>
+                <p style="line-height:23px;">那么这里对你来说一定是个好地方！你可以充分发挥你的水准，在教导别人的同时巩固自己的知识，受人尊重又能够自我满足。来我们这里开始你的导师之路吧！</p>
               </div>
             </div>
-            <div class="item"> <img src="bootstrap/img/bootstrap-mdo-sfmoma-03.jpg" alt="">
+            <div class="item"> <img src="images/login_pic.jpg" alt="">
               <div class="carousel-caption">
-                <h4>Third Thumbnail label</h4>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <h4 style="font-size:20px;">觉得有些知识依旧一知半解？</h4>
+                <p style="line-height:23px;">那为何不快点加入我们的在线一对一课程呢！在这里你能够找到你所想要学习的知识，而且因为是一对一授课，学习效率相比其他课堂高出许多！并且学习时间更加自由，学习过程更加轻松！</p>
               </div>
             </div>
-            <div class="item"> <img src="bootstrap/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+            <div class="item"> <img src="images/login_pic_2.png" alt="">
               <div class="carousel-caption">
-                <h4>Second Thumbnail label</h4>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <h4 style="font-size:20px;">觉得有高效的学习方法但却无处分享？</h4>
+                <p style="line-height:23px;">加入我们，你就能够以导师的身份分享你的经验，在口言相传中找到学习的捷径，在教学的过程中领悟更优秀的学习方法，一边分享一边授业解惑，指点迷津。</p>
               </div>
             </div>
           </div>
@@ -93,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
       
      <!-- 登录-->
- 	<div style="width:600px; height:345px;float:left; display:none;background:#0C3;" id="login">
+ 	<div style="width:600px; height:345px;float:left; display:none;background:url(images/half_translucent_3.png);" id="login">
   <div class="container" style="margin-top:100px;">
   <div class="row">
       <form class="form-horizontal" action="LoginAction" method="post">
@@ -128,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 	<!--注册-->
-    <div class="" style="width:600px; height:345px;float:left; background:url(images/half_translucent.png) repeat;display:none;overflow:auto;" id="register">
+    <div class="" style="width:600px; height:345px;float:left; background:url(images/half_translucent_4.png) repeat;display:none;overflow:auto;" id="register">
   <div class="container" style="margin-top:50px;">
   <div class="row">
       <form class="form-horizontal" action="RegisterAction" method="post" id="registerform">
@@ -199,15 +202,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
       <div style="margin-left:600px;width:200px">
       <div style="background:#0C3; height:115px;"  onmouseover="tologin();">
-      <button class=" mybt" style="background-color:#0C3;">登录
+      <button class=" mybt" style="background-color:#99d9ea;">登录
       </button>
       </div>
       <div style="background-color:#06F;height:115px;" onmousemove="toregister()">
-      <button class=" mybt" style="background-color:#06F;">注册
+      <button class=" mybt" style="background-color:#999EE3;">注册
       </button>
       </div>
       <div style=" height:115px;"; onmouseover="tointro()">
-      <button class=" mybt" style="background-color:#003;">了解我们
+      <button class=" mybt" style="background-color:#CC9D84;">了解我们
       </button>
       </div>
     </div>

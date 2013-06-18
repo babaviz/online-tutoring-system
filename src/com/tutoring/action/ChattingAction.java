@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 
 import nl.justobjects.pushlet.core.Dispatcher;
 import nl.justobjects.pushlet.core.Event;
@@ -110,6 +113,12 @@ public class ChattingAction extends ActionSupport{
 	}
 	
 	public void Unicast(String content){
+		try {
+			content=URLEncoder.encode(content,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Event event = Event.createDataEvent("/tutoring/numberofnotice");
 		event.setField("content", content);
 		Dispatcher.getInstance().unicast(event, currentReceiver.getId()+"");

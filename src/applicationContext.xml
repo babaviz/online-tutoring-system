@@ -188,7 +188,7 @@
 
 	<bean id="makeTopicAction" class="com.tutoring.action.MakeTopicAction"></bean>
 
-	<bean id="chattingAction" class="com.tutoring.action.ChattingAction">
+	<bean id="chattingAction" class="com.tutoring.action.ChattingAction" scope="prototype">
 		<property name="messageBiz" ref="MessageBiz"></property>
 		<property name="sessionMaintainBiz" ref="SessionMaintainBiz"></property>
 		<property name="userBiz" ref="UserBiz"></property>

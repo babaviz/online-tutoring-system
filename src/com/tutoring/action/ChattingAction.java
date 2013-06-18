@@ -59,6 +59,7 @@ public class ChattingAction extends ActionSupport{
 			ComparatorMessage comparator = new ComparatorMessage();
 			Collections.sort(receives,comparator);
 			currentReceiver = receives.get(receives.size()-1).getSender();
+			
 		}
 		else
 		{
@@ -66,7 +67,7 @@ public class ChattingAction extends ActionSupport{
 		}
 		List<Message> msglist = messageBiz.getOrderedMessagesWithUser(user, currentReceiver);
 		ac.put("msglist", msglist);
-		
+		System.out.println(user.getEmail()+" in execute currentReceiver:"+currentReceiver.getEmail());
 		return SUCCESS;
 	}
 
@@ -84,7 +85,11 @@ public class ChattingAction extends ActionSupport{
 	{
 		ActionContext ac = ActionContext.getContext();
 		Map<String, Object>session = ac.getSession();
-		messageBiz.sendMessage((User)session.get("user"), receiverid, content);
+		User user = (User)session.get("user");
+		messageBiz.sendMessage(user, receiverid, content);
+		//System.out.println(currentReceiver.getEmail());
+		//System.out.println(user.getEmail()+" send to currentReceiver:"+currentReceiver.getEmail());
+		currentReceiver = userBiz.getUserInfoById(receiverid);
 		sessionMaintainBiz.updateUser();
 		Unicast(content);
 		return "ok";
@@ -99,7 +104,7 @@ public class ChattingAction extends ActionSupport{
 	}
 	
 	public void Unicast(String content){
-		Event event = Event.createDataEvent("/tutoring/chat");
+		Event event = Event.createDataEvent("/tutoring/numberofnotice");
 		event.setField("content", content);
 		Dispatcher.getInstance().unicast(event, currentReceiver.getId()+"");
 	}

@@ -184,7 +184,7 @@ function SendMessageCallback(msg)
 		PL.userid='<s:property value="#session.user.id" />';
 		PL._init();
 		PL.joinListen("/tutoring/numberofnotice");
-		PL.joinListen("/tutoring/chat");
+
 		function onData(event)
 		{
 			//alert(event.get("he"));
@@ -227,9 +227,25 @@ function SendMessageCallback(msg)
 			
 			
 			
-			if(event.get("content")!="")
+			if(event.get("content")!=null)
 			{
-				alert("content");
+				//alert(event.get("content"));
+				var date = new Date();
+				$("#messages").append(
+					"<div class=\"messageboxa\">"
+					+"<div class=\"head\">"
+		            +"<img class=\"media-object\" data-src=\"holder.js/32x32\" src=\"../headimg/"+"<s:property value='currentReceiver.picture'/>"+"\" style=\"height:32px;width:32px;\"/>"
+		            +"</div>"
+		            
+		            +"<div class=\"content\">"
+		            +"<p class=\"text-info\"><small>"+event.get("content")+"</small></p>"
+		            +"<p class=\"text-info\" align=\"right\"><small>"+date.toLocaleString( )+"</small></p>"
+		            +"</div>"
+		            
+		            
+		        +"</div>");
+		        
+		        $("#messages")[0].scrollTop = $("#messages")[0].scrollHeight;
 			}
 		}
 		

@@ -134,6 +134,7 @@
 	</bean>
 	
 	<bean id="NotificationBiz" class="com.tutoring.biz.NotificationBizImpl">
+		<property name="userDAO" ref="UserDAO"></property>
 		<property name="courseDAO" ref="CourseDAO"></property>
 		<property name="studentDAO" ref="StudentDAO"></property>
 		<property name="notificationDAO" ref="NotificationDAO"></property>

@@ -64,16 +64,24 @@ public class ChattingAction extends ActionSupport{
 			}
 			else
 			{
-				
+				List<User> ul = new ArrayList<User>(user.getFriendsIHave());
+				if(ul.size()>0)
+					currentReceiver = ul.get(0);
+				else
+					currentReceiver = null;
 			}
 		}
 		else
 		{
 			currentReceiver = userBiz.getUserInfoById(userid);
 		}
-		List<Message> msglist = messageBiz.getOrderedMessagesWithUser(user, currentReceiver);
-		ac.put("msglist", msglist);
-		System.out.println(user.getEmail()+" in execute currentReceiver:"+currentReceiver.getEmail());
+		if(currentReceiver != null)
+		{
+			List<Message> msglist = messageBiz.getOrderedMessagesWithUser(user, currentReceiver);
+			ac.put("msglist", msglist);
+		}
+		
+		//System.out.println(user.getEmail()+" in execute currentReceiver:"+currentReceiver.getEmail());
 		return SUCCESS;
 	}
 

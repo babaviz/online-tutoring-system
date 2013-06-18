@@ -29,6 +29,19 @@ function acceptCallback(msg)
 		window.location = window.location;
 	}
 }
+function refuse(requestuserid)
+{
+	handlefriendaction.refuseFriend(requestuserid,refuseCallback);
+}
+
+function refuseCallback(msg)
+{
+	if(msg=="ok")
+	{
+		alert("操作成功");
+		window.location = window.location;
+	}
+}
 </script>
 <title>无标题文档</title>
 </head>
@@ -86,7 +99,7 @@ function acceptCallback(msg)
                 <p align="right">
                 <s:if test="state==0">
             		<button class="btn btn-success" onclick="accept(<s:property value='fromuser.id'/>,<s:property value='id'/>)">接受</button>
-            		<button class="btn btn-danger">拒绝</button>
+            		<button class="btn btn-danger" onclick="refuse(<s:property value='fromuser.id'/>)">拒绝</button>
             	</s:if>
             	<s:elseif test="state==1">
             		<button class="btn btn-success" disabled="disabled">已处理</button>

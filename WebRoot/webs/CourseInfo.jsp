@@ -58,14 +58,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="down_left_content">
   <div id="blackboard_content">
   <div class="bkbd_content" id="course_name_bkbd">
-  专业方向综合项目
+  <s:property value="#course_name"/>
   </div>
   <div class="bkbd_content" id="tutor_name_bkbd" onclick="toUser(3);">
-  老师：刘岩
+  老师：<s:property value="#tutor_name"/>
   </div>
   </div>
+  <s:if test="#session.user.type=='1'">
+  <s:set name="flag" value="0"/>
+                            <s:iterator value="#session.user.student.applications">
+                              <s:if test="id==#root[1].id">
+                                <s:set name="flag" value="1"/>
+                              </s:if>
+                            </s:iterator>
+                            <s:if test="#flag==0">
   <button type="button" class="btn btn-success control_course_btn" id="apply_course" onclick="apply_course();">申请该课</button>
+  </s:if>
    <button type="button" class="btn btn-info control_course_btn" id="cancel_application" onclick="cancel_application();">取消申请</button>
+   </s:if>
     <button type="button" class="btn btn-danger control_course_btn" id="delete_course" onclick="delete_course();">删除该课</button>
   <div id="course_detail_label" class="detail_under_bkbd theLabel">课程信息</div>
   <div id="start_time_detail" class="detail_under_bkbd theContent">开始时间：2013年6月28日</div>

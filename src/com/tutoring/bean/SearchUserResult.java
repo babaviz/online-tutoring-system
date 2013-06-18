@@ -1,6 +1,13 @@
 package com.tutoring.bean;
 
 public class SearchUserResult {
+	public String headimg;
+	public String getHeadimg() {
+		return headimg;
+	}
+	public void setHeadimg(String headimg) {
+		this.headimg = headimg;
+	}
 	public String name;
 	public String type;
 	public String point;

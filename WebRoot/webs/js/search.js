@@ -6,6 +6,7 @@ function createTab($search_type)
 	$tabNO++;
 	var $x=$("#tabTemplate").clone(true);
 	$x.find("a").attr("href","#tab_"+$tabNO);
+	$factorsMap.put("tab_"+$tabNO,$factors);
 	$x.find("a").find("div").html($factors.course_type);
 	$("#myTab:last").append($x);
 	
@@ -14,16 +15,20 @@ function createTab($search_type)
 	$tabContent.attr("id","tab_"+$tabNO);
 	$tabContent.find("p").text("xxx"+$tabNO+"zzz");
 	$("#myTabContent").append($tabContent);
-	add_factors($tabContent,$factors,$search_type);
+	add_factors($tabContent,$factors);
 	$x.find("a").tab('show');
-	searchAction.getResult($factors,function myCallBack(data)
+	searchAction.getCourseResultNum($factors,function myCallBack(resultNum)
 	{
-		handleSearchCourseCallBack(data,$tabContent);
+		//alert("resultNum:"+resultNum);
+		searchAction.getResult($factors,1, function myCallBack(data)
+		{
+			handleSearchCourseCallBack(data,$tabContent,resultNum,1);
+		});
 	});
 	$("html,body").animate({scrollTop:$("#down_content").offset().top-50},300);
 }
 
-function handleSearchCourseCallBack(data,$tabContent)
+function handleSearchCourseCallBack(data,$tabContent,resultNum,pageNO)
 {
 	//alert(data.length);
 	for(var i=0;i<data.length;i++)
@@ -38,11 +43,50 @@ function handleSearchCourseCallBack(data,$tabContent)
 		$one_result.find(".course_start_time").text(data[i].start_time);
 		$one_result.find(".course_duration").text(data[i].course_duration+"分钟");
 		$one_result.find(".course_description").text(data[i].course_description);
+		$one_result.find(".tutor_img").css("background-image","url(\"../headimg/"+data[i].headimg+"\")");
 		$tabContent.append($one_result);
 	}
+	add_btn_group_courses($tabContent,resultNum,pageNO)
 }
 
-function add_factors($tabContent,$factors,$search_type)
+function changeCourseResultPage(targetA)
+{
+	var $tabContent=$(targetA).parent().parent();
+	var pageNO=$.trim($(targetA).text());
+	$tabContent.empty();
+	var $factors=$factorsMap.get($tabContent.attr("id"));
+	add_factors($tabContent,$factors);
+	searchAction.getCourseResultNum($factors,function myCallBack(resultNum)
+	{
+		searchAction.getResult($factors,pageNO,function myCallBack(data)
+		{
+			handleSearchCourseCallBack(data,$tabContent,resultNum,pageNO);
+		});
+	});
+}
+
+function add_btn_group_courses($tabContent,resultNum,activeNO)
+{
+	var $btnGroup=$('<div class="btn-group search" style=""></div>');
+	var pageNum=Math.ceil(resultNum/10);
+	for(var i=1;i<=pageNum;i++)
+	{
+		var $tempBtn;
+		if(i==activeNO)
+		{
+			$tempBtn=$('<a class="btn btn-link active" href="javascript:void(0)" onclick="changeCourseResultPage(this);"></a>');
+		}
+		else
+		{
+			$tempBtn=$('<a class="btn btn-link unactive" href="javascript:void(0)" onclick="changeCourseResultPage(this);"></a>');
+		}
+		$tempBtn.text(i+"");
+		$btnGroup.append($tempBtn);
+	}
+	$tabContent.append($btnGroup);
+}
+
+function add_factors($tabContent,$factors)
 {
 	var $one_factor;
 	var $search_factors=$tabContent.find(".search_factors");
@@ -72,67 +116,63 @@ function add_factors($tabContent,$factors,$search_type)
 		$search_factors.append($one_factor);
 	}
 	
-	if($search_type==1)
+	if(($factors.course_price_f!="")&&($factors.course_price_t!=""))
 	{
-	  
-		if(($factors.course_price_f!="")&&($factors.course_price_t!=""))
-		{
-			$one_factor=$("#factorTemplate").clone(true);
-			$one_factor.text("价格："+$factors.course_price_f+"-"+$factors.course_price_t+"元");
-			$search_factors.append($one_factor);
-		}
-		else if(($factors.course_price_f!="")&&($factors.course_price_t==""))
-		{
-			$one_factor=$("#factorTemplate").clone(true);
-			$one_factor.text("价格：大于"+$factors.course_price_f+"元");
-			$search_factors.append($one_factor);
-		}
-		else if(($factors.course_price_f=="")&&($factors.course_price_t!=""))
-		{
-			$one_factor=$("#factorTemplate").clone(true);
-			$one_factor.text("价格：小于"+$factors.course_price_t+"元");
-			$search_factors.append($one_factor);
-		}
-		
-		if($factors.tutor_description!="")
-		{
-			$one_factor=$("#factorTemplate").clone(true);
-			$one_factor.text("老师简介："+$factors.tutor_description);
-			$search_factors.append($one_factor);
-		}
-		
-		if(($factors.course_time_f!="")&&(($factors.course_time_t!="")))
-		{
-			$one_factor=$("#factorTemplate").clone(true);
-			$one_factor.text("上课时长："+$factors.course_time_f+"-"+$factors.course_time_t+"分钟");
-			$search_factors.append($one_factor);
-		}
-		else if(($factors.course_time_f=="")&&(($factors.course_time_t!="")))
-		{
-			$one_factor=$("#factorTemplate").clone(true);
-			$one_factor.text("上课时长：小于"+$factors.course_time_t+"分钟");
-			$search_factors.append($one_factor);
-		}
-		else if(($factors.course_time_f!="")&&(($factors.course_time_t=="")))
-		{
-			$one_factor=$("#factorTemplate").clone(true);
-			$one_factor.text("上课时长：大于"+$factors.course_time_f+"分钟");
-			$search_factors.append($one_factor);
-		}
-		
-		if($factors.course_start_time!="")
-		{
-			$one_factor=$("#factorTemplate").clone(true);
-			$one_factor.text("上课时间："+$factors.course_start_time+" 之后");
-			$search_factors.append($one_factor);
-		}
-		
-		if($factors.tutor_eval!="")
-		{
-			$one_factor=$("#factorTemplate").clone(true);
-			$one_factor.text("教师评分："+$factors.tutor_eval);
-			$search_factors.append($one_factor);
-		}
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("价格："+$factors.course_price_f+"-"+$factors.course_price_t+"元");
+		$search_factors.append($one_factor);
+	}
+	else if(($factors.course_price_f!="")&&($factors.course_price_t==""))
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("价格：大于"+$factors.course_price_f+"元");
+		$search_factors.append($one_factor);
+	}
+	else if(($factors.course_price_f=="")&&($factors.course_price_t!=""))
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("价格：小于"+$factors.course_price_t+"元");
+		$search_factors.append($one_factor);
+	}
+	
+	if($factors.tutor_description!="")
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("老师简介："+$factors.tutor_description);
+		$search_factors.append($one_factor);
+	}
+	
+	if(($factors.course_time_f!="")&&(($factors.course_time_t!="")))
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("上课时长："+$factors.course_time_f+"-"+$factors.course_time_t+"分钟");
+		$search_factors.append($one_factor);
+	}
+	else if(($factors.course_time_f=="")&&(($factors.course_time_t!="")))
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("上课时长：小于"+$factors.course_time_t+"分钟");
+		$search_factors.append($one_factor);
+	}
+	else if(($factors.course_time_f!="")&&(($factors.course_time_t=="")))
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("上课时长：大于"+$factors.course_time_f+"分钟");
+		$search_factors.append($one_factor);
+	}
+	
+	if($factors.course_start_time!="")
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("上课时间："+$factors.course_start_time+" 之后");
+		$search_factors.append($one_factor);
+	}
+	
+	if($factors.tutor_eval!="")
+	{
+		$one_factor=$("#factorTemplate").clone(true);
+		$one_factor.text("教师评分："+$factors.tutor_eval);
+		$search_factors.append($one_factor);
 	}
 }
 
@@ -325,8 +365,9 @@ function handleSearchUserCallBack(data,$tabContent,resultNum,activeNO)
 		}
 		$one_result.find(".name").text(data[i].name);
 		$one_result.find(".user_point").text("积分"+data[i].point);
+		$one_result.find(".user_img").css("background-image","url(\"../headimg/"+data[i].headimg+"\")");
 	}
-	add_btn_group($tabContent,resultNum,activeNO);
+	add_btn_group_users($tabContent,resultNum,activeNO);
 	//alert($factorsMap.get("tab_6").user_name);
 }
 
@@ -337,7 +378,7 @@ function get_seatchUserFactors()
 	return $factors;
 }
 
-function add_btn_group($tabContent,resultNum,activeNO)
+function add_btn_group_users($tabContent,resultNum,activeNO)
 {
 	var $btnGroup=$('<div class="btn-group search" style=""></div>');
 	var pageNum=Math.ceil(resultNum/10);

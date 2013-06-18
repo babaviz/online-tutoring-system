@@ -292,8 +292,6 @@ function test2()
 </script> 
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
 <script src='/OnlineTutoringSystem/dwr/interface/searchAction.js'></script> 
-<script src='/OnlineTutoringSystem/dwr/interface/searchFactors.js'></script>
-
 <script type="text/javascript" src="js/ajax-pushlet-client.js"></script> 
 <script type="text/javascript">
 		PL.userid='<s:property value="#session.user.id" />';

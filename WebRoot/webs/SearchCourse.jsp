@@ -350,5 +350,6 @@ function test2()
 <script type="text/javascript" src="js/ajax-pushlet-client.js"></script> 
 <script>PL.userid='<s:property value="#session.user.id" />';</script>
 <script type="text/javascript" src="js/push.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 </body>
 </html>

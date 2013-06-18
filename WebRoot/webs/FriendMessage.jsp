@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
 <script src='/OnlineTutoringSystem/dwr/interface/handlefriendaction.js'></script> 
+<script type="text/javascript" src='js/common.js'></script> 
 <script type="text/javascript">
 function accept(requestuserid,noticeid)
 {
@@ -46,7 +47,7 @@ function refuseCallback(msg)
 <title>无标题文档</title>
 </head>
 
-<body>
+<body background="images/mainbackground.jpg">
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"> <a class="brand" href="#">零距离家教</a>

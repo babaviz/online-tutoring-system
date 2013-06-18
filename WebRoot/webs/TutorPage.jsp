@@ -292,6 +292,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/ajax-pushlet-client.js"></script> 
 <script>PL.userid='<s:property value="#session.user.id" />';</script>
 <script type="text/javascript" src="js/push.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
 <script src='/OnlineTutoringSystem/dwr/interface/applycourseaction.js'></script> 
 <script src='/OnlineTutoringSystem/dwr/interface/handlefriendaction.js'></script> 

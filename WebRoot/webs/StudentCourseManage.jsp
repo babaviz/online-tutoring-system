@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css/buildinfo.css" rel="stylesheet" type="text/css" />
 <title>无标题文档</title>
 </head>
-<body>
+<body background="images/mainbackground.jpg">
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"> <a class="brand" href="#">零距离家教</a>
@@ -153,6 +153,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="js/ajax-pushlet-client.js"></script> 
+<script type="text/javascript" src="js/common.js"></script> 
 <script>PL.userid='<s:property value="#session.user.id" />';</script>
 <script type="text/javascript" src="js/push.js"></script>
 <script>

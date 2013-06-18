@@ -26,11 +26,12 @@ function getInfoCallBack(msg)
 	user = msgarray[0];
 	usertype = msgarray[1];
 	isReady = true;
+	//alert(msgarray);
 }
 
 function customizedFunc()
 {
-    return getUserType();
+	getInfo();
 }
 
 
@@ -45,6 +46,7 @@ function null_function()
 
 function getIsReady()
 {
+	//alert(isReady);
     return isReady;
 }
 
@@ -61,7 +63,7 @@ function getUserName()
 }
 
 
-function getCourseSn()
+function getCourseID()
 {
 	return coursesn;
 }

@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css/chatting.css" rel="stylesheet" type="text/css" />
 <title>无标题文档</title>
 </head>
-<body>
+<body style="background:url(images/mainbackground.jpg);">
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"> <a class="brand" href="#">零距离家教</a>
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="myTabContent" class="tab-content">
       
       <div id="tab_20" class="tab-pane in active"  style="overflow:hidden">
-        <div style="width:620px;height:300px;background:#FF3;overflow:auto" id="messages">
+        <div style="margin-left:20px;width:610px;height:300px;background:url(images/half_translucent_3.png);overflow:auto" id="messages">
         <s:iterator value="#msglist">
         <s:if test="sender.id==#session.user.id">
         
@@ -107,8 +107,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         
         <br/>
-        <textarea rows="4" style="width:600px" id="sendbox"></textarea><br />
-        <button class="btn btn-mini btn-success" onclick="SendMessage()">发送</button>
+        <textarea rows="4" style="width:600px;margin-left:20px;" id="sendbox"></textarea><br />
+        <button class="btn btn-mini btn-success" style="width:80px;height:30px;margin-left:22px;font-size:16px;" onclick="SendMessage()">发送</button>
       </div>
     </div>
   </div>

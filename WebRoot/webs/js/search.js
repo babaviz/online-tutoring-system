@@ -19,7 +19,7 @@ function createTab($search_type)
 	$x.find("a").tab('show');
 	searchAction.getCourseResultNum($factors,function myCallBack(resultNum)
 	{
-		alert("resultNum:"+resultNum);
+		//alert("resultNum:"+resultNum);
 		searchAction.getResult($factors,1, function myCallBack(data)
 		{
 			handleSearchCourseCallBack(data,$tabContent,resultNum,1);

@@ -62,7 +62,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="result_right_content">
       <div class="name"><s:property value="lastName"/><s:property value="firstName"/>
       </div>
-      <p class="name2"><button type="submit" class="btn" >加为好友</button></p>
+      <p class="name2"><s:set name="flag" value="0"/>
+                            <s:iterator value="#session.user.friendsIHave">
+                            
+                              <s:if test="id==#root[1].id">
+                                <s:set name="flag" value="1"/>
+                              </s:if>
+                            </s:iterator>
+                            <s:if test="#flag==0">
+      <button type="button" class="btn" onclick="applyforFriend(<s:property value='id'/>)">加为好友</button>
+      </s:if>
+      <s:else>
+      <button type="button" class="btn" disabled="disabled">已为好友</button>
+      </s:else></p>
   
       <div class="gender_img"></div>
       <s:if test="type=='1'">
@@ -210,5 +222,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/ajax-pushlet-client.js"></script> 
 <script>PL.userid='<s:property value="#session.user.id" />';</script>
 <script type="text/javascript" src="js/push.js"></script>
+<script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
+<script src='/OnlineTutoringSystem/dwr/interface/handlefriendaction.js'></script> 
+<script>
+function applyforFriend(id)
+{
+	handlefriendaction.applyForFriend(id,applyCallBack);
+}
+
+function applyCallBack(msg)
+{
+	if(msg=="ok")
+	{
+		alert("操作成功");
+	}
+}
+</script>
 </body>
 </html>

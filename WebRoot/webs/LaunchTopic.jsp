@@ -65,15 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li><a href="AllTopics">帖子全览</a></li>
           <li><a href="MyTopics">我的帖子</a></li>
           <li class="active"><a href="MakeTopic">发表帖子</a></li>
-          <li class="dropdown-submenu"><a href="#">分类</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">数学</a></li>
-              <li><a href="#">语文</a></li>
-              <li><a href="#">物理</a></li>
-              <li><a href="#">化学</a></li>
-              <li><a href="#">英语</a></li>
-            </ul>
-          </li>
+          
         </ul>
       </div>
       <div class="span9"> 

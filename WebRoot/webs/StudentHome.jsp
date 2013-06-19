@@ -89,9 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="demo_line_02"></div>
       <div class="base2">Email：<s:property value="#session.user.email"/></div>
       <div class="base2">Phone：<s:property value="#session.user.phone"/></div>
-      <div class="base">教师简介</div>
-      <div class="demo_line_02"></div>
-      <div class="base2"><div class="intro_length"><s:property value="#session.user.tutor.description"/></div></div>
+      
       </div>
       
       </div>

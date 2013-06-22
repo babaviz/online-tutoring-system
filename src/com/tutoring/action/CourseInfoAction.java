@@ -6,11 +6,9 @@ import java.util.Date;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.biz.CourseBiz;
-import com.tutoring.biz.UserBiz;
 import com.tutoring.biz.TutorBiz;
 import com.tutoring.entity.Course;
 import com.tutoring.entity.Tutor;
-import com.tutoring.entity.User;
 
 public class CourseInfoAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;

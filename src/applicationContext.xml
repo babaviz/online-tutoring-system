@@ -223,7 +223,7 @@
 		<property name="tutorBiz" ref="TutorBiz"></property>
 	</bean>
 
-	<bean id="courseManageAction" class="com.tutoring.action.CourseManageAction">
+	<bean id="courseManageAction" class="com.tutoring.action.CourseManageAction" scope="prototype">
 		<property name="courseBiz" ref="CourseBiz"></property>
 	</bean>
 

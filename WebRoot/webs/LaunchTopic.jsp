@@ -102,11 +102,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="modal-body">
               <select multiple="multiple" id="choosetype" name="type">
+                <option>计算机</option>
                 <option>数学</option>
                 <option>英语</option>
                 <option>语文</option>
                 <option>物理</option>
                 <option>化学</option>
+                <option>地理</option>
+                <option>生物</option>
+                <option>历史</option>
+                <option>政治</option>
               </select>
             </div>
             <div class="modal-footer">

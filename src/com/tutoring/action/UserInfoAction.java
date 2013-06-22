@@ -1,9 +1,5 @@
 package com.tutoring.action;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutoring.biz.UserBiz;
 import com.tutoring.entity.User;
@@ -25,7 +21,7 @@ public class UserInfoAction extends ActionSupport {
 		this.userBiz = userBiz;
 	}
 	public String execute() throws Exception{
-		ActionContext ac = ActionContext.getContext();
+		
 		User user = userBiz.getUserInfoById(userid);
 		if(user.getType()=='1')
 			return "student";

@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
       
       </div>
-      <div class="span4">
+      <div class="span4" style="background:url(images/half_translucent_5.png)">
         <div class="accordion" id="accordion2">
           <div class="accordion-group">
             <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">我的老师</a> </div>

@@ -143,55 +143,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </table>
       </div>
       <div class="tab-pane" id="opencourse">
-        <form class="form-horizontal" action="OpenCourseAction" method="post">
+        <form class="form-horizontal" action="OpenCourseAction" method="post" id="classform">
           <fieldset class="control-group">
-            <div class="control-group">
+            <div class="control-group" id="_name">
               <label class="setting_detail_label" for="input01">课程名称</label>
               <div class="setting_detail_info">
-                <input type="text" class="input-large" placeholder="输入课程名称" id="input_lastname" name="coursename"/>
+                <input type="text" class="input-large" placeholder="输入课程名称" id="input_name" name="coursename"/>
+                <span class="help-inline" id="name_info"></span>
               </div>
             </div>
-            <div class="control-group">
+            <div class="control-group" id="_starttime">
               <label class="setting_detail_label" for="input01">开始时间</label>
               <div class="setting_detail_info">
-                <input type="text" class="input-large" placeholder="yyyy-mm-dd hh:mm:ss" id="input_lastname" name="startTime"/>
+                <input type="text" class="input-large" placeholder="yyyy-mm-dd hh:mm:ss" id=input_starttime name="startTime"/>
+                <span class="help-inline" id="starttime_info"></span>
               </div>
             </div>
-            <div class="control-group">
+            <div class="control-group" id="_endtime">
               <label class="setting_detail_label" for="input01">结束时间</label>
               <div class="setting_detail_info">
-                <input type="text" class="input-large" placeholder="yyyy-mm-dd hh:mm:ss" id="input_lastname" name="endTime"/>
+                <input type="text" class="input-large" placeholder="yyyy-mm-dd hh:mm:ss" id="input_endtime" name="endTime"/>
+                <span class="help-inline" id="endtime_info"></span>
               </div>
             </div>
-            <div class="control-group">
+            <div class="control-group" id="_price">
               <label class="setting_detail_label" for="input01">学费</label>
               <div class="setting_detail_info">
-                <input type="text" class="input-large" placeholder="输入学费" id="input_lastname" name="price"/>
+                <input type="text" class="input-large" placeholder="输入学费" id="input_price" name="price"/>
+                <span class="help-inline" id="price_info"></span>
               </div>
             </div>
             
-            <div class="control-group">
+            <div class="control-group" id="_type">
               <label class="setting_detail_label" for="input01">分类</label>
               <div class="setting_detail_info">
-                <select multiple="multiple" id="choosetype" name="type">
+                <select multiple="multiple" name="type" id="input_type">
+                <option>计算机</option>
                 <option>数学</option>
                 <option>英语</option>
                 <option>语文</option>
                 <option>物理</option>
                 <option>化学</option>
+                <option>地理</option>
+                <option>生物</option>
+                <option>历史</option>
+                <option>政治</option>
               	</select>
+              	<span class="help-inline" id="type_info"></span>
               </div>
             </div>
-            <div class="control-group">
+            <div class="control-group" id="_description">
               <label class="setting_detail_label" for="input01">课程描述</label>
               <div class="setting_detail_info">
-                <textarea rows="6" style="width:80%" id="input_description" placeholder="一句话介课程吧，让课程更受欢迎" id="input_description" name="description">
-                </textarea>
+                <textarea rows="6" style="width:80%" id="input_description" placeholder="一句话介课程吧，让课程更受欢迎"name="description"></textarea>
+                <span class="help-inline" id="description_info"></span>
               </div>
             </div>
             <div class="control-group">
               <div class="setting_detail_info">
-                <button type="submit" class="btn btn-primary">开设</button>
+                <button type="button" class="btn btn-primary" onclick="submitinfo()" id="submitbtn">开设</button>
               </div>
             </div>
           </fieldset>
@@ -203,6 +213,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" type="text/javascript" src="bootstrap/js/jquery.js"></script> 
 <script language="javascript" type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script language="javascript" type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/opencourse.js"></script>
 <script src='/OnlineTutoringSystem/dwr/engine.js'></script> 
 <script src='/OnlineTutoringSystem/dwr/interface/deletecourseaction.js'></script> 
 <script type="text/javascript">

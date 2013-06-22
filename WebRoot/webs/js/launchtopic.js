@@ -4,12 +4,12 @@ function checkTitle()
 	//alert(title.length);
 	if(title.length>30)
 	{
-		alert("标题长度大于30");
+		alert("鏍囬闀垮害涓嶈兘澶т簬30");
 		return false;
 	}
 	else if(title.length==0)
 	{
-		alert("标题不能为空");
+		alert("鏍囬涓嶈兘涓虹┖");
 		return false;
 	}
 	else
@@ -22,7 +22,7 @@ function checkType()
 	var type = $("#choosetype option:selected").text();
 	if(type=="")
 	{
-		alert("未选择分类");
+		alert("绫诲瀷涓嶈兘涓虹┖");
 		return false;
 	}
 	else
@@ -40,7 +40,7 @@ function checkPicture()
 			return true;
 		else
 		{
-			alert("图片格式不允许");
+			alert("鍥剧墖绫诲瀷閿欒");
 			return false;
 		}
 	}
